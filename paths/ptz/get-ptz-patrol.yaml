@@ -1,0 +1,79 @@
+# paths/ptz/get-ptz-patrol.yaml
+post:
+  tags:
+    - PTZ
+  summary: Get PTZ patrol configuration
+  description: Returns patrol (cruise) routes configuration for PTZ camera
+  x-deviceSupport: both
+  operationId: getPtzPatrol
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                action:
+                  type: integer
+                  enum: [1]
+                param:
+                  type: object
+                  required:
+                    - channel
+                  properties:
+                    channel:
+                      $ref: '../../components/schemas/common.yaml#/Channel'
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - PtzPatrol
+                      properties:
+                        PtzPatrol:
+                          type: array
+                          items:
+                            $ref: '../../components/schemas/common.yaml#/PTZPatrol'
+                    range:
+                      type: object
+                      properties:
+                        PtzPatrol:
+                          type: object
+                          properties:
+                            enable:
+                              type: string
+                              enum: ['boolean']
+                            id:
+                              type: object
+                              properties:
+                                max:
+                                  type: integer
+                                  enum: [6]
+                                min:
+                                  type: integer
+                                  enum: [1]
+                            name:
+                              type: object
+                              properties:
+                                maxLen:
+                                  type: integer
+                                  enum: [31]
+                            running:
+                              type: string
+                              enum: ['boolean']
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

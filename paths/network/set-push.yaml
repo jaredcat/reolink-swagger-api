@@ -1,0 +1,34 @@
+# paths/network/set-push.yaml
+post:
+  tags:
+    - Network
+  summary: Set push notification settings
+  description: Updates the push notification configuration
+  x-deviceSupport: both
+  operationId: setPush
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - Push
+                  properties:
+                    Push:
+                      type: object
+                      properties:
+                        schedule:
+                          $ref: '../../components/schemas/network.yaml#/PushSchedule'
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

@@ -1,0 +1,84 @@
+# paths/video/get-stitch.yaml
+post:
+  tags:
+    - Video Input
+    - IPC-only
+  summary: Get image stitch settings
+  description: Returns the current image stitching configuration for binocular cameras
+  x-deviceSupport: ipc
+  operationId: getStitch
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                action:
+                  type: integer
+                  enum: [1]
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - stitch
+                      properties:
+                        stitch:
+                          $ref: '../../components/schemas/common.yaml#/StitchSettings'
+                    initial:
+                      type: object
+                      properties:
+                        stitch:
+                          $ref: '../../components/schemas/common.yaml#/StitchSettings'
+                    range:
+                      type: object
+                      properties:
+                        stitch:
+                          type: object
+                          properties:
+                            distance:
+                              type: object
+                              properties:
+                                max:
+                                  type: number
+                                  format: float
+                                  enum: [20.0]
+                                min:
+                                  type: number
+                                  format: float
+                                  enum: [2.0]
+                            stitchXMove:
+                              type: object
+                              properties:
+                                max:
+                                  type: integer
+                                  enum: [100]
+                                min:
+                                  type: integer
+                                  enum: [-100]
+                            stitchYMove:
+                              type: object
+                              properties:
+                                max:
+                                  type: integer
+                                  enum: [100]
+                                min:
+                                  type: integer
+                                  enum: [-100]
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

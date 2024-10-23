@@ -1,0 +1,27 @@
+# paths/recording/snap.yaml
+post:
+  tags:
+    - Recording
+  summary: Take snapshot
+  description: Captures a snapshot image from the current video
+  x-deviceSupport: both
+  operationId: takeSnapshot
+  parameters:
+    - name: channel
+      in: query
+      required: true
+      schema:
+        $ref: '../../components/schemas/common.yaml#/Channel'
+    - name: rs
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Random string to prevent browser caching
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/ImageResponse'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

@@ -1,0 +1,64 @@
+# components/schemas/security.yaml
+
+# User information
+UserInfo:
+  type: object
+  required:
+    - userName
+  properties:
+    userName:
+      type: string
+      maxLength: 31
+      description: Username
+    level:
+      type: string
+      enum: [guest, admin]
+      description: User permission level
+    password:
+      type: string
+      maxLength: 31
+      description: User password (only for creation/modification)
+
+# Login token information
+TokenInfo:
+  type: object
+  required:
+    - name
+    - leaseTime
+  properties:
+    name:
+      type: string
+      maxLength: 32
+      description: Token string
+    leaseTime:
+      type: integer
+      description: Token lease time in seconds
+      example: 3600
+
+# Online user information
+OnlineUserInfo:
+  type: object
+  required:
+    - userName
+    - sessionId
+  properties:
+    userName:
+      type: string
+      description: Username of online user
+    sessionId:
+      type: integer
+      description: Session ID
+    ip:
+      type: string
+      description: IP address of the user
+    level:
+      type: string
+      enum: [guest, admin]
+      description: User permission level
+    canbeDisconn:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Whether user can be disconnected
+        * 0 - Cannot be disconnected
+        * 1 - Can be disconnected

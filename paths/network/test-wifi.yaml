@@ -1,0 +1,41 @@
+# paths/network/test-wifi.yaml
+post:
+  tags:
+    - Network
+    - IPC-only
+  summary: Test WiFi connection
+  description: Tests connection to specified WiFi network
+  x-deviceSupport: ipc
+  operationId: testWifi
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - Wifi
+                  properties:
+                    Wifi:
+                      type: object
+                      required:
+                        - ssid
+                      properties:
+                        ssid:
+                          type: string
+                          description: Network SSID to test
+                        password:
+                          type: string
+                          description: Network password (if required)
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

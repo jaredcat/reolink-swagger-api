@@ -1,0 +1,39 @@
+# paths/ai/set-ai-cfg.yaml
+post:
+  tags:
+    - AI
+  summary: Set AI configuration
+  description: Updates the AI detection and tracking configuration
+  x-deviceSupport: both
+  operationId: setAiCfg
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - channel
+                  properties:
+                    aiTrack:
+                      type: integer
+                      enum: [0, 1]
+                      description: Enable/disable AI tracking
+                    trackType:
+                      $ref: '../../components/schemas/ai.yaml#/AiTrackTypes'
+                    AiDetectType:
+                      $ref: '../../components/schemas/ai.yaml#/AiDetectTypes'
+                    channel:
+                      $ref: '../../components/schemas/common.yaml#/Channel'
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

@@ -1,0 +1,45 @@
+# paths/network/get-email-v20.yaml
+post:
+  tags:
+    - Network
+  summary: Get email settings (v2.0)
+  description: Returns the email notification configuration (version 2.0)
+  x-deviceSupport: both
+  operationId: getEmailV20
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  properties:
+                    channel:
+                      $ref: '../../components/schemas/common.yaml#/Channel'
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - Email
+                      properties:
+                        Email:
+                          $ref: '../../components/schemas/network.yaml#/EmailConfigV20'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

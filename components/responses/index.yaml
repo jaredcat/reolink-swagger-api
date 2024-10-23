@@ -1,0 +1,9 @@
+# Common responses
+Success:
+  $ref: './common.yaml#/Success'
+Error:
+  $ref: './common.yaml#/Error'
+FileDownload:
+  $ref: './common.yaml#/FileDownload'
+ImageResponse:
+  $ref: './common.yaml#/ImageResponse'

@@ -1,0 +1,15 @@
+# paths/network/certificate-clear.yaml
+post:
+  tags:
+    - Network
+  summary: Clear certificate
+  description: Removes the custom SSL certificate and reverts to default
+  x-deviceSupport: both
+  operationId: certificateClear
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

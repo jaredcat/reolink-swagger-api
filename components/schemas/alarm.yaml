@@ -1,0 +1,118 @@
+# Alarm Area Configuration
+AlarmArea:
+  type: object
+  properties:
+    cols:
+      type: integer
+      description: Number of columns in detection grid
+    rows:
+      type: integer
+      description: Number of rows in detection grid
+    table:
+      type: string
+      description: |
+        Grid configuration string where each character represents a cell
+        * 0 - Disabled
+        * 1 - Enabled
+      example: '11111111111111111111...'
+
+# Alarm Sensitivity Configuration
+AlarmSensitivity:
+  type: object
+  properties:
+    beginHour:
+      type: integer
+      minimum: 0
+      maximum: 23
+      description: Start hour for this sensitivity period
+    beginMin:
+      type: integer
+      minimum: 0
+      maximum: 59
+      description: Start minute for this sensitivity period
+    endHour:
+      type: integer
+      minimum: 0
+      maximum: 23
+      description: End hour for this sensitivity period
+    endMin:
+      type: integer
+      minimum: 0
+      maximum: 59
+      description: End minute for this sensitivity period
+    sensitivity:
+      type: integer
+      minimum: 1
+      maximum: 50
+      description: Sensitivity level
+    id:
+      type: integer
+      description: Period identifier
+
+# AI Detection Types
+AiDetectTypes:
+  type: object
+  properties:
+    people:
+      $ref: './common.yaml#/EnableSwitch'
+      description: People detection
+    vehicle:
+      $ref: './common.yaml#/EnableSwitch'
+      description: Vehicle detection
+    dog_cat:
+      $ref: './common.yaml#/EnableSwitch'
+      description: Pet detection
+    face:
+      $ref: './common.yaml#/EnableSwitch'
+      description: Face detection
+
+# Advanced Motion Detection Alarm Configuration
+MdAlarmConfig:
+  type: object
+  properties:
+    useNewSens:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Whether to use new sensitivity settings
+        * 0 - Use legacy sensitivity
+        * 1 - Use new sensitivity settings
+    newSens:
+      type: object
+      properties:
+        sensDef:
+          type: integer
+          minimum: 1
+          maximum: 50
+          description: Default sensitivity level
+        sens:
+          type: array
+          items:
+            type: object
+            properties:
+              enable:
+                $ref: './common.yaml#/EnableSwitch'
+              sensitivity:
+                type: integer
+                minimum: 1
+                maximum: 50
+              beginHour:
+                type: integer
+                minimum: 0
+                maximum: 23
+              beginMin:
+                type: integer
+                minimum: 0
+                maximum: 59
+              endHour:
+                type: integer
+                minimum: 0
+                maximum: 23
+              endMin:
+                type: integer
+                minimum: 0
+                maximum: 59
+              priority:
+                type: integer
+                minimum: 0
+                description: Priority level

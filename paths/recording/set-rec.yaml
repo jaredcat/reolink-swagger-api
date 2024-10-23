@@ -1,0 +1,31 @@
+# paths/recording/set-rec.yaml
+post:
+  tags:
+    - Recording
+  summary: Set recording configuration
+  description: Updates the recording configuration including schedules and settings
+  x-deviceSupport: both
+  operationId: setRec
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - Rec
+                  properties:
+                    Rec:
+                      $ref: '../../components/schemas/common.yaml#/RecordingConfig'
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

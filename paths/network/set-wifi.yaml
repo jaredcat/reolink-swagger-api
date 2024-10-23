@@ -1,0 +1,32 @@
+# paths/network/set-wifi.yaml
+post:
+  tags:
+    - Network
+    - IPC-only
+  summary: Set WiFi settings
+  description: Updates WiFi configuration
+  x-deviceSupport: ipc
+  operationId: setWifi
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - Wifi
+                  properties:
+                    Wifi:
+                      $ref: '../../components/schemas/common.yaml#/WifiConfig'
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

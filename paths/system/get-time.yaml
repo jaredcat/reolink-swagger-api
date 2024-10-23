@@ -1,0 +1,57 @@
+# paths/system/get-time.yaml
+post:
+  tags:
+    - System
+  summary: Get system time settings
+  description: Returns the current system time configuration including timezone and DST settings
+  x-deviceSupport: both
+  operationId: getTime
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                action:
+                  type: integer
+                  enum: [1]
+                  description: Get configuration with ranges
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - Time
+                        - Dst
+                      properties:
+                        Time:
+                          $ref: '../../components/schemas/common.yaml#/TimeConfig'
+                        Dst:
+                          $ref: '../../components/schemas/common.yaml#/DSTConfig'
+                    initial:
+                      type: object
+                      properties:
+                        Time:
+                          $ref: '../../components/schemas/common.yaml#/TimeConfig'
+                        Dst:
+                          $ref: '../../components/schemas/common.yaml#/DSTConfig'
+                    range:
+                      type: object
+                      description: Valid ranges for all parameters
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

@@ -1,0 +1,64 @@
+# paths/ptz/get-auto-focus.yaml
+post:
+  tags:
+    - PTZ
+  summary: Get auto focus configuration
+  description: Returns the current auto focus settings
+  x-deviceSupport: both
+  operationId: getAutoFocus
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                action:
+                  type: integer
+                  enum: [1]
+                param:
+                  type: object
+                  required:
+                    - channel
+                  properties:
+                    channel:
+                      $ref: '../../components/schemas/common.yaml#/Channel'
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - AutoFocus
+                      properties:
+                        AutoFocus:
+                          $ref: '../../components/schemas/common.yaml#/AutoFocusConfig'
+                    initial:
+                      type: object
+                      properties:
+                        AutoFocus:
+                          $ref: '../../components/schemas/common.yaml#/AutoFocusConfig'
+                    range:
+                      type: object
+                      properties:
+                        AutoFocus:
+                          type: object
+                          properties:
+                            disable:
+                              type: string
+                              enum: ['boolean']
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

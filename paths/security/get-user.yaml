@@ -1,0 +1,78 @@
+# paths/security/get-user.yaml
+post:
+  tags:
+    - Security
+  summary: Get user list
+  description: Returns list of configured users and their permissions
+  x-deviceSupport: both
+  operationId: getUser
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                action:
+                  type: integer
+                  enum: [1]
+                  description: Get configuration with ranges
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      properties:
+                        User:
+                          type: array
+                          items:
+                            $ref: '../../components/schemas/security.yaml#/UserInfo'
+                    initial:
+                      type: object
+                      properties:
+                        User:
+                          $ref: '../../components/schemas/security.yaml#/UserInfo'
+                    range:
+                      type: object
+                      properties:
+                        User:
+                          type: object
+                          properties:
+                            level:
+                              type: array
+                              items:
+                                type: string
+                                enum: [guest, admin]
+                            userName:
+                              type: object
+                              properties:
+                                minLen:
+                                  type: integer
+                                  minimum: 1
+                                maxLen:
+                                  type: integer
+                                  maximum: 31
+                            password:
+                              type: object
+                              properties:
+                                minLen:
+                                  type: integer
+                                  minimum: 6
+                                maxLen:
+                                  type: integer
+                                  maximum: 31
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

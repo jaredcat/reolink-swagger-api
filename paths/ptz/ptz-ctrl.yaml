@@ -1,0 +1,47 @@
+# paths/ptz/ptz-ctrl.yaml
+post:
+  tags:
+    - PTZ
+  summary: Control PTZ movement
+  description: |
+    Controls PTZ camera movement and operations.
+    Speed parameter range is 1-64.
+    For ToPos operation, id parameter specifies the preset position to move to.
+  x-deviceSupport: both
+  operationId: ptzCtrl
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - channel
+                    - op
+                  properties:
+                    channel:
+                      $ref: '../../components/schemas/common.yaml#/Channel'
+                    op:
+                      $ref: '../../components/schemas/common.yaml#/PTZOperation'
+                    speed:
+                      type: integer
+                      minimum: 1
+                      maximum: 64
+                      description: Movement speed
+                    id:
+                      type: integer
+                      minimum: 1
+                      maximum: 64
+                      description: Preset position ID (for ToPos operation)
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

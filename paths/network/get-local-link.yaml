@@ -1,0 +1,52 @@
+# paths/network/get-local-link.yaml
+post:
+  tags:
+    - Network
+  summary: Get network interface settings
+  description: Returns current network interface configuration including IP settings and DNS
+  x-deviceSupport: both
+  operationId: getLocalLink
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                action:
+                  type: integer
+                  enum: [1]
+                  description: Get configuration with ranges
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - LocalLink
+                      properties:
+                        LocalLink:
+                          $ref: '../../components/schemas/common.yaml#/LocalLinkConfig'
+                    initial:
+                      type: object
+                      properties:
+                        LocalLink:
+                          $ref: '../../components/schemas/common.yaml#/LocalLinkConfig'
+                    range:
+                      type: object
+                      description: Valid ranges for all parameters
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

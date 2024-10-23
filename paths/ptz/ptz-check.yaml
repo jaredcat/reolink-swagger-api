@@ -1,0 +1,35 @@
+# paths/ptz/ptz-check.yaml
+post:
+  tags:
+    - PTZ
+    - NVR-only
+  summary: Start PTZ self-check
+  description: Initiates the PTZ camera self-check procedure
+  x-deviceSupport: nvr
+  operationId: ptzCheck
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                action:
+                  type: integer
+                  enum: [1]
+                param:
+                  type: object
+                  required:
+                    - channel
+                  properties:
+                    channel:
+                      $ref: '../../components/schemas/common.yaml#/Channel'
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

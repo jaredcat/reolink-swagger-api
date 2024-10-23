@@ -1,0 +1,75 @@
+# paths/video/get-crop.yaml
+post:
+  tags:
+    - Video Input
+  summary: Get video crop settings
+  description: Returns the current video cropping configuration
+  x-deviceSupport: both
+  operationId: getCrop
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                action:
+                  type: integer
+                  enum: [0]
+                param:
+                  type: object
+                  required:
+                    - channel
+                  properties:
+                    channel:
+                      $ref: '../../components/schemas/common.yaml#/Channel'
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - Crop
+                      properties:
+                        Crop:
+                          $ref: '../../components/schemas/common.yaml#/CropSettings'
+                    initial:
+                      type: object
+                      properties:
+                        Crop:
+                          $ref: '../../components/schemas/common.yaml#/CropSettings'
+                    range:
+                      type: object
+                      properties:
+                        Crop:
+                          type: object
+                          properties:
+                            topLeftX:
+                              type: object
+                              properties:
+                                max:
+                                  type: integer
+                                min:
+                                  type: integer
+                            topLeftY:
+                              type: object
+                              properties:
+                                max:
+                                  type: integer
+                                min:
+                                  type: integer
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

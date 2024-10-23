@@ -1,0 +1,31 @@
+# paths/ptz/set-ptz-serial.yaml
+post:
+  tags:
+    - PTZ
+  summary: Set PTZ serial port configuration
+  description: Configures the serial port settings for PTZ control
+  x-deviceSupport: both
+  operationId: setPtzSerial
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - PtzSerial
+                  properties:
+                    PtzSerial:
+                      $ref: '../../components/schemas/common.yaml#/PTZSerial'
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

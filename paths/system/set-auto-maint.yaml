@@ -1,0 +1,31 @@
+# paths/system/set-auto-maint.yaml
+post:
+  tags:
+    - System
+  summary: Set auto maintenance settings
+  description: Configures automatic maintenance schedule
+  x-deviceSupport: both
+  operationId: setAutoMaint
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - AutoMaint
+                  properties:
+                    AutoMaint:
+                      $ref: '../../components/schemas/common.yaml#/AutoMaintConfig'
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

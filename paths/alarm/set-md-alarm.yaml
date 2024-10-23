@@ -1,0 +1,36 @@
+# paths/alarm/set-md-alarm.yaml
+post:
+  tags:
+    - Alarm
+  summary: Set advanced motion detection settings
+  description: Updates the advanced motion detection alarm configuration
+  x-deviceSupport: both
+  operationId: setMdAlarm
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - MdAlarm
+                  properties:
+                    MdAlarm:
+                      allOf:
+                        - $ref: '../../components/schemas/common.yaml#/MdAlarmConfig'
+                        - type: object
+                          properties:
+                            scope:
+                              $ref: '../../components/schemas/common.yaml#/AlarmArea'
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

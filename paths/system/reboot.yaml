@@ -1,0 +1,15 @@
+# paths/system/reboot.yaml
+post:
+  tags:
+    - System
+  summary: Reboot device
+  description: Reboots the device
+  x-deviceSupport: both
+  operationId: reboot
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

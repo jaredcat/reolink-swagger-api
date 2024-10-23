@@ -1,0 +1,34 @@
+# paths/network/scan-wifi.yaml
+post:
+  tags:
+    - Network
+    - IPC-only
+  summary: Scan for WiFi networks
+  description: Scans and returns list of available WiFi networks
+  x-deviceSupport: ipc
+  operationId: scanWifi
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - Wifi
+                      properties:
+                        Wifi:
+                          type: array
+                          items:
+                            $ref: '../../components/schemas/common.yaml#/WifiNetwork'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

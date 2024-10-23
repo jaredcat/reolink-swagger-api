@@ -1,0 +1,41 @@
+# paths/security/set-sys-cfg.yaml
+post:
+  tags:
+    - Security
+  summary: Set login security settings
+  description: Configures login lock settings
+  x-deviceSupport: both
+  operationId: setSysCfg
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - SysCfg
+                  properties:
+                    SysCfg:
+                      type: object
+                      required:
+                        - loginLock
+                      properties:
+                        loginLock:
+                          type: integer
+                          enum: [0, 1]
+                          description: |
+                            Login lock enable/disable
+                            * 0 - Disable login lock
+                            * 1 - Enable login lock
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

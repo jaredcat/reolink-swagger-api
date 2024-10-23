@@ -1,0 +1,50 @@
+# paths/led/set-ai-alarm.yaml
+post:
+  tags:
+    - LED
+    - AI
+  summary: Set AI alarm LED settings
+  description: Configure AI-based alarm LED operation
+  x-deviceSupport: both
+  operationId: setAiAlarm
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - channel
+                    - AiAlarm
+                  properties:
+                    channel:
+                      $ref: '../../components/schemas/common.yaml#/Channel'
+                    AiAlarm:
+                      type: object
+                      properties:
+                        ai_type:
+                          type: string
+                          enum: [people, vehicle, dog_cat]
+                        sensitivity:
+                          type: integer
+                          minimum: 1
+                          maximum: 100
+                        stay_time:
+                          type: integer
+                          minimum: 0
+                        scope:
+                          type: object
+                          properties:
+                            area:
+                              type: string
+                              description: Detection area configuration
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'

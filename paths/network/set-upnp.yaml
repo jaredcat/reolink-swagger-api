@@ -1,0 +1,31 @@
+# paths/network/set-upnp.yaml
+post:
+  tags:
+    - Network
+  summary: Set UPnP settings
+  description: Updates UPnP service configuration
+  x-deviceSupport: both
+  operationId: setUpnp
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - Upnp
+                  properties:
+                    Upnp:
+                      $ref: '../../components/schemas/common.yaml#/UpnpConfig'
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

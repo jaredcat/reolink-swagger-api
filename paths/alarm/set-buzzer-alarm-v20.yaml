@@ -1,0 +1,59 @@
+# paths/alarm/set-buzzer-alarm-v20.yaml
+post:
+  tags:
+    - Alarm
+    - NVR-only
+  summary: Set buzzer alarm settings
+  description: Updates the buzzer alarm configuration (NVR only)
+  x-deviceSupport: nvr
+  operationId: setBuzzerAlarmV20
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - Buzzer
+                  properties:
+                    Buzzer:
+                      type: object
+                      properties:
+                        enable:
+                          $ref: '../../components/schemas/common.yaml#/EnableSwitch'
+                        diskErrorAlert:
+                          $ref: '../../components/schemas/common.yaml#/EnableSwitch'
+                        diskFullAlert:
+                          $ref: '../../components/schemas/common.yaml#/EnableSwitch'
+                        ipConflictAlert:
+                          $ref: '../../components/schemas/common.yaml#/EnableSwitch'
+                        nvrDisconnectAlert:
+                          $ref: '../../components/schemas/common.yaml#/EnableSwitch'
+                        schedule:
+                          type: object
+                          properties:
+                            channel:
+                              $ref: '../../components/schemas/common.yaml#/Channel'
+                            table:
+                              type: object
+                              properties:
+                                MD:
+                                  $ref: '../../components/schemas/common.yaml#/ScheduleTable'
+                                AI_PEOPLE:
+                                  $ref: '../../components/schemas/common.yaml#/ScheduleTable'
+                                AI_VEHICLE:
+                                  $ref: '../../components/schemas/common.yaml#/ScheduleTable'
+                                VL:
+                                  $ref: '../../components/schemas/common.yaml#/ScheduleTable'
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

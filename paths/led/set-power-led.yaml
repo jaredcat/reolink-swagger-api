@@ -1,0 +1,36 @@
+# paths/led/set-power-led.yaml
+post:
+  tags:
+    - LED
+  summary: Set power LED status
+  description: Configure power LED operation
+  x-deviceSupport: both
+  operationId: setPowerLed
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - PowerLed
+                  properties:
+                    PowerLed:
+                      type: object
+                      required:
+                        - state
+                      properties:
+                        state:
+                          type: string
+                          enum: [On, Off]
+                          description: Power LED state
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'

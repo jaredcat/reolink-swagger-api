@@ -1,0 +1,32 @@
+# paths/system/check-firmware.yaml
+post:
+  tags:
+    - System
+  summary: Check for firmware updates
+  description: Checks if new firmware is available for upgrade
+  x-deviceSupport: both
+  operationId: checkFirmware
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - newFirmware
+                      properties:
+                        newFirmware:
+                          type: integer
+                          description: Status of new firmware availability
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

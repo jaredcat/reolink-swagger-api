@@ -1,0 +1,78 @@
+# paths/alarm/get-alarm.yaml
+post:
+  tags:
+    - Alarm
+  summary: Get alarm settings
+  description: Returns the current alarm configuration including motion detection areas and sensitivity
+  x-deviceSupport: both
+  operationId: getAlarm
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                action:
+                  type: integer
+                  enum: [1]
+                param:
+                  type: object
+                  required:
+                    - Alarm
+                  properties:
+                    Alarm:
+                      type: object
+                      required:
+                        - type
+                        - channel
+                      properties:
+                        type:
+                          type: string
+                          enum: ['md']
+                          description: Alarm type (currently only motion detection supported)
+                        channel:
+                          $ref: '../../components/schemas/common.yaml#/Channel'
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - Alarm
+                      properties:
+                        Alarm:
+                          type: object
+                          properties:
+                            channel:
+                              $ref: '../../components/schemas/common.yaml#/Channel'
+                            type:
+                              type: string
+                              enum: ['md']
+                            scope:
+                              $ref: '../../components/schemas/common.yaml#/AlarmArea'
+                            sens:
+                              type: array
+                              items:
+                                $ref: '../../components/schemas/common.yaml#/AlarmSensitivity'
+                    initial:
+                      type: object
+                      description: Initial configuration values
+                    range:
+                      type: object
+                      description: Valid ranges for parameters
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

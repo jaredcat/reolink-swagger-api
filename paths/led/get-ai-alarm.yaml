@@ -1,0 +1,64 @@
+# paths/led/get-ai-alarm.yaml
+post:
+  tags:
+    - LED
+    - AI
+  summary: Get AI alarm LED settings
+  description: Returns the current AI-based alarm LED configuration
+  x-deviceSupport: both
+  operationId: getAiAlarm
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - channel
+                    - ai_type
+                  properties:
+                    channel:
+                      $ref: '../../components/schemas/common.yaml#/Channel'
+                    ai_type:
+                      type: string
+                      enum: [people, vehicle, dog_cat]
+                      description: Type of AI detection
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      properties:
+                        sensitivity:
+                          type: integer
+                          minimum: 1
+                          maximum: 100
+                        stay_time:
+                          type: integer
+                          minimum: 0
+                        width:
+                          type: integer
+                        height:
+                          type: integer
+                        scope:
+                          type: object
+                          properties:
+                            area:
+                              type: string
+                              description: Detection area configuration
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'

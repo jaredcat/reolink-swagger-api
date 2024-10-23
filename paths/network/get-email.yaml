@@ -1,0 +1,52 @@
+# paths/network/get-email.yaml
+post:
+  tags:
+    - Network
+  summary: Get email settings
+  description: Returns current email service configuration including SMTP settings and notification schedules
+  x-deviceSupport: both
+  operationId: getEmail
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                action:
+                  type: integer
+                  enum: [1]
+                  description: Get configuration with ranges
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - Email
+                      properties:
+                        Email:
+                          $ref: '../../components/schemas/common.yaml#/EmailConfig'
+                    initial:
+                      type: object
+                      properties:
+                        Email:
+                          $ref: '../../components/schemas/common.yaml#/EmailConfig'
+                    range:
+                      type: object
+                      description: Valid ranges for all parameters
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

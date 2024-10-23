@@ -1,0 +1,76 @@
+# components/parameters/common.yaml
+
+# Command parameter - required for all requests
+cmd:
+  name: cmd
+  in: query
+  required: true
+  schema:
+    type: string
+  description: API command to execute
+
+# Token parameter for long-session authentication
+token:
+  name: token
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Authentication token obtained from Login command
+
+# Channel parameter
+channel:
+  name: channel
+  in: query
+  required: false
+  schema:
+    $ref: '../schemas/common.yaml#/Channel'
+  description: Channel number to operate on
+
+# Stream type parameter
+streamType:
+  name: streamType
+  in: query
+  required: false
+  schema:
+    type: string
+    enum:
+      - main
+      - ext
+      - sub
+  description: |
+    Video stream type
+    * main - Main stream
+    * ext - Extended stream
+    * sub - Sub stream
+
+# File source parameter
+source:
+  name: source
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Source file path/name for download/playback operations
+
+# Output filename parameter
+output:
+  name: output
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Output filename for download operations
+
+# Clear config parameter
+clearConfig:
+  name: clearConfig
+  in: query
+  required: false
+  schema:
+    type: integer
+    enum: [0, 1]
+  description: |
+    Whether to clear configuration during operation
+    * 0 - Keep existing configuration
+    * 1 - Clear configuration

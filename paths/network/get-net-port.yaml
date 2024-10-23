@@ -1,0 +1,31 @@
+# paths/network/get-net-port.yaml
+post:
+  tags:
+    - Network
+  summary: Get network port settings
+  description: Returns current network service port configurations and their enable status
+  x-deviceSupport: both
+  operationId: getNetPort
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - NetPort
+                      properties:
+                        NetPort:
+                          $ref: '../../components/schemas/common.yaml#/NetworkPortConfig'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

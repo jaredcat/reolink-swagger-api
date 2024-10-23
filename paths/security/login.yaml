@@ -1,0 +1,70 @@
+# paths/security/login.yaml
+post:
+  tags:
+    - Security
+  summary: Login to device
+  description: |
+    Authenticates user and returns a token for subsequent requests.
+    Token is valid for 3600 seconds by default.
+  x-deviceSupport: both
+  operationId: login
+  security: [] # No auth needed for login
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - User
+                  properties:
+                    User:
+                      type: object
+                      required:
+                        - userName
+                        - password
+                      properties:
+                        userName:
+                          type: string
+                          maxLength: 31
+                          description: Username
+                        password:
+                          type: string
+                          maxLength: 31
+                          description: Password
+                        Version:
+                          type: string
+                          enum: ['0', '1']
+                          default: '0'
+                          description: |
+                            Login version
+                            * 0 - Don't use private encryption
+                            * 1 - Use private encryption (not provided externally)
+  responses:
+    '200':
+      description: Successful login
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - Token
+                      properties:
+                        Token:
+                          $ref: '../../components/schemas/security.yaml#/TokenInfo'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

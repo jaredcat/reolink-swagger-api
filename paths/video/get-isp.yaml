@@ -1,0 +1,85 @@
+# paths/video/get-isp.yaml
+post:
+  tags:
+    - Video Input
+  summary: Get ISP settings
+  description: Returns the current Image Signal Processing settings
+  x-deviceSupport: both
+  operationId: getIsp
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                action:
+                  type: integer
+                  enum: [1]
+                param:
+                  type: object
+                  required:
+                    - channel
+                  properties:
+                    channel:
+                      $ref: '../../components/schemas/common.yaml#/Channel'
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - Isp
+                      properties:
+                        Isp:
+                          allOf:
+                            - $ref: '../../components/schemas/common.yaml#/IspSettings'
+                            - type: object
+                              properties:
+                                bd_day:
+                                  $ref: '../../components/schemas/common.yaml#/BrightnessSettings'
+                                bd_night:
+                                  $ref: '../../components/schemas/common.yaml#/BrightnessSettings'
+                                bd_led_color:
+                                  $ref: '../../components/schemas/common.yaml#/BrightnessSettings'
+                                constantFrameRate:
+                                  type: integer
+                                  enum: [0, 1]
+                                  description: |
+                                    Frame rate priority
+                                    * 0 - Quality priority
+                                    * 1 - Fluency priority
+                                dayNightThreshold:
+                                  type: integer
+                                  minimum: 0
+                                  description: Day/Night switching threshold
+                                cdsType:
+                                  type: integer
+                                  enum: [0, 1]
+                                  description: |
+                                    Light sensitivity mode
+                                    * 0 - Hardware sensitivity
+                                    * 1 - Software sensitivity
+                    initial:
+                      type: object
+                      properties:
+                        Isp:
+                          $ref: '../../components/schemas/common.yaml#/IspSettings'
+                    range:
+                      type: object
+                      description: Valid ranges for all parameters
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

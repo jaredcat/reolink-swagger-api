@@ -1,0 +1,55 @@
+# paths/network/get-push.yaml
+post:
+  tags:
+    - Network
+  summary: Get push notification settings
+  description: Returns the push notification configuration
+  x-deviceSupport: both
+  operationId: getPush
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                action:
+                  type: integer
+                  enum: [1]
+                  description: Get configuration with ranges
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - Push
+                      properties:
+                        Push:
+                          type: object
+                          properties:
+                            schedule:
+                              $ref: '../../components/schemas/network.yaml#/PushSchedule'
+                    initial:
+                      type: object
+                      properties:
+                        Push:
+                          $ref: '../../components/schemas/network.yaml#/PushSchedule'
+                    range:
+                      type: object
+                      description: Valid ranges for all parameters
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

@@ -1,0 +1,28 @@
+# paths/recording/playback.yaml
+post:
+  tags:
+    - Recording
+  summary: Playback recording
+  description: Streams a recording file for playback
+  x-deviceSupport: both
+  operationId: playbackRecording
+  parameters:
+    - name: source
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Source recording file path
+    - name: output
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Output filename
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/FileDownload'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

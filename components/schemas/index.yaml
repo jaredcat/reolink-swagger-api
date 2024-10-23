@@ -1,0 +1,21 @@
+# Common schemas
+BaseCommandRequest:
+  $ref: './common.yaml#/BaseCommandRequest'
+BaseCommandResponse:
+  $ref: './common.yaml#/BaseCommandResponse'
+ErrorResponse:
+  $ref: './common.yaml#/ErrorResponse'
+Channel:
+  $ref: './common.yaml#/Channel'
+Sensitivity:
+  $ref: './common.yaml#/Sensitivity'
+TimeRange:
+  $ref: './common.yaml#/TimeRange'
+InitialRange:
+  $ref: './common.yaml#/InitialRange'
+DeviceSupportType:
+  $ref: './common.yaml#/DeviceSupportType'
+ScheduleTable:
+  $ref: './common.yaml#/ScheduleTable'
+EnableSwitch:
+  $ref: './common.yaml#/EnableSwitch'

@@ -1,0 +1,58 @@
+# paths/video/get-osd.yaml
+post:
+  tags:
+    - Video Input
+  summary: Get OSD settings
+  description: Returns the current on-screen display settings including channel name and time display
+  x-deviceSupport: both
+  operationId: getOsd
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                action:
+                  type: integer
+                  enum: [1]
+                param:
+                  type: object
+                  required:
+                    - channel
+                  properties:
+                    channel:
+                      $ref: '../../components/schemas/common.yaml#/Channel'
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - Osd
+                      properties:
+                        Osd:
+                          $ref: '../../components/schemas/common.yaml#/OsdSettings'
+                    initial:
+                      type: object
+                      properties:
+                        Osd:
+                          $ref: '../../components/schemas/common.yaml#/OsdSettings'
+                    range:
+                      type: object
+                      description: Valid ranges for all parameters
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

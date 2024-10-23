@@ -1,0 +1,17 @@
+# components/parameters/index.yaml
+
+# Common query parameters
+cmd:
+  $ref: './common.yaml#/cmd'
+token:
+  $ref: './common.yaml#/token'
+channel:
+  $ref: './common.yaml#/channel'
+streamType:
+  $ref: './common.yaml#/streamType'
+source:
+  $ref: './common.yaml#/source'
+output:
+  $ref: './common.yaml#/output'
+clearConfig:
+  $ref: './common.yaml#/clearConfig'

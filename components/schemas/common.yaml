@@ -1,0 +1,1674 @@
+# Base command request structure
+BaseCommandRequest:
+  type: object
+  required:
+    - cmd
+  properties:
+    cmd:
+      type: string
+      description: Command name
+    action:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Action type
+        * 0 - Set/execute command
+        * 1 - Get command with initial values and ranges
+    param:
+      type: object
+      description: Command parameters
+
+# Base response structure
+BaseCommandResponse:
+  type: object
+  required:
+    - cmd
+    - code
+  properties:
+    cmd:
+      type: string
+      description: Command name that was executed
+    code:
+      type: integer
+      description: Response code (0 for success)
+    value:
+      type: object
+      description: Response data when successful
+    error:
+      $ref: '#/ErrorResponse'
+      description: Error information when request fails
+
+# Error response structure
+ErrorResponse:
+  type: object
+  required:
+    - rspCode
+  properties:
+    rspCode:
+      type: integer
+      description: Error response code
+      example: -1
+    detail:
+      type: string
+      description: Detailed error message
+  example:
+    rspCode: -1
+    detail: 'Missing parameters'
+
+# Common parameter types
+Channel:
+  type: integer
+  minimum: 0
+  description: Channel number (0 for IPC devices)
+  example: 0
+
+Sensitivity:
+  type: integer
+  minimum: 1
+  maximum: 50
+  description: Sensitivity level
+  example: 25
+
+TimeRange:
+  type: object
+  properties:
+    year:
+      type: integer
+      minimum: 1900
+      maximum: 2100
+      description: Year
+    mon:
+      type: integer
+      minimum: 1
+      maximum: 12
+      description: Month
+    day:
+      type: integer
+      minimum: 1
+      maximum: 31
+      description: Day
+    hour:
+      type: integer
+      minimum: 0
+      maximum: 23
+      description: Hour
+    min:
+      type: integer
+      minimum: 0
+      maximum: 59
+      description: Minute
+    sec:
+      type: integer
+      minimum: 0
+      maximum: 59
+      description: Second
+
+# Common response ranges
+InitialRange:
+  type: object
+  properties:
+    initial:
+      type: object
+      description: Initial values for parameters
+    range:
+      type: object
+      description: Allowed ranges/values for parameters
+    value:
+      type: object
+      description: Current values
+
+# Device support enumeration
+DeviceSupportType:
+  type: string
+  enum:
+    - ipc
+    - nvr
+    - both
+  description: |
+    Device type support
+    * ipc - Only supported on IP cameras
+    * nvr - Only supported on NVR devices
+    * both - Supported on both device types
+
+# Schedule table pattern
+ScheduleTable:
+  type: string
+  pattern: '^[01]{168}$'
+  description: |
+    Schedule configuration table with 168 characters (7 days * 24 hours)
+    * 0 - Disabled for this hour
+    * 1 - Enabled for this hour
+  example: '111111111111111111111111000000000000000000000000111111111111111111111111'
+
+# Enable/disable switch
+EnableSwitch:
+  type: integer
+  enum: [0, 1]
+  description: |
+    Enable/disable switch
+    * 0 - Disabled
+    * 1 - Enabled
+  example: 1
+
+# Time configuration
+TimeConfig:
+  type: object
+  properties:
+    year:
+      type: integer
+      minimum: 1900
+      maximum: 2100
+      description: Year
+    mon:
+      type: integer
+      minimum: 1
+      maximum: 12
+      description: Month
+    day:
+      type: integer
+      minimum: 1
+      maximum: 31
+      description: Day
+    hour:
+      type: integer
+      minimum: 0
+      maximum: 23
+      description: Hour
+    min:
+      type: integer
+      minimum: 0
+      maximum: 59
+      description: Minutes
+    sec:
+      type: integer
+      minimum: 0
+      maximum: 59
+      description: Seconds
+    timeFmt:
+      type: string
+      enum: ['MM/DD/YYYY', 'YYYY/MM/DD', 'DD/MM/YYYY']
+      description: Date format
+    timeZone:
+      type: integer
+      minimum: -46800
+      maximum: 43200
+      description: Timezone offset in seconds
+    hourFmt:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Hour format
+        * 0 - 24 hour clock
+        * 1 - 12 hour clock
+
+# Daylight Savings Time configuration
+DSTConfig:
+  type: object
+  properties:
+    enable:
+      $ref: '#/EnableSwitch'
+    offset:
+      type: integer
+      minimum: 1
+      maximum: 2
+      description: DST time offset in hours
+    startMon:
+      type: integer
+      minimum: 1
+      maximum: 12
+      description: Start month
+    startWeek:
+      type: integer
+      minimum: 1
+      maximum: 5
+      description: Start week of month
+    startWeekday:
+      type: integer
+      minimum: 0
+      maximum: 6
+      description: Start day of week (0=Sunday)
+    startHour:
+      type: integer
+      minimum: 0
+      maximum: 23
+      description: Start hour
+    startMin:
+      type: integer
+      minimum: 0
+      maximum: 59
+      description: Start minute
+    startSec:
+      type: integer
+      minimum: 0
+      maximum: 59
+      description: Start second
+    endMon:
+      type: integer
+      minimum: 1
+      maximum: 12
+      description: End month
+    endWeek:
+      type: integer
+      minimum: 1
+      maximum: 5
+      description: End week of month
+    endWeekday:
+      type: integer
+      minimum: 0
+      maximum: 6
+      description: End day of week (0=Sunday)
+    endHour:
+      type: integer
+      minimum: 0
+      maximum: 23
+      description: End hour
+    endMin:
+      type: integer
+      minimum: 0
+      maximum: 59
+      description: End minute
+    endSec:
+      type: integer
+      minimum: 0
+      maximum: 59
+      description: End second
+
+# Maintenance operation status
+MaintenanceStatus:
+  type: object
+  required:
+    - rspCode
+  properties:
+    rspCode:
+      type: integer
+      enum: [200]
+      description: Operation status code
+    progress:
+      type: integer
+      minimum: 0
+      maximum: 100
+      description: Operation progress percentage
+
+# Disk/Storage Information
+StorageInfo:
+  type: object
+  properties:
+    capacity:
+      type: integer
+      description: Total capacity in MB
+    format:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Storage format status
+        * 0 - Not formatted
+        * 1 - Formatted
+    mount:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Mount status
+        * 0 - Not mounted
+        * 1 - Mounted
+    number:
+      type: integer
+      description: External SATA interface number
+    size:
+      type: integer
+      description: Remaining capacity in MB
+    storageType:
+      type: integer
+      description: Type of storage device
+
+# Auto Maintenance Configuration
+AutoMaintConfig:
+  type: object
+  properties:
+    enable:
+      $ref: '#/EnableSwitch'
+    hour:
+      type: integer
+      minimum: 0
+      maximum: 23
+      description: Hour of maintenance
+    min:
+      type: integer
+      minimum: 0
+      maximum: 59
+      description: Minute of maintenance
+    sec:
+      type: integer
+      minimum: 0
+      maximum: 59
+      description: Second of maintenance
+    weekDay:
+      type: string
+      enum:
+        - Everyday
+        - Sunday
+        - Monday
+        - Tuesday
+        - Wednesday
+        - Thursday
+        - Friday
+        - Saturday
+      description: Day of the week for maintenance
+
+# Upgrade Status
+UpgradeStatus:
+  type: object
+  properties:
+    Persent:
+      type: integer
+      minimum: 0
+      maximum: 100
+      description: Upgrade progress percentage
+    code:
+      type: integer
+      description: Status code of upgrade process
+
+# Network Interface Configuration
+LocalLinkConfig:
+  type: object
+  properties:
+    activeLink:
+      type: string
+      enum: [LAN, Wi-Fi]
+      description: Active network connection type
+    mac:
+      type: string
+      pattern: '^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$'
+      description: Network interface MAC address
+    type:
+      type: string
+      enum: [DHCP, Static]
+      description: IP address assignment method
+    static:
+      type: object
+      description: Static IP configuration
+      properties:
+        ip:
+          type: string
+          format: ipv4
+          description: Static IP address
+        gateway:
+          type: string
+          format: ipv4
+          description: Gateway address
+        mask:
+          type: string
+          format: ipv4
+          description: Subnet mask
+    dns:
+      type: object
+      description: DNS configuration
+      properties:
+        auto:
+          $ref: '#/EnableSwitch'
+          description: Whether to get DNS automatically
+        dns1:
+          type: string
+          format: ipv4
+          description: Primary DNS server
+        dns2:
+          type: string
+          format: ipv4
+          description: Secondary DNS server
+
+# Network Port Configuration
+NetworkPortConfig:
+  type: object
+  properties:
+    httpEnable:
+      $ref: '#/EnableSwitch'
+      description: HTTP service enable status
+    httpPort:
+      type: integer
+      minimum: 1
+      maximum: 65535
+      default: 80
+      description: HTTP port
+    httpsEnable:
+      $ref: '#/EnableSwitch'
+      description: HTTPS service enable status
+    httpsPort:
+      type: integer
+      minimum: 1
+      maximum: 65535
+      default: 443
+      description: HTTPS port
+    rtspEnable:
+      $ref: '#/EnableSwitch'
+      description: RTSP service enable status
+    rtspPort:
+      type: integer
+      minimum: 1
+      maximum: 65535
+      default: 554
+      description: RTSP port
+    rtmpEnable:
+      $ref: '#/EnableSwitch'
+      description: RTMP service enable status
+    rtmpPort:
+      type: integer
+      minimum: 1
+      maximum: 65535
+      default: 1935
+      description: RTMP port
+    onvifEnable:
+      $ref: '#/EnableSwitch'
+      description: ONVIF service enable status
+    onvifPort:
+      type: integer
+      minimum: 1
+      maximum: 65535
+      default: 8000
+      description: ONVIF port
+    mediaPort:
+      type: integer
+      minimum: 1
+      maximum: 65535
+      default: 9000
+      description: Media port
+
+# DDNS Configuration
+DDNSConfig:
+  type: object
+  properties:
+    enable:
+      $ref: '#/EnableSwitch'
+      description: DDNS service enable status
+    type:
+      type: string
+      enum: [no-ip, Dyndns]
+      description: DDNS service provider
+    domain:
+      type: string
+      maxLength: 127
+      description: DDNS domain name
+    userName:
+      type: string
+      maxLength: 127
+      description: DDNS account username
+    password:
+      type: string
+      maxLength: 127
+      description: DDNS account password
+    servAddr:
+      type: string
+      maxLength: 127
+      description: DDNS server address
+
+# Email Configuration
+EmailConfig:
+  type: object
+  properties:
+    addr1:
+      type: string
+      maxLength: 127
+      description: First recipient email address
+    addr2:
+      type: string
+      maxLength: 127
+      description: Second recipient email address
+    addr3:
+      type: string
+      maxLength: 127
+      description: Third recipient email address
+    attachment:
+      type: string
+      enum: [no, picture, video, onlyPicture]
+      description: |
+        Email attachment type
+        * no - No attachments
+        * picture - Attach pictures
+        * video - Attach videos
+        * onlyPicture - Only attach pictures (no video)
+    interval:
+      type: string
+      enum: [30 Seconds, 1 Minute, 5 Minutes, 10 Minutes, 30 Minutes]
+      description: Minimum interval between email notifications
+    nickName:
+      type: string
+      maxLength: 127
+      description: Sender nickname
+    password:
+      type: string
+      maxLength: 31
+      description: SMTP account password
+    smtpPort:
+      type: integer
+      minimum: 1
+      maximum: 65535
+      description: SMTP server port
+    smtpServer:
+      type: string
+      maxLength: 127
+      description: SMTP server address
+    ssl:
+      $ref: '#/EnableSwitch'
+      description: Whether to use SSL/TLS encryption
+    userName:
+      type: string
+      maxLength: 127
+      description: SMTP account username
+    schedule:
+      type: object
+      properties:
+        enable:
+          $ref: '#/EnableSwitch'
+          description: Email schedule enable status
+        table:
+          $ref: '#/ScheduleTable'
+          description: Weekly schedule table for email notifications
+
+# Email Test Result
+EmailTestResult:
+  type: object
+  properties:
+    rspCode:
+      type: integer
+      enum:
+        - 200
+        - -480
+        - -481
+        - -482
+        - -483
+        - -484
+        - -485
+      description: |
+        Email test result code:
+        * 200 - Success
+        * -480 - Undefined error
+        * -481 - Connection failed
+        * -482 - Authentication failed
+        * -483 - Network error
+        * -484 - Server error
+        * -485 - Memory error
+
+# Base FTP Configuration
+BaseFtpConfig:
+  type: object
+  properties:
+    anonymous:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Use anonymous login
+        * 0 - Use credentials
+        * 1 - Anonymous login
+    port:
+      type: integer
+      minimum: 1
+      maximum: 65535
+      default: 21
+      description: FTP server port
+    server:
+      type: string
+      maxLength: 127
+      description: FTP server address
+    userName:
+      type: string
+      maxLength: 127
+      description: FTP account username
+    password:
+      type: string
+      maxLength: 127
+      description: FTP account password
+    remoteDir:
+      type: string
+      maxLength: 255
+      description: Remote directory path
+
+# FTP Configuration (Regular)
+FtpConfig:
+  allOf:
+    - $ref: '#/BaseFtpConfig'
+    - type: object
+      properties:
+        autoDir:
+          type: integer
+          enum: [0, 1]
+          description: |
+            Auto create directories
+            * 0 - Manual directory structure
+            * 1 - Auto create directories
+        interval:
+          type: integer
+          minimum: 1
+          maximum: 3600
+          description: Upload interval in seconds
+        maxSize:
+          type: integer
+          minimum: 10
+          maximum: 1024
+          description: Maximum file size in MB
+        mode:
+          type: integer
+          minimum: 0
+          maximum: 2
+          description: |
+            Transfer mode
+            * 0 - Auto
+            * 1 - Active
+            * 2 - Passive
+        streamType:
+          type: integer
+          enum: [0, 1, 2]
+          description: |
+            Upload content type
+            * 0 - Pictures and videos
+            * 1 - Pictures only
+            * 2 - Videos only
+        schedule:
+          type: object
+          properties:
+            enable:
+              $ref: '#/EnableSwitch'
+            table:
+              $ref: '#/ScheduleTable'
+
+# FTP Configuration V20
+FtpConfigV20:
+  allOf:
+    - $ref: '#/BaseFtpConfig'
+    - type: object
+      properties:
+        enable:
+          $ref: '#/EnableSwitch'
+        autoDir:
+          type: integer
+          enum: [0, 1, 2, 3]
+          description: |
+            Directory structure
+            * 0 - Manual
+            * 1 - YYYY-MM-DD
+            * 2 - YYYY-MM
+            * 3 - Custom
+        mode:
+          type: integer
+          enum: [0, 1, 2]
+          description: |
+            Transfer mode
+            * 0 - Auto
+            * 1 - Active
+            * 2 - Passive
+        onlyFtps:
+          type: integer
+          enum: [0, 1]
+          description: |
+            Use FTPS encryption
+            * 0 - No encryption
+            * 1 - Use FTPS
+        picCaptureMode:
+          type: integer
+          enum: [0, 1, 2, 3]
+          description: |
+            Image resolution mode
+            * 0 - Clear
+            * 1 - Standard
+            * 2 - Smooth
+            * 3 - Custom
+        picWidth:
+          type: integer
+          minimum: 640
+          maximum: 3840
+          description: Custom image width
+        picHeight:
+          type: integer
+          minimum: 360
+          maximum: 2160
+          description: Custom image height
+        picInterval:
+          type: integer
+          enum: [2, 5, 10, 15, 30, 60, 300, 600, 1800]
+          description: Image upload interval in seconds
+        bpicSingle:
+          type: integer
+          enum: [0, 1, 2]
+          description: |
+            Image retention policy
+            * 0 - Keep all
+            * 1 - Keep latest only
+            * 2 - Rolling replacement
+        bvideoSingle:
+          type: integer
+          enum: [0, 1, 2]
+          description: |
+            Video retention policy
+            * 0 - Keep all
+            * 1 - Keep latest only
+            * 2 - Rolling replacement
+        schedule:
+          type: object
+          properties:
+            channel:
+              $ref: '#/Channel'
+            table:
+              type: object
+              properties:
+                MD:
+                  $ref: '#/ScheduleTable'
+                TIMING:
+                  $ref: '#/ScheduleTable'
+                AI_PEOPLE:
+                  $ref: '#/ScheduleTable'
+                AI_VEHICLE:
+                  $ref: '#/ScheduleTable'
+
+# FTP Test Result
+FtpTestResult:
+  type: object
+  properties:
+    rspCode:
+      type: integer
+      enum:
+        - 200
+        - -451
+        - -452
+        - -453
+        - -454
+      description: |
+        FTP test result code:
+        * 200 - Success
+        * -451 - Login failed
+        * -452 - Create directory failed
+        * -453 - Upload failed
+        * -454 - Connection failed
+
+# paths/network/test-ftp.yaml
+post:
+  tags:
+    - Network
+  summary: Test FTP settings
+  description: Tests FTP configuration by attempting to connect and upload a test file
+  x-deviceSupport: both
+  operationId: testFtp
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - Ftp
+                  properties:
+                    Ftp:
+                      type: object
+                      required:
+                        - server
+                        - port
+                        - anonymous
+                        - mode
+                        - remoteDir
+                      properties:
+                        server:
+                          type: string
+                          maxLength: 127
+                          description: FTP server address
+                        port:
+                          type: integer
+                          minimum: 1
+                          maximum: 65535
+                          description: FTP server port
+                        anonymous:
+                          type: integer
+                          enum: [0, 1]
+                          description: |
+                            Use anonymous login
+                            * 0 - Use credentials
+                            * 1 - Anonymous login
+                        userName:
+                          type: string
+                          maxLength: 127
+                          description: FTP account username (required if not anonymous)
+                        password:
+                          type: string
+                          maxLength: 127
+                          description: FTP account password (required if not anonymous)
+                        mode:
+                          type: integer
+                          enum: [0, 1, 2]
+                          description: |
+                            Transfer mode
+                            * 0 - Auto
+                            * 1 - Active
+                            * 2 - Passive
+                        remoteDir:
+                          type: string
+                          maxLength: 255
+                          description: Remote directory path
+                        onlyFtps:
+                          type: integer
+                          enum: [0, 1]
+                          description: |
+                            Use FTPS encryption
+                            * 0 - No encryption
+                            * 1 - Use FTPS
+                        bpicSingle:
+                          type: integer
+                          enum: [0, 1, 2]
+                          description: Image retention policy
+                        bvideoSingle:
+                          type: integer
+                          enum: [0, 1, 2]
+                          description: Video retention policy
+  responses:
+    '200':
+      description: Test completed
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      $ref: '../../components/schemas/common.yaml#/FtpTestResult'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'
+
+# NTP Configuration
+NtpConfig:
+  type: object
+  properties:
+    enable:
+      $ref: '#/EnableSwitch'
+      description: NTP service enable status
+    server:
+      type: string
+      maxLength: 127
+      description: NTP server address
+    port:
+      type: integer
+      minimum: 1
+      maximum: 65535
+      default: 123
+      description: NTP server port
+    interval:
+      type: integer
+      minimum: 60
+      maximum: 65535
+      description: Time synchronization interval in minutes
+
+# UPnP Configuration
+UpnpConfig:
+  type: object
+  properties:
+    enable:
+      $ref: '#/EnableSwitch'
+      description: UPnP enable status
+
+# WiFi Configuration
+WifiConfig:
+  type: object
+  properties:
+    password:
+      type: string
+      maxLength: 127
+      description: WiFi network password
+    ssid:
+      type: string
+      maxLength: 127
+      description: WiFi network SSID
+
+# WiFi Network Information
+WifiNetwork:
+  type: object
+  properties:
+    bencrypt:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Network encryption status
+        * 0 - Open network
+        * 1 - Encrypted network
+    signal:
+      type: integer
+      minimum: 1
+      maximum: 4
+      description: |
+        Signal strength
+        * 1 - signal <= -60
+        * 2 - signal <= -50
+        * 3 - signal <= -40
+        * 4 - signal > -40
+    ssid:
+      type: string
+      description: Network SSID
+
+# P2P Configuration
+P2pConfig:
+  type: object
+  properties:
+    enable:
+      $ref: '#/EnableSwitch'
+      description: P2P service enable status
+    uid:
+      type: string
+      description: Device UID for P2P connection
+
+# Certificate Information
+CertificateInfo:
+  type: object
+  properties:
+    enable:
+      $ref: '#/EnableSwitch'
+      description: Custom certificate enable status
+    crtName:
+      type: string
+      description: Certificate file name
+    keyName:
+      type: string
+      description: Private key file name
+
+# RTSP URL Information
+RtspUrlInfo:
+  type: object
+  properties:
+    channel:
+      $ref: '#/Channel'
+    mainStream:
+      type: string
+      description: RTSP URL for main stream
+    subStream:
+      type: string
+      description: RTSP URL for sub stream
+
+# Image Settings
+ImageSettings:
+  type: object
+  properties:
+    bright:
+      type: integer
+      minimum: 0
+      maximum: 255
+      description: Image brightness
+    contrast:
+      type: integer
+      minimum: 0
+      maximum: 255
+      description: Image contrast
+    saturation:
+      type: integer
+      minimum: 0
+      maximum: 255
+      description: Image saturation
+    hue:
+      type: integer
+      minimum: 0
+      maximum: 255
+      description: Image hue
+    sharpen:
+      type: integer
+      minimum: 0
+      maximum: 255
+      description: Image sharpness
+    channel:
+      $ref: '#/Channel'
+
+# OSD Settings
+OsdSettings:
+  type: object
+  properties:
+    bgcolor:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Background color
+        * 0 - Transparent
+        * 1 - Solid
+    channel:
+      $ref: '#/Channel'
+    osdChannel:
+      type: object
+      properties:
+        enable:
+          $ref: '#/EnableSwitch'
+        name:
+          type: string
+          maxLength: 31
+          description: Camera name to display
+        pos:
+          type: string
+          enum:
+            - Upper Left
+            - Top Center
+            - Upper Right
+            - Lower Left
+            - Bottom Center
+            - Lower Right
+            - Other Configuration
+          description: Position of channel name display
+    osdTime:
+      type: object
+      properties:
+        enable:
+          $ref: '#/EnableSwitch'
+        pos:
+          type: string
+          enum:
+            - Upper Left
+            - Top Center
+            - Upper Right
+            - Lower Left
+            - Bottom Center
+            - Lower Right
+            - Other Configuration
+          description: Position of time display
+    watermark:
+      $ref: '#/EnableSwitch'
+
+# Privacy Mask Area
+MaskArea:
+  type: object
+  properties:
+    block:
+      type: object
+      properties:
+        height:
+          type: integer
+          minimum: 0
+          description: Height of mask area
+        width:
+          type: integer
+          minimum: 0
+          description: Width of mask area
+        x:
+          type: integer
+          minimum: 0
+          description: X coordinate of mask area
+        y:
+          type: integer
+          minimum: 0
+          description: Y coordinate of mask area
+    screen:
+      type: object
+      properties:
+        height:
+          type: integer
+          minimum: 0
+          description: Screen height
+        width:
+          type: integer
+          minimum: 0
+          description: Screen width
+
+# ISP Settings
+IspSettings:
+  type: object
+  properties:
+    antiFlicker:
+      type: string
+      enum: [Other, '50HZ', '60HZ', Off]
+      description: Anti-flicker mode
+    backLight:
+      type: string
+      enum: [Off, BackLightControl, DynamicRangeControl]
+      description: Backlight compensation mode
+    dayNight:
+      type: string
+      enum: [Auto, Color, 'Black&White']
+      description: Day/Night mode
+    exposure:
+      type: string
+      enum: [Auto, LowNoise, 'Anti-Smearing', Manual]
+      description: Exposure mode
+    whiteBalance:
+      type: string
+      enum: [Auto, Manual]
+      description: White balance mode
+    mirroring:
+      $ref: '#/EnableSwitch'
+      description: Image mirroring
+    rotation:
+      $ref: '#/EnableSwitch'
+      description: Image rotation
+    nr3d:
+      $ref: '#/EnableSwitch'
+      description: 3D noise reduction
+    blc:
+      type: integer
+      minimum: 0
+      maximum: 255
+      description: Backlight compensation level
+    gain:
+      type: object
+      properties:
+        max:
+          type: integer
+          minimum: 1
+          maximum: 100
+        min:
+          type: integer
+          minimum: 1
+          maximum: 100
+    shutter:
+      type: object
+      properties:
+        max:
+          type: integer
+          minimum: 0
+          maximum: 125
+        min:
+          type: integer
+          minimum: 0
+          maximum: 125
+
+# Brightness Settings
+BrightnessSettings:
+  type: object
+  properties:
+    bright:
+      type: integer
+      minimum: 0
+      maximum: 255
+      description: Brightness level
+    dark:
+      type: integer
+      minimum: 0
+      maximum: 255
+      description: Darkness level
+    mode:
+      type: string
+      enum: [Auto, Manual]
+      description: Brightness control mode
+
+# Crop Settings
+CropSettings:
+  type: object
+  properties:
+    cropHeight:
+      type: integer
+      minimum: 480
+      description: Height of crop area
+    cropWidth:
+      type: integer
+      minimum: 640
+      description: Width of crop area
+    mainHeight:
+      type: integer
+      description: Height of main stream
+    mainWidth:
+      type: integer
+      description: Width of main stream
+    minHeight:
+      type: integer
+      minimum: 480
+      description: Minimum allowed height
+    minWidth:
+      type: integer
+      minimum: 640
+      description: Minimum allowed width
+    topLeftX:
+      type: integer
+      minimum: 0
+      description: X coordinate of top-left corner
+    topLeftY:
+      type: integer
+      minimum: 0
+      description: Y coordinate of top-left corner
+
+# Stitch Settings
+StitchSettings:
+  type: object
+  properties:
+    distance:
+      type: number
+      format: float
+      minimum: 2.0
+      maximum: 20.0
+      description: Distance between images in stitching
+    stitchXMove:
+      type: integer
+      minimum: -100
+      maximum: 100
+      description: Horizontal pixel adjustment for stitching
+    stitchYMove:
+      type: integer
+      minimum: -100
+      maximum: 100
+      description: Vertical pixel adjustment for stitching
+
+# Video Stream Configuration
+VideoStreamConfig:
+  type: object
+  properties:
+    bitRate:
+      type: integer
+      description: Bit rate in Kbps
+    frameRate:
+      type: integer
+      description: Frame rate in fps
+    gop:
+      type: integer
+      minimum: 1
+      maximum: 4
+      description: Group of Pictures interval
+    height:
+      type: integer
+      description: Video height in pixels
+    width:
+      type: integer
+      description: Video width in pixels
+    profile:
+      type: string
+      enum: ['Base', 'Main', 'High']
+      description: H.264/H.265 profile
+    size:
+      type: string
+      description: Resolution string (e.g. "3840*2160")
+    vType:
+      type: string
+      enum: ['h264', 'h265']
+      description: Video encoding type
+
+# Encoding Configuration
+EncodingConfig:
+  type: object
+  properties:
+    audio:
+      $ref: '#/EnableSwitch'
+      description: Audio encoding enable/disable
+    channel:
+      $ref: '#/Channel'
+    mainStream:
+      $ref: '#/VideoStreamConfig'
+      description: Main stream configuration
+    subStream:
+      $ref: '#/VideoStreamConfig'
+      description: Sub stream configuration
+
+# Recording Configuration
+RecordingConfig:
+  type: object
+  properties:
+    channel:
+      $ref: '#/Channel'
+    overwrite:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Whether to overwrite old recordings
+        * 0 - Stop recording when disk is full
+        * 1 - Overwrite oldest recordings
+    packTime:
+      type: string
+      enum: ['30 Minutes', '45 Minutes', '60 Minutes']
+      description: Recording file package duration
+    postRec:
+      type: string
+      enum: ['15 Seconds', '30 Seconds', '1 Minute', '10 Minutes']
+      description: Post-recording duration
+    preRec:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Whether to enable pre-recording
+        * 0 - Disabled
+        * 1 - Enabled
+    schedule:
+      type: object
+      properties:
+        enable:
+          $ref: '#/EnableSwitch'
+        table:
+          $ref: '#/ScheduleTable'
+
+# Recording Search Filters
+RecordingTimeRange:
+  type: object
+  required:
+    - StartTime
+    - EndTime
+  properties:
+    StartTime:
+      $ref: '#/TimeConfig'
+    EndTime:
+      $ref: '#/TimeConfig'
+
+# Recording File Information
+RecordingFile:
+  type: object
+  properties:
+    name:
+      type: string
+      description: Recording filename
+    StartTime:
+      $ref: '#/TimeConfig'
+    EndTime:
+      $ref: '#/TimeConfig'
+    frameRate:
+      type: integer
+      description: Frame rate of recording
+    height:
+      type: integer
+      description: Video height in pixels
+    width:
+      type: integer
+      description: Video width in pixels
+    size:
+      type: integer
+      description: File size in bytes
+    type:
+      type: string
+      enum: [main, sub]
+      description: Stream type
+
+# Enhanced Recording Configuration (V20)
+RecordingConfigV20:
+  type: object
+  properties:
+    enable:
+      $ref: '#/EnableSwitch'
+    overwrite:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Whether to overwrite old recordings
+        * 0 - Stop recording when disk is full
+        * 1 - Overwrite oldest recordings
+    packTime:
+      type: string
+      enum: ['30 Minutes', '45 Minutes', '60 Minutes']
+      description: Recording file package duration
+    postRec:
+      type: string
+      enum: ['1 Minute', '2 Minutes', '5 Minutes', '10 Minutes']
+      description: Post-recording duration
+    preRec:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Whether to enable pre-recording
+        * 0 - Disabled
+        * 1 - Enabled
+    saveDay:
+      type: integer
+      minimum: 0
+      description: Number of days to keep recordings (0 for unlimited)
+    schedule:
+      type: object
+      properties:
+        channel:
+          $ref: '#/Channel'
+        table:
+          type: object
+          properties:
+            MD:
+              $ref: '#/ScheduleTable'
+              description: Motion detection recording schedule
+            TIMING:
+              $ref: '#/ScheduleTable'
+              description: Continuous recording schedule
+            AI_PEOPLE:
+              $ref: '#/ScheduleTable'
+              description: AI people detection recording schedule
+            AI_VEHICLE:
+              $ref: '#/ScheduleTable'
+              description: AI vehicle detection recording schedule
+
+# NVR Download File Information
+NvrDownloadFile:
+  type: object
+  properties:
+    fileName:
+      type: string
+      description: Recording file name
+    fileSize:
+      type: string
+      description: File size in bytes
+
+# PTZ Preset Position
+PTZPreset:
+  type: object
+  properties:
+    channel:
+      $ref: '#/Channel'
+    enable:
+      $ref: '#/EnableSwitch'
+    id:
+      type: integer
+      minimum: 1
+      maximum: 64
+      description: Preset position ID
+    name:
+      type: string
+      maxLength: 31
+      description: Name of the preset position
+
+# PTZ Patrol Configuration
+PTZPatrol:
+  type: object
+  properties:
+    channel:
+      $ref: '#/Channel'
+    enable:
+      $ref: '#/EnableSwitch'
+    id:
+      type: integer
+      minimum: 1
+      maximum: 6
+      description: Patrol ID
+    name:
+      type: string
+      maxLength: 31
+      description: Name of the patrol route
+    running:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Running status
+        * 0 - Stopped
+        * 1 - Running
+    preset:
+      type: array
+      maxItems: 16
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+            minimum: 1
+            maximum: 64
+            description: Preset ID to visit
+          dwellTime:
+            type: integer
+            minimum: 1
+            maximum: 30
+            description: Time to stay at preset (seconds)
+          speed:
+            type: integer
+            minimum: 1
+            maximum: 64
+            description: Movement speed to preset
+
+# PTZ Control Operations
+PTZOperation:
+  type: string
+  enum:
+    - Stop
+    - Left
+    - Right
+    - Up
+    - Down
+    - LeftUp
+    - LeftDown
+    - RightUp
+    - RightDown
+    - IrisDec
+    - IrisInc
+    - ZoomDec
+    - ZoomInc
+    - FocusDec
+    - FocusInc
+    - Auto
+    - StartPatrol
+    - StopPatrol
+    - ToPos
+  description: |
+    PTZ control operations
+    * Stop - Stop PTZ movement
+    * Left - Turn left
+    * Right - Turn right
+    * Up - Turn up
+    * Down - Turn down
+    * LeftUp - Turn left-up
+    * LeftDown - Turn left-down
+    * RightUp - Turn right-up
+    * RightDown - Turn right-down
+    * IrisDec - Decrease iris
+    * IrisInc - Increase iris
+    * ZoomDec - Zoom out
+    * ZoomInc - Zoom in
+    * FocusDec - Focus back
+    * FocusInc - Focus forward
+    * Auto - Auto pan
+    * StartPatrol - Start patrol route
+    * StopPatrol - Stop patrol route
+    * ToPos - Move to preset position
+
+# PTZ Serial Configuration
+PTZSerial:
+  type: object
+  properties:
+    channel:
+      $ref: '#/Channel'
+    baudRate:
+      type: integer
+      enum: [1200, 2400, 4800, 9600]
+      description: Serial baud rate
+    dataBit:
+      type: string
+      enum: [CS8, CS7, CS6, CS5]
+      description: Data bits
+    flowCtrl:
+      type: string
+      enum: [none, hard, xon, xoff]
+      description: Flow control type
+    parity:
+      type: string
+      enum: [none, odd, even]
+      description: Parity check type
+    stopBit:
+      type: integer
+      enum: [1, 2]
+      description: Stop bits
+    ctrlProtocol:
+      type: string
+      enum: [PELCO_D, PELCO_P]
+      description: PTZ control protocol
+    ctrlAddr:
+      type: integer
+      minimum: 1
+      maximum: 64
+      description: Control address
+
+# PTZ Pattern Configuration
+PTZPattern:
+  type: object
+  properties:
+    channel:
+      $ref: '#/Channel'
+    track:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+            minimum: 1
+            maximum: 6
+            description: Pattern track ID
+          enable:
+            $ref: '#/EnableSwitch'
+          running:
+            type: integer
+            enum: [0, 1]
+            description: |
+              Running status
+              * 0 - Stopped
+              * 1 - Running
+          name:
+            type: string
+            maxLength: 191
+            description: Name of the pattern track
+
+# Auto Focus Configuration
+AutoFocusConfig:
+  type: object
+  properties:
+    channel:
+      $ref: '#/Channel'
+    disable:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Auto focus state
+        * 0 - Auto focus enabled
+        * 1 - Auto focus disabled
+
+# Zoom/Focus Position Configuration
+ZoomFocusConfig:
+  type: object
+  properties:
+    channel:
+      $ref: '#/Channel'
+    zoom:
+      type: object
+      properties:
+        pos:
+          type: integer
+          description: Current zoom position
+    focus:
+      type: object
+      properties:
+        pos:
+          type: integer
+          description: Current focus position
+
+# PTZ Guard Position Configuration
+PTZGuardConfig:
+  type: object
+  properties:
+    channel:
+      $ref: '#/Channel'
+    benable:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Enable automatic return to guard position
+        * 0 - Disabled
+        * 1 - Enabled
+    bexistPos:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Guard position status
+        * 0 - No guard position set
+        * 1 - Guard position exists
+    timeout:
+      type: integer
+      minimum: 60
+      description: Time in seconds before returning to guard position
+
+# PTZ Check State
+PTZCheckState:
+  type: integer
+  enum: [0, 1, 2]
+  description: |
+    PTZ check state
+    * 0 - Idle
+    * 1 - Check in progress
+    * 2 - Check completed
+
+$ref: './alarm.yaml'

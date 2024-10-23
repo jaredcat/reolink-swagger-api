@@ -1,0 +1,76 @@
+# paths/video/get-mask.yaml
+post:
+  tags:
+    - Video Input
+  summary: Get privacy mask settings
+  description: Returns the current privacy mask zones configuration
+  x-deviceSupport: both
+  operationId: getMask
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                action:
+                  type: integer
+                  enum: [1]
+                param:
+                  type: object
+                  required:
+                    - channel
+                  properties:
+                    channel:
+                      $ref: '../../components/schemas/common.yaml#/Channel'
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - Mask
+                      properties:
+                        Mask:
+                          type: object
+                          properties:
+                            area:
+                              type: array
+                              items:
+                                $ref: '../../components/schemas/common.yaml#/MaskArea'
+                              maxItems: 4
+                              description: Up to 4 privacy mask areas can be defined
+                            channel:
+                              $ref: '../../components/schemas/common.yaml#/Channel'
+                            enable:
+                              $ref: '../../components/schemas/common.yaml#/EnableSwitch'
+                    initial:
+                      type: object
+                      properties:
+                        Mask:
+                          type: object
+                    range:
+                      type: object
+                      properties:
+                        Mask:
+                          type: object
+                          properties:
+                            maxAreas:
+                              type: integer
+                              enum: [4]
+                              description: Maximum number of privacy mask areas
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

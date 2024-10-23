@@ -1,0 +1,29 @@
+{
+  "name": "reolink-swagger-api",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "lint": "redocly lint --config redocly.yaml openapi.yaml",
+    "bundle": "redocly bundle --config redocly.yaml openapi.yaml -o swagger.yaml",
+    "postman": "npm run bundle && openapi2postmanv2 -s swagger.yaml -o postman-collection.json -p -O folderStrategy=Tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaredcat/reolink-swagger-api.git"
+  },
+  "keywords": [
+    "reolink"
+  ],
+  "author": "jaredcat",
+  "license": "AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/jaredcat/reolink-swagger-api/issues"
+  },
+  "homepage": "https://github.com/jaredcat/reolink-swagger-api#readme",
+  "dependencies": {
+    "openapi-to-postmanv2": "^4.24.0"
+  },
+  "devDependencies": {
+    "@redocly/cli": "^1.25.10"
+  }
+}

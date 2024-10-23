@@ -1,0 +1,41 @@
+# paths/security/disconnect.yaml
+post:
+  tags:
+    - Security
+  summary: Disconnect user
+  description: Forces an online user to disconnect
+  x-deviceSupport: both
+  operationId: disconnect
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - User
+                  properties:
+                    User:
+                      type: object
+                      required:
+                        - userName
+                        - sessionId
+                      properties:
+                        userName:
+                          type: string
+                          description: Username to disconnect
+                        sessionId:
+                          type: integer
+                          description: Session ID to disconnect
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

@@ -1,0 +1,42 @@
+# paths/system/upgrade.yaml
+post:
+  tags:
+    - System
+  summary: Upgrade firmware
+  description: |
+    Uploads and installs new firmware.
+    Must send UpgradePrepare command first.
+    Supports uploading up to 40KB packets at a time.
+  x-deviceSupport: both
+  operationId: upgrade
+  parameters:
+    - name: clearConfig
+      in: query
+      required: true
+      schema:
+        type: integer
+        enum: [0, 1]
+      description: |
+        Whether to clear configuration
+        * 0 - Keep configuration
+        * 1 - Clear configuration
+  requestBody:
+    required: true
+    content:
+      multipart/form-data:
+        schema:
+          type: object
+          required:
+            - 'upgrade-package'
+          properties:
+            'upgrade-package':
+              type: string
+              format: binary
+              description: Firmware upgrade file
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

@@ -1,0 +1,31 @@
+# paths/network/set-email.yaml
+post:
+  tags:
+    - Network
+  summary: Set email settings
+  description: Updates email service configuration including SMTP settings and notification schedules
+  x-deviceSupport: both
+  operationId: setEmail
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - Email
+                  properties:
+                    Email:
+                      $ref: '../../components/schemas/common.yaml#/EmailConfig'
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

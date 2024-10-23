@@ -1,0 +1,93 @@
+EmailSchedule:
+  type: object
+  properties:
+    channel:
+      $ref: './common.yaml#/Channel'
+    table:
+      type: object
+      properties:
+        AI_PEOPLE:
+          $ref: './common.yaml#/ScheduleTable'
+        AI_VEHICLE:
+          $ref: './common.yaml#/ScheduleTable'
+        MD:
+          $ref: './common.yaml#/ScheduleTable'
+        VL:
+          $ref: './common.yaml#/ScheduleTable'
+
+EmailConfigV20:
+  type: object
+  properties:
+    addr1:
+      type: string
+      maxLength: 127
+      description: First recipient email address
+    addr2:
+      type: string
+      maxLength: 127
+      description: Second recipient email address
+    addr3:
+      type: string
+      maxLength: 127
+      description: Third recipient email address
+    attachmentType:
+      type: integer
+      description: Type of email attachments
+    enable:
+      $ref: './common.yaml#/ScheduleTable'
+    interval:
+      type: string
+      enum: ['30 Seconds', '1 Minute', '5 Minutes', '10 Minutes', '30 Minutes']
+    nickName:
+      type: string
+      maxLength: 127
+    password:
+      type: string
+      maxLength: 31
+    schedule:
+      $ref: '#/EmailSchedule'
+    smtpPort:
+      type: integer
+      minimum: 1
+      maximum: 65535
+    smtpServer:
+      type: string
+      maxLength: 127
+    ssl:
+      $ref: './common.yaml#/ScheduleTable'
+    userName:
+      type: string
+      maxLength: 127
+
+PushSchedule:
+  type: object
+  properties:
+    enable:
+      $ref: './common.yaml#/EnableSwitch'
+    table:
+      $ref: './common.yaml#/ScheduleTable'
+
+PushScheduleV20:
+  type: object
+  properties:
+    channel:
+      $ref: './common.yaml#/Channel'
+    table:
+      type: object
+      properties:
+        AI_PEOPLE:
+          $ref: './common.yaml#/ScheduleTable'
+        AI_VEHICLE:
+          $ref: './common.yaml#/ScheduleTable'
+        MD:
+          $ref: './common.yaml#/ScheduleTable'
+        TIMING:
+          $ref: './common.yaml#/ScheduleTable'
+
+PushConfigV20:
+  type: object
+  properties:
+    enable:
+      $ref: './common.yaml#/EnableSwitch'
+    schedule:
+      $ref: '#/PushScheduleV20'

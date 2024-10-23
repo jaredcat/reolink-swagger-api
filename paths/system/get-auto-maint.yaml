@@ -1,0 +1,52 @@
+# paths/system/get-auto-maint.yaml
+post:
+  tags:
+    - System
+  summary: Get auto maintenance settings
+  description: Returns the automatic maintenance configuration
+  x-deviceSupport: both
+  operationId: getAutoMaint
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                action:
+                  type: integer
+                  enum: [1]
+                  description: Get configuration with ranges
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - AutoMaint
+                      properties:
+                        AutoMaint:
+                          $ref: '../../components/schemas/common.yaml#/AutoMaintConfig'
+                    initial:
+                      type: object
+                      properties:
+                        AutoMaint:
+                          $ref: '../../components/schemas/common.yaml#/AutoMaintConfig'
+                    range:
+                      type: object
+                      description: Valid ranges for all parameters
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

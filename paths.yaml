@@ -1,0 +1,270 @@
+# System Commands
+/api.cgi?cmd=GetAbility:
+  $ref: './paths/system/get-ability.yaml'
+/api.cgi?cmd=GetDevInfo:
+  $ref: './paths/system/get-dev-info.yaml'
+/api.cgi?cmd=GetDevName:
+  $ref: './paths/system/get-dev-name.yaml'
+/api.cgi?cmd=SetDevName:
+  $ref: './paths/system/set-dev-name.yaml'
+/api.cgi?cmd=GetTime:
+  $ref: './paths/system/get-time.yaml'
+/api.cgi?cmd=SetTime:
+  $ref: './paths/system/set-time.yaml'
+/api.cgi?cmd=GetAutoMaint:
+  $ref: './paths/system/get-auto-maint.yaml'
+/api.cgi?cmd=SetAutoMaint:
+  $ref: './paths/system/set-auto-maint.yaml'
+/api.cgi?cmd=GetHddInfo:
+  $ref: './paths/system/get-hdd-info.yaml'
+/api.cgi?cmd=Format:
+  $ref: './paths/system/format.yaml'
+/api.cgi?cmd=Upgrade:
+  $ref: './paths/system/upgrade.yaml'
+/api.cgi?cmd=Restore:
+  $ref: './paths/system/restore.yaml'
+/api.cgi?cmd=Reboot:
+  $ref: './paths/system/reboot.yaml'
+/api.cgi?cmd=UpgradePrepare:
+  $ref: './paths/system/upgrade-prepare.yaml'
+/api.cgi?cmd=GetAutoUpgrade:
+  $ref: './paths/system/get-auto-upgrade.yaml'
+/api.cgi?cmd=SetAutoUpgrade:
+  $ref: './paths/system/set-auto-upgrade.yaml'
+/api.cgi?cmd=CheckFirmware:
+  $ref: './paths/system/check-firmware.yaml'
+/api.cgi?cmd=UpgradeOnline:
+  $ref: './paths/system/upgrade-online.yaml'
+/api.cgi?cmd=UpgradeStatus:
+  $ref: './paths/system/upgrade-status.yaml'
+/api.cgi?cmd=GetChannelStatus:
+  $ref: './paths/system/get-channel-status.yaml'
+/api.cgi?cmd=Shutdown: #! cant find this one in the docs
+  $ref: './paths/system/shutdown.yaml'
+
+# Security Commands
+/api.cgi?cmd=Login:
+  $ref: './paths/security/login.yaml'
+/api.cgi?cmd=Logout:
+  $ref: './paths/security/logout.yaml'
+/api.cgi?cmd=GetUser:
+  $ref: './paths/security/get-user.yaml'
+/api.cgi?cmd=AddUser:
+  $ref: './paths/security/add-user.yaml'
+/api.cgi?cmd=DelUser:
+  $ref: './paths/security/del-user.yaml'
+/api.cgi?cmd=ModifyUser:
+  $ref: './paths/security/modify-user.yaml'
+/api.cgi?cmd=GetOnline:
+  $ref: './paths/security/get-online.yaml'
+/api.cgi?cmd=Disconnect:
+  $ref: './paths/security/disconnect.yaml'
+/api.cgi?cmd=GetSysCfg:
+  $ref: './paths/security/get-sys-cfg.yaml'
+/api.cgi?cmd=SetSysCfg:
+  $ref: './paths/security/set-sys-cfg.yaml'
+
+# Network Commands
+/api.cgi?cmd=GetLocalLink:
+  $ref: './paths/network/get-local-link.yaml'
+/api.cgi?cmd=SetLocalLink:
+  $ref: './paths/network/set-local-link.yaml'
+/api.cgi?cmd=GetDdns:
+  $ref: './paths/network/get-ddns.yaml'
+/api.cgi?cmd=SetDdns:
+  $ref: './paths/network/set-ddns.yaml'
+/api.cgi?cmd=GetEmail:
+  $ref: './paths/network/get-email.yaml'
+/api.cgi?cmd=SetEmail:
+  $ref: './paths/network/set-email.yaml'
+/api.cgi?cmd=GetEmailV20:
+  $ref: './paths/network/get-email-v20.yaml'
+/api.cgi?cmd=SetEmailV20:
+  $ref: './paths/network/set-email-v20.yaml'
+/api.cgi?cmd=TestEmail:
+  $ref: './paths/network/test-email.yaml'
+/api.cgi?cmd=GetFtp:
+  $ref: './paths/network/get-ftp.yaml'
+/api.cgi?cmd=SetFtp:
+  $ref: './paths/network/set-ftp.yaml'
+/api.cgi?cmd=TestFtp:
+  $ref: './paths/network/test-ftp.yaml'
+/api.cgi?cmd=GetNtp:
+  $ref: './paths/network/get-ntp.yaml'
+/api.cgi?cmd=SetNtp:
+  $ref: './paths/network/set-ntp.yaml'
+/api.cgi?cmd=GetNetPort:
+  $ref: './paths/network/get-net-port.yaml'
+/api.cgi?cmd=SetNetPort:
+  $ref: './paths/network/set-net-port.yaml'
+/api.cgi?cmd=GetUpnp:
+  $ref: './paths/network/get-upnp.yaml'
+/api.cgi?cmd=SetUpnp:
+  $ref: './paths/network/set-upnp.yaml'
+/api.cgi?cmd=GetWifi:
+  $ref: './paths/network/get-wifi.yaml'
+/api.cgi?cmd=SetWifi:
+  $ref: './paths/network/set-wifi.yaml'
+/api.cgi?cmd=TestWifi:
+  $ref: './paths/network/test-wifi.yaml'
+/api.cgi?cmd=ScanWifi:
+  $ref: './paths/network/scan-wifi.yaml'
+/api.cgi?cmd=GetWifiSignal:
+  $ref: './paths/network/get-wifi-signal.yaml'
+/api.cgi?cmd=GetPush:
+  $ref: './paths/network/get-push.yaml'
+/api.cgi?cmd=SetPush:
+  $ref: './paths/network/set-push.yaml'
+/api.cgi?cmd=GetPushV20:
+  $ref: './paths/network/get-push-v20.yaml'
+/api.cgi?cmd=SetPushV20:
+  $ref: './paths/network/set-push-v20.yaml'
+/api.cgi?cmd=GetP2p:
+  $ref: './paths/network/get-p2p.yaml'
+/api.cgi?cmd=SetP2p:
+  $ref: './paths/network/set-p2p.yaml'
+/api.cgi?cmd=GetCertificateInfo:
+  $ref: './paths/network/get-certificate-info.yaml'
+/api.cgi?cmd=CertificateClear:
+  $ref: './paths/network/certificate-clear.yaml'
+/api.cgi?cmd=GetRtspUrl:
+  $ref: './paths/network/get-rtsp-url.yaml'
+
+# Video Commands
+/api.cgi?cmd=GetImage:
+  $ref: './paths/video/get-image.yaml'
+/api.cgi?cmd=SetImage:
+  $ref: './paths/video/set-image.yaml'
+/api.cgi?cmd=GetOsd:
+  $ref: './paths/video/get-osd.yaml'
+/api.cgi?cmd=SetOsd:
+  $ref: './paths/video/set-osd.yaml'
+/api.cgi?cmd=GetIsp:
+  $ref: './paths/video/get-isp.yaml'
+/api.cgi?cmd=SetIsp:
+  $ref: './paths/video/set-isp.yaml'
+/api.cgi?cmd=GetMask:
+  $ref: './paths/video/get-mask.yaml'
+/api.cgi?cmd=SetMask:
+  $ref: './paths/video/set-mask.yaml'
+/api.cgi?cmd=GetCrop:
+  $ref: './paths/video/get-crop.yaml'
+/api.cgi?cmd=SetCrop:
+  $ref: './paths/video/set-crop.yaml'
+/api.cgi?cmd=GetStitch:
+  $ref: './paths/video/get-stitch.yaml'
+/api.cgi?cmd=SetStitch:
+  $ref: './paths/video/set-stitch.yaml'
+
+# Encoding Commands
+/api.cgi?cmd=GetEnc:
+  $ref: './paths/encoding/get-enc.yaml'
+/api.cgi?cmd=SetEnc:
+  $ref: './paths/encoding/set-enc.yaml'
+
+# Recording Commands
+/api.cgi?cmd=GetRec:
+  $ref: './paths/recording/get-rec.yaml'
+/api.cgi?cmd=SetRec:
+  $ref: './paths/recording/set-rec.yaml'
+/api.cgi?cmd=GeRecV20:
+  $ref: './paths/recording/get-rec-v20.yaml'
+/api.cgi?cmd=SetRecV20:
+  $ref: './paths/recording/set-rec-v20.yaml'
+/api.cgi?cmd=Search:
+  $ref: './paths/recording/search.yaml'
+/api.cgi?cmd=Download:
+  $ref: './paths/recording/download.yaml'
+/api.cgi?cmd=Snap:
+  $ref: './paths/recording/snap.yaml'
+/api.cgi?cmd=Playback:
+  $ref: './paths/recording/playback.yaml'
+/api.cgi?cmd=NvrDownload:
+  $ref: './paths/recording/nvr-download.yaml'
+
+# # PTZ Commands
+/api.cgi?cmd=GetPtzPreset:
+  $ref: './paths/ptz/get-ptz-preset.yaml'
+/api.cgi?cmd=SetPtzPreset:
+  $ref: './paths/ptz/set-ptz-preset.yaml'
+/api.cgi?cmd=GetPtzPatrol:
+  $ref: './paths/ptz/get-ptz-patrol.yaml'
+/api.cgi?cmd=SetPtzPatrol:
+  $ref: './paths/ptz/set-ptz-patrol.yaml'
+/api.cgi?cmd=PtzCtrl:
+  $ref: './paths/ptz/ptz-ctrl.yaml'
+/api.cgi?cmd=GetPtzSerial:
+  $ref: './paths/ptz/get-ptz-serial.yaml'
+/api.cgi?cmd=SetPtzSerial:
+  $ref: './paths/ptz/set-ptz-serial.yaml'
+/api.cgi?cmd=GetPtzTattern:
+  $ref: './paths/ptz/get-ptz-tattern.yaml'
+/api.cgi?cmd=SetPtzTattern:
+  $ref: './paths/ptz/set-ptz-tattern.yaml'
+/api.cgi?cmd=GetAutoFocus:
+  $ref: './paths/ptz/get-auto-focus.yaml'
+/api.cgi?cmd=SetAutoFocus:
+  $ref: './paths/ptz/set-auto-focus.yaml'
+/api.cgi?cmd=StartZoomFocus:
+  $ref: './paths/ptz/start-zoom-focus.yaml'
+/api.cgi?cmd=GetPtzGuard:
+  $ref: './paths/ptz/get-ptz-guard.yaml'
+/api.cgi?cmd=SetPtzGuard:
+  $ref: './paths/ptz/set-ptz-guard.yaml'
+/api.cgi?cmd=GetPtzCheckState:
+  $ref: './paths/ptz/get-ptz-check-state.yaml'
+/api.cgi?cmd=PtzCheck:
+  $ref: './paths/ptz/ptz-check.yaml'
+
+# Alarm Commands
+/api.cgi?cmd=GetAlarm:
+  $ref: './paths/alarm/get-alarm.yaml'
+/api.cgi?cmd=SetAlarm:
+  $ref: './paths/alarm/set-alarm.yaml'
+/api.cgi?cmd=GetMdAlarm:
+  $ref: './paths/alarm/get-md-alarm.yaml'
+/api.cgi?cmd=SetMdAlarm:
+  $ref: './paths/alarm/set-md-alarm.yaml'
+/api.cgi?cmd=GetMdState:
+  $ref: './paths/alarm/get-md-state.yaml'
+/api.cgi?cmd=GetAudioAlarm:
+  $ref: './paths/alarm/get-audio-alarm.yaml'
+/api.cgi?cmd=SetAudioAlarm:
+  $ref: './paths/alarm/set-audio-alarm.yaml'
+/api.cgi?cmd=GetAudioAlarmV20:
+  $ref: './paths/alarm/get-audio-alarm-v20.yaml'
+/api.cgi?cmd=SetAudioAlarmV20:
+  $ref: './paths/alarm/set-audio-alarm-v20.yaml'
+/api.cgi?cmd=GetBuzzerAlarmV20:
+  $ref: './paths/alarm/get-buzzer-alarm-v20.yaml'
+/api.cgi?cmd=SetBuzzerAlarmV20:
+  $ref: './paths/alarm/set-buzzer-alarm-v20.yaml'
+/api.cgi?cmd=AudioAlarmPlay:
+  $ref: './paths/alarm/audio-alarm-play.yaml'
+# LED Commands
+/api.cgi?cmd=GetIrLights:
+  $ref: './paths/led/get-ir-lights.yaml'
+/api.cgi?cmd=SetIrLights:
+  $ref: './paths/led/set-ir-lights.yaml'
+/api.cgi?cmd=GetPowerLed:
+  $ref: './paths/led/get-power-led.yaml'
+/api.cgi?cmd=SetPowerLed:
+  $ref: './paths/led/set-power-led.yaml'
+/api.cgi?cmd=GetWhiteLed:
+  $ref: './paths/led/get-white-led.yaml'
+/api.cgi?cmd=SetWhiteLed:
+  $ref: './paths/led/set-white-led.yaml'
+/api.cgi?cmd=GetAiAlarm:
+  $ref: './paths/led/get-ai-alarm.yaml'
+/api.cgi?cmd=SetAiAlarm:
+  $ref: './paths/led/set-ai-alarm.yaml'
+/api.cgi?cmd=SetAlarmArea:
+  $ref: './paths/led/set-alarm-area.yaml'
+
+# AI Commands
+/api.cgi?cmd=GetAiCfg:
+  $ref: './paths/ai/get-ai-cfg.yaml'
+/api.cgi?cmd=SetAiCfg:
+  $ref: './paths/ai/set-ai-cfg.yaml'
+/api.cgi?cmd=GetAiState:
+  $ref: './paths/ai/get-ai-state.yaml'

@@ -1,0 +1,15 @@
+# paths/security/logout.yaml
+post:
+  tags:
+    - Security
+  summary: Logout from device
+  description: Invalidates the current session token
+  x-deviceSupport: both
+  operationId: logout
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

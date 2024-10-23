@@ -1,0 +1,31 @@
+# paths/network/set-ddns.yaml
+post:
+  tags:
+    - Network
+  summary: Set DDNS settings
+  description: Updates DDNS service configuration
+  x-deviceSupport: both
+  operationId: setDdns
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - Ddns
+                  properties:
+                    Ddns:
+                      $ref: '../../components/schemas/common.yaml#/DDNSConfig'
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

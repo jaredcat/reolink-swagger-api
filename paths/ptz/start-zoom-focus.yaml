@@ -1,0 +1,48 @@
+# paths/ptz/start-zoom-focus.yaml
+post:
+  tags:
+    - PTZ
+  summary: Control zoom and focus position
+  description: Adjusts the zoom and focus to specific positions
+  x-deviceSupport: both
+  operationId: startZoomFocus
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - ZoomFocus
+                  properties:
+                    ZoomFocus:
+                      type: object
+                      required:
+                        - channel
+                        - op
+                        - pos
+                      properties:
+                        channel:
+                          $ref: '../../components/schemas/common.yaml#/Channel'
+                        op:
+                          type: string
+                          enum: ['ZoomPos', 'FocusPos']
+                          description: |
+                            Operation type
+                            * ZoomPos - Set zoom position
+                            * FocusPos - Set focus position
+                        pos:
+                          type: integer
+                          description: Target position value
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

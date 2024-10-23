@@ -1,0 +1,91 @@
+# paths/system/get-dev-info.yaml
+post:
+  tags:
+    - System
+  summary: Get device information
+  description: Returns detailed information about the device including model, firmware version, and capabilities.
+  x-deviceSupport: both
+  operationId: getDevInfo
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - DevInfo
+                      properties:
+                        DevInfo:
+                          type: object
+                          properties:
+                            B485:
+                              type: integer
+                              enum: [0, 1]
+                              description: '0: no 485, 1: have 485'
+                            IOInputNum:
+                              type: integer
+                              description: Number of IO input ports
+                            IOOutputNum:
+                              type: integer
+                              description: Number of IO output ports
+                            audioNum:
+                              type: integer
+                              description: Number of audio channels
+                            buildDay:
+                              type: string
+                              example: 'build 20080734'
+                            cfgVer:
+                              type: string
+                              example: 'v3.0.0.0'
+                              description: Configuration version
+                            channelNum:
+                              type: integer
+                              description: Number of channels
+                            detail:
+                              type: string
+                              description: Detailed device information
+                            diskNum:
+                              type: integer
+                              description: Number of storage disks/cards
+                            exactType:
+                              type: string
+                              enum: ['NVR', 'IPC']
+                              description: Exact device type
+                            firmVer:
+                              type: string
+                              description: Firmware version
+                            frameworkVer:
+                              type: integer
+                              description: Framework version
+                            hardVer:
+                              type: string
+                              description: Hardware version
+                            model:
+                              type: string
+                              description: Device model
+                            name:
+                              type: string
+                              description: Device name
+                            serial:
+                              type: string
+                              description: Device serial number
+                            type:
+                              type: string
+                              enum: ['NVR', 'IPC']
+                              description: Device type
+                            wifi:
+                              type: integer
+                              enum: [0, 1]
+                              description: 'Whether WiFi is supported: 0-no, 1-yes'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

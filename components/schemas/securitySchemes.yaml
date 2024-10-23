@@ -1,0 +1,9 @@
+tokenAuth:
+  type: apiKey
+  name: token
+  in: query
+  description: Token obtained from Login command
+shortSession:
+  type: http
+  scheme: basic
+  description: Short-session authentication using username and password as query parameters

@@ -1,0 +1,35 @@
+# paths/network/get-wifi-signal.yaml
+post:
+  tags:
+    - Network
+    - IPC-only
+  summary: Get WiFi signal strength
+  description: Returns current WiFi signal strength
+  x-deviceSupport: ipc
+  operationId: getWifiSignal
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - wifiSignal
+                      properties:
+                        wifiSignal:
+                          type: integer
+                          minimum: 0
+                          maximum: 100
+                          description: WiFi signal strength percentage
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

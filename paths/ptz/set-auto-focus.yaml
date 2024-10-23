@@ -1,0 +1,44 @@
+# paths/ptz/set-auto-focus.yaml
+post:
+  tags:
+    - PTZ
+  summary: Set auto focus configuration
+  description: Enables or disables the auto focus feature
+  x-deviceSupport: both
+  operationId: setAutoFocus
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - AutoFocus
+                  properties:
+                    AutoFocus:
+                      type: object
+                      required:
+                        - channel
+                        - disable
+                      properties:
+                        channel:
+                          $ref: '../../components/schemas/common.yaml#/Channel'
+                        disable:
+                          type: integer
+                          enum: [0, 1]
+                          description: |
+                            Auto focus state
+                            * 0 - Enable auto focus
+                            * 1 - Disable auto focus
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

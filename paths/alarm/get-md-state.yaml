@@ -1,0 +1,52 @@
+# paths/alarm/get-md-state.yaml
+post:
+  tags:
+    - Alarm
+  summary: Get motion detection state
+  description: Returns the current motion detection status
+  x-deviceSupport: both
+  operationId: getMdState
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - channel
+                  properties:
+                    channel:
+                      $ref: '../../components/schemas/common.yaml#/Channel'
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - state
+                      properties:
+                        state:
+                          type: integer
+                          enum: [0, 1]
+                          description: |
+                            Motion detection state
+                            * 0 - No motion detected
+                            * 1 - Motion detected
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

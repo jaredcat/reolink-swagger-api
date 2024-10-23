@@ -1,0 +1,28 @@
+# paths/recording/download.yaml
+post:
+  tags:
+    - Recording
+  summary: Download recording
+  description: Downloads a recording file
+  x-deviceSupport: both
+  operationId: downloadRecording
+  parameters:
+    - name: source
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Source recording file path
+    - name: output
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Output filename
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/FileDownload'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

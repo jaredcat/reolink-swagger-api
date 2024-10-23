@@ -1,0 +1,53 @@
+# paths/video/set-isp.yaml
+post:
+  tags:
+    - Video Input
+  summary: Set ISP settings
+  description: Updates the Image Signal Processing settings
+  x-deviceSupport: both
+  operationId: setIsp
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - Isp
+                  properties:
+                    Isp:
+                      allOf:
+                        - $ref: '../../components/schemas/common.yaml#/IspSettings'
+                        - type: object
+                          required:
+                            - channel
+                          properties:
+                            channel:
+                              $ref: '../../components/schemas/common.yaml#/Channel'
+                            bd_day:
+                              $ref: '../../components/schemas/common.yaml#/BrightnessSettings'
+                            bd_night:
+                              $ref: '../../components/schemas/common.yaml#/BrightnessSettings'
+                            bd_led_color:
+                              $ref: '../../components/schemas/common.yaml#/BrightnessSettings'
+                            constantFrameRate:
+                              type: integer
+                              enum: [0, 1]
+                            dayNightThreshold:
+                              type: integer
+                              minimum: 0
+                            cdsType:
+                              type: integer
+                              enum: [0, 1]
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

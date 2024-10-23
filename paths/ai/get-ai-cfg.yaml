@@ -1,0 +1,51 @@
+# paths/ai/get-ai-cfg.yaml
+post:
+  tags:
+    - AI
+  summary: Get AI configuration
+  description: Returns the current AI detection and tracking configuration
+  x-deviceSupport: both
+  operationId: getAiCfg
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - channel
+                  properties:
+                    channel:
+                      $ref: '../../components/schemas/common.yaml#/Channel'
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      properties:
+                        AiDetectType:
+                          $ref: '../../components/schemas/ai.yaml#/AiDetectTypes'
+                        aiTrack:
+                          $ref: '../../components/schemas/common.yaml#/EnableSwitch'
+                        channel:
+                          $ref: '../../components/schemas/common.yaml#/Channel'
+                        trackType:
+                          $ref: '../../components/schemas/ai.yaml#/AiTrackTypes'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

@@ -1,0 +1,100 @@
+openapi: 3.1.0
+
+info:
+  title: Reolink Camera API
+  version: '8.0.0'
+  description: |
+    HTTP/HTTPS API for Reolink IP cameras and NVRs.
+    Provides access to system, network, video, recording, PTZ and alarm configuration and controls.
+    Supports JSON request/response format.
+
+    The API has a single `/api.cgi` endpoint which accepts POST requests.
+    The specific command is passed as a `cmd` query parameter.
+
+    Two authentication methods are supported:
+    1. Long-session - Obtain a token via `/api.cgi?cmd=Login` and pass it as `token` query parameter
+    2. Short-session - Pass `user` and `password` as query parameters in each request
+
+    ## Device Compatibility
+    Operations marked with tag `IPC-only` are only available on IP cameras.
+    Operations marked with tag `NVR-only` are only available on NVR devices.
+    Operations without these tags are available on both device types.
+  license:
+    name: AGPL
+    url: https://www.gnu.org/licenses/agpl-3.0.en.html
+
+servers:
+  - url: https://{camera_ip}
+    description: Reolink Camera/NVR HTTPS
+    variables:
+      camera_ip:
+        description: IP address of the Reolink device
+        default: '192.168.1.100'
+  - url: http://{camera_ip}
+    description: Reolink Camera/NVR HTTP (if enabled)
+    variables:
+      camera_ip:
+        description: IP address of the Reolink device
+        default: '192.168.1.100'
+
+paths:
+  $ref: './paths.yaml'
+
+components:
+  parameters:
+    $ref: './components/parameters/index.yaml'
+  schemas:
+    $ref: './components/schemas/index.yaml'
+  responses:
+    $ref: './components/responses/index.yaml'
+
+  securitySchemes:
+    $ref: './components/schemas/securitySchemes.yaml'
+
+security:
+  - tokenAuth: []
+  - shortSession: []
+
+x-tagGroups:
+  - name: Device Types
+    tags:
+      - IPC-only
+      - NVR-only
+  - name: Features
+    tags:
+      - System
+      - Security
+      - Network
+      - Video Input
+      - Encoding
+      - Recording
+      - PTZ
+      - Alarm
+      - LED
+      - AI
+
+tags:
+  - name: System
+    description: System-related operations like device info, maintenance, and configuration
+  - name: Security
+    description: Security operations including login, user management and authentication
+  - name: Network
+    description: Network configuration including wifi, email, FTP, and port settings
+  - name: Video Input
+    description: Video input configuration including image settings and overlays
+  - name: Encoding
+    description: Video encoding configuration and settings
+  - name: Recording
+    description: Recording configuration, search, and playback
+  - name: PTZ
+    description: Pan-Tilt-Zoom camera control and configuration
+  - name: Alarm
+    description: Alarm configuration and management
+  - name: LED
+    description: LED control including IR lights and power LED
+  - name: AI
+    description: AI-related features including detection and tracking
+  - name: IPC-only
+    description: Operations only available on IP cameras
+  - name: NVR-only
+    description: Operations only available on Network Video Recorders

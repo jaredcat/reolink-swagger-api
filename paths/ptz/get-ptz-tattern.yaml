@@ -1,0 +1,92 @@
+# paths/ptz/get-ptz-tattern.yaml
+post:
+  tags:
+    - PTZ
+  summary: Get PTZ pattern configuration
+  description: Returns the configured PTZ movement patterns
+  x-deviceSupport: both
+  operationId: getPtzTattern
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                action:
+                  type: integer
+                  enum: [1]
+                param:
+                  type: object
+                  required:
+                    - channel
+                  properties:
+                    channel:
+                      $ref: '../../components/schemas/common.yaml#/Channel'
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - PtzTattern
+                      properties:
+                        PtzTattern:
+                          allOf:
+                            - $ref: '../../components/schemas/common.yaml#/PTZPattern'
+                            - type: object
+                              properties:
+                                track:
+                                  minItems: 6
+                                  maxItems: 6
+                                  description: Fixed array of 6 pattern tracks
+                    initial:
+                      type: object
+                      properties:
+                        PtzTattern:
+                          $ref: '../../components/schemas/common.yaml#/PTZPattern'
+                    range:
+                      type: object
+                      properties:
+                        PtzTattern:
+                          type: object
+                          properties:
+                            track:
+                              type: object
+                              properties:
+                                id:
+                                  type: object
+                                  properties:
+                                    min:
+                                      type: integer
+                                      enum: [1]
+                                    max:
+                                      type: integer
+                                      enum: [6]
+                                enable:
+                                  type: string
+                                  enum: ['boolean']
+                                running:
+                                  type: string
+                                  enum: ['boolean']
+                                name:
+                                  type: object
+                                  properties:
+                                    maxLen:
+                                      type: integer
+                                      enum: [191]
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

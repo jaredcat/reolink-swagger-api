@@ -1,0 +1,38 @@
+# paths/video/set-crop.yaml
+post:
+  tags:
+    - Video Input
+  summary: Set video crop settings
+  description: Updates the video cropping configuration
+  x-deviceSupport: both
+  operationId: setCrop
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - Crop
+                  properties:
+                    Crop:
+                      allOf:
+                        - $ref: '../../components/schemas/common.yaml#/CropSettings'
+                        - type: object
+                          required:
+                            - channel
+                          properties:
+                            channel:
+                              $ref: '../../components/schemas/common.yaml#/Channel'
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

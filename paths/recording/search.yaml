@@ -1,0 +1,94 @@
+# paths/recording/search.yaml
+post:
+  tags:
+    - Recording
+  summary: Search recordings
+  description: |
+    Searches for recordings based on time range and stream type.
+    For large number of files, search might timeout.
+  x-deviceSupport: both
+  operationId: searchRecordings
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - Search
+                  properties:
+                    Search:
+                      type: object
+                      required:
+                        - channel
+                        - onlyStatus
+                        - streamType
+                        - StartTime
+                        - EndTime
+                      properties:
+                        channel:
+                          $ref: '../../components/schemas/common.yaml#/Channel'
+                        onlyStatus:
+                          type: integer
+                          enum: [0, 1]
+                          description: |
+                            Search type
+                            * 0 - Get detailed file information
+                            * 1 - Get only dates with recordings
+                        streamType:
+                          type: string
+                          enum: [main, sub]
+                          description: Stream type to search for
+                        StartTime:
+                          $ref: '../../components/schemas/common.yaml#/TimeConfig'
+                        EndTime:
+                          $ref: '../../components/schemas/common.yaml#/TimeConfig'
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - SearchResult
+                      properties:
+                        SearchResult:
+                          type: object
+                          properties:
+                            channel:
+                              $ref: '../../components/schemas/common.yaml#/Channel'
+                            Status:
+                              type: array
+                              description: Only returned when onlyStatus=1
+                              items:
+                                type: object
+                                properties:
+                                  year:
+                                    type: integer
+                                  mon:
+                                    type: integer
+                                  table:
+                                    type: string
+                                    description: String of 31 characters representing days with recordings
+                            File:
+                              type: array
+                              description: Only returned when onlyStatus=0
+                              items:
+                                $ref: '../../components/schemas/common.yaml#/RecordingFile'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

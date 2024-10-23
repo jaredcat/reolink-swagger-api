@@ -1,0 +1,47 @@
+# paths/network/get-rtsp-url.yaml
+post:
+  tags:
+    - Network
+  summary: Get RTSP URLs
+  description: Returns RTSP stream URLs for the specified channel
+  x-deviceSupport: both
+  operationId: getRtspUrl
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - channel
+                  properties:
+                    channel:
+                      $ref: '../../components/schemas/common.yaml#/Channel'
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - rtspUrl
+                      properties:
+                        rtspUrl:
+                          $ref: '../../components/schemas/common.yaml#/RtspUrlInfo'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

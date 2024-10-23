@@ -1,0 +1,31 @@
+# paths/network/set-email-v20.yaml
+post:
+  tags:
+    - Network
+  summary: Set email settings (v2.0)
+  description: Updates the email notification configuration (version 2.0)
+  x-deviceSupport: both
+  operationId: setEmailV20
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - Email
+                  properties:
+                    Email:
+                      $ref: '../../components/schemas/network.yaml#/EmailConfigV20'
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

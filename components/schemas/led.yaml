@@ -1,0 +1,67 @@
+# LED States
+LedState:
+  type: string
+  enum:
+    - Auto
+    - On
+    - Off
+  description: |
+    LED state
+    * Auto - Automatic control
+    * On - Always on
+    * Off - Always off
+
+# White LED Configuration
+WhiteLedConfig:
+  type: object
+  properties:
+    state:
+      type: integer
+      enum: [0, 1]
+      description: |
+        White LED state
+        * 0 - Off
+        * 1 - On
+    mode:
+      type: integer
+      enum: [0, 1, 2]
+      description: |
+        Brightness mode
+        * 0 - Always light at night
+        * 1 - Alarm trigger mode
+        * 2 - Schedule mode
+    bright:
+      type: integer
+      minimum: 1
+      maximum: 100
+      description: Brightness level (1-100)
+    LightingSchedule:
+      type: object
+      properties:
+        StartHour:
+          type: integer
+          minimum: 0
+          maximum: 23
+        StartMin:
+          type: integer
+          minimum: 0
+          maximum: 59
+        EndHour:
+          type: integer
+          minimum: 0
+          maximum: 23
+        EndMin:
+          type: integer
+          minimum: 0
+          maximum: 59
+    wlAiDetectType:
+      type: object
+      properties:
+        dog_cat:
+          $ref: './common.yaml#/EnableSwitch'
+        face:
+          $ref: './common.yaml#/EnableSwitch'
+        people:
+          $ref: './common.yaml#/EnableSwitch'
+        vehicle:
+          $ref: './common.yaml#/EnableSwitch'

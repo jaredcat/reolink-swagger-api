@@ -1,0 +1,15 @@
+# paths/system/upgrade-online.yaml
+post:
+  tags:
+    - System
+  summary: Start online upgrade
+  description: Initiates online firmware upgrade when new version is available
+  x-deviceSupport: both
+  operationId: upgradeOnline
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

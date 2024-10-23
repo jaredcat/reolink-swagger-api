@@ -1,0 +1,46 @@
+# paths/video/set-mask.yaml
+post:
+  tags:
+    - Video Input
+  summary: Set privacy mask settings
+  description: Configures privacy mask zones
+  x-deviceSupport: both
+  operationId: setMask
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - Mask
+                  properties:
+                    Mask:
+                      type: object
+                      required:
+                        - channel
+                        - enable
+                        - area
+                      properties:
+                        channel:
+                          $ref: '../../components/schemas/common.yaml#/Channel'
+                        enable:
+                          $ref: '../../components/schemas/common.yaml#/EnableSwitch'
+                        area:
+                          type: array
+                          items:
+                            $ref: '../../components/schemas/common.yaml#/MaskArea'
+                          maxItems: 4
+                          description: Up to 4 privacy mask areas
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

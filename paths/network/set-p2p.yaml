@@ -1,0 +1,36 @@
+# paths/network/set-p2p.yaml
+post:
+  tags:
+    - Network
+  summary: Set P2P settings
+  description: Updates P2P service configuration
+  x-deviceSupport: both
+  operationId: setP2p
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - P2p
+                  properties:
+                    P2p:
+                      type: object
+                      required:
+                        - enable
+                      properties:
+                        enable:
+                          $ref: '../../components/schemas/common.yaml#/EnableSwitch'
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

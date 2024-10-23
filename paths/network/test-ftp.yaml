@@ -1,0 +1,100 @@
+# paths/network/test-ftp.yaml
+post:
+  tags:
+    - Network
+  summary: Test FTP settings
+  description: Tests FTP configuration by attempting to connect and upload a test file
+  x-deviceSupport: both
+  operationId: testFtp
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - Ftp
+                  properties:
+                    Ftp:
+                      type: object
+                      required:
+                        - server
+                        - port
+                        - anonymous
+                        - mode
+                        - remoteDir
+                      properties:
+                        server:
+                          type: string
+                          maxLength: 127
+                          description: FTP server address
+                        port:
+                          type: integer
+                          minimum: 1
+                          maximum: 65535
+                          description: FTP server port
+                        anonymous:
+                          type: integer
+                          enum: [0, 1]
+                          description: |
+                            Use anonymous login
+                            * 0 - Use credentials
+                            * 1 - Anonymous login
+                        userName:
+                          type: string
+                          maxLength: 127
+                          description: FTP account username (required if not anonymous)
+                        password:
+                          type: string
+                          maxLength: 127
+                          description: FTP account password (required if not anonymous)
+                        mode:
+                          type: integer
+                          enum: [0, 1, 2]
+                          description: |
+                            Transfer mode
+                            * 0 - Auto
+                            * 1 - Active
+                            * 2 - Passive
+                        remoteDir:
+                          type: string
+                          maxLength: 255
+                          description: Remote directory path
+                        onlyFtps:
+                          type: integer
+                          enum: [0, 1]
+                          description: |
+                            Use FTPS encryption
+                            * 0 - No encryption
+                            * 1 - Use FTPS
+                        bpicSingle:
+                          type: integer
+                          enum: [0, 1, 2]
+                          description: Image retention policy
+                        bvideoSingle:
+                          type: integer
+                          enum: [0, 1, 2]
+                          description: Video retention policy
+  responses:
+    '200':
+      description: Test completed
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      $ref: '../../components/schemas/common.yaml#/FtpTestResult'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

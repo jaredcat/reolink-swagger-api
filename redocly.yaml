@@ -1,0 +1,4 @@
+extends:
+  - recommended-strict
+rules:
+  spec-strict-refs: error

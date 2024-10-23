@@ -1,0 +1,34 @@
+# paths/led/set-ir-lights.yaml
+post:
+  tags:
+    - LED
+  summary: Set IR light settings
+  description: Configure IR light operation
+  x-deviceSupport: both
+  operationId: setIrLights
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - IrLights
+                  properties:
+                    IrLights:
+                      type: object
+                      required:
+                        - state
+                      properties:
+                        state:
+                          $ref: '../../components/schemas/led.yaml#/LedState'
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'

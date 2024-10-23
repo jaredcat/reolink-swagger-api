@@ -1,0 +1,64 @@
+# paths/ptz/set-ptz-guard.yaml
+post:
+  tags:
+    - PTZ
+  summary: Set PTZ guard position
+  description: |
+    Configures the guard position and its settings.
+    The guard position is a preset position the camera returns to after a period of inactivity.
+  x-deviceSupport: both
+  operationId: setPtzGuard
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - PtzGuard
+                  properties:
+                    PtzGuard:
+                      type: object
+                      required:
+                        - channel
+                        - cmdStr
+                      properties:
+                        channel:
+                          $ref: '../../components/schemas/common.yaml#/Channel'
+                        cmdStr:
+                          type: string
+                          enum: ['setPos', 'toPos']
+                          description: |
+                            Command type
+                            * setPos - Set current position as guard position
+                            * toPos - Move to guard position
+                        benable:
+                          type: integer
+                          enum: [0, 1]
+                          description: |
+                            Enable automatic return to guard position
+                            * 0 - Disabled
+                            * 1 - Enabled
+                        timeout:
+                          type: integer
+                          enum: [60]
+                          description: Time in seconds before returning to guard position (fixed at 60)
+                        bSaveCurrentPos:
+                          type: integer
+                          enum: [0, 1]
+                          description: |
+                            Whether to save current position as guard position
+                            * 0 - No
+                            * 1 - Yes
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

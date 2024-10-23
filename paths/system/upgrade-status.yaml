@@ -1,0 +1,31 @@
+# paths/system/upgrade-status.yaml
+post:
+  tags:
+    - System
+  summary: Get upgrade status
+  description: Checks the progress of firmware upgrade
+  x-deviceSupport: both
+  operationId: upgradeStatus
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - Status
+                      properties:
+                        Status:
+                          $ref: '../../components/schemas/common.yaml#/UpgradeStatus'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

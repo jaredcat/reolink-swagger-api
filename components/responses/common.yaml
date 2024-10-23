@@ -1,0 +1,74 @@
+# Standard success response
+Success:
+  description: Successful operation
+  content:
+    application/json:
+      schema:
+        type: array
+        items:
+          allOf:
+            - $ref: '../schemas/common.yaml#/BaseCommandResponse'
+            - type: object
+              properties:
+                value:
+                  type: object
+                  properties:
+                    rspCode:
+                      type: integer
+                      enum: [200]
+                      description: Success response code
+
+# Error response
+Error:
+  description: Operation failed
+  content:
+    application/json:
+      schema:
+        type: array
+        items:
+          allOf:
+            - $ref: '../schemas/common.yaml#/BaseCommandResponse'
+            - type: object
+              properties:
+                error:
+                  $ref: '../schemas/common.yaml#/ErrorResponse'
+
+# Binary file response
+FileDownload:
+  description: File download response
+  headers:
+    Content-Type:
+      schema:
+        type: string
+      description: MIME type of the file
+    Content-Length:
+      schema:
+        type: integer
+      description: Size of file in bytes
+    Content-Disposition:
+      schema:
+        type: string
+      description: Attachment filename
+  content:
+    application/octet-stream:
+      schema:
+        type: string
+        format: binary
+
+# Image response
+ImageResponse:
+  description: Image response
+  headers:
+    Content-Type:
+      schema:
+        type: string
+      description: Image MIME type
+    Content-Length:
+      schema:
+        type: integer
+      description: Size of image in bytes
+  content:
+    image/jpeg:
+      schema:
+        type: string
+        format: binary

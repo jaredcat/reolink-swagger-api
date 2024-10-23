@@ -1,0 +1,52 @@
+# paths/network/get-ftp.yaml
+post:
+  tags:
+    - Network
+  summary: Get FTP settings
+  description: Returns current FTP service configuration (Legacy version)
+  x-deviceSupport: both
+  operationId: getFtp
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                action:
+                  type: integer
+                  enum: [1]
+                  description: Get configuration with ranges
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - Ftp
+                      properties:
+                        Ftp:
+                          $ref: '../../components/schemas/common.yaml#/FtpConfig'
+                    initial:
+                      type: object
+                      properties:
+                        Ftp:
+                          $ref: '../../components/schemas/common.yaml#/FtpConfig'
+                    range:
+                      type: object
+                      description: Valid ranges for all parameters
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

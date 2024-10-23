@@ -1,0 +1,50 @@
+# paths/security/modify-user.yaml
+post:
+  tags:
+    - Security
+  summary: Modify user
+  description: Modifies an existing user's password
+  x-deviceSupport: both
+  operationId: modifyUser
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - User
+                  properties:
+                    User:
+                      type: object
+                      required:
+                        - userName
+                        - newPassword
+                      properties:
+                        userName:
+                          type: string
+                          minLength: 1
+                          maxLength: 31
+                          description: Username to modify
+                        newPassword:
+                          type: string
+                          minLength: 6
+                          maxLength: 31
+                          description: New password
+                        oldPassword:
+                          type: string
+                          minLength: 6
+                          maxLength: 31
+                          description: Current password (required for validation)
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

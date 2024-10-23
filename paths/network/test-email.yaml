@@ -1,0 +1,82 @@
+# paths/network/test-email.yaml
+post:
+  tags:
+    - Network
+  summary: Test email settings
+  description: Tests email configuration by sending a test message
+  x-deviceSupport: both
+  operationId: testEmail
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - Email
+                  properties:
+                    Email:
+                      type: object
+                      required:
+                        - smtpServer
+                        - smtpPort
+                        - userName
+                      properties:
+                        smtpServer:
+                          type: string
+                          maxLength: 127
+                          description: SMTP server address
+                        smtpPort:
+                          type: integer
+                          minimum: 1
+                          maximum: 65535
+                          description: SMTP server port
+                        userName:
+                          type: string
+                          maxLength: 127
+                          description: SMTP account username
+                        password:
+                          type: string
+                          maxLength: 31
+                          description: SMTP account password
+                        ssl:
+                          $ref: '../../components/schemas/common.yaml#/EnableSwitch'
+                        addr1:
+                          type: string
+                          maxLength: 127
+                          description: First recipient email address
+                        addr2:
+                          type: string
+                          maxLength: 127
+                          description: Second recipient email address
+                        addr3:
+                          type: string
+                          maxLength: 127
+                          description: Third recipient email address
+                        nickName:
+                          type: string
+                          maxLength: 127
+                          description: Sender nickname
+  responses:
+    '200':
+      description: Test completed
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      $ref: '../../components/schemas/common.yaml#/EmailTestResult'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

@@ -1,0 +1,80 @@
+# paths/ptz/get-ptz-preset.yaml
+post:
+  tags:
+    - PTZ
+  summary: Get PTZ preset positions
+  description: Returns configured preset positions for PTZ camera
+  x-deviceSupport: both
+  operationId: getPtzPreset
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                action:
+                  type: integer
+                  enum: [1]
+                param:
+                  type: object
+                  required:
+                    - channel
+                  properties:
+                    channel:
+                      $ref: '../../components/schemas/common.yaml#/Channel'
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - PtzPreset
+                      properties:
+                        PtzPreset:
+                          type: array
+                          items:
+                            $ref: '../../components/schemas/common.yaml#/PTZPreset'
+                    initial:
+                      type: object
+                      properties:
+                        PtzPreset:
+                          type: array
+                          items:
+                            $ref: '../../components/schemas/common.yaml#/PTZPreset'
+                    range:
+                      type: object
+                      properties:
+                        PtzPreset:
+                          type: object
+                          properties:
+                            id:
+                              type: object
+                              properties:
+                                min:
+                                  type: integer
+                                  enum: [1]
+                                max:
+                                  type: integer
+                                  enum: [64]
+                            name:
+                              type: object
+                              properties:
+                                maxLen:
+                                  type: integer
+                                  enum: [31]
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

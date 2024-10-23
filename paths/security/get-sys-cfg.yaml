@@ -1,0 +1,49 @@
+# paths/security/get-sys-cfg.yaml
+post:
+  tags:
+    - Security
+  summary: Get login security settings
+  description: Returns login lock time and attempt settings
+  x-deviceSupport: both
+  operationId: getSysCfg
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - SysCfg
+                      properties:
+                        SysCfg:
+                          type: object
+                          properties:
+                            LockTime:
+                              type: integer
+                              minimum: 0
+                              maximum: 300
+                              description: Login lock time in seconds
+                            allowedTimes:
+                              type: integer
+                              minimum: 0
+                              maximum: 5
+                              description: Maximum number of allowed login attempts
+                            loginLock:
+                              type: integer
+                              enum: [0, 1]
+                              description: |
+                                Login lock status
+                                * 0 - Disabled
+                                * 1 - Enabled
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

@@ -1,0 +1,48 @@
+# paths/alarm/set-audio-alarm-v20.yaml
+post:
+  tags:
+    - Alarm
+  summary: Set enhanced audio alarm settings
+  description: Updates the enhanced audio alarm configuration (v2.0)
+  x-deviceSupport: both
+  operationId: setAudioAlarmV20
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - Audio
+                  properties:
+                    Audio:
+                      type: object
+                      properties:
+                        enable:
+                          $ref: '../../components/schemas/common.yaml#/EnableSwitch'
+                        schedule:
+                          type: object
+                          properties:
+                            channel:
+                              $ref: '../../components/schemas/common.yaml#/Channel'
+                            table:
+                              type: object
+                              properties:
+                                MD:
+                                  $ref: '../../components/schemas/common.yaml#/ScheduleTable'
+                                AI_PEOPLE:
+                                  $ref: '../../components/schemas/common.yaml#/ScheduleTable'
+                                AI_VEHICLE:
+                                  $ref: '../../components/schemas/common.yaml#/ScheduleTable'
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

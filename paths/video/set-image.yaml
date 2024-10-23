@@ -1,0 +1,31 @@
+# paths/video/set-image.yaml
+post:
+  tags:
+    - Video Input
+  summary: Set image settings
+  description: Updates the image settings like brightness, contrast, etc.
+  x-deviceSupport: both
+  operationId: setImage
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - Image
+                  properties:
+                    Image:
+                      $ref: '../../components/schemas/common.yaml#/ImageSettings'
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

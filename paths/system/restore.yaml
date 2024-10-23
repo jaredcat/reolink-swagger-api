@@ -1,0 +1,15 @@
+# paths/system/restore.yaml
+post:
+  tags:
+    - System
+  summary: Restore factory defaults
+  description: Resets all configurations to factory default settings
+  x-deviceSupport: both
+  operationId: restore
+  responses:
+    '200':
+      $ref: '../../components/responses/common.yaml#/Success'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'

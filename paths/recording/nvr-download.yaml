@@ -1,0 +1,66 @@
+# paths/recording/nvr-download.yaml
+post:
+  tags:
+    - Recording
+    - NVR-only
+  summary: NVR download recording
+  description: Downloads recording files from NVR with enhanced options
+  x-deviceSupport: nvr
+  operationId: nvrDownload
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - type: object
+              properties:
+                param:
+                  type: object
+                  required:
+                    - NvrDownload
+                  properties:
+                    NvrDownload:
+                      type: object
+                      required:
+                        - channel
+                        - StartTime
+                        - EndTime
+                      properties:
+                        channel:
+                          $ref: '../../components/schemas/common.yaml#/Channel'
+                        streamType:
+                          type: string
+                          enum: [main, sub]
+                          description: Stream type to download
+                        StartTime:
+                          $ref: '../../components/schemas/common.yaml#/TimeConfig'
+                        EndTime:
+                          $ref: '../../components/schemas/common.yaml#/TimeConfig'
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      properties:
+                        fileCount:
+                          type: integer
+                          description: Number of files in result
+                        fileList:
+                          type: array
+                          items:
+                            $ref: '../../components/schemas/common.yaml#/NvrDownloadFile'
+    '401':
+      $ref: '../../components/responses/common.yaml#/Error'
+    '4XX':
+      $ref: '../../components/responses/common.yaml#/Error'
