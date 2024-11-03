@@ -1,1 +1,2 @@
 npm run postman
+git add swagger.yaml postman-collection.json
