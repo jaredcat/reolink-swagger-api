@@ -5,7 +5,8 @@
   "scripts": {
     "lint": "redocly lint --config redocly.yaml openapi.yaml",
     "bundle": "redocly bundle --config redocly.yaml openapi.yaml -o swagger.yaml",
-    "postman": "npm run bundle && openapi2postmanv2 -s swagger.yaml -o postman-collection.json -p -O folderStrategy=Tags"
+    "postman": "npm run bundle && openapi2postmanv2 -s swagger.yaml -o postman-collection.json -p -O folderStrategy=Tags",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "openapi-to-postmanv2": "^4.24.0"
   },
   "devDependencies": {
-    "@redocly/cli": "^1.25.10"
+    "@redocly/cli": "^1.25.10",
+    "husky": "^9.1.6"
   }
 }
