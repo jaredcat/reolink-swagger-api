@@ -12,7 +12,7 @@ post:
       application/json:
         schema:
           allOf:
-            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - $ref: '../../components/schemas/common/base.yaml#/BaseCommandRequest'
             - type: object
               properties:
                 param:
@@ -24,7 +24,7 @@ post:
                       type: object
                       properties:
                         schedule:
-                          $ref: '../../components/schemas/network.yaml#/PushSchedule'
+                          $ref: '../../components/schemas/common/network.yaml#/PushSchedule'
   responses:
     '200':
       $ref: '../../components/responses/common.yaml#/Success'

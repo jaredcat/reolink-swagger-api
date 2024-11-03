@@ -6257,9 +6257,6 @@ components:
         detail:
           type: string
           description: Detailed error message
-      example:
-        rspCode: -1
-        detail: Missing parameters
     BaseCommandResponse:
       type: object
       required:
@@ -6277,6 +6274,39 @@ components:
           description: Response data when successful
         error:
           $ref: '#/components/schemas/ErrorResponse'
+          description: Error information when request fails
+    common_ErrorResponse:
+      type: object
+      required:
+        - rspCode
+      properties:
+        rspCode:
+          type: integer
+          description: Error response code
+          example: -1
+        detail:
+          type: string
+          description: Detailed error message
+      example:
+        rspCode: -1
+        detail: Missing parameters
+    common_BaseCommandResponse:
+      type: object
+      required:
+        - cmd
+        - code
+      properties:
+        cmd:
+          type: string
+          description: Command name that was executed
+        code:
+          type: integer
+          description: Response code (0 for success)
+        value:
+          type: object
+          description: Response data when successful
+        error:
+          $ref: '#/components/schemas/common_ErrorResponse'
           description: Error information when request fails
     Channel:
       type: integer
@@ -7993,45 +8023,6 @@ components:
             Whether this detection type is supported
             * 0 - Not supported
             * 1 - Supported
-    Sensitivity:
-      type: integer
-      minimum: 1
-      maximum: 50
-      description: Sensitivity level
-      example: 25
-    TimeRange:
-      type: object
-      properties:
-        year:
-          type: integer
-          minimum: 1900
-          maximum: 2100
-          description: Year
-        mon:
-          type: integer
-          minimum: 1
-          maximum: 12
-          description: Month
-        day:
-          type: integer
-          minimum: 1
-          maximum: 31
-          description: Day
-        hour:
-          type: integer
-          minimum: 0
-          maximum: 23
-          description: Hour
-        min:
-          type: integer
-          minimum: 0
-          maximum: 59
-          description: Minute
-        sec:
-          type: integer
-          minimum: 0
-          maximum: 59
-          description: Second
     InitialRange:
       type: object
       properties:
@@ -8044,6 +8035,12 @@ components:
         value:
           type: object
           description: Current values
+    Sensitivity:
+      type: integer
+      minimum: 1
+      maximum: 50
+      description: Sensitivity level
+      example: 25
     DeviceSupportType:
       type: string
       enum:
@@ -8055,6 +8052,55 @@ components:
         * ipc - Only supported on IP cameras
         * nvr - Only supported on NVR devices
         * both - Supported on both device types
+    WeekDay:
+      type: string
+      enum:
+        - Everyday
+        - Sunday
+        - Monday
+        - Tuesday
+        - Wednesday
+        - Thursday
+        - Friday
+        - Saturday
+      description: Day of the week
+    device_AutoMaintConfig:
+      type: object
+      properties:
+        enable:
+          $ref: '#/components/schemas/EnableSwitch'
+        hour:
+          type: integer
+          minimum: 0
+          maximum: 23
+          description: Hour of maintenance
+        min:
+          type: integer
+          minimum: 0
+          maximum: 59
+          description: Minute of maintenance
+        sec:
+          type: integer
+          minimum: 0
+          maximum: 59
+          description: Second of maintenance
+        weekDay:
+          $ref: '#/components/schemas/WeekDay'
+    MaintenanceStatus:
+      type: object
+      required:
+        - rspCode
+      properties:
+        rspCode:
+          type: integer
+          enum:
+            - 200
+          description: Operation status code
+        progress:
+          type: integer
+          minimum: 0
+          maximum: 100
+          description: Operation progress percentage
   responses:
     Error:
       description: Operation failed
@@ -8064,11 +8110,11 @@ components:
             type: array
             items:
               allOf:
-                - $ref: '#/components/schemas/BaseCommandResponse'
+                - $ref: '#/components/schemas/common_BaseCommandResponse'
                 - type: object
                   properties:
                     error:
-                      $ref: '#/components/schemas/ErrorResponse'
+                      $ref: '#/components/schemas/common_ErrorResponse'
     Success:
       description: Successful operation
       content:
@@ -8077,7 +8123,7 @@ components:
             type: array
             items:
               allOf:
-                - $ref: '#/components/schemas/BaseCommandResponse'
+                - $ref: '#/components/schemas/common_BaseCommandResponse'
                 - type: object
                   properties:
                     value:

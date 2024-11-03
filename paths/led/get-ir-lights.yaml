@@ -15,7 +15,7 @@ post:
             type: array
             items:
               allOf:
-                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - $ref: '../../components/schemas/common/base.yaml#/BaseCommandResponse'
                 - type: object
                   properties:
                     value:
@@ -27,6 +27,6 @@ post:
                           type: object
                           properties:
                             state:
-                              $ref: '../../components/schemas/led.yaml#/LedState'
+                              $ref: '../../components/schemas/common/led.yaml#/LedState'
     '401':
       $ref: '../../components/responses/common.yaml#/Error'

@@ -1,21 +1,44 @@
-# Common schemas
+# components/schemas/index.yaml
+# Base structures
 BaseCommandRequest:
-  $ref: './common.yaml#/BaseCommandRequest'
+  $ref: './common/base.yaml#/BaseCommandRequest'
 BaseCommandResponse:
-  $ref: './common.yaml#/BaseCommandResponse'
+  $ref: './common/base.yaml#/BaseCommandResponse'
 ErrorResponse:
-  $ref: './common.yaml#/ErrorResponse'
-Channel:
-  $ref: './common.yaml#/Channel'
-Sensitivity:
-  $ref: './common.yaml#/Sensitivity'
-TimeRange:
-  $ref: './common.yaml#/TimeRange'
+  $ref: './common/base.yaml#/ErrorResponse'
 InitialRange:
-  $ref: './common.yaml#/InitialRange'
-DeviceSupportType:
-  $ref: './common.yaml#/DeviceSupportType'
-ScheduleTable:
-  $ref: './common.yaml#/ScheduleTable'
+  $ref: './common/base.yaml#/InitialRange'
+
+# Common types
 EnableSwitch:
-  $ref: './common.yaml#/EnableSwitch'
+  $ref: './common/types.yaml#/EnableSwitch'
+Channel:
+  $ref: './common/types.yaml#/Channel'
+Sensitivity:
+  $ref: './common/types.yaml#/Sensitivity'
+DeviceSupportType:
+  $ref: './common/types.yaml#/DeviceSupportType'
+ScheduleTable:
+  $ref: './common/types.yaml#/ScheduleTable'
+WeekDay:
+  $ref: './common/types.yaml#/WeekDay'
+
+# Time related
+TimeConfig:
+  $ref: './common/time.yaml#/TimeConfig'
+DSTConfig:
+  $ref: './common/time.yaml#/DSTConfig'
+# TimeRange:
+#   $ref: './common.yaml#/TimeRange'
+
+# Device related
+StorageInfo:
+  $ref: './common/device.yaml#/StorageInfo'
+AutoMaintConfig:
+  $ref: './common/device.yaml#/AutoMaintConfig'
+
+# Status related
+MaintenanceStatus:
+  $ref: './common/status.yaml#/MaintenanceStatus'
+UpgradeStatus:
+  $ref: './common/status.yaml#/UpgradeStatus'

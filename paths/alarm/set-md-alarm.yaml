@@ -12,7 +12,7 @@ post:
       application/json:
         schema:
           allOf:
-            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - $ref: '../../components/schemas/common/base.yaml#/BaseCommandRequest'
             - type: object
               properties:
                 param:
@@ -22,11 +22,11 @@ post:
                   properties:
                     MdAlarm:
                       allOf:
-                        - $ref: '../../components/schemas/common.yaml#/MdAlarmConfig'
+                        - $ref: '../../components/schemas/common/alarm.yaml#/MdAlarmConfig'
                         - type: object
                           properties:
                             scope:
-                              $ref: '../../components/schemas/common.yaml#/AlarmArea'
+                              $ref: '../../components/schemas/common/alarm.yaml#/AlarmArea'
   responses:
     '200':
       $ref: '../../components/responses/common.yaml#/Success'

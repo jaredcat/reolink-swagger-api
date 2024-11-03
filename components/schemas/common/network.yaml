@@ -2,18 +2,18 @@ EmailSchedule:
   type: object
   properties:
     channel:
-      $ref: './common.yaml#/Channel'
+      $ref: '../common.yaml#/Channel'
     table:
       type: object
       properties:
         AI_PEOPLE:
-          $ref: './common.yaml#/ScheduleTable'
+          $ref: '../common.yaml#/ScheduleTable'
         AI_VEHICLE:
-          $ref: './common.yaml#/ScheduleTable'
+          $ref: '../common.yaml#/ScheduleTable'
         MD:
-          $ref: './common.yaml#/ScheduleTable'
+          $ref: '../common.yaml#/ScheduleTable'
         VL:
-          $ref: './common.yaml#/ScheduleTable'
+          $ref: '../common.yaml#/ScheduleTable'
 
 EmailConfigV20:
   type: object
@@ -34,7 +34,7 @@ EmailConfigV20:
       type: integer
       description: Type of email attachments
     enable:
-      $ref: './common.yaml#/ScheduleTable'
+      $ref: '../common.yaml#/ScheduleTable'
     interval:
       type: string
       enum: ['30 Seconds', '1 Minute', '5 Minutes', '10 Minutes', '30 Minutes']
@@ -54,7 +54,7 @@ EmailConfigV20:
       type: string
       maxLength: 127
     ssl:
-      $ref: './common.yaml#/ScheduleTable'
+      $ref: '../common.yaml#/ScheduleTable'
     userName:
       type: string
       maxLength: 127
@@ -63,31 +63,31 @@ PushSchedule:
   type: object
   properties:
     enable:
-      $ref: './common.yaml#/EnableSwitch'
+      $ref: '../common.yaml#/EnableSwitch'
     table:
-      $ref: './common.yaml#/ScheduleTable'
+      $ref: '../common.yaml#/ScheduleTable'
 
 PushScheduleV20:
   type: object
   properties:
     channel:
-      $ref: './common.yaml#/Channel'
+      $ref: '../common.yaml#/Channel'
     table:
       type: object
       properties:
         AI_PEOPLE:
-          $ref: './common.yaml#/ScheduleTable'
+          $ref: '../common.yaml#/ScheduleTable'
         AI_VEHICLE:
-          $ref: './common.yaml#/ScheduleTable'
+          $ref: '../common.yaml#/ScheduleTable'
         MD:
-          $ref: './common.yaml#/ScheduleTable'
+          $ref: '../common.yaml#/ScheduleTable'
         TIMING:
-          $ref: './common.yaml#/ScheduleTable'
+          $ref: '../common.yaml#/ScheduleTable'
 
 PushConfigV20:
   type: object
   properties:
     enable:
-      $ref: './common.yaml#/EnableSwitch'
+      $ref: '../common.yaml#/EnableSwitch'
     schedule:
       $ref: '#/PushScheduleV20'

@@ -15,7 +15,7 @@ post:
       application/json:
         schema:
           allOf:
-            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - $ref: '../../components/schemas/common/base.yaml#/BaseCommandRequest'
             - type: object
               properties:
                 param:
@@ -54,7 +54,7 @@ post:
             type: array
             items:
               allOf:
-                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - $ref: '../../components/schemas/common/base.yaml#/BaseCommandResponse'
                 - type: object
                   properties:
                     value:
@@ -63,7 +63,7 @@ post:
                         - Token
                       properties:
                         Token:
-                          $ref: '../../components/schemas/security.yaml#/TokenInfo'
+                          $ref: '../../components/schemas/common/security.yaml#/TokenInfo'
     '401':
       $ref: '../../components/responses/common.yaml#/Error'
     '4XX':

@@ -1,0 +1,65 @@
+# components/schemas/common/base.yaml
+# Base request/response structures
+BaseCommandRequest:
+  type: object
+  required:
+    - cmd
+  properties:
+    cmd:
+      type: string
+      description: Command name
+    action:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Action type
+        * 0 - Set/execute command
+        * 1 - Get command with initial values and ranges
+    param:
+      type: object
+      description: Command parameters
+
+BaseCommandResponse:
+  type: object
+  required:
+    - cmd
+    - code
+  properties:
+    cmd:
+      type: string
+      description: Command name that was executed
+    code:
+      type: integer
+      description: Response code (0 for success)
+    value:
+      type: object
+      description: Response data when successful
+    error:
+      $ref: '#/ErrorResponse'
+      description: Error information when request fails
+
+ErrorResponse:
+  type: object
+  required:
+    - rspCode
+  properties:
+    rspCode:
+      type: integer
+      description: Error response code
+      example: -1
+    detail:
+      type: string
+      description: Detailed error message
+
+InitialRange:
+  type: object
+  properties:
+    initial:
+      type: object
+      description: Initial values for parameters
+    range:
+      type: object
+      description: Allowed ranges/values for parameters
+    value:
+      type: object
+      description: Current values

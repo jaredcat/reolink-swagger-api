@@ -1,0 +1,54 @@
+# components/schemas/common/device.yaml
+# Device-related schemas
+StorageInfo:
+  type: object
+  properties:
+    capacity:
+      type: integer
+      description: Total capacity in MB
+    format:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Storage format status
+        * 0 - Not formatted
+        * 1 - Formatted
+    mount:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Mount status
+        * 0 - Not mounted
+        * 1 - Mounted
+    number:
+      type: integer
+      description: External SATA interface number
+    size:
+      type: integer
+      description: Remaining capacity in MB
+    storageType:
+      type: integer
+      description: Type of storage device
+
+AutoMaintConfig:
+  type: object
+  properties:
+    enable:
+      $ref: './types.yaml#/EnableSwitch'
+    hour:
+      type: integer
+      minimum: 0
+      maximum: 23
+      description: Hour of maintenance
+    min:
+      type: integer
+      minimum: 0
+      maximum: 59
+      description: Minute of maintenance
+    sec:
+      type: integer
+      minimum: 0
+      maximum: 59
+      description: Second of maintenance
+    weekDay:
+      $ref: './types.yaml#/WeekDay'

@@ -1,0 +1,122 @@
+# components/schemas/common/time.yaml
+# Time-related schemas
+TimeConfig:
+  type: object
+  properties:
+    year:
+      type: integer
+      minimum: 1900
+      maximum: 2100
+      description: Year
+    mon:
+      type: integer
+      minimum: 1
+      maximum: 12
+      description: Month
+    day:
+      type: integer
+      minimum: 1
+      maximum: 31
+      description: Day
+    hour:
+      type: integer
+      minimum: 0
+      maximum: 23
+      description: Hour
+    min:
+      type: integer
+      minimum: 0
+      maximum: 59
+      description: Minutes
+    sec:
+      type: integer
+      minimum: 0
+      maximum: 59
+      description: Seconds
+    timeFmt:
+      type: string
+      enum: ['MM/DD/YYYY', 'YYYY/MM/DD', 'DD/MM/YYYY']
+      description: Date format
+    timeZone:
+      type: integer
+      minimum: -46800
+      maximum: 43200
+      description: Timezone offset in seconds
+    hourFmt:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Hour format
+        * 0 - 24 hour clock
+        * 1 - 12 hour clock
+
+DSTConfig:
+  type: object
+  properties:
+    enable:
+      $ref: './types.yaml#/EnableSwitch'
+    offset:
+      type: integer
+      minimum: 1
+      maximum: 2
+      description: DST time offset in hours
+    startMon:
+      type: integer
+      minimum: 1
+      maximum: 12
+      description: Start month
+    startWeek:
+      type: integer
+      minimum: 1
+      maximum: 5
+      description: Start week of month
+    startWeekday:
+      type: integer
+      minimum: 0
+      maximum: 6
+      description: Start day of week (0=Sunday)
+    startHour:
+      type: integer
+      minimum: 0
+      maximum: 23
+      description: Start hour
+    startMin:
+      type: integer
+      minimum: 0
+      maximum: 59
+      description: Start minute
+    startSec:
+      type: integer
+      minimum: 0
+      maximum: 59
+      description: Start second
+    endMon:
+      type: integer
+      minimum: 1
+      maximum: 12
+      description: End month
+    endWeek:
+      type: integer
+      minimum: 1
+      maximum: 5
+      description: End week of month
+    endWeekday:
+      type: integer
+      minimum: 0
+      maximum: 6
+      description: End day of week (0=Sunday)
+    endHour:
+      type: integer
+      minimum: 0
+      maximum: 23
+      description: End hour
+    endMin:
+      type: integer
+      minimum: 0
+      maximum: 59
+      description: End minute
+    endSec:
+      type: integer
+      minimum: 0
+      maximum: 59
+      description: End second

@@ -54,16 +54,16 @@ AiDetectTypes:
   type: object
   properties:
     people:
-      $ref: './common.yaml#/EnableSwitch'
+      $ref: '../common.yaml#/EnableSwitch'
       description: People detection
     vehicle:
-      $ref: './common.yaml#/EnableSwitch'
+      $ref: '../common.yaml#/EnableSwitch'
       description: Vehicle detection
     dog_cat:
-      $ref: './common.yaml#/EnableSwitch'
+      $ref: '../common.yaml#/EnableSwitch'
       description: Pet detection
     face:
-      $ref: './common.yaml#/EnableSwitch'
+      $ref: '../common.yaml#/EnableSwitch'
       description: Face detection
 
 # Advanced Motion Detection Alarm Configuration
@@ -91,7 +91,7 @@ MdAlarmConfig:
             type: object
             properties:
               enable:
-                $ref: './common.yaml#/EnableSwitch'
+                $ref: '../common.yaml#/EnableSwitch'
               sensitivity:
                 type: integer
                 minimum: 1

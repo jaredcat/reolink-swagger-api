@@ -12,7 +12,7 @@ post:
       application/json:
         schema:
           allOf:
-            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - $ref: '../../components/schemas/common/base.yaml#/BaseCommandRequest'
             - type: object
               properties:
                 action:
@@ -28,7 +28,7 @@ post:
             type: array
             items:
               allOf:
-                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - $ref: '../../components/schemas/common/base.yaml#/BaseCommandResponse'
                 - type: object
                   properties:
                     value:
@@ -40,12 +40,12 @@ post:
                           type: object
                           properties:
                             schedule:
-                              $ref: '../../components/schemas/network.yaml#/PushSchedule'
+                              $ref: '../../components/schemas/common/network.yaml#/PushSchedule'
                     initial:
                       type: object
                       properties:
                         Push:
-                          $ref: '../../components/schemas/network.yaml#/PushSchedule'
+                          $ref: '../../components/schemas/common/network.yaml#/PushSchedule'
                     range:
                       type: object
                       description: Valid ranges for all parameters

@@ -12,7 +12,7 @@ post:
       application/json:
         schema:
           allOf:
-            - $ref: '../../components/schemas/common.yaml#/BaseCommandRequest'
+            - $ref: '../../components/schemas/common/base.yaml#/BaseCommandRequest'
             - type: object
               properties:
                 param:
@@ -25,9 +25,9 @@ post:
                       enum: [0, 1]
                       description: Enable/disable AI tracking
                     trackType:
-                      $ref: '../../components/schemas/ai.yaml#/AiTrackTypes'
+                      $ref: '../../components/schemas/common/ai.yaml#/AiTrackTypes'
                     AiDetectType:
-                      $ref: '../../components/schemas/ai.yaml#/AiDetectTypes'
+                      $ref: '../../components/schemas/common/ai.yaml#/AiDetectTypes'
                     channel:
                       $ref: '../../components/schemas/common.yaml#/Channel'
   responses:

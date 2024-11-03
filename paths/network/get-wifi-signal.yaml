@@ -16,7 +16,7 @@ post:
             type: array
             items:
               allOf:
-                - $ref: '../../components/schemas/common.yaml#/BaseCommandResponse'
+                - $ref: '../../components/schemas/common/base.yaml#/BaseCommandResponse'
                 - type: object
                   properties:
                     value:

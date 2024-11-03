@@ -1,0 +1,28 @@
+# components/schemas/common/status.yaml
+# Status and maintenance related schemas
+MaintenanceStatus:
+  type: object
+  required:
+    - rspCode
+  properties:
+    rspCode:
+      type: integer
+      enum: [200]
+      description: Operation status code
+    progress:
+      type: integer
+      minimum: 0
+      maximum: 100
+      description: Operation progress percentage
+
+UpgradeStatus:
+  type: object
+  properties:
+    Persent:
+      type: integer
+      minimum: 0
+      maximum: 100
+      description: Upgrade progress percentage
+    code:
+      type: integer
+      description: Status code of upgrade process
