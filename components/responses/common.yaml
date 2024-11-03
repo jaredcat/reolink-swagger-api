@@ -7,7 +7,7 @@ Success:
         type: array
         items:
           allOf:
-            - $ref: '../schemas/common.yaml#/BaseCommandResponse'
+            - $ref: '../schemas/common/base.yaml#/BaseCommandResponse'
             - type: object
               properties:
                 value:
@@ -27,11 +27,11 @@ Error:
         type: array
         items:
           allOf:
-            - $ref: '../schemas/common.yaml#/BaseCommandResponse'
+            - $ref: '../schemas/common/base.yaml#/BaseCommandResponse'
             - type: object
               properties:
                 error:
-                  $ref: '../schemas/common.yaml#/ErrorResponse'
+                  $ref: '../schemas/common/base.yaml#/ErrorResponse'
 
 # Binary file response
 FileDownload:

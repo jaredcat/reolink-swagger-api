@@ -6275,39 +6275,6 @@ components:
         error:
           $ref: '#/components/schemas/ErrorResponse'
           description: Error information when request fails
-    common_ErrorResponse:
-      type: object
-      required:
-        - rspCode
-      properties:
-        rspCode:
-          type: integer
-          description: Error response code
-          example: -1
-        detail:
-          type: string
-          description: Detailed error message
-      example:
-        rspCode: -1
-        detail: Missing parameters
-    common_BaseCommandResponse:
-      type: object
-      required:
-        - cmd
-        - code
-      properties:
-        cmd:
-          type: string
-          description: Command name that was executed
-        code:
-          type: integer
-          description: Response code (0 for success)
-        value:
-          type: object
-          description: Response data when successful
-        error:
-          $ref: '#/components/schemas/common_ErrorResponse'
-          description: Error information when request fails
     Channel:
       type: integer
       minimum: 0
@@ -6447,6 +6414,18 @@ components:
           minimum: 0
           maximum: 59
           description: End second
+    WeekDay:
+      type: string
+      enum:
+        - Everyday
+        - Sunday
+        - Monday
+        - Tuesday
+        - Wednesday
+        - Thursday
+        - Friday
+        - Saturday
+      description: Day of the week
     AutoMaintConfig:
       type: object
       properties:
@@ -6468,17 +6447,7 @@ components:
           maximum: 59
           description: Second of maintenance
         weekDay:
-          type: string
-          enum:
-            - Everyday
-            - Sunday
-            - Monday
-            - Tuesday
-            - Wednesday
-            - Thursday
-            - Friday
-            - Saturday
-          description: Day of the week for maintenance
+          $ref: '#/components/schemas/WeekDay'
     StorageInfo:
       type: object
       properties:
@@ -8052,40 +8021,6 @@ components:
         * ipc - Only supported on IP cameras
         * nvr - Only supported on NVR devices
         * both - Supported on both device types
-    WeekDay:
-      type: string
-      enum:
-        - Everyday
-        - Sunday
-        - Monday
-        - Tuesday
-        - Wednesday
-        - Thursday
-        - Friday
-        - Saturday
-      description: Day of the week
-    device_AutoMaintConfig:
-      type: object
-      properties:
-        enable:
-          $ref: '#/components/schemas/EnableSwitch'
-        hour:
-          type: integer
-          minimum: 0
-          maximum: 23
-          description: Hour of maintenance
-        min:
-          type: integer
-          minimum: 0
-          maximum: 59
-          description: Minute of maintenance
-        sec:
-          type: integer
-          minimum: 0
-          maximum: 59
-          description: Second of maintenance
-        weekDay:
-          $ref: '#/components/schemas/WeekDay'
     MaintenanceStatus:
       type: object
       required:
@@ -8110,11 +8045,11 @@ components:
             type: array
             items:
               allOf:
-                - $ref: '#/components/schemas/common_BaseCommandResponse'
+                - $ref: '#/components/schemas/BaseCommandResponse'
                 - type: object
                   properties:
                     error:
-                      $ref: '#/components/schemas/common_ErrorResponse'
+                      $ref: '#/components/schemas/ErrorResponse'
     Success:
       description: Successful operation
       content:
@@ -8123,7 +8058,7 @@ components:
             type: array
             items:
               allOf:
-                - $ref: '#/components/schemas/common_BaseCommandResponse'
+                - $ref: '#/components/schemas/BaseCommandResponse'
                 - type: object
                   properties:
                     value:

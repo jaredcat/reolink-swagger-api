@@ -37,12 +37,12 @@ post:
                         - AutoMaint
                       properties:
                         AutoMaint:
-                          $ref: '../../components/schemas/common.yaml#/AutoMaintConfig'
+                          $ref: '../../components/schemas/common/device.yaml#/AutoMaintConfig'
                     initial:
                       type: object
                       properties:
                         AutoMaint:
-                          $ref: '../../components/schemas/common.yaml#/AutoMaintConfig'
+                          $ref: '../../components/schemas/common/device.yaml#/AutoMaintConfig'
                     range:
                       type: object
                       description: Valid ranges for all parameters
