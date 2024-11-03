@@ -83,8 +83,9 @@ paths:
                     User:
                       type: object
                       properties:
-                        userName: null
-                        type: string
+                        userName:
+                          type: string
+                          maxLength: 31
       responses:
         '200':
           description: Successful operation
@@ -4356,10 +4357,10 @@ paths:
     post:
       tags:
         - PTZ
-      summary: Set PTZ serial port configuration
-      description: Configures the serial port settings for PTZ control
-      x-deviceSupport: both
-      operationId: setPtzSerial
+      summary: Get PTZ serial port configuration
+      description: Returns the serial port configuration used for PTZ control
+      x-deviceSupport: ipc
+      operationId: getPtzSerial
       requestBody:
         required: true
         content:
@@ -4372,13 +4373,101 @@ paths:
                     param:
                       type: object
                       required:
-                        - PtzSerial
+                        - channel
                       properties:
-                        PtzSerial:
-                          $ref: '#/components/schemas/PTZSerial'
+                        channel:
+                          $ref: '#/components/schemas/Channel'
       responses:
         '200':
-          $ref: '#/components/responses/Success'
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  allOf:
+                    - $ref: '#/components/schemas/BaseCommandResponse'
+                    - type: object
+                      properties:
+                        value:
+                          type: object
+                          required:
+                            - PtzSerial
+                          properties:
+                            PtzSerial:
+                              $ref: '#/components/schemas/SerialConfig'
+                        initial:
+                          type: object
+                          properties:
+                            PtzSerial:
+                              $ref: '#/components/schemas/SerialConfig'
+                        range:
+                          type: object
+                          properties:
+                            PtzSerial:
+                              type: object
+                              properties:
+                                baudRate:
+                                  type: array
+                                  items:
+                                    type: integer
+                                  example:
+                                    - 1200
+                                    - 2400
+                                    - 4800
+                                    - 9600
+                                channel:
+                                  type: integer
+                                  const: 0
+                                ctrlAddr:
+                                  type: object
+                                  properties:
+                                    max:
+                                      type: integer
+                                      example: 64
+                                    min:
+                                      type: integer
+                                      example: 1
+                                ctrlProtocol:
+                                  type: array
+                                  items:
+                                    type: string
+                                  example:
+                                    - PELCO_D
+                                    - PELCO_P
+                                dataBit:
+                                  type: array
+                                  items:
+                                    type: string
+                                  example:
+                                    - CS8
+                                    - CS7
+                                    - CS6
+                                    - CS5
+                                flowCtrl:
+                                  type: array
+                                  items:
+                                    type: string
+                                  example:
+                                    - none
+                                    - hard
+                                    - xon
+                                    - xoff
+                                parity:
+                                  type: array
+                                  items:
+                                    type: string
+                                  example:
+                                    - none
+                                    - odd
+                                    - even
+                                stopBit:
+                                  type: array
+                                  items:
+                                    type: integer
+                                  example:
+                                    - 1
+                                    - 2
         '401':
           $ref: '#/components/responses/Error'
         4XX:
@@ -4408,56 +4497,8 @@ paths:
                         PtzSerial:
                           type: object
                           properties:
-                            channel:
-                              $ref: '#/components/schemas/Channel'
-                            baudRate:
-                              type: integer
-                              enum:
-                                - 1200
-                                - 2400
-                                - 4800
-                                - 9600
-                              description: Serial baud rate
-                            ctrlAddr:
-                              type: integer
-                              minimum: 1
-                              maximum: 64
-                              description: PTZ control address
-                            ctrlProtocol:
-                              type: string
-                              enum:
-                                - PELCO_D
-                                - PELCO_P
-                              description: PTZ control protocol
-                            dataBit:
-                              type: string
-                              enum:
-                                - CS8
-                                - CS7
-                                - CS6
-                                - CS5
-                              description: Data bits setting
-                            flowCtrl:
-                              type: string
-                              enum:
-                                - none
-                                - hard
-                                - xon
-                                - xoff
-                              description: Flow control setting
-                            parity:
-                              type: string
-                              enum:
-                                - none
-                                - odd
-                                - even
-                              description: Parity setting
-                            stopBit:
-                              type: integer
-                              enum:
-                                - 1
-                                - 2
-                              description: Stop bits
+                            PtzSerial:
+                              $ref: '#/components/schemas/SerialConfig'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -7639,11 +7680,9 @@ components:
         * StartPatrol - Start patrol route
         * StopPatrol - Stop patrol route
         * ToPos - Move to preset position
-    PTZSerial:
+    SerialConfig:
       type: object
       properties:
-        channel:
-          $ref: '#/components/schemas/Channel'
         baudRate:
           type: integer
           enum:
@@ -7651,7 +7690,20 @@ components:
             - 2400
             - 4800
             - 9600
-          description: Serial baud rate
+          description: The baud rate of the serial port
+        channel:
+          $ref: '#/components/schemas/Channel'
+        ctrlAddr:
+          type: integer
+          minimum: 1
+          maximum: 64
+          description: The control address for PTZ protocol
+        ctrlProtocol:
+          type: string
+          enum:
+            - PELCO_D
+            - PELCO_P
+          description: PTZ control protocol
         dataBit:
           type: string
           enum:
@@ -7659,7 +7711,7 @@ components:
             - CS7
             - CS6
             - CS5
-          description: Data bits
+          description: Serial data bits configuration
         flowCtrl:
           type: string
           enum:
@@ -7667,31 +7719,20 @@ components:
             - hard
             - xon
             - xoff
-          description: Flow control type
+          description: Flow control configuration
         parity:
           type: string
           enum:
             - none
             - odd
             - even
-          description: Parity check type
+          description: Parity check configuration
         stopBit:
           type: integer
           enum:
             - 1
             - 2
-          description: Stop bits
-        ctrlProtocol:
-          type: string
-          enum:
-            - PELCO_D
-            - PELCO_P
-          description: PTZ control protocol
-        ctrlAddr:
-          type: integer
-          minimum: 1
-          maximum: 64
-          description: Control address
+          description: Stop bits configuration
     PTZPattern:
       type: object
       properties:

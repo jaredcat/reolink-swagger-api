@@ -1,0 +1,35 @@
+# components/schemas/common/ptz.yaml
+SerialConfig:
+  type: object
+  properties:
+    baudRate:
+      type: integer
+      enum: [1200, 2400, 4800, 9600]
+      description: The baud rate of the serial port
+    channel:
+      $ref: './types.yaml#/Channel'
+    ctrlAddr:
+      type: integer
+      minimum: 1
+      maximum: 64
+      description: The control address for PTZ protocol
+    ctrlProtocol:
+      type: string
+      enum: ['PELCO_D', 'PELCO_P']
+      description: PTZ control protocol
+    dataBit:
+      type: string
+      enum: ['CS8', 'CS7', 'CS6', 'CS5']
+      description: Serial data bits configuration
+    flowCtrl:
+      type: string
+      enum: ['none', 'hard', 'xon', 'xoff']
+      description: Flow control configuration
+    parity:
+      type: string
+      enum: ['none', 'odd', 'even']
+      description: Parity check configuration
+    stopBit:
+      type: integer
+      enum: [1, 2]
+      description: Stop bits configuration

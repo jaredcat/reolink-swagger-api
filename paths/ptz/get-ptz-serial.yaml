@@ -1,11 +1,11 @@
-# paths/ptz/set-ptz-serial.yaml
+# paths/ptz/get-ptz-serial.yaml
 post:
   tags:
     - PTZ
-  summary: Set PTZ serial port configuration
-  description: Configures the serial port settings for PTZ control
-  x-deviceSupport: both
-  operationId: setPtzSerial
+  summary: Get PTZ serial port configuration
+  description: Returns the serial port configuration used for PTZ control
+  x-deviceSupport: ipc
+  operationId: getPtzSerial
   requestBody:
     required: true
     content:
@@ -18,13 +18,82 @@ post:
                 param:
                   type: object
                   required:
-                    - PtzSerial
+                    - channel
                   properties:
-                    PtzSerial:
-                      $ref: '../../components/schemas/common.yaml#/PTZSerial'
+                    channel:
+                      $ref: '../../components/schemas/common/types.yaml#/Channel'
   responses:
     '200':
-      $ref: '../../components/responses/common.yaml#/Success'
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/schemas/common/base.yaml#/BaseCommandResponse'
+                - type: object
+                  properties:
+                    value:
+                      type: object
+                      required:
+                        - PtzSerial
+                      properties:
+                        PtzSerial:
+                          $ref: '../../components/schemas/common/ptz.yaml#/SerialConfig'
+                    initial:
+                      type: object
+                      properties:
+                        PtzSerial:
+                          $ref: '../../components/schemas/common/ptz.yaml#/SerialConfig'
+                    range:
+                      type: object
+                      properties:
+                        PtzSerial:
+                          type: object
+                          properties:
+                            baudRate:
+                              type: array
+                              items:
+                                type: integer
+                              example: [1200, 2400, 4800, 9600]
+                            channel:
+                              type: integer
+                              const: 0
+                            ctrlAddr:
+                              type: object
+                              properties:
+                                max:
+                                  type: integer
+                                  example: 64
+                                min:
+                                  type: integer
+                                  example: 1
+                            ctrlProtocol:
+                              type: array
+                              items:
+                                type: string
+                              example: ['PELCO_D', 'PELCO_P']
+                            dataBit:
+                              type: array
+                              items:
+                                type: string
+                              example: ['CS8', 'CS7', 'CS6', 'CS5']
+                            flowCtrl:
+                              type: array
+                              items:
+                                type: string
+                              example: ['none', 'hard', 'xon', 'xoff']
+                            parity:
+                              type: array
+                              items:
+                                type: string
+                              example: ['none', 'odd', 'even']
+                            stopBit:
+                              type: array
+                              items:
+                                type: integer
+                              example: [1, 2]
     '401':
       $ref: '../../components/responses/common.yaml#/Error'
     '4XX':

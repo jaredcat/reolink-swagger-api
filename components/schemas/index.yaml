@@ -42,3 +42,7 @@ MaintenanceStatus:
   $ref: './common/status.yaml#/MaintenanceStatus'
 UpgradeStatus:
   $ref: './common/status.yaml#/UpgradeStatus'
+
+# Add to components/schemas/index.yaml
+SerialConfig:
+  $ref: './common/ptz.yaml#/SerialConfig'

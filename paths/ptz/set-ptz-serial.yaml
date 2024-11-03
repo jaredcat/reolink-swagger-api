@@ -23,37 +23,8 @@ post:
                     PtzSerial:
                       type: object
                       properties:
-                        channel:
-                          $ref: '../../components/schemas/common.yaml#/Channel'
-                        baudRate:
-                          type: integer
-                          enum: [1200, 2400, 4800, 9600]
-                          description: Serial baud rate
-                        ctrlAddr:
-                          type: integer
-                          minimum: 1
-                          maximum: 64
-                          description: PTZ control address
-                        ctrlProtocol:
-                          type: string
-                          enum: ['PELCO_D', 'PELCO_P']
-                          description: PTZ control protocol
-                        dataBit:
-                          type: string
-                          enum: ['CS8', 'CS7', 'CS6', 'CS5']
-                          description: Data bits setting
-                        flowCtrl:
-                          type: string
-                          enum: ['none', 'hard', 'xon', 'xoff']
-                          description: Flow control setting
-                        parity:
-                          type: string
-                          enum: ['none', 'odd', 'even']
-                          description: Parity setting
-                        stopBit:
-                          type: integer
-                          enum: [1, 2]
-                          description: Stop bits
+                        PtzSerial:
+                          $ref: '../../components/schemas/common/ptz.yaml#/SerialConfig'
   responses:
     '200':
       $ref: '../../components/responses/common.yaml#/Success'

@@ -19,7 +19,8 @@ post:
                   type: object
                   properties:
                     userName:
-                    type: string
+                      type: string
+                      maxLength: 31
   responses:
     '200':
       description: Successful operation
