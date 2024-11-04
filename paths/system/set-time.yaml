@@ -19,9 +19,9 @@ post:
                   type: object
                   properties:
                     Time:
-                      $ref: '../../components/schemas/common.yaml#/TimeConfig'
+                      $ref: '../../components/schemas/common/time.yaml#/TimeConfig'
                     Dst:
-                      $ref: '../../components/schemas/common.yaml#/DSTConfig'
+                      $ref: '../../components/schemas/common/time.yaml#/DSTConfig'
   responses:
     '200':
       $ref: '../../components/responses/common.yaml#/Success'

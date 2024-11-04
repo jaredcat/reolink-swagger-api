@@ -45,9 +45,9 @@ post:
                           enum: [main, sub]
                           description: Stream type to search for
                         StartTime:
-                          $ref: '../../components/schemas/common.yaml#/TimeConfig'
+                          $ref: '../../components/schemas/common/time.yaml#/TimeConfig'
                         EndTime:
-                          $ref: '../../components/schemas/common.yaml#/TimeConfig'
+                          $ref: '../../components/schemas/common/time.yaml#/TimeConfig'
   responses:
     '200':
       description: Successful operation

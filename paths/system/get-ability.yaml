@@ -17,6 +17,8 @@ post:
               properties:
                 User:
                   type: object
+                  required:
+                    - userName
                   properties:
                     userName:
                       type: string

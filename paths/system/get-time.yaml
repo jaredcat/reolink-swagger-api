@@ -38,16 +38,16 @@ post:
                         - Dst
                       properties:
                         Time:
-                          $ref: '../../components/schemas/common.yaml#/TimeConfig'
+                          $ref: '../../components/schemas/common/time.yaml#/TimeConfig'
                         Dst:
-                          $ref: '../../components/schemas/common.yaml#/DSTConfig'
+                          $ref: '../../components/schemas/common/time.yaml#/DSTConfig'
                     initial:
                       type: object
                       properties:
                         Time:
-                          $ref: '../../components/schemas/common.yaml#/TimeConfig'
+                          $ref: '../../components/schemas/common/time.yaml#/TimeConfig'
                         Dst:
-                          $ref: '../../components/schemas/common.yaml#/DSTConfig'
+                          $ref: '../../components/schemas/common/time.yaml#/DSTConfig'
                     range:
                       type: object
                       description: Valid ranges for all parameters

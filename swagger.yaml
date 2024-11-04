@@ -85,6 +85,8 @@ paths:
                   properties:
                     User:
                       type: object
+                      required:
+                        - userName
                       properties:
                         userName:
                           type: string
@@ -6296,11 +6298,164 @@ components:
       properties:
         rspCode:
           type: integer
-          description: Error response code
-          example: -1
+          enum:
+            - -1
+            - -2
+            - -3
+            - -4
+            - -5
+            - -6
+            - -7
+            - -8
+            - -9
+            - -10
+            - -11
+            - -12
+            - -13
+            - -14
+            - -15
+            - -16
+            - -17
+            - -18
+            - -19
+            - -20
+            - -21
+            - -22
+            - -23
+            - -24
+            - -25
+            - -26
+            - -27
+            - -28
+            - -29
+            - -30
+            - -31
+            - -32
+            - -34
+            - -35
+            - -36
+            - -37
+            - -38
+            - -39
+            - -40
+            - -41
+            - -42
+            - -43
+            - -44
+            - -45
+            - -46
+            - -47
+            - -48
+            - -49
+            - -99
+            - -100
+            - -101
+            - -102
+            - -103
+            - -105
+            - -220
+            - -221
+            - -222
+            - -301
+            - -310
+            - -451
+            - -452
+            - -453
+            - -454
+            - -480
+            - -481
+            - -482
+            - -483
+            - -484
+            - -485
+            - -500
+            - -501
+            - -502
+            - -503
+            - -505
+            - -506
+            - -507
+          description: |
+            Error response code:
+            * -1 - Missing parameters
+            * -2 - Used up memory
+            * -3 - Check error
+            * -4 - Parameters error
+            * -5 - Reached the max session number.
+            * -6 - Login required
+            * -7 - Login error
+            * -8 - Operation timeout
+            * -9 - Not supported
+            * -10 - Protocol error
+            * -11 - Failed to read operation
+            * -12 - Failed to get configuration.
+            * -13 - Failed to set configuration.
+            * -14 - Failed to apply for memory
+            * -15 - Failed to created socket
+            * -16 - Failed to send data
+            * -17 - Failed to receiver data
+            * -18 - Failed to open file
+            * -19 - Failed to read file
+            * -20 - Failed to write file
+            * -21 - Token error
+            * -22 - The length of the string exceeds the limitation
+            * -23 - Missing parameters
+            * -24 - Command error
+            * -25 - Internal error
+            * -26 - Ability error
+            * -27 - Invalid user
+            * -28 - User already exist
+            * -29 - Reached the maximum number of users
+            * -30 - The version is identical to the current one.
+            * -31 - Ensure only one user can upgrade
+            * -32 - Modify IP conflicted with used IP
+            * -34 - Cloud login need bind email first
+            * -35 - Cloud login unbind camera
+            * -36 - Cloud login get login information out of time
+            * -37 - Cloud login password error
+            * -38 - Cloud bind camera uid error
+            * -39 - Cloud login user doesn’t exist
+            * -40 - Cloud unbind camera failed
+            * -41 - The device doesn’t support cloud
+            * -42 - Cloud login server failed
+            * -43 - Cloud bind camera failed
+            * -44 - Cloud unknown error
+            * -45 - Cloud bind camera need verify code
+            * -46 - An error occurred while using the digest authentication process
+            * -47 - Nonce expires Abstract An expired nonce is used in the authentication process
+            * -48 - Snap a picture failed
+            * -49 - Channel is invalid
+            * -99 - Device offline
+            * -100 - Test Email,Ftp,Wifi failed
+            * -101 - Upgrade checking firmware failed
+            * -102 - Upgrade download online failed
+            * -103 - Upgrade get upgrade status failed
+            * -105 - Frequent logins
+            * -220 - Error downloading video file
+            * -221 - Busy video recording task
+            * -222 - The video file does not exist
+            * -301 - Digest Authentication nonce error
+            * -310 - Aes decryption failure
+            * -451 - ftp test login failed
+            * -452 - Create ftp dir failed
+            * -453 - Upload ftp file failed
+            * -454 - Cannot connect ftp server
+            * -480 - Some undefined errors
+            * -481 - Cannot connect email server
+            * -482 - Auth user failed
+            * -483 - Email network err
+            * -484 - Something wrong with email server
+            * -485 - Something wrong with memory
+            * -500 - The number of IP addresses reaches the upper limit
+            * -501 - The user does not exist
+            * -502 - Password err
+            * -503 - Login deny
+            * -505 - Login not init
+            * -506 - Login locked
+            * -507 - The number of logins reached the upper limit
         detail:
           type: string
-          description: Detailed error message
+          description: Error message details
     BaseCommandResponse:
       type: object
       required:
