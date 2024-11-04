@@ -12,7 +12,7 @@ post:
       application/json:
         schema:
           allOf:
-            - $ref: '../../components/schemas/common/base.yaml#/BaseCommandRequest'
+            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
             - type: object
               properties:
                 action:
@@ -24,7 +24,7 @@ post:
                     - channel
                   properties:
                     channel:
-                      $ref: '../../components/schemas/common.yaml#/Channel'
+                      $ref: '../../components/schemas/index.yaml#/Channel'
   responses:
     '200':
       description: Successful operation
@@ -34,7 +34,7 @@ post:
             type: array
             items:
               allOf:
-                - $ref: '../../components/schemas/common/base.yaml#/BaseCommandResponse'
+                - $ref: '../../components/schemas/index.yaml#/BaseCommandResponse'
                 - type: object
                   properties:
                     value:
@@ -48,13 +48,13 @@ post:
                             area:
                               type: array
                               items:
-                                $ref: '../../components/schemas/common.yaml#/MaskArea'
+                                $ref: '../../components/schemas/index.yaml#/MaskArea'
                               maxItems: 4
                               description: Up to 4 privacy mask areas can be defined
                             channel:
-                              $ref: '../../components/schemas/common.yaml#/Channel'
+                              $ref: '../../components/schemas/index.yaml#/Channel'
                             enable:
-                              $ref: '../../components/schemas/common.yaml#/EnableSwitch'
+                              $ref: '../../components/schemas/index.yaml#/EnableSwitch'
                     initial:
                       type: object
                       properties:

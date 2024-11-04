@@ -1,4 +1,4 @@
-# components/schemas/common/device.yaml
+# components/schemas/index.yaml
 # Device-related schemas
 StorageInfo:
   type: object

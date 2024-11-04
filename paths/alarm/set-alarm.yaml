@@ -12,7 +12,7 @@ post:
       application/json:
         schema:
           allOf:
-            - $ref: '../../components/schemas/common/base.yaml#/BaseCommandRequest'
+            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
             - type: object
               properties:
                 param:
@@ -27,16 +27,16 @@ post:
                         - type
                       properties:
                         channel:
-                          $ref: '../../components/schemas/common.yaml#/Channel'
+                          $ref: '../../components/schemas/index.yaml#/Channel'
                         type:
                           type: string
                           enum: ['md']
                         scope:
-                          $ref: '../../components/schemas/common/alarm.yaml#/AlarmArea'
+                          $ref: '../../components/schemas/index.yaml#/AlarmArea'
                         sens:
                           type: array
                           items:
-                            $ref: '../../components/schemas/common/alarm.yaml#/AlarmSensitivity'
+                            $ref: '../../components/schemas/index.yaml#/AlarmSensitivity'
   responses:
     '200':
       $ref: '../../components/responses/common.yaml#/Success'

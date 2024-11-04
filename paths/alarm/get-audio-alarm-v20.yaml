@@ -12,7 +12,7 @@ post:
       application/json:
         schema:
           allOf:
-            - $ref: '../../components/schemas/common/base.yaml#/BaseCommandRequest'
+            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
             - type: object
               properties:
                 param:
@@ -21,7 +21,7 @@ post:
                     - channel
                   properties:
                     channel:
-                      $ref: '../../components/schemas/common.yaml#/Channel'
+                      $ref: '../../components/schemas/index.yaml#/Channel'
   responses:
     '200':
       description: Successful operation
@@ -31,7 +31,7 @@ post:
             type: array
             items:
               allOf:
-                - $ref: '../../components/schemas/common/base.yaml#/BaseCommandResponse'
+                - $ref: '../../components/schemas/index.yaml#/BaseCommandResponse'
                 - type: object
                   properties:
                     value:
@@ -43,21 +43,21 @@ post:
                           type: object
                           properties:
                             enable:
-                              $ref: '../../components/schemas/common.yaml#/EnableSwitch'
+                              $ref: '../../components/schemas/index.yaml#/EnableSwitch'
                             schedule:
                               type: object
                               properties:
                                 channel:
-                                  $ref: '../../components/schemas/common.yaml#/Channel'
+                                  $ref: '../../components/schemas/index.yaml#/Channel'
                                 table:
                                   type: object
                                   properties:
                                     MD:
-                                      $ref: '../../components/schemas/common.yaml#/ScheduleTable'
+                                      $ref: '../../components/schemas/index.yaml#/ScheduleTable'
                                     AI_PEOPLE:
-                                      $ref: '../../components/schemas/common.yaml#/ScheduleTable'
+                                      $ref: '../../components/schemas/index.yaml#/ScheduleTable'
                                     AI_VEHICLE:
-                                      $ref: '../../components/schemas/common.yaml#/ScheduleTable'
+                                      $ref: '../../components/schemas/index.yaml#/ScheduleTable'
     '401':
       $ref: '../../components/responses/common.yaml#/Error'
     '4XX':

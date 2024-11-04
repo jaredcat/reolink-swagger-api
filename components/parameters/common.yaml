@@ -24,7 +24,7 @@ channel:
   in: query
   required: false
   schema:
-    $ref: '../schemas/common.yaml#/Channel'
+    $ref: '../schemas/index.yaml#/Channel'
   description: Channel number to operate on
 
 # Stream type parameter

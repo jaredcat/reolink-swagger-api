@@ -12,7 +12,7 @@ post:
       application/json:
         schema:
           allOf:
-            - $ref: '../../components/schemas/common/base.yaml#/BaseCommandRequest'
+            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
             - type: object
               properties:
                 param:
@@ -22,13 +22,13 @@ post:
                   properties:
                     Crop:
                       allOf:
-                        - $ref: '../../components/schemas/common.yaml#/CropSettings'
+                        - $ref: '../../components/schemas/index.yaml#/CropSettings'
                         - type: object
                           required:
                             - channel
                           properties:
                             channel:
-                              $ref: '../../components/schemas/common.yaml#/Channel'
+                              $ref: '../../components/schemas/index.yaml#/Channel'
   responses:
     '200':
       $ref: '../../components/responses/common.yaml#/Success'

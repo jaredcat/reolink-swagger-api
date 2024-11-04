@@ -49,24 +49,24 @@ FileDownload:
       schema:
         type: string
       description: Attachment filename
-  X-Frame-Options:
-    schema:
-      type: string
-      enum:
-        - SAMEORIGIN
-    description: Frame embedding policy
-  X-XSS-Protection:
-    schema:
-      type: string
-      enum:
-        - '1; mode=block'
-    description: XSS protection policy
-  X-Content-Type-Options:
-    schema:
-      type: string
-      enum:
-        - nosniff
-    description: MIME type enforcement policy
+    X-Frame-Options:
+      schema:
+        type: string
+        enum:
+          - SAMEORIGIN
+      description: Frame embedding policy
+    X-XSS-Protection:
+      schema:
+        type: string
+        enum:
+          - '1; mode=block'
+      description: XSS protection policy
+    X-Content-Type-Options:
+      schema:
+        type: string
+        enum:
+          - nosniff
+      description: MIME type enforcement policy
   content:
     application/octet-stream:
       schema:
@@ -86,23 +86,23 @@ ImageResponse:
         type: integer
       description: Size of image in bytes
     X-Frame-Options:
-    schema:
-      type: string
-      enum:
-        - SAMEORIGIN
-    description: Frame embedding policy
-  X-XSS-Protection:
-    schema:
-      type: string
-      enum:
-        - '1; mode=block'
-    description: XSS protection policy
-  X-Content-Type-Options:
-    schema:
-      type: string
-      enum:
-        - nosniff
-    description: MIME type enforcement policy
+      schema:
+        type: string
+        enum:
+          - SAMEORIGIN
+      description: Frame embedding policy
+    X-XSS-Protection:
+      schema:
+        type: string
+        enum:
+          - '1; mode=block'
+      description: XSS protection policy
+    X-Content-Type-Options:
+      schema:
+        type: string
+        enum:
+          - nosniff
+      description: MIME type enforcement policy
   content:
     image/jpeg:
       schema:

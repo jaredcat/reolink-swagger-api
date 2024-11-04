@@ -1,2 +1,3 @@
+npm run generate-schema-index
 npm run postman
 git add swagger.yaml postman-collection.json

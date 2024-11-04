@@ -1,0 +1,247 @@
+ImageSettings:
+  type: object
+  properties:
+    bright:
+      type: integer
+      minimum: 0
+      maximum: 255
+      description: Image brightness
+    contrast:
+      type: integer
+      minimum: 0
+      maximum: 255
+      description: Image contrast
+    saturation:
+      type: integer
+      minimum: 0
+      maximum: 255
+      description: Image saturation
+    hue:
+      type: integer
+      minimum: 0
+      maximum: 255
+      description: Image hue
+    sharpen:
+      type: integer
+      minimum: 0
+      maximum: 255
+      description: Image sharpness
+    channel:
+      $ref: './types.yaml#/Channel'
+
+OsdSettings:
+  type: object
+  properties:
+    bgcolor:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Background color
+        * 0 - Transparent
+        * 1 - Solid
+    channel:
+      $ref: './types.yaml#/Channel'
+    osdChannel:
+      type: object
+      properties:
+        enable:
+          $ref: './types.yaml#/EnableSwitch'
+        name:
+          type: string
+          maxLength: 31
+          description: Camera name to display
+        pos:
+          type: string
+          enum:
+            - Upper Left
+            - Top Center
+            - Upper Right
+            - Lower Left
+            - Bottom Center
+            - Lower Right
+            - Other Configuration
+          description: Position of channel name display
+    osdTime:
+      type: object
+      properties:
+        enable:
+          $ref: './types.yaml#/EnableSwitch'
+        pos:
+          type: string
+          enum:
+            - Upper Left
+            - Top Center
+            - Upper Right
+            - Lower Left
+            - Bottom Center
+            - Lower Right
+            - Other Configuration
+          description: Position of time display
+    watermark:
+      $ref: './types.yaml#/EnableSwitch'
+
+MaskArea:
+  type: object
+  properties:
+    block:
+      type: object
+      properties:
+        height:
+          type: integer
+          minimum: 0
+          description: Height of mask area
+        width:
+          type: integer
+          minimum: 0
+          description: Width of mask area
+        x:
+          type: integer
+          minimum: 0
+          description: X coordinate of mask area
+        y:
+          type: integer
+          minimum: 0
+          description: Y coordinate of mask area
+    screen:
+      type: object
+      properties:
+        height:
+          type: integer
+          minimum: 0
+          description: Screen height
+        width:
+          type: integer
+          minimum: 0
+          description: Screen width
+
+IspSettings:
+  type: object
+  properties:
+    antiFlicker:
+      type: string
+      enum: [Other, '50HZ', '60HZ', Off]
+      description: Anti-flicker mode
+    backLight:
+      type: string
+      enum: [Off, BackLightControl, DynamicRangeControl]
+      description: Backlight compensation mode
+    dayNight:
+      type: string
+      enum: [Auto, Color, 'Black&White']
+      description: Day/Night mode
+    exposure:
+      type: string
+      enum: [Auto, LowNoise, 'Anti-Smearing', Manual]
+      description: Exposure mode
+    whiteBalance:
+      type: string
+      enum: [Auto, Manual]
+      description: White balance mode
+    mirroring:
+      $ref: './types.yaml#/EnableSwitch'
+      description: Image mirroring
+    rotation:
+      $ref: './types.yaml#/EnableSwitch'
+      description: Image rotation
+    nr3d:
+      $ref: './types.yaml#/EnableSwitch'
+      description: 3D noise reduction
+    blc:
+      type: integer
+      minimum: 0
+      maximum: 255
+      description: Backlight compensation level
+    gain:
+      type: object
+      properties:
+        max:
+          type: integer
+          minimum: 1
+          maximum: 100
+        min:
+          type: integer
+          minimum: 1
+          maximum: 100
+    shutter:
+      type: object
+      properties:
+        max:
+          type: integer
+          minimum: 0
+          maximum: 125
+        min:
+          type: integer
+          minimum: 0
+          maximum: 125
+
+BrightnessSettings:
+  type: object
+  properties:
+    bright:
+      type: integer
+      minimum: 0
+      maximum: 255
+      description: Brightness level
+    dark:
+      type: integer
+      minimum: 0
+      maximum: 255
+      description: Darkness level
+    mode:
+      type: string
+      enum: [Auto, Manual]
+      description: Brightness control mode
+
+CropSettings:
+  type: object
+  properties:
+    cropHeight:
+      type: integer
+      minimum: 480
+      description: Height of crop area
+    cropWidth:
+      type: integer
+      minimum: 640
+      description: Width of crop area
+    mainHeight:
+      type: integer
+      description: Height of main stream
+    mainWidth:
+      type: integer
+      description: Width of main stream
+    minHeight:
+      type: integer
+      minimum: 480
+      description: Minimum allowed height
+    minWidth:
+      type: integer
+      minimum: 640
+      description: Minimum allowed width
+    topLeftX:
+      type: integer
+      minimum: 0
+      description: X coordinate of top-left corner
+    topLeftY:
+      type: integer
+      minimum: 0
+      description: Y coordinate of top-left corner
+
+StitchSettings:
+  type: object
+  properties:
+    distance:
+      type: number
+      format: float
+      minimum: 2.0
+      maximum: 20.0
+      description: Distance between images in stitching
+    stitchXMove:
+      type: integer
+      minimum: -100
+      maximum: 100
+      description: Horizontal pixel adjustment for stitching
+    stitchYMove:
+      type: integer
+      minimum: -100
+      maximum: 100
+      description: Vertical pixel adjustment for stitching

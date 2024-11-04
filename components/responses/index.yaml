@@ -1,9 +1,12 @@
-# Common responses
+# THIS FILE IS AUTO-GENERATED
+# DO NOT MODIFY IT MANUALLY
+# CHANGES WILL BE OVERWRITTEN
+
 Success:
-  $ref: './common.yaml#/Success'
+  $ref: ./common.yaml#/Success
 Error:
-  $ref: './common.yaml#/Error'
+  $ref: ./common.yaml#/Error
 FileDownload:
-  $ref: './common.yaml#/FileDownload'
+  $ref: ./common.yaml#/FileDownload
 ImageResponse:
-  $ref: './common.yaml#/ImageResponse'
+  $ref: ./common.yaml#/ImageResponse

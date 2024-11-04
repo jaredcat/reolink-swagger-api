@@ -15,7 +15,7 @@ post:
             type: array
             items:
               allOf:
-                - $ref: '../../components/schemas/common/base.yaml#/BaseCommandResponse'
+                - $ref: '../../components/schemas/index.yaml#/BaseCommandResponse'
                 - type: object
                   properties:
                     value:
@@ -24,7 +24,7 @@ post:
                         - Status
                       properties:
                         Status:
-                          $ref: '../../components/schemas/common.yaml#/UpgradeStatus'
+                          $ref: '../../components/schemas/index.yaml#/UpgradeStatus'
     '401':
       $ref: '../../components/responses/common.yaml#/Error'
     '4XX':

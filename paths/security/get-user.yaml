@@ -12,7 +12,7 @@ post:
       application/json:
         schema:
           allOf:
-            - $ref: '../../components/schemas/common/base.yaml#/BaseCommandRequest'
+            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
             - type: object
               properties:
                 action:
@@ -28,7 +28,7 @@ post:
             type: array
             items:
               allOf:
-                - $ref: '../../components/schemas/common/base.yaml#/BaseCommandResponse'
+                - $ref: '../../components/schemas/index.yaml#/BaseCommandResponse'
                 - type: object
                   properties:
                     value:
@@ -37,12 +37,12 @@ post:
                         User:
                           type: array
                           items:
-                            $ref: '../../components/schemas/common/security.yaml#/UserInfo'
+                            $ref: '../../components/schemas/index.yaml#/UserInfo'
                     initial:
                       type: object
                       properties:
                         User:
-                          $ref: '../../components/schemas/common/security.yaml#/UserInfo'
+                          $ref: '../../components/schemas/index.yaml#/UserInfo'
                     range:
                       type: object
                       properties:

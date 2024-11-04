@@ -15,7 +15,7 @@ post:
             type: array
             items:
               allOf:
-                - $ref: '../../components/schemas/common/base.yaml#/BaseCommandResponse'
+                - $ref: '../../components/schemas/index.yaml#/BaseCommandResponse'
                 - type: object
                   properties:
                     value:
@@ -27,7 +27,7 @@ post:
                           type: object
                           properties:
                             enable:
-                              $ref: '../../components/schemas/common.yaml#/EnableSwitch'
+                              $ref: '../../components/schemas/index.yaml#/EnableSwitch'
     '401':
       $ref: '../../components/responses/common.yaml#/Error'
     '4XX':

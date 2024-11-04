@@ -11,7 +11,7 @@ post:
       in: query
       required: true
       schema:
-        $ref: '../../components/schemas/common.yaml#/Channel'
+        $ref: '../../components/schemas/index.yaml#/Channel'
     - name: rs
       in: query
       required: true

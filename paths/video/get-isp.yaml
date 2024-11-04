@@ -12,7 +12,7 @@ post:
       application/json:
         schema:
           allOf:
-            - $ref: '../../components/schemas/common/base.yaml#/BaseCommandRequest'
+            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
             - type: object
               properties:
                 action:
@@ -24,7 +24,7 @@ post:
                     - channel
                   properties:
                     channel:
-                      $ref: '../../components/schemas/common.yaml#/Channel'
+                      $ref: '../../components/schemas/index.yaml#/Channel'
   responses:
     '200':
       description: Successful operation
@@ -34,7 +34,7 @@ post:
             type: array
             items:
               allOf:
-                - $ref: '../../components/schemas/common/base.yaml#/BaseCommandResponse'
+                - $ref: '../../components/schemas/index.yaml#/BaseCommandResponse'
                 - type: object
                   properties:
                     value:
@@ -44,15 +44,15 @@ post:
                       properties:
                         Isp:
                           allOf:
-                            - $ref: '../../components/schemas/common.yaml#/IspSettings'
+                            - $ref: '../../components/schemas/index.yaml#/IspSettings'
                             - type: object
                               properties:
                                 bd_day:
-                                  $ref: '../../components/schemas/common.yaml#/BrightnessSettings'
+                                  $ref: '../../components/schemas/index.yaml#/BrightnessSettings'
                                 bd_night:
-                                  $ref: '../../components/schemas/common.yaml#/BrightnessSettings'
+                                  $ref: '../../components/schemas/index.yaml#/BrightnessSettings'
                                 bd_led_color:
-                                  $ref: '../../components/schemas/common.yaml#/BrightnessSettings'
+                                  $ref: '../../components/schemas/index.yaml#/BrightnessSettings'
                                 constantFrameRate:
                                   type: integer
                                   enum: [0, 1]
@@ -75,7 +75,7 @@ post:
                       type: object
                       properties:
                         Isp:
-                          $ref: '../../components/schemas/common.yaml#/IspSettings'
+                          $ref: '../../components/schemas/index.yaml#/IspSettings'
                     range:
                       type: object
                       description: Valid ranges for all parameters

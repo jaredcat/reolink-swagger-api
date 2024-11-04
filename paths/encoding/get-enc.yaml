@@ -12,7 +12,7 @@ post:
       application/json:
         schema:
           allOf:
-            - $ref: '../../components/schemas/common/base.yaml#/BaseCommandRequest'
+            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
             - type: object
               properties:
                 action:
@@ -25,7 +25,7 @@ post:
                     - channel
                   properties:
                     channel:
-                      $ref: '../../components/schemas/common.yaml#/Channel'
+                      $ref: '../../components/schemas/index.yaml#/Channel'
   responses:
     '200':
       description: Successful operation
@@ -35,7 +35,7 @@ post:
             type: array
             items:
               allOf:
-                - $ref: '../../components/schemas/common/base.yaml#/BaseCommandResponse'
+                - $ref: '../../components/schemas/index.yaml#/BaseCommandResponse'
                 - type: object
                   properties:
                     value:
@@ -44,12 +44,12 @@ post:
                         - Enc
                       properties:
                         Enc:
-                          $ref: '../../components/schemas/common.yaml#/EncodingConfig'
+                          $ref: '../../components/schemas/index.yaml#/EncodingConfig'
                     initial:
                       type: object
                       properties:
                         Enc:
-                          $ref: '../../components/schemas/common.yaml#/EncodingConfig'
+                          $ref: '../../components/schemas/index.yaml#/EncodingConfig'
                     range:
                       type: object
                       properties:
@@ -58,7 +58,7 @@ post:
                           description: Array of supported encoding configurations
                           items:
                             allOf:
-                              - $ref: '../../components/schemas/common.yaml#/EncodingConfig'
+                              - $ref: '../../components/schemas/index.yaml#/EncodingConfig'
                               - type: object
                                 properties:
                                   chnBit:
@@ -66,7 +66,7 @@ post:
                                     description: Channel bit width
                                   mainStream:
                                     allOf:
-                                      - $ref: '../../components/schemas/common.yaml#/VideoStreamConfig'
+                                      - $ref: '../../components/schemas/index.yaml#/VideoStreamConfig'
                                       - type: object
                                         properties:
                                           bitRate:

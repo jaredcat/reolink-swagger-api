@@ -12,7 +12,7 @@ post:
       application/json:
         schema:
           allOf:
-            - $ref: '../../components/schemas/common/base.yaml#/BaseCommandRequest'
+            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
             - type: object
               properties:
                 action:
@@ -34,7 +34,7 @@ post:
                           enum: ['md']
                           description: Alarm type (currently only motion detection supported)
                         channel:
-                          $ref: '../../components/schemas/common.yaml#/Channel'
+                          $ref: '../../components/schemas/index.yaml#/Channel'
   responses:
     '200':
       description: Successful operation
@@ -44,7 +44,7 @@ post:
             type: array
             items:
               allOf:
-                - $ref: '../../components/schemas/common/base.yaml#/BaseCommandResponse'
+                - $ref: '../../components/schemas/index.yaml#/BaseCommandResponse'
                 - type: object
                   properties:
                     value:
@@ -56,16 +56,16 @@ post:
                           type: object
                           properties:
                             channel:
-                              $ref: '../../components/schemas/common.yaml#/Channel'
+                              $ref: '../../components/schemas/index.yaml#/Channel'
                             type:
                               type: string
                               enum: ['md']
                             scope:
-                              $ref: '../../components/schemas/common/alarm.yaml#/AlarmArea'
+                              $ref: '../../components/schemas/index.yaml#/AlarmArea'
                             sens:
                               type: array
                               items:
-                                $ref: '../../components/schemas/common/alarm.yaml#/AlarmSensitivity'
+                                $ref: '../../components/schemas/index.yaml#/AlarmSensitivity'
                     initial:
                       type: object
                       description: Initial configuration values

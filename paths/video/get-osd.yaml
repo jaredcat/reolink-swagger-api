@@ -12,7 +12,7 @@ post:
       application/json:
         schema:
           allOf:
-            - $ref: '../../components/schemas/common/base.yaml#/BaseCommandRequest'
+            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
             - type: object
               properties:
                 action:
@@ -24,7 +24,7 @@ post:
                     - channel
                   properties:
                     channel:
-                      $ref: '../../components/schemas/common.yaml#/Channel'
+                      $ref: '../../components/schemas/index.yaml#/Channel'
   responses:
     '200':
       description: Successful operation
@@ -34,7 +34,7 @@ post:
             type: array
             items:
               allOf:
-                - $ref: '../../components/schemas/common/base.yaml#/BaseCommandResponse'
+                - $ref: '../../components/schemas/index.yaml#/BaseCommandResponse'
                 - type: object
                   properties:
                     value:
@@ -43,12 +43,12 @@ post:
                         - Osd
                       properties:
                         Osd:
-                          $ref: '../../components/schemas/common.yaml#/OsdSettings'
+                          $ref: '../../components/schemas/index.yaml#/OsdSettings'
                     initial:
                       type: object
                       properties:
                         Osd:
-                          $ref: '../../components/schemas/common.yaml#/OsdSettings'
+                          $ref: '../../components/schemas/index.yaml#/OsdSettings'
                     range:
                       type: object
                       description: Valid ranges for all parameters

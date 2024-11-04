@@ -12,16 +12,16 @@ post:
       application/json:
         schema:
           allOf:
-            - $ref: '../../components/schemas/common/base.yaml#/BaseCommandRequest'
+            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
             - type: object
               properties:
                 param:
                   type: object
                   properties:
                     Time:
-                      $ref: '../../components/schemas/common/time.yaml#/TimeConfig'
+                      $ref: '../../components/schemas/index.yaml#/TimeConfig'
                     Dst:
-                      $ref: '../../components/schemas/common/time.yaml#/DSTConfig'
+                      $ref: '../../components/schemas/index.yaml#/DSTConfig'
   responses:
     '200':
       $ref: '../../components/responses/common.yaml#/Success'

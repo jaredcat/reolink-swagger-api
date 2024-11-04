@@ -1,4 +1,4 @@
-# components/schemas/common/base.yaml
+# components/schemas/index.yaml
 # Base request/response structures
 BaseCommandRequest:
   type: object

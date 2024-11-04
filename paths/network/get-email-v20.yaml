@@ -12,14 +12,14 @@ post:
       application/json:
         schema:
           allOf:
-            - $ref: '../../components/schemas/common/base.yaml#/BaseCommandRequest'
+            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
             - type: object
               properties:
                 param:
                   type: object
                   properties:
                     channel:
-                      $ref: '../../components/schemas/common.yaml#/Channel'
+                      $ref: '../../components/schemas/index.yaml#/Channel'
   responses:
     '200':
       description: Successful operation
@@ -29,7 +29,7 @@ post:
             type: array
             items:
               allOf:
-                - $ref: '../../components/schemas/common/base.yaml#/BaseCommandResponse'
+                - $ref: '../../components/schemas/index.yaml#/BaseCommandResponse'
                 - type: object
                   properties:
                     value:
@@ -38,7 +38,7 @@ post:
                         - Email
                       properties:
                         Email:
-                          $ref: '../../components/schemas/common/network.yaml#/EmailConfigV20'
+                          $ref: '../../components/schemas/index.yaml#/EmailConfigV20'
     '401':
       $ref: '../../components/responses/common.yaml#/Error'
     '4XX':

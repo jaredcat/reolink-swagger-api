@@ -1,4 +1,4 @@
-# components/schemas/common/ptz.yaml
+# components/schemas/index.yaml
 SerialConfig:
   type: object
   properties:
@@ -33,3 +33,245 @@ SerialConfig:
       type: integer
       enum: [1, 2]
       description: Stop bits configuration
+
+PTZPreset:
+  type: object
+  properties:
+    channel:
+      $ref: './types.yaml#/Channel'
+    enable:
+      $ref: './types.yaml#/EnableSwitch'
+    id:
+      type: integer
+      minimum: 1
+      maximum: 64
+      description: Preset position ID
+    name:
+      type: string
+      maxLength: 31
+      description: Name of the preset position
+
+# PTZ Patrol Configuration
+PTZPatrol:
+  type: object
+  properties:
+    channel:
+      $ref: './types.yaml#/Channel'
+    enable:
+      $ref: './types.yaml#/EnableSwitch'
+    id:
+      type: integer
+      minimum: 1
+      maximum: 6
+      description: Patrol ID
+    name:
+      type: string
+      maxLength: 31
+      description: Name of the patrol route
+    running:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Running status
+        * 0 - Stopped
+        * 1 - Running
+    preset:
+      type: array
+      maxItems: 16
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+            minimum: 1
+            maximum: 64
+            description: Preset ID to visit
+          dwellTime:
+            type: integer
+            minimum: 1
+            maximum: 30
+            description: Time to stay at preset (seconds)
+          speed:
+            type: integer
+            minimum: 1
+            maximum: 64
+            description: Movement speed to preset
+
+# PTZ Control Operations
+PTZOperation:
+  type: string
+  enum:
+    - Stop
+    - Left
+    - Right
+    - Up
+    - Down
+    - LeftUp
+    - LeftDown
+    - RightUp
+    - RightDown
+    - IrisDec
+    - IrisInc
+    - ZoomDec
+    - ZoomInc
+    - FocusDec
+    - FocusInc
+    - Auto
+    - StartPatrol
+    - StopPatrol
+    - ToPos
+  description: |
+    PTZ control operations
+    * Stop - Stop PTZ movement
+    * Left - Turn left
+    * Right - Turn right
+    * Up - Turn up
+    * Down - Turn down
+    * LeftUp - Turn left-up
+    * LeftDown - Turn left-down
+    * RightUp - Turn right-up
+    * RightDown - Turn right-down
+    * IrisDec - Decrease iris
+    * IrisInc - Increase iris
+    * ZoomDec - Zoom out
+    * ZoomInc - Zoom in
+    * FocusDec - Focus back
+    * FocusInc - Focus forward
+    * Auto - Auto pan
+    * StartPatrol - Start patrol route
+    * StopPatrol - Stop patrol route
+    * ToPos - Move to preset position
+
+# PTZ Serial Configuration
+PTZSerial:
+  type: object
+  properties:
+    channel:
+      $ref: './types.yaml#/Channel'
+    baudRate:
+      type: integer
+      enum: [1200, 2400, 4800, 9600]
+      description: Serial baud rate
+    dataBit:
+      type: string
+      enum: [CS8, CS7, CS6, CS5]
+      description: Data bits
+    flowCtrl:
+      type: string
+      enum: [none, hard, xon, xoff]
+      description: Flow control type
+    parity:
+      type: string
+      enum: [none, odd, even]
+      description: Parity check type
+    stopBit:
+      type: integer
+      enum: [1, 2]
+      description: Stop bits
+    ctrlProtocol:
+      type: string
+      enum: [PELCO_D, PELCO_P]
+      description: PTZ control protocol
+    ctrlAddr:
+      type: integer
+      minimum: 1
+      maximum: 64
+      description: Control address
+
+# PTZ Pattern Configuration
+PTZPattern:
+  type: object
+  properties:
+    channel:
+      $ref: './types.yaml#/Channel'
+    track:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+            minimum: 1
+            maximum: 6
+            description: Pattern track ID
+          enable:
+            $ref: './types.yaml#/EnableSwitch'
+          running:
+            type: integer
+            enum: [0, 1]
+            description: |
+              Running status
+              * 0 - Stopped
+              * 1 - Running
+          name:
+            type: string
+            maxLength: 191
+            description: Name of the pattern track
+
+# Auto Focus Configuration
+AutoFocusConfig:
+  type: object
+  properties:
+    channel:
+      $ref: './types.yaml#/Channel'
+    disable:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Auto focus state
+        * 0 - Auto focus enabled
+        * 1 - Auto focus disabled
+
+# Zoom/Focus Position Configuration
+ZoomFocusConfig:
+  type: object
+  properties:
+    channel:
+      $ref: './types.yaml#/Channel'
+    zoom:
+      type: object
+      properties:
+        pos:
+          type: integer
+          description: Current zoom position
+    focus:
+      type: object
+      properties:
+        pos:
+          type: integer
+          description: Current focus position
+
+# PTZ Guard Position Configuration
+PTZGuardConfig:
+  type: object
+  properties:
+    channel:
+      $ref: './types.yaml#/Channel'
+    benable:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Enable automatic return to guard position
+        * 0 - Disabled
+        * 1 - Enabled
+    bexistPos:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Guard position status
+        * 0 - No guard position set
+        * 1 - Guard position exists
+    timeout:
+      type: integer
+      minimum: 60
+      description: Time in seconds before returning to guard position
+
+# PTZ Check State
+PTZCheckState:
+  type: integer
+  enum: [0, 1, 2]
+  description: |
+    PTZ check state
+    * 0 - Idle
+    * 1 - Check in progress
+    * 2 - Check completed

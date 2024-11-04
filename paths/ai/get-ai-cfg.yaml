@@ -12,7 +12,7 @@ post:
       application/json:
         schema:
           allOf:
-            - $ref: '../../components/schemas/common/base.yaml#/BaseCommandRequest'
+            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
             - type: object
               properties:
                 param:
@@ -21,7 +21,7 @@ post:
                     - channel
                   properties:
                     channel:
-                      $ref: '../../components/schemas/common.yaml#/Channel'
+                      $ref: '../../components/schemas/index.yaml#/Channel'
   responses:
     '200':
       description: Successful operation
@@ -31,20 +31,20 @@ post:
             type: array
             items:
               allOf:
-                - $ref: '../../components/schemas/common/base.yaml#/BaseCommandResponse'
+                - $ref: '../../components/schemas/index.yaml#/BaseCommandResponse'
                 - type: object
                   properties:
                     value:
                       type: object
                       properties:
                         AiDetectType:
-                          $ref: '../../components/schemas/common/ai.yaml#/AiDetectTypes'
+                          $ref: '../../components/schemas/index.yaml#/AiDetectTypes'
                         aiTrack:
-                          $ref: '../../components/schemas/common.yaml#/EnableSwitch'
+                          $ref: '../../components/schemas/index.yaml#/EnableSwitch'
                         channel:
-                          $ref: '../../components/schemas/common.yaml#/Channel'
+                          $ref: '../../components/schemas/index.yaml#/Channel'
                         trackType:
-                          $ref: '../../components/schemas/common/ai.yaml#/AiTrackTypes'
+                          $ref: '../../components/schemas/index.yaml#/AiTrackTypes'
     '401':
       $ref: '../../components/responses/common.yaml#/Error'
     '4XX':

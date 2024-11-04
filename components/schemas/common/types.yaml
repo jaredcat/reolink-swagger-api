@@ -1,4 +1,4 @@
-# components/schemas/common/types.yaml
+# components/schemas/index.yaml
 # Basic reusable types
 EnableSwitch:
   type: integer

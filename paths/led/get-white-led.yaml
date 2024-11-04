@@ -15,7 +15,7 @@ post:
             type: array
             items:
               allOf:
-                - $ref: '../../components/schemas/common/base.yaml#/BaseCommandResponse'
+                - $ref: '../../components/schemas/index.yaml#/BaseCommandResponse'
                 - type: object
                   properties:
                     value:
@@ -24,6 +24,6 @@ post:
                         - WhiteLed
                       properties:
                         WhiteLed:
-                          $ref: '../../components/schemas/common/led.yaml#/WhiteLedConfig'
+                          $ref: '../../components/schemas/index.yaml#/WhiteLedConfig'
     '401':
       $ref: '../../components/responses/common.yaml#/Error'

@@ -1,4 +1,4 @@
-# components/schemas/common/status.yaml
+# components/schemas/index.yaml
 # Status and maintenance related schemas
 MaintenanceStatus:
   type: object

@@ -2,18 +2,103 @@ EmailSchedule:
   type: object
   properties:
     channel:
-      $ref: '../common.yaml#/Channel'
+      $ref: './types.yaml#/Channel'
     table:
       type: object
       properties:
         AI_PEOPLE:
-          $ref: '../common.yaml#/ScheduleTable'
+          $ref: './types.yaml#/ScheduleTable'
         AI_VEHICLE:
-          $ref: '../common.yaml#/ScheduleTable'
+          $ref: './types.yaml#/ScheduleTable'
         MD:
-          $ref: '../common.yaml#/ScheduleTable'
+          $ref: './types.yaml#/ScheduleTable'
         VL:
-          $ref: '../common.yaml#/ScheduleTable'
+          $ref: './types.yaml#/ScheduleTable'
+
+EmailConfig:
+  type: object
+  properties:
+    addr1:
+      type: string
+      maxLength: 127
+      description: First recipient email address
+    addr2:
+      type: string
+      maxLength: 127
+      description: Second recipient email address
+    addr3:
+      type: string
+      maxLength: 127
+      description: Third recipient email address
+    attachment:
+      type: string
+      enum: [no, picture, video, onlyPicture]
+      description: |
+        Email attachment type
+        * no - No attachments
+        * picture - Attach pictures
+        * video - Attach videos
+        * onlyPicture - Only attach pictures (no video)
+    interval:
+      type: string
+      enum: [30 Seconds, 1 Minute, 5 Minutes, 10 Minutes, 30 Minutes]
+      description: Minimum interval between email notifications
+    nickName:
+      type: string
+      maxLength: 127
+      description: Sender nickname
+    password:
+      type: string
+      maxLength: 31
+      description: SMTP account password
+    smtpPort:
+      type: integer
+      minimum: 1
+      maximum: 65535
+      description: SMTP server port
+    smtpServer:
+      type: string
+      maxLength: 127
+      description: SMTP server address
+    ssl:
+      $ref: './types.yaml#/EnableSwitch'
+      description: Whether to use SSL/TLS encryption
+    userName:
+      type: string
+      maxLength: 127
+      description: SMTP account username
+    schedule:
+      type: object
+      properties:
+        enable:
+          $ref: './types.yaml#/EnableSwitch'
+          description: Email schedule enable status
+        table:
+          $ref: './types.yaml#/ScheduleTable'
+          description: Weekly schedule table for email notifications
+
+EmailTestResult:
+  type: object
+  properties:
+    rspCode:
+      type: integer
+      enum:
+        - 200
+        - -480
+        - -481
+        - -482
+        - -483
+        - -484
+        - -485
+      description: |
+        Email test result code:
+        * 200 - Success
+        * -480 - Undefined error
+        * -481 - Connection failed
+        * -482 - Authentication failed
+        * -483 - Network error
+        * -484 - Server error
+        * -485 - Memory error
 
 EmailConfigV20:
   type: object
@@ -34,7 +119,7 @@ EmailConfigV20:
       type: integer
       description: Type of email attachments
     enable:
-      $ref: '../common.yaml#/ScheduleTable'
+      $ref: './types.yaml#/ScheduleTable'
     interval:
       type: string
       enum: ['30 Seconds', '1 Minute', '5 Minutes', '10 Minutes', '30 Minutes']
@@ -54,7 +139,7 @@ EmailConfigV20:
       type: string
       maxLength: 127
     ssl:
-      $ref: '../common.yaml#/ScheduleTable'
+      $ref: './types.yaml#/ScheduleTable'
     userName:
       type: string
       maxLength: 127
@@ -63,31 +148,446 @@ PushSchedule:
   type: object
   properties:
     enable:
-      $ref: '../common.yaml#/EnableSwitch'
+      $ref: './types.yaml#/EnableSwitch'
     table:
-      $ref: '../common.yaml#/ScheduleTable'
+      $ref: './types.yaml#/ScheduleTable'
 
 PushScheduleV20:
   type: object
   properties:
     channel:
-      $ref: '../common.yaml#/Channel'
+      $ref: './types.yaml#/Channel'
     table:
       type: object
       properties:
         AI_PEOPLE:
-          $ref: '../common.yaml#/ScheduleTable'
+          $ref: './types.yaml#/ScheduleTable'
         AI_VEHICLE:
-          $ref: '../common.yaml#/ScheduleTable'
+          $ref: './types.yaml#/ScheduleTable'
         MD:
-          $ref: '../common.yaml#/ScheduleTable'
+          $ref: './types.yaml#/ScheduleTable'
         TIMING:
-          $ref: '../common.yaml#/ScheduleTable'
+          $ref: './types.yaml#/ScheduleTable'
 
 PushConfigV20:
   type: object
   properties:
     enable:
-      $ref: '../common.yaml#/EnableSwitch'
+      $ref: './types.yaml#/EnableSwitch'
     schedule:
       $ref: '#/PushScheduleV20'
+
+LocalLinkConfig:
+  type: object
+  properties:
+    activeLink:
+      type: string
+      enum: [LAN, Wi-Fi]
+      description: Active network connection type
+    mac:
+      type: string
+      pattern: '^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$'
+      description: Network interface MAC address
+    type:
+      type: string
+      enum: [DHCP, Static]
+      description: IP address assignment method
+    static:
+      type: object
+      description: Static IP configuration
+      properties:
+        ip:
+          type: string
+          format: ipv4
+          description: Static IP address
+        gateway:
+          type: string
+          format: ipv4
+          description: Gateway address
+        mask:
+          type: string
+          format: ipv4
+          description: Subnet mask
+    dns:
+      type: object
+      description: DNS configuration
+      properties:
+        auto:
+          $ref: './types.yaml#/EnableSwitch'
+          description: Whether to get DNS automatically
+        dns1:
+          type: string
+          format: ipv4
+          description: Primary DNS server
+        dns2:
+          type: string
+          format: ipv4
+          description: Secondary DNS server
+
+NetworkPortConfig:
+  type: object
+  properties:
+    httpEnable:
+      $ref: './types.yaml#/EnableSwitch'
+      description: HTTP service enable status
+    httpPort:
+      type: integer
+      minimum: 1
+      maximum: 65535
+      default: 80
+      description: HTTP port
+    httpsEnable:
+      $ref: './types.yaml#/EnableSwitch'
+      description: HTTPS service enable status
+    httpsPort:
+      type: integer
+      minimum: 1
+      maximum: 65535
+      default: 443
+      description: HTTPS port
+    rtspEnable:
+      $ref: './types.yaml#/EnableSwitch'
+      description: RTSP service enable status
+    rtspPort:
+      type: integer
+      minimum: 1
+      maximum: 65535
+      default: 554
+      description: RTSP port
+    rtmpEnable:
+      $ref: './types.yaml#/EnableSwitch'
+      description: RTMP service enable status
+    rtmpPort:
+      type: integer
+      minimum: 1
+      maximum: 65535
+      default: 1935
+      description: RTMP port
+    onvifEnable:
+      $ref: './types.yaml#/EnableSwitch'
+      description: ONVIF service enable status
+    onvifPort:
+      type: integer
+      minimum: 1
+      maximum: 65535
+      default: 8000
+      description: ONVIF port
+    mediaPort:
+      type: integer
+      minimum: 1
+      maximum: 65535
+      default: 9000
+      description: Media port
+
+DDNSConfig:
+  type: object
+  properties:
+    enable:
+      $ref: './types.yaml#/EnableSwitch'
+      description: DDNS service enable status
+    type:
+      type: string
+      enum: [no-ip, Dyndns]
+      description: DDNS service provider
+    domain:
+      type: string
+      maxLength: 127
+      description: DDNS domain name
+    userName:
+      type: string
+      maxLength: 127
+      description: DDNS account username
+    password:
+      type: string
+      maxLength: 127
+      description: DDNS account password
+    servAddr:
+      type: string
+      maxLength: 127
+      description: DDNS server address
+
+BaseFtpConfig:
+  type: object
+  properties:
+    anonymous:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Use anonymous login
+        * 0 - Use credentials
+        * 1 - Anonymous login
+    port:
+      type: integer
+      minimum: 1
+      maximum: 65535
+      default: 21
+      description: FTP server port
+    server:
+      type: string
+      maxLength: 127
+      description: FTP server address
+    userName:
+      type: string
+      maxLength: 127
+      description: FTP account username
+    password:
+      type: string
+      maxLength: 127
+      description: FTP account password
+    remoteDir:
+      type: string
+      maxLength: 255
+      description: Remote directory path
+
+FtpConfig:
+  allOf:
+    - $ref: '#/BaseFtpConfig'
+    - type: object
+      properties:
+        autoDir:
+          type: integer
+          enum: [0, 1]
+          description: |
+            Auto create directories
+            * 0 - Manual directory structure
+            * 1 - Auto create directories
+        interval:
+          type: integer
+          minimum: 1
+          maximum: 3600
+          description: Upload interval in seconds
+        maxSize:
+          type: integer
+          minimum: 10
+          maximum: 1024
+          description: Maximum file size in MB
+        mode:
+          type: integer
+          minimum: 0
+          maximum: 2
+          description: |
+            Transfer mode
+            * 0 - Auto
+            * 1 - Active
+            * 2 - Passive
+        streamType:
+          type: integer
+          enum: [0, 1, 2]
+          description: |
+            Upload content type
+            * 0 - Pictures and videos
+            * 1 - Pictures only
+            * 2 - Videos only
+        schedule:
+          type: object
+          properties:
+            enable:
+              $ref: './types.yaml#/EnableSwitch'
+            table:
+              $ref: './types.yaml#/ScheduleTable'
+
+FtpConfigV20:
+  allOf:
+    - $ref: '#/BaseFtpConfig'
+    - type: object
+      properties:
+        enable:
+          $ref: './types.yaml#/EnableSwitch'
+        autoDir:
+          type: integer
+          enum: [0, 1, 2, 3]
+          description: |
+            Directory structure
+            * 0 - Manual
+            * 1 - YYYY-MM-DD
+            * 2 - YYYY-MM
+            * 3 - Custom
+        mode:
+          type: integer
+          enum: [0, 1, 2]
+          description: |
+            Transfer mode
+            * 0 - Auto
+            * 1 - Active
+            * 2 - Passive
+        onlyFtps:
+          type: integer
+          enum: [0, 1]
+          description: |
+            Use FTPS encryption
+            * 0 - No encryption
+            * 1 - Use FTPS
+        picCaptureMode:
+          type: integer
+          enum: [0, 1, 2, 3]
+          description: |
+            Image resolution mode
+            * 0 - Clear
+            * 1 - Standard
+            * 2 - Smooth
+            * 3 - Custom
+        picWidth:
+          type: integer
+          minimum: 640
+          maximum: 3840
+          description: Custom image width
+        picHeight:
+          type: integer
+          minimum: 360
+          maximum: 2160
+          description: Custom image height
+        picInterval:
+          type: integer
+          enum: [2, 5, 10, 15, 30, 60, 300, 600, 1800]
+          description: Image upload interval in seconds
+        bpicSingle:
+          type: integer
+          enum: [0, 1, 2]
+          description: |
+            Image retention policy
+            * 0 - Keep all
+            * 1 - Keep latest only
+            * 2 - Rolling replacement
+        bvideoSingle:
+          type: integer
+          enum: [0, 1, 2]
+          description: |
+            Video retention policy
+            * 0 - Keep all
+            * 1 - Keep latest only
+            * 2 - Rolling replacement
+        schedule:
+          type: object
+          properties:
+            channel:
+              $ref: './types.yaml#/Channel'
+            table:
+              type: object
+              properties:
+                MD:
+                  $ref: './types.yaml#/ScheduleTable'
+                TIMING:
+                  $ref: './types.yaml#/ScheduleTable'
+                AI_PEOPLE:
+                  $ref: './types.yaml#/ScheduleTable'
+                AI_VEHICLE:
+                  $ref: './types.yaml#/ScheduleTable'
+
+FtpTestResult:
+  type: object
+  properties:
+    rspCode:
+      type: integer
+      enum:
+        - 200
+        - -451
+        - -452
+        - -453
+        - -454
+      description: |
+        FTP test result code:
+        * 200 - Success
+        * -451 - Login failed
+        * -452 - Create directory failed
+        * -453 - Upload failed
+        * -454 - Connection failed
+
+NtpConfig:
+  type: object
+  properties:
+    enable:
+      $ref: './types.yaml#/EnableSwitch'
+      description: NTP service enable status
+    server:
+      type: string
+      maxLength: 127
+      description: NTP server address
+    port:
+      type: integer
+      minimum: 1
+      maximum: 65535
+      default: 123
+      description: NTP server port
+    interval:
+      type: integer
+      minimum: 60
+      maximum: 65535
+      description: Time synchronization interval in minutes
+
+UpnpConfig:
+  type: object
+  properties:
+    enable:
+      $ref: './types.yaml#/EnableSwitch'
+      description: UPnP enable status
+
+WifiConfig:
+  type: object
+  properties:
+    password:
+      type: string
+      maxLength: 127
+      description: WiFi network password
+    ssid:
+      type: string
+      maxLength: 127
+      description: WiFi network SSID
+
+WifiNetwork:
+  type: object
+  properties:
+    bencrypt:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Network encryption status
+        * 0 - Open network
+        * 1 - Encrypted network
+    signal:
+      type: integer
+      minimum: 1
+      maximum: 4
+      description: |
+        Signal strength
+        * 1 - signal <= -60
+        * 2 - signal <= -50
+        * 3 - signal <= -40
+        * 4 - signal > -40
+    ssid:
+      type: string
+      description: Network SSID
+
+P2pConfig:
+  type: object
+  properties:
+    enable:
+      $ref: './types.yaml#/EnableSwitch'
+      description: P2P service enable status
+    uid:
+      type: string
+      description: Device UID for P2P connection
+
+CertificateInfo:
+  type: object
+  properties:
+    enable:
+      $ref: './types.yaml#/EnableSwitch'
+      description: Custom certificate enable status
+    crtName:
+      type: string
+      description: Certificate file name
+    keyName:
+      type: string
+      description: Private key file name
+
+RtspUrlInfo:
+  type: object
+  properties:
+    channel:
+      $ref: './types.yaml#/Channel'
+    mainStream:
+      type: string
+      description: RTSP URL for main stream
+    subStream:
+      type: string
+      description: RTSP URL for sub stream

@@ -13,7 +13,7 @@ post:
       application/json:
         schema:
           allOf:
-            - $ref: '../../components/schemas/common/base.yaml#/BaseCommandRequest'
+            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
             - type: object
               properties:
                 param:
@@ -22,7 +22,7 @@ post:
                     - Wifi
                   properties:
                     Wifi:
-                      $ref: '../../components/schemas/common.yaml#/WifiConfig'
+                      $ref: '../../components/schemas/index.yaml#/WifiConfig'
   responses:
     '200':
       $ref: '../../components/responses/common.yaml#/Success'

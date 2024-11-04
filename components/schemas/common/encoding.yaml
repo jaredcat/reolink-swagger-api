@@ -1,0 +1,46 @@
+EncodingConfig:
+  type: object
+  properties:
+    audio:
+      $ref: './types.yaml#/EnableSwitch'
+      description: Audio encoding enable/disable
+    channel:
+      $ref: './types.yaml#/Channel'
+    mainStream:
+      $ref: '#/VideoStreamConfig'
+      description: Main stream configuration
+    subStream:
+      $ref: '#/VideoStreamConfig'
+      description: Sub stream configuration
+
+VideoStreamConfig:
+  type: object
+  properties:
+    bitRate:
+      type: integer
+      description: Bit rate in Kbps
+    frameRate:
+      type: integer
+      description: Frame rate in fps
+    gop:
+      type: integer
+      minimum: 1
+      maximum: 4
+      description: Group of Pictures interval
+    height:
+      type: integer
+      description: Video height in pixels
+    width:
+      type: integer
+      description: Video width in pixels
+    profile:
+      type: string
+      enum: ['Base', 'Main', 'High']
+      description: H.264/H.265 profile
+    size:
+      type: string
+      description: Resolution string (e.g. "3840*2160")
+    vType:
+      type: string
+      enum: ['h264', 'h265']
+      description: Video encoding type

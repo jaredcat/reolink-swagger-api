@@ -1,48 +1,148 @@
-# components/schemas/index.yaml
-# Base structures
+# THIS FILE IS AUTO-GENERATED
+# DO NOT MODIFY IT MANUALLY
+# CHANGES WILL BE OVERWRITTEN
+
+AiDetectTypes:
+  $ref: ./common/ai.yaml#/AiDetectTypes
+AiTrackTypes:
+  $ref: ./common/ai.yaml#/AiTrackTypes
+AiDetectionState:
+  $ref: ./common/ai.yaml#/AiDetectionState
+AlarmArea:
+  $ref: ./common/alarm.yaml#/AlarmArea
+AlarmSensitivity:
+  $ref: ./common/alarm.yaml#/AlarmSensitivity
+MdAlarmConfig:
+  $ref: ./common/alarm.yaml#/MdAlarmConfig
 BaseCommandRequest:
-  $ref: './common/base.yaml#/BaseCommandRequest'
+  $ref: ./common/base.yaml#/BaseCommandRequest
 BaseCommandResponse:
-  $ref: './common/base.yaml#/BaseCommandResponse'
+  $ref: ./common/base.yaml#/BaseCommandResponse
 ErrorResponse:
-  $ref: './common/base.yaml#/ErrorResponse'
+  $ref: ./common/base.yaml#/ErrorResponse
 InitialRange:
-  $ref: './common/base.yaml#/InitialRange'
-
-# Common types
-EnableSwitch:
-  $ref: './common/types.yaml#/EnableSwitch'
-Channel:
-  $ref: './common/types.yaml#/Channel'
-Sensitivity:
-  $ref: './common/types.yaml#/Sensitivity'
-DeviceSupportType:
-  $ref: './common/types.yaml#/DeviceSupportType'
-ScheduleTable:
-  $ref: './common/types.yaml#/ScheduleTable'
-WeekDay:
-  $ref: './common/types.yaml#/WeekDay'
-
-# Time related
-TimeConfig:
-  $ref: './common/time.yaml#/TimeConfig'
-DSTConfig:
-  $ref: './common/time.yaml#/DSTConfig'
-# TimeRange:
-#   $ref: './common.yaml#/TimeRange'
-
-# Device related
+  $ref: ./common/base.yaml#/InitialRange
 StorageInfo:
-  $ref: './common/device.yaml#/StorageInfo'
+  $ref: ./common/device.yaml#/StorageInfo
 AutoMaintConfig:
-  $ref: './common/device.yaml#/AutoMaintConfig'
-
-# Status related
-MaintenanceStatus:
-  $ref: './common/status.yaml#/MaintenanceStatus'
-UpgradeStatus:
-  $ref: './common/status.yaml#/UpgradeStatus'
-
-# Add to components/schemas/index.yaml
+  $ref: ./common/device.yaml#/AutoMaintConfig
+EncodingConfig:
+  $ref: ./common/encoding.yaml#/EncodingConfig
+VideoStreamConfig:
+  $ref: ./common/encoding.yaml#/VideoStreamConfig
+LedState:
+  $ref: ./common/led.yaml#/LedState
+WhiteLedConfig:
+  $ref: ./common/led.yaml#/WhiteLedConfig
+EmailSchedule:
+  $ref: ./common/network.yaml#/EmailSchedule
+EmailConfig:
+  $ref: ./common/network.yaml#/EmailConfig
+EmailTestResult:
+  $ref: ./common/network.yaml#/EmailTestResult
+EmailConfigV20:
+  $ref: ./common/network.yaml#/EmailConfigV20
+PushSchedule:
+  $ref: ./common/network.yaml#/PushSchedule
+PushScheduleV20:
+  $ref: ./common/network.yaml#/PushScheduleV20
+PushConfigV20:
+  $ref: ./common/network.yaml#/PushConfigV20
+LocalLinkConfig:
+  $ref: ./common/network.yaml#/LocalLinkConfig
+NetworkPortConfig:
+  $ref: ./common/network.yaml#/NetworkPortConfig
+DDNSConfig:
+  $ref: ./common/network.yaml#/DDNSConfig
+BaseFtpConfig:
+  $ref: ./common/network.yaml#/BaseFtpConfig
+FtpConfig:
+  $ref: ./common/network.yaml#/FtpConfig
+FtpConfigV20:
+  $ref: ./common/network.yaml#/FtpConfigV20
+FtpTestResult:
+  $ref: ./common/network.yaml#/FtpTestResult
+NtpConfig:
+  $ref: ./common/network.yaml#/NtpConfig
+UpnpConfig:
+  $ref: ./common/network.yaml#/UpnpConfig
+WifiConfig:
+  $ref: ./common/network.yaml#/WifiConfig
+WifiNetwork:
+  $ref: ./common/network.yaml#/WifiNetwork
+P2pConfig:
+  $ref: ./common/network.yaml#/P2pConfig
+CertificateInfo:
+  $ref: ./common/network.yaml#/CertificateInfo
+RtspUrlInfo:
+  $ref: ./common/network.yaml#/RtspUrlInfo
 SerialConfig:
-  $ref: './common/ptz.yaml#/SerialConfig'
+  $ref: ./common/ptz.yaml#/SerialConfig
+PTZPreset:
+  $ref: ./common/ptz.yaml#/PTZPreset
+PTZPatrol:
+  $ref: ./common/ptz.yaml#/PTZPatrol
+PTZOperation:
+  $ref: ./common/ptz.yaml#/PTZOperation
+PTZSerial:
+  $ref: ./common/ptz.yaml#/PTZSerial
+PTZPattern:
+  $ref: ./common/ptz.yaml#/PTZPattern
+AutoFocusConfig:
+  $ref: ./common/ptz.yaml#/AutoFocusConfig
+ZoomFocusConfig:
+  $ref: ./common/ptz.yaml#/ZoomFocusConfig
+PTZGuardConfig:
+  $ref: ./common/ptz.yaml#/PTZGuardConfig
+PTZCheckState:
+  $ref: ./common/ptz.yaml#/PTZCheckState
+RecordingConfig:
+  $ref: ./common/recording.yaml#/RecordingConfig
+RecordingTimeRange:
+  $ref: ./common/recording.yaml#/RecordingTimeRange
+RecordingFile:
+  $ref: ./common/recording.yaml#/RecordingFile
+RecordingConfigV20:
+  $ref: ./common/recording.yaml#/RecordingConfigV20
+NvrDownloadFile:
+  $ref: ./common/recording.yaml#/NvrDownloadFile
+UserInfo:
+  $ref: ./common/security.yaml#/UserInfo
+TokenInfo:
+  $ref: ./common/security.yaml#/TokenInfo
+OnlineUserInfo:
+  $ref: ./common/security.yaml#/OnlineUserInfo
+MaintenanceStatus:
+  $ref: ./common/status.yaml#/MaintenanceStatus
+UpgradeStatus:
+  $ref: ./common/status.yaml#/UpgradeStatus
+TimeConfig:
+  $ref: ./common/time.yaml#/TimeConfig
+DSTConfig:
+  $ref: ./common/time.yaml#/DSTConfig
+EnableSwitch:
+  $ref: ./common/types.yaml#/EnableSwitch
+Channel:
+  $ref: ./common/types.yaml#/Channel
+Sensitivity:
+  $ref: ./common/types.yaml#/Sensitivity
+DeviceSupportType:
+  $ref: ./common/types.yaml#/DeviceSupportType
+ScheduleTable:
+  $ref: ./common/types.yaml#/ScheduleTable
+WeekDay:
+  $ref: ./common/types.yaml#/WeekDay
+ImageSettings:
+  $ref: ./common/video.yaml#/ImageSettings
+OsdSettings:
+  $ref: ./common/video.yaml#/OsdSettings
+MaskArea:
+  $ref: ./common/video.yaml#/MaskArea
+IspSettings:
+  $ref: ./common/video.yaml#/IspSettings
+BrightnessSettings:
+  $ref: ./common/video.yaml#/BrightnessSettings
+CropSettings:
+  $ref: ./common/video.yaml#/CropSettings
+StitchSettings:
+  $ref: ./common/video.yaml#/StitchSettings

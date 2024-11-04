@@ -12,7 +12,7 @@ post:
       application/json:
         schema:
           allOf:
-            - $ref: '../../components/schemas/common/base.yaml#/BaseCommandRequest'
+            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
             - type: object
               properties:
                 param:
@@ -45,7 +45,7 @@ post:
                           maxLength: 31
                           description: SMTP account password
                         ssl:
-                          $ref: '../../components/schemas/common.yaml#/EnableSwitch'
+                          $ref: '../../components/schemas/index.yaml#/EnableSwitch'
                         addr1:
                           type: string
                           maxLength: 127
@@ -71,11 +71,11 @@ post:
             type: array
             items:
               allOf:
-                - $ref: '../../components/schemas/common/base.yaml#/BaseCommandResponse'
+                - $ref: '../../components/schemas/index.yaml#/BaseCommandResponse'
                 - type: object
                   properties:
                     value:
-                      $ref: '../../components/schemas/common.yaml#/EmailTestResult'
+                      $ref: '../../components/schemas/index.yaml#/EmailTestResult'
     '401':
       $ref: '../../components/responses/common.yaml#/Error'
     '4XX':

@@ -15,7 +15,7 @@ post:
             type: array
             items:
               allOf:
-                - $ref: '../../components/schemas/common/base.yaml#/BaseCommandResponse'
+                - $ref: '../../components/schemas/index.yaml#/BaseCommandResponse'
                 - type: object
                   properties:
                     value:
@@ -24,7 +24,7 @@ post:
                         - CertificateInfo
                       properties:
                         CertificateInfo:
-                          $ref: '../../components/schemas/common.yaml#/CertificateInfo'
+                          $ref: '../../components/schemas/index.yaml#/CertificateInfo'
     '401':
       $ref: '../../components/responses/common.yaml#/Error'
     '4XX':

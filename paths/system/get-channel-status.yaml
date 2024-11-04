@@ -16,7 +16,7 @@ post:
             type: array
             items:
               allOf:
-                - $ref: '../../components/schemas/common/base.yaml#/BaseCommandResponse'
+                - $ref: '../../components/schemas/index.yaml#/BaseCommandResponse'
                 - type: object
                   properties:
                     value:
@@ -34,7 +34,7 @@ post:
                             type: object
                             properties:
                               channel:
-                                $ref: '../../components/schemas/common.yaml#/Channel'
+                                $ref: '../../components/schemas/index.yaml#/Channel'
                               name:
                                 type: string
                                 description: Channel name

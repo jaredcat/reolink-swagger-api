@@ -12,7 +12,7 @@ post:
       application/json:
         schema:
           allOf:
-            - $ref: '../../components/schemas/common/base.yaml#/BaseCommandRequest'
+            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
             - type: object
               properties:
                 action:
@@ -24,7 +24,7 @@ post:
                     - channel
                   properties:
                     channel:
-                      $ref: '../../components/schemas/common.yaml#/Channel'
+                      $ref: '../../components/schemas/index.yaml#/Channel'
   responses:
     '200':
       description: Successful operation
@@ -34,7 +34,7 @@ post:
             type: array
             items:
               allOf:
-                - $ref: '../../components/schemas/common/base.yaml#/BaseCommandResponse'
+                - $ref: '../../components/schemas/index.yaml#/BaseCommandResponse'
                 - type: object
                   properties:
                     value:
@@ -45,14 +45,14 @@ post:
                         PtzPreset:
                           type: array
                           items:
-                            $ref: '../../components/schemas/common.yaml#/PTZPreset'
+                            $ref: '../../components/schemas/index.yaml#/PTZPreset'
                     initial:
                       type: object
                       properties:
                         PtzPreset:
                           type: array
                           items:
-                            $ref: '../../components/schemas/common.yaml#/PTZPreset'
+                            $ref: '../../components/schemas/index.yaml#/PTZPreset'
                     range:
                       type: object
                       properties:

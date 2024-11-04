@@ -1,4 +1,4 @@
-# components/schemas/common/time.yaml
+# components/schemas/index.yaml
 # Time-related schemas
 TimeConfig:
   type: object

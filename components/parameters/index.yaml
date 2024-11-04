@@ -1,17 +1,18 @@
-# components/parameters/index.yaml
+# THIS FILE IS AUTO-GENERATED
+# DO NOT MODIFY IT MANUALLY
+# CHANGES WILL BE OVERWRITTEN
 
-# Common query parameters
 cmd:
-  $ref: './common.yaml#/cmd'
+  $ref: ./common.yaml#/cmd
 token:
-  $ref: './common.yaml#/token'
+  $ref: ./common.yaml#/token
 channel:
-  $ref: './common.yaml#/channel'
+  $ref: ./common.yaml#/channel
 streamType:
-  $ref: './common.yaml#/streamType'
+  $ref: ./common.yaml#/streamType
 source:
-  $ref: './common.yaml#/source'
+  $ref: ./common.yaml#/source
 output:
-  $ref: './common.yaml#/output'
+  $ref: ./common.yaml#/output
 clearConfig:
-  $ref: './common.yaml#/clearConfig'
+  $ref: ./common.yaml#/clearConfig

@@ -14,7 +14,7 @@ post:
       application/json:
         schema:
           allOf:
-            - $ref: '../../components/schemas/common/base.yaml#/BaseCommandRequest'
+            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
             - type: object
               properties:
                 param:
@@ -32,7 +32,7 @@ post:
                         - EndTime
                       properties:
                         channel:
-                          $ref: '../../components/schemas/common.yaml#/Channel'
+                          $ref: '../../components/schemas/index.yaml#/Channel'
                         onlyStatus:
                           type: integer
                           enum: [0, 1]
@@ -45,9 +45,9 @@ post:
                           enum: [main, sub]
                           description: Stream type to search for
                         StartTime:
-                          $ref: '../../components/schemas/common/time.yaml#/TimeConfig'
+                          $ref: '../../components/schemas/index.yaml#/TimeConfig'
                         EndTime:
-                          $ref: '../../components/schemas/common/time.yaml#/TimeConfig'
+                          $ref: '../../components/schemas/index.yaml#/TimeConfig'
   responses:
     '200':
       description: Successful operation
@@ -57,7 +57,7 @@ post:
             type: array
             items:
               allOf:
-                - $ref: '../../components/schemas/common/base.yaml#/BaseCommandResponse'
+                - $ref: '../../components/schemas/index.yaml#/BaseCommandResponse'
                 - type: object
                   properties:
                     value:
@@ -69,7 +69,7 @@ post:
                           type: object
                           properties:
                             channel:
-                              $ref: '../../components/schemas/common.yaml#/Channel'
+                              $ref: '../../components/schemas/index.yaml#/Channel'
                             Status:
                               type: array
                               description: Only returned when onlyStatus=1
@@ -87,7 +87,7 @@ post:
                               type: array
                               description: Only returned when onlyStatus=0
                               items:
-                                $ref: '../../components/schemas/common.yaml#/RecordingFile'
+                                $ref: '../../components/schemas/index.yaml#/RecordingFile'
     '401':
       $ref: '../../components/responses/common.yaml#/Error'
     '4XX':

@@ -8203,6 +8203,215 @@ components:
         value:
           type: object
           description: Current values
+    FtpConfigV20:
+      allOf:
+        - $ref: '#/components/schemas/BaseFtpConfig'
+        - type: object
+          properties:
+            enable:
+              $ref: '#/components/schemas/EnableSwitch'
+            autoDir:
+              type: integer
+              enum:
+                - 0
+                - 1
+                - 2
+                - 3
+              description: |
+                Directory structure
+                * 0 - Manual
+                * 1 - YYYY-MM-DD
+                * 2 - YYYY-MM
+                * 3 - Custom
+            mode:
+              type: integer
+              enum:
+                - 0
+                - 1
+                - 2
+              description: |
+                Transfer mode
+                * 0 - Auto
+                * 1 - Active
+                * 2 - Passive
+            onlyFtps:
+              type: integer
+              enum:
+                - 0
+                - 1
+              description: |
+                Use FTPS encryption
+                * 0 - No encryption
+                * 1 - Use FTPS
+            picCaptureMode:
+              type: integer
+              enum:
+                - 0
+                - 1
+                - 2
+                - 3
+              description: |
+                Image resolution mode
+                * 0 - Clear
+                * 1 - Standard
+                * 2 - Smooth
+                * 3 - Custom
+            picWidth:
+              type: integer
+              minimum: 640
+              maximum: 3840
+              description: Custom image width
+            picHeight:
+              type: integer
+              minimum: 360
+              maximum: 2160
+              description: Custom image height
+            picInterval:
+              type: integer
+              enum:
+                - 2
+                - 5
+                - 10
+                - 15
+                - 30
+                - 60
+                - 300
+                - 600
+                - 1800
+              description: Image upload interval in seconds
+            bpicSingle:
+              type: integer
+              enum:
+                - 0
+                - 1
+                - 2
+              description: |
+                Image retention policy
+                * 0 - Keep all
+                * 1 - Keep latest only
+                * 2 - Rolling replacement
+            bvideoSingle:
+              type: integer
+              enum:
+                - 0
+                - 1
+                - 2
+              description: |
+                Video retention policy
+                * 0 - Keep all
+                * 1 - Keep latest only
+                * 2 - Rolling replacement
+            schedule:
+              type: object
+              properties:
+                channel:
+                  $ref: '#/components/schemas/Channel'
+                table:
+                  type: object
+                  properties:
+                    MD:
+                      $ref: '#/components/schemas/ScheduleTable'
+                    TIMING:
+                      $ref: '#/components/schemas/ScheduleTable'
+                    AI_PEOPLE:
+                      $ref: '#/components/schemas/ScheduleTable'
+                    AI_VEHICLE:
+                      $ref: '#/components/schemas/ScheduleTable'
+    PTZSerial:
+      type: object
+      properties:
+        channel:
+          $ref: '#/components/schemas/Channel'
+        baudRate:
+          type: integer
+          enum:
+            - 1200
+            - 2400
+            - 4800
+            - 9600
+          description: Serial baud rate
+        dataBit:
+          type: string
+          enum:
+            - CS8
+            - CS7
+            - CS6
+            - CS5
+          description: Data bits
+        flowCtrl:
+          type: string
+          enum:
+            - none
+            - hard
+            - xon
+            - xoff
+          description: Flow control type
+        parity:
+          type: string
+          enum:
+            - none
+            - odd
+            - even
+          description: Parity check type
+        stopBit:
+          type: integer
+          enum:
+            - 1
+            - 2
+          description: Stop bits
+        ctrlProtocol:
+          type: string
+          enum:
+            - PELCO_D
+            - PELCO_P
+          description: PTZ control protocol
+        ctrlAddr:
+          type: integer
+          minimum: 1
+          maximum: 64
+          description: Control address
+    ZoomFocusConfig:
+      type: object
+      properties:
+        channel:
+          $ref: '#/components/schemas/Channel'
+        zoom:
+          type: object
+          properties:
+            pos:
+              type: integer
+              description: Current zoom position
+        focus:
+          type: object
+          properties:
+            pos:
+              type: integer
+              description: Current focus position
+    RecordingTimeRange:
+      type: object
+      required:
+        - StartTime
+        - EndTime
+      properties:
+        StartTime:
+          $ref: '#/components/schemas/TimeConfig'
+        EndTime:
+          $ref: '#/components/schemas/TimeConfig'
+    MaintenanceStatus:
+      type: object
+      required:
+        - rspCode
+      properties:
+        rspCode:
+          type: integer
+          enum:
+            - 200
+          description: Operation status code
+        progress:
+          type: integer
+          minimum: 0
+          maximum: 100
+          description: Operation progress percentage
     Sensitivity:
       type: integer
       minimum: 1
@@ -8220,21 +8429,6 @@ components:
         * ipc - Only supported on IP cameras
         * nvr - Only supported on NVR devices
         * both - Supported on both device types
-    MaintenanceStatus:
-      type: object
-      required:
-        - rspCode
-      properties:
-        rspCode:
-          type: integer
-          enum:
-            - 200
-          description: Operation status code
-        progress:
-          type: integer
-          minimum: 0
-          maximum: 100
-          description: Operation progress percentage
   responses:
     Error:
       description: Operation failed
@@ -8283,24 +8477,24 @@ components:
           schema:
             type: string
           description: Attachment filename
-      X-Frame-Options:
-        schema:
-          type: string
-          enum:
-            - SAMEORIGIN
-        description: Frame embedding policy
-      X-XSS-Protection:
-        schema:
-          type: string
-          enum:
-            - 1; mode=block
-        description: XSS protection policy
-      X-Content-Type-Options:
-        schema:
-          type: string
-          enum:
-            - nosniff
-        description: MIME type enforcement policy
+        X-Frame-Options:
+          schema:
+            type: string
+            enum:
+              - SAMEORIGIN
+          description: Frame embedding policy
+        X-XSS-Protection:
+          schema:
+            type: string
+            enum:
+              - 1; mode=block
+          description: XSS protection policy
+        X-Content-Type-Options:
+          schema:
+            type: string
+            enum:
+              - nosniff
+          description: MIME type enforcement policy
       content:
         application/octet-stream:
           schema:
@@ -8317,24 +8511,24 @@ components:
           schema:
             type: integer
           description: Size of image in bytes
-        X-Frame-Options: null
-        schema:
-          type: string
-          enum:
-            - SAMEORIGIN
-        description: Frame embedding policy
-      X-XSS-Protection:
-        schema:
-          type: string
-          enum:
-            - 1; mode=block
-        description: XSS protection policy
-      X-Content-Type-Options:
-        schema:
-          type: string
-          enum:
-            - nosniff
-        description: MIME type enforcement policy
+        X-Frame-Options:
+          schema:
+            type: string
+            enum:
+              - SAMEORIGIN
+          description: Frame embedding policy
+        X-XSS-Protection:
+          schema:
+            type: string
+            enum:
+              - 1; mode=block
+          description: XSS protection policy
+        X-Content-Type-Options:
+          schema:
+            type: string
+            enum:
+              - nosniff
+          description: MIME type enforcement policy
       content:
         image/jpeg:
           schema:

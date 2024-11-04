@@ -58,10 +58,10 @@ WhiteLedConfig:
       type: object
       properties:
         dog_cat:
-          $ref: '../common.yaml#/EnableSwitch'
+          $ref: './types.yaml#/EnableSwitch'
         face:
-          $ref: '../common.yaml#/EnableSwitch'
+          $ref: './types.yaml#/EnableSwitch'
         people:
-          $ref: '../common.yaml#/EnableSwitch'
+          $ref: './types.yaml#/EnableSwitch'
         vehicle:
-          $ref: '../common.yaml#/EnableSwitch'
+          $ref: './types.yaml#/EnableSwitch'

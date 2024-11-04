@@ -1,6 +1,17 @@
 {
+  "search.exclude": {
+    "**/dist": true,
+    "**/node_modules": true,
+    "swagger.yaml": true,
+    "postman-collection.json": true,
+    "package-lock.json": true,
+    "components/schemas/index.yaml": true,
+    "components/parameters/index.yaml": true,
+    "components/responses/index.yaml": true
+  },
   "cSpell.words": [
     "Ddns",
+    "Dyndns",
     "Maint",
     "ONVIF",
     "openapi",

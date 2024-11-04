@@ -12,7 +12,7 @@ post:
       application/json:
         schema:
           allOf:
-            - $ref: '../../components/schemas/common/base.yaml#/BaseCommandRequest'
+            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
             - type: object
               properties:
                 param:
@@ -22,7 +22,7 @@ post:
                   properties:
                     Enc:
                       allOf:
-                        - $ref: '../../components/schemas/common.yaml#/EncodingConfig'
+                        - $ref: '../../components/schemas/index.yaml#/EncodingConfig'
                         - type: object
                           required:
                             - channel

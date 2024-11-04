@@ -1,0 +1,134 @@
+RecordingConfig:
+  type: object
+  properties:
+    channel:
+      $ref: './types.yaml#/Channel'
+    overwrite:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Whether to overwrite old recordings
+        * 0 - Stop recording when disk is full
+        * 1 - Overwrite oldest recordings
+    packTime:
+      type: string
+      enum: ['30 Minutes', '45 Minutes', '60 Minutes']
+      description: Recording file package duration
+    postRec:
+      type: string
+      enum: ['15 Seconds', '30 Seconds', '1 Minute', '10 Minutes']
+      description: Post-recording duration
+    preRec:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Whether to enable pre-recording
+        * 0 - Disabled
+        * 1 - Enabled
+    schedule:
+      type: object
+      properties:
+        enable:
+          $ref: './types.yaml#/EnableSwitch'
+        table:
+          $ref: './types.yaml#/ScheduleTable'
+
+RecordingTimeRange:
+  type: object
+  required:
+    - StartTime
+    - EndTime
+  properties:
+    StartTime:
+      $ref: './time.yaml#/TimeConfig'
+    EndTime:
+      $ref: './time.yaml#/TimeConfig'
+
+RecordingFile:
+  type: object
+  properties:
+    name:
+      type: string
+      description: Recording filename
+    StartTime:
+      $ref: './time.yaml#/TimeConfig'
+    EndTime:
+      $ref: './time.yaml#/TimeConfig'
+    frameRate:
+      type: integer
+      description: Frame rate of recording
+    height:
+      type: integer
+      description: Video height in pixels
+    width:
+      type: integer
+      description: Video width in pixels
+    size:
+      type: integer
+      description: File size in bytes
+    type:
+      type: string
+      enum: [main, sub]
+      description: Stream type
+
+RecordingConfigV20:
+  type: object
+  properties:
+    enable:
+      $ref: './types.yaml#/EnableSwitch'
+    overwrite:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Whether to overwrite old recordings
+        * 0 - Stop recording when disk is full
+        * 1 - Overwrite oldest recordings
+    packTime:
+      type: string
+      enum: ['30 Minutes', '45 Minutes', '60 Minutes']
+      description: Recording file package duration
+    postRec:
+      type: string
+      enum: ['1 Minute', '2 Minutes', '5 Minutes', '10 Minutes']
+      description: Post-recording duration
+    preRec:
+      type: integer
+      enum: [0, 1]
+      description: |
+        Whether to enable pre-recording
+        * 0 - Disabled
+        * 1 - Enabled
+    saveDay:
+      type: integer
+      minimum: 0
+      description: Number of days to keep recordings (0 for unlimited)
+    schedule:
+      type: object
+      properties:
+        channel:
+          $ref: './types.yaml#/Channel'
+        table:
+          type: object
+          properties:
+            MD:
+              $ref: './types.yaml#/ScheduleTable'
+              description: Motion detection recording schedule
+            TIMING:
+              $ref: './types.yaml#/ScheduleTable'
+              description: Continuous recording schedule
+            AI_PEOPLE:
+              $ref: './types.yaml#/ScheduleTable'
+              description: AI people detection recording schedule
+            AI_VEHICLE:
+              $ref: './types.yaml#/ScheduleTable'
+              description: AI vehicle detection recording schedule
+
+NvrDownloadFile:
+  type: object
+  properties:
+    fileName:
+      type: string
+      description: Recording file name
+    fileSize:
+      type: string
+      description: File size in bytes

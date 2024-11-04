@@ -15,7 +15,7 @@ post:
       application/json:
         schema:
           allOf:
-            - $ref: '../../components/schemas/common/base.yaml#/BaseCommandRequest'
+            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
             - type: object
               properties:
                 param:
@@ -25,9 +25,9 @@ post:
                     - op
                   properties:
                     channel:
-                      $ref: '../../components/schemas/common.yaml#/Channel'
+                      $ref: '../../components/schemas/index.yaml#/Channel'
                     op:
-                      $ref: '../../components/schemas/common.yaml#/PTZOperation'
+                      $ref: '../../components/schemas/index.yaml#/PTZOperation'
                     speed:
                       type: integer
                       minimum: 1

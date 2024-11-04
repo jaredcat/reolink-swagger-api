@@ -3,16 +3,16 @@ AiDetectTypes:
   type: object
   properties:
     dog_cat:
-      $ref: '../common.yaml#/EnableSwitch'
+      $ref: './types.yaml#/EnableSwitch'
       description: Enable/disable dog and cat detection
     face:
-      $ref: '../common.yaml#/EnableSwitch'
+      $ref: './types.yaml#/EnableSwitch'
       description: Enable/disable face detection
     people:
-      $ref: '../common.yaml#/EnableSwitch'
+      $ref: './types.yaml#/EnableSwitch'
       description: Enable/disable people detection
     vehicle:
-      $ref: '../common.yaml#/EnableSwitch'
+      $ref: './types.yaml#/EnableSwitch'
       description: Enable/disable vehicle detection
 
 # AI Track Types Configuration
@@ -20,16 +20,16 @@ AiTrackTypes:
   type: object
   properties:
     dog_cat:
-      $ref: '../common.yaml#/EnableSwitch'
+      $ref: './types.yaml#/EnableSwitch'
       description: Enable/disable dog and cat tracking
     face:
-      $ref: '../common.yaml#/EnableSwitch'
+      $ref: './types.yaml#/EnableSwitch'
       description: Enable/disable face tracking
     people:
-      $ref: '../common.yaml#/EnableSwitch'
+      $ref: './types.yaml#/EnableSwitch'
       description: Enable/disable people tracking
     vehicle:
-      $ref: '../common.yaml#/EnableSwitch'
+      $ref: './types.yaml#/EnableSwitch'
       description: Enable/disable vehicle tracking
 
 # AI Detection State

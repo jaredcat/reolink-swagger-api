@@ -15,7 +15,7 @@ post:
             type: array
             items:
               allOf:
-                - $ref: '../../components/schemas/common/base.yaml#/BaseCommandResponse'
+                - $ref: '../../components/schemas/index.yaml#/BaseCommandResponse'
                 - type: object
                   properties:
                     value:
@@ -26,7 +26,7 @@ post:
                         HddInfo:
                           type: array
                           items:
-                            $ref: '../../components/schemas/common.yaml#/StorageInfo'
+                            $ref: '../../components/schemas/index.yaml#/StorageInfo'
     '401':
       $ref: '../../components/responses/common.yaml#/Error'
     '4XX':

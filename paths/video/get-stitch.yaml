@@ -13,7 +13,7 @@ post:
       application/json:
         schema:
           allOf:
-            - $ref: '../../components/schemas/common/base.yaml#/BaseCommandRequest'
+            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
             - type: object
               properties:
                 action:
@@ -28,7 +28,7 @@ post:
             type: array
             items:
               allOf:
-                - $ref: '../../components/schemas/common/base.yaml#/BaseCommandResponse'
+                - $ref: '../../components/schemas/index.yaml#/BaseCommandResponse'
                 - type: object
                   properties:
                     value:
@@ -37,12 +37,12 @@ post:
                         - stitch
                       properties:
                         stitch:
-                          $ref: '../../components/schemas/common.yaml#/StitchSettings'
+                          $ref: '../../components/schemas/index.yaml#/StitchSettings'
                     initial:
                       type: object
                       properties:
                         stitch:
-                          $ref: '../../components/schemas/common.yaml#/StitchSettings'
+                          $ref: '../../components/schemas/index.yaml#/StitchSettings'
                     range:
                       type: object
                       properties:

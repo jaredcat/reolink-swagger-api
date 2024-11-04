@@ -12,7 +12,7 @@ post:
       application/json:
         schema:
           allOf:
-            - $ref: '../../components/schemas/common/base.yaml#/BaseCommandRequest'
+            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
             - type: object
               properties:
                 param:
@@ -22,19 +22,19 @@ post:
                   properties:
                     Isp:
                       allOf:
-                        - $ref: '../../components/schemas/common.yaml#/IspSettings'
+                        - $ref: '../../components/schemas/index.yaml#/IspSettings'
                         - type: object
                           required:
                             - channel
                           properties:
                             channel:
-                              $ref: '../../components/schemas/common.yaml#/Channel'
+                              $ref: '../../components/schemas/index.yaml#/Channel'
                             bd_day:
-                              $ref: '../../components/schemas/common.yaml#/BrightnessSettings'
+                              $ref: '../../components/schemas/index.yaml#/BrightnessSettings'
                             bd_night:
-                              $ref: '../../components/schemas/common.yaml#/BrightnessSettings'
+                              $ref: '../../components/schemas/index.yaml#/BrightnessSettings'
                             bd_led_color:
-                              $ref: '../../components/schemas/common.yaml#/BrightnessSettings'
+                              $ref: '../../components/schemas/index.yaml#/BrightnessSettings'
                             constantFrameRate:
                               type: integer
                               enum: [0, 1]
