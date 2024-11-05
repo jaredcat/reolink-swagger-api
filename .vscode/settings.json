@@ -10,16 +10,26 @@
     "components/responses/index.yaml": true
   },
   "cSpell.words": [
+    "benable",
+    "bpic",
+    "bvideo",
     "Ddns",
     "Dyndns",
     "Maint",
+    "manu",
+    "nosniff",
     "ONVIF",
     "openapi",
+    "PELCO",
+    "postmanv",
     "redocly",
     "Reolink",
+    "reolinkapi",
     "RTMP",
     "Rtsp",
+    "SAMEORIGIN",
     "Tattern",
-    "Upnp"
+    "Upnp",
+    "xoff"
   ]
 }

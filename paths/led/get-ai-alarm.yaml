@@ -12,22 +12,26 @@ post:
     content:
       application/json:
         schema:
-          allOf:
-            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
-            - type: object
-              properties:
-                param:
-                  type: object
-                  required:
-                    - channel
-                    - ai_type
-                  properties:
-                    channel:
-                      $ref: '../../components/schemas/index.yaml#/Channel'
-                    ai_type:
-                      type: string
-                      enum: [people, vehicle, dog_cat]
-                      description: Type of AI detection
+          type: array
+          minItems: 1
+          maxItems: 1
+          items:
+            allOf:
+              - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
+              - type: object
+                properties:
+                  param:
+                    type: object
+                    required:
+                      - channel
+                      - ai_type
+                    properties:
+                      channel:
+                        $ref: '../../components/schemas/index.yaml#/Channel'
+                      ai_type:
+                        type: string
+                        enum: [people, vehicle, dog_cat]
+                        description: Type of AI detection
   responses:
     '200':
       description: Successful operation
@@ -35,6 +39,8 @@ post:
         application/json:
           schema:
             type: array
+            minItems: 1
+            maxItems: 1
             items:
               allOf:
                 - $ref: '../../components/schemas/index.yaml#/BaseCommandResponse'

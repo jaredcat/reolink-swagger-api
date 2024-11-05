@@ -11,24 +11,30 @@ post:
     content:
       application/json:
         schema:
-          allOf:
-            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
-            - type: object
-              properties:
-                param:
-                  type: object
-                  required:
-                    - channel
-                  properties:
-                    channel:
-                      $ref: '../../components/schemas/index.yaml#/Channel'
+          type: array
+          minItems: 1
+          maxItems: 1
+          items:
+            allOf:
+              - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
+              - type: object
+                properties:
+                  param:
+                    type: object
+                    required:
+                      - channel
+                    properties:
+                      channel:
+                        $ref: '../../components/schemas/index.yaml#/Channel'
   responses:
     '200':
       description: Successful operation
       content:
         application/json:
           schema:
-            type: array
+            type: 'array'
+            minItems: 1
+            maxItems: 1
             items:
               allOf:
                 - $ref: '../../components/schemas/index.yaml#/BaseCommandResponse'

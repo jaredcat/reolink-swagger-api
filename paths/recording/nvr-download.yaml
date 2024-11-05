@@ -12,32 +12,36 @@ post:
     content:
       application/json:
         schema:
-          allOf:
-            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
-            - type: object
-              properties:
-                param:
-                  type: object
-                  required:
-                    - NvrDownload
-                  properties:
-                    NvrDownload:
-                      type: object
-                      required:
-                        - channel
-                        - StartTime
-                        - EndTime
-                      properties:
-                        channel:
-                          $ref: '../../components/schemas/index.yaml#/Channel'
-                        streamType:
-                          type: string
-                          enum: [main, sub]
-                          description: Stream type to download
-                        StartTime:
-                          $ref: '../../components/schemas/index.yaml#/TimeConfig'
-                        EndTime:
-                          $ref: '../../components/schemas/index.yaml#/TimeConfig'
+          type: array
+          minItems: 1
+          maxItems: 1
+          items:
+            allOf:
+              - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
+              - type: object
+                properties:
+                  param:
+                    type: object
+                    required:
+                      - NvrDownload
+                    properties:
+                      NvrDownload:
+                        type: object
+                        required:
+                          - channel
+                          - StartTime
+                          - EndTime
+                        properties:
+                          channel:
+                            $ref: '../../components/schemas/index.yaml#/Channel'
+                          streamType:
+                            type: string
+                            enum: [main, sub]
+                            description: Stream type to download
+                          StartTime:
+                            $ref: '../../components/schemas/index.yaml#/TimeConfig'
+                          EndTime:
+                            $ref: '../../components/schemas/index.yaml#/TimeConfig'
   responses:
     '200':
       description: Successful operation
@@ -45,6 +49,8 @@ post:
         application/json:
           schema:
             type: array
+            minItems: 1
+            maxItems: 1
             items:
               allOf:
                 - $ref: '../../components/schemas/index.yaml#/BaseCommandResponse'

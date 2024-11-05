@@ -13,41 +13,45 @@ post:
     content:
       application/json:
         schema:
-          allOf:
-            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
-            - type: object
-              properties:
-                param:
-                  type: object
-                  required:
-                    - Search
-                  properties:
-                    Search:
-                      type: object
-                      required:
-                        - channel
-                        - onlyStatus
-                        - streamType
-                        - StartTime
-                        - EndTime
-                      properties:
-                        channel:
-                          $ref: '../../components/schemas/index.yaml#/Channel'
-                        onlyStatus:
-                          type: integer
-                          enum: [0, 1]
-                          description: |
-                            Search type
-                            * 0 - Get detailed file information
-                            * 1 - Get only dates with recordings
-                        streamType:
-                          type: string
-                          enum: [main, sub]
-                          description: Stream type to search for
-                        StartTime:
-                          $ref: '../../components/schemas/index.yaml#/TimeConfig'
-                        EndTime:
-                          $ref: '../../components/schemas/index.yaml#/TimeConfig'
+          type: array
+          minItems: 1
+          maxItems: 1
+          items:
+            allOf:
+              - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
+              - type: object
+                properties:
+                  param:
+                    type: object
+                    required:
+                      - Search
+                    properties:
+                      Search:
+                        type: object
+                        required:
+                          - channel
+                          - onlyStatus
+                          - streamType
+                          - StartTime
+                          - EndTime
+                        properties:
+                          channel:
+                            $ref: '../../components/schemas/index.yaml#/Channel'
+                          onlyStatus:
+                            type: integer
+                            enum: [0, 1]
+                            description: |
+                              Search type
+                              * 0 - Get detailed file information
+                              * 1 - Get only dates with recordings
+                          streamType:
+                            type: string
+                            enum: [main, sub]
+                            description: Stream type to search for
+                          StartTime:
+                            $ref: '../../components/schemas/index.yaml#/TimeConfig'
+                          EndTime:
+                            $ref: '../../components/schemas/index.yaml#/TimeConfig'
   responses:
     '200':
       description: Successful operation
@@ -55,6 +59,8 @@ post:
         application/json:
           schema:
             type: array
+            minItems: 1
+            maxItems: 1
             items:
               allOf:
                 - $ref: '../../components/schemas/index.yaml#/BaseCommandResponse'

@@ -12,17 +12,21 @@ post:
     content:
       application/json:
         schema:
-          allOf:
-            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
-            - type: object
-              properties:
-                param:
-                  type: object
-                  required:
-                    - Wifi
-                  properties:
-                    Wifi:
-                      $ref: '../../components/schemas/index.yaml#/WifiConfig'
+          type: array
+          minItems: 1
+          maxItems: 1
+          items:
+            allOf:
+              - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
+              - type: object
+                properties:
+                  param:
+                    type: object
+                    required:
+                      - Wifi
+                    properties:
+                      Wifi:
+                        $ref: '../../components/schemas/index.yaml#/WifiConfig'
   responses:
     '200':
       $ref: '../../components/responses/common.yaml#/Success'

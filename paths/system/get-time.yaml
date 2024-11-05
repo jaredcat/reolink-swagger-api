@@ -11,14 +11,18 @@ post:
     content:
       application/json:
         schema:
-          allOf:
-            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
-            - type: object
-              properties:
-                action:
-                  type: integer
-                  enum: [1]
-                  description: Get configuration with ranges
+          type: array
+          minItems: 1
+          maxItems: 1
+          items:
+            allOf:
+              - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
+              - type: object
+                properties:
+                  action:
+                    type: integer
+                    enum: [1]
+                    description: Get configuration with ranges
   responses:
     '200':
       description: Successful operation
@@ -26,6 +30,8 @@ post:
         application/json:
           schema:
             type: array
+            minItems: 1
+            maxItems: 1
             items:
               allOf:
                 - $ref: '../../components/schemas/index.yaml#/BaseCommandResponse'

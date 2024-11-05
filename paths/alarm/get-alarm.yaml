@@ -11,30 +11,34 @@ post:
     content:
       application/json:
         schema:
-          allOf:
-            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
-            - type: object
-              properties:
-                action:
-                  type: integer
-                  enum: [1]
-                param:
-                  type: object
-                  required:
-                    - Alarm
-                  properties:
-                    Alarm:
-                      type: object
-                      required:
-                        - type
-                        - channel
-                      properties:
-                        type:
-                          type: string
-                          enum: ['md']
-                          description: Alarm type (currently only motion detection supported)
-                        channel:
-                          $ref: '../../components/schemas/index.yaml#/Channel'
+          type: array
+          minItems: 1
+          maxItems: 1
+          items:
+            allOf:
+              - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
+              - type: object
+                properties:
+                  action:
+                    type: integer
+                    enum: [1]
+                  param:
+                    type: object
+                    required:
+                      - Alarm
+                    properties:
+                      Alarm:
+                        type: object
+                        required:
+                          - type
+                          - channel
+                        properties:
+                          type:
+                            type: string
+                            enum: ['md']
+                            description: Alarm type (currently only motion detection supported)
+                          channel:
+                            $ref: '../../components/schemas/index.yaml#/Channel'
   responses:
     '200':
       description: Successful operation
@@ -42,6 +46,8 @@ post:
         application/json:
           schema:
             type: array
+            minItems: 1
+            maxItems: 1
             items:
               allOf:
                 - $ref: '../../components/schemas/index.yaml#/BaseCommandResponse'

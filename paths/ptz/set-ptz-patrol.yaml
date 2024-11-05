@@ -13,46 +13,50 @@ post:
     content:
       application/json:
         schema:
-          allOf:
-            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
-            - type: object
-              properties:
-                param:
-                  type: object
-                  required:
-                    - PtzPatrol
-                  properties:
-                    PtzPatrol:
-                      allOf:
-                        - $ref: '../../components/schemas/index.yaml#/PTZPatrol'
-                        - type: object
-                          properties:
-                            preset:
-                              type: array
-                              maxItems: 16
-                              description: List of preset points in patrol route
-                              items:
-                                type: object
-                                required:
-                                  - id
-                                  - speed
-                                  - dwellTime
-                                properties:
-                                  id:
-                                    type: integer
-                                    minimum: 1
-                                    maximum: 64
-                                    description: Preset point ID to visit
-                                  speed:
-                                    type: integer
-                                    minimum: 1
-                                    maximum: 64
-                                    description: Movement speed to preset point
-                                  dwellTime:
-                                    type: integer
-                                    minimum: 1
-                                    maximum: 30
-                                    description: Time to stay at preset point (seconds)
+          type: array
+          minItems: 1
+          maxItems: 16
+          items:
+            allOf:
+              - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
+              - type: object
+                properties:
+                  param:
+                    type: object
+                    required:
+                      - PtzPatrol
+                    properties:
+                      PtzPatrol:
+                        allOf:
+                          - $ref: '../../components/schemas/index.yaml#/PTZPatrol'
+                          - type: object
+                            properties:
+                              preset:
+                                type: array
+                                maxItems: 16
+                                description: List of preset points in patrol route
+                                items:
+                                  type: object
+                                  required:
+                                    - id
+                                    - speed
+                                    - dwellTime
+                                  properties:
+                                    id:
+                                      type: integer
+                                      minimum: 1
+                                      maximum: 64
+                                      description: Preset point ID to visit
+                                    speed:
+                                      type: integer
+                                      minimum: 1
+                                      maximum: 64
+                                      description: Movement speed to preset point
+                                    dwellTime:
+                                      type: integer
+                                      minimum: 1
+                                      maximum: 30
+                                      description: Time to stay at preset point (seconds)
   responses:
     '200':
       $ref: '../../components/responses/common.yaml#/Success'

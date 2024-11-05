@@ -5,6 +5,7 @@ Success:
     application/json:
       schema:
         type: array
+        minItems: 1
         items:
           allOf:
             - $ref: '../schemas/common/base.yaml#/BaseCommandResponse'
@@ -25,6 +26,7 @@ Error:
     application/json:
       schema:
         type: array
+        minItems: 1
         items:
           allOf:
             - $ref: '../schemas/common/base.yaml#/BaseCommandResponse'

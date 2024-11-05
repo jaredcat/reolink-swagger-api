@@ -11,57 +11,61 @@ post:
     content:
       application/json:
         schema:
-          allOf:
-            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
-            - type: object
-              properties:
-                param:
-                  type: object
-                  required:
-                    - Email
-                  properties:
-                    Email:
-                      type: object
-                      required:
-                        - smtpServer
-                        - smtpPort
-                        - userName
-                      properties:
-                        smtpServer:
-                          type: string
-                          maxLength: 127
-                          description: SMTP server address
-                        smtpPort:
-                          type: integer
-                          minimum: 1
-                          maximum: 65535
-                          description: SMTP server port
-                        userName:
-                          type: string
-                          maxLength: 127
-                          description: SMTP account username
-                        password:
-                          type: string
-                          maxLength: 31
-                          description: SMTP account password
-                        ssl:
-                          $ref: '../../components/schemas/index.yaml#/EnableSwitch'
-                        addr1:
-                          type: string
-                          maxLength: 127
-                          description: First recipient email address
-                        addr2:
-                          type: string
-                          maxLength: 127
-                          description: Second recipient email address
-                        addr3:
-                          type: string
-                          maxLength: 127
-                          description: Third recipient email address
-                        nickName:
-                          type: string
-                          maxLength: 127
-                          description: Sender nickname
+          type: array
+          minItems: 1
+          maxItems: 1
+          items:
+            allOf:
+              - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
+              - type: object
+                properties:
+                  param:
+                    type: object
+                    required:
+                      - Email
+                    properties:
+                      Email:
+                        type: object
+                        required:
+                          - smtpServer
+                          - smtpPort
+                          - userName
+                        properties:
+                          smtpServer:
+                            type: string
+                            maxLength: 127
+                            description: SMTP server address
+                          smtpPort:
+                            type: integer
+                            minimum: 1
+                            maximum: 65535
+                            description: SMTP server port
+                          userName:
+                            type: string
+                            maxLength: 127
+                            description: SMTP account username
+                          password:
+                            type: string
+                            maxLength: 31
+                            description: SMTP account password
+                          ssl:
+                            $ref: '../../components/schemas/index.yaml#/EnableSwitch'
+                          addr1:
+                            type: string
+                            maxLength: 127
+                            description: First recipient email address
+                          addr2:
+                            type: string
+                            maxLength: 127
+                            description: Second recipient email address
+                          addr3:
+                            type: string
+                            maxLength: 127
+                            description: Third recipient email address
+                          nickName:
+                            type: string
+                            maxLength: 127
+                            description: Sender nickname
   responses:
     '200':
       description: Test completed
@@ -69,6 +73,8 @@ post:
         application/json:
           schema:
             type: array
+            minItems: 1
+            maxItems: 1
             items:
               allOf:
                 - $ref: '../../components/schemas/index.yaml#/BaseCommandResponse'

@@ -11,24 +11,28 @@ post:
     content:
       application/json:
         schema:
-          allOf:
-            - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
-            - type: object
-              properties:
-                param:
-                  type: object
-                  required:
-                    - Enc
-                  properties:
-                    Enc:
-                      allOf:
-                        - $ref: '../../components/schemas/index.yaml#/EncodingConfig'
-                        - type: object
-                          required:
-                            - channel
-                            - audio
-                            - mainStream
-                            - subStream
+          type: array
+          minItems: 1
+          maxItems: 1
+          items:
+            allOf:
+              - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
+              - type: object
+                properties:
+                  param:
+                    type: object
+                    required:
+                      - Enc
+                    properties:
+                      Enc:
+                        allOf:
+                          - $ref: '../../components/schemas/index.yaml#/EncodingConfig'
+                          - type: object
+                            required:
+                              - channel
+                              - audio
+                              - mainStream
+                              - subStream
   responses:
     '200':
       $ref: '../../components/responses/common.yaml#/Success'

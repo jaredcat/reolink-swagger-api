@@ -79,18 +79,22 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    User:
-                      type: object
-                      required:
-                        - userName
-                      properties:
-                        userName:
-                          type: string
-                          maxLength: 31
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      User:
+                        type: object
+                        required:
+                          - userName
+                        properties:
+                          userName:
+                            type: string
+                            maxLength: 31
       responses:
         '200':
           description: Successful operation
@@ -98,6 +102,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -197,6 +203,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -294,17 +302,21 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - channel
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - channel
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           description: Successful operation
@@ -312,6 +324,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -345,24 +359,28 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - DevName
-                      properties:
-                        DevName:
-                          type: object
-                          required:
-                            - name
-                          properties:
-                            name:
-                              type: string
-                              maxLength: 31
-                              description: New device name
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - DevName
+                        properties:
+                          DevName:
+                            type: object
+                            required:
+                              - name
+                            properties:
+                              name:
+                                type: string
+                                maxLength: 31
+                                description: New device name
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -383,15 +401,19 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 1
-                      description: Get configuration with ranges
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 1
+                        description: Get configuration with ranges
       responses:
         '200':
           description: Successful operation
@@ -399,6 +421,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -441,17 +465,21 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      properties:
-                        Time:
-                          $ref: '#/components/schemas/TimeConfig'
-                        Dst:
-                          $ref: '#/components/schemas/DSTConfig'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        properties:
+                          Time:
+                            $ref: '#/components/schemas/TimeConfig'
+                          Dst:
+                            $ref: '#/components/schemas/DSTConfig'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -472,15 +500,19 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 1
-                      description: Get configuration with ranges
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 1
+                        description: Get configuration with ranges
       responses:
         '200':
           description: Successful operation
@@ -488,6 +520,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -525,17 +559,21 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - AutoMaint
-                      properties:
-                        AutoMaint:
-                          $ref: '#/components/schemas/AutoMaintConfig'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - AutoMaint
+                        properties:
+                          AutoMaint:
+                            $ref: '#/components/schemas/AutoMaintConfig'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -558,6 +596,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -589,25 +629,29 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - HddInfo
-                      properties:
-                        HddInfo:
-                          type: object
-                          required:
-                            - id
-                          properties:
-                            id:
-                              type: array
-                              items:
-                                type: integer
-                              description: Array of storage device IDs to format
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - HddInfo
+                        properties:
+                          HddInfo:
+                            type: object
+                            required:
+                              - id
+                            properties:
+                              id:
+                                type: array
+                                items:
+                                  type: integer
+                                description: Array of storage device IDs to format
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -702,27 +746,31 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - fileName
-                      properties:
-                        restoreCfg:
-                          type: integer
-                          enum:
-                            - 0
-                            - 1
-                          description: |
-                            Whether to restore configuration after upgrade
-                            * 0 - Keep configuration
-                            * 1 - Restore defaults
-                        fileName:
-                          type: string
-                          description: Name of the upgrade file
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - fileName
+                        properties:
+                          restoreCfg:
+                            type: integer
+                            enum:
+                              - 0
+                              - 1
+                            description: |
+                              Whether to restore configuration after upgrade
+                              * 0 - Keep configuration
+                              * 1 - Restore defaults
+                          fileName:
+                            type: string
+                            description: Name of the upgrade file
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -745,6 +793,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -777,22 +827,26 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - AutoUpgrade
-                      properties:
-                        AutoUpgrade:
-                          type: object
-                          required:
-                            - enable
-                          properties:
-                            enable:
-                              $ref: '#/components/schemas/EnableSwitch'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - AutoUpgrade
+                        properties:
+                          AutoUpgrade:
+                            type: object
+                            required:
+                              - enable
+                            properties:
+                              enable:
+                                $ref: '#/components/schemas/EnableSwitch'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -815,6 +869,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -862,6 +918,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -894,6 +952,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -965,39 +1025,43 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - User
-                      properties:
-                        User:
-                          type: object
-                          required:
-                            - userName
-                            - password
-                          properties:
-                            userName:
-                              type: string
-                              maxLength: 31
-                              description: Username
-                            password:
-                              type: string
-                              maxLength: 31
-                              description: Password
-                            Version:
-                              type: string
-                              enum:
-                                - '0'
-                                - '1'
-                              default: '0'
-                              description: |
-                                Login version
-                                * 0 - Don't use private encryption
-                                * 1 - Use private encryption (not provided externally)
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - User
+                        properties:
+                          User:
+                            type: object
+                            required:
+                              - userName
+                              - password
+                            properties:
+                              userName:
+                                type: string
+                                maxLength: 31
+                                description: Username
+                              password:
+                                type: string
+                                maxLength: 31
+                                description: Password
+                              Version:
+                                type: string
+                                enum:
+                                  - '0'
+                                  - '1'
+                                default: '0'
+                                description: |
+                                  Login version
+                                  * 0 - Don't use private encryption
+                                  * 1 - Use private encryption (not provided externally)
       responses:
         '200':
           description: Successful login
@@ -1005,6 +1069,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -1049,15 +1115,19 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 1
-                      description: Get configuration with ranges
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 1
+                        description: Get configuration with ranges
       responses:
         '200':
           description: Successful operation
@@ -1065,6 +1135,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -1132,38 +1204,42 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - User
-                      properties:
-                        User:
-                          type: object
-                          required:
-                            - userName
-                            - password
-                            - level
-                          properties:
-                            userName:
-                              type: string
-                              minLength: 1
-                              maxLength: 31
-                              description: Username for new account
-                            password:
-                              type: string
-                              minLength: 6
-                              maxLength: 31
-                              description: Password for new account
-                            level:
-                              type: string
-                              enum:
-                                - guest
-                                - admin
-                              description: Permission level for new account
+              type: array
+              minItems: 1
+              maxItems: 20
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - User
+                        properties:
+                          User:
+                            type: object
+                            required:
+                              - userName
+                              - password
+                              - level
+                            properties:
+                              userName:
+                                type: string
+                                minLength: 1
+                                maxLength: 31
+                                description: Username for new account
+                              password:
+                                type: string
+                                minLength: 6
+                                maxLength: 31
+                                description: Password for new account
+                              level:
+                                type: string
+                                enum:
+                                  - guest
+                                  - admin
+                                description: Permission level for new account
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -1184,25 +1260,29 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - User
-                      properties:
-                        User:
-                          type: object
-                          required:
-                            - userName
-                          properties:
-                            userName:
-                              type: string
-                              minLength: 1
-                              maxLength: 31
-                              description: Username to delete
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - User
+                        properties:
+                          User:
+                            type: object
+                            required:
+                              - userName
+                            properties:
+                              userName:
+                                type: string
+                                minLength: 1
+                                maxLength: 31
+                                description: Username to delete
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -1223,36 +1303,40 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - User
-                      properties:
-                        User:
-                          type: object
-                          required:
-                            - userName
-                            - newPassword
-                          properties:
-                            userName:
-                              type: string
-                              minLength: 1
-                              maxLength: 31
-                              description: Username to modify
-                            newPassword:
-                              type: string
-                              minLength: 6
-                              maxLength: 31
-                              description: New password
-                            oldPassword:
-                              type: string
-                              minLength: 6
-                              maxLength: 31
-                              description: Current password (required for validation)
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - User
+                        properties:
+                          User:
+                            type: object
+                            required:
+                              - userName
+                              - newPassword
+                            properties:
+                              userName:
+                                type: string
+                                minLength: 1
+                                maxLength: 31
+                                description: Username to modify
+                              newPassword:
+                                type: string
+                                minLength: 6
+                                maxLength: 31
+                                description: New password
+                              oldPassword:
+                                type: string
+                                minLength: 6
+                                maxLength: 31
+                                description: Current password (required for validation)
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -1275,6 +1359,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -1304,27 +1390,31 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - User
-                      properties:
-                        User:
-                          type: object
-                          required:
-                            - userName
-                            - sessionId
-                          properties:
-                            userName:
-                              type: string
-                              description: Username to disconnect
-                            sessionId:
-                              type: integer
-                              description: Session ID to disconnect
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - User
+                        properties:
+                          User:
+                            type: object
+                            required:
+                              - userName
+                              - sessionId
+                            properties:
+                              userName:
+                                type: string
+                                description: Username to disconnect
+                              sessionId:
+                                type: integer
+                                description: Session ID to disconnect
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -1347,6 +1437,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -1396,29 +1488,33 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - SysCfg
-                      properties:
-                        SysCfg:
-                          type: object
-                          required:
-                            - loginLock
-                          properties:
-                            loginLock:
-                              type: integer
-                              enum:
-                                - 0
-                                - 1
-                              description: |
-                                Login lock enable/disable
-                                * 0 - Disable login lock
-                                * 1 - Enable login lock
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - SysCfg
+                        properties:
+                          SysCfg:
+                            type: object
+                            required:
+                              - loginLock
+                            properties:
+                              loginLock:
+                                type: integer
+                                enum:
+                                  - 0
+                                  - 1
+                                description: |
+                                  Login lock enable/disable
+                                  * 0 - Disable login lock
+                                  * 1 - Enable login lock
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -1439,15 +1535,19 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 1
-                      description: Get configuration with ranges
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 1
+                        description: Get configuration with ranges
       responses:
         '200':
           description: Successful operation
@@ -1455,6 +1555,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -1492,17 +1594,21 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - LocalLink
-                      properties:
-                        LocalLink:
-                          $ref: '#/components/schemas/LocalLinkConfig'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - LocalLink
+                        properties:
+                          LocalLink:
+                            $ref: '#/components/schemas/LocalLinkConfig'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -1523,15 +1629,19 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 1
-                      description: Get configuration with ranges
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 1
+                        description: Get configuration with ranges
       responses:
         '200':
           description: Successful operation
@@ -1539,6 +1649,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -1576,17 +1688,21 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - Ddns
-                      properties:
-                        Ddns:
-                          $ref: '#/components/schemas/DDNSConfig'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - Ddns
+                        properties:
+                          Ddns:
+                            $ref: '#/components/schemas/DDNSConfig'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -1607,15 +1723,19 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 1
-                      description: Get configuration with ranges
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 1
+                        description: Get configuration with ranges
       responses:
         '200':
           description: Successful operation
@@ -1623,6 +1743,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -1660,17 +1782,21 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - Email
-                      properties:
-                        Email:
-                          $ref: '#/components/schemas/EmailConfig'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - Email
+                        properties:
+                          Email:
+                            $ref: '#/components/schemas/EmailConfig'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -1691,15 +1817,19 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           description: Successful operation
@@ -1707,6 +1837,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -1736,17 +1868,21 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - Email
-                      properties:
-                        Email:
-                          $ref: '#/components/schemas/EmailConfigV20'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - Email
+                        properties:
+                          Email:
+                            $ref: '#/components/schemas/EmailConfigV20'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -1767,57 +1903,61 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - Email
-                      properties:
-                        Email:
-                          type: object
-                          required:
-                            - smtpServer
-                            - smtpPort
-                            - userName
-                          properties:
-                            smtpServer:
-                              type: string
-                              maxLength: 127
-                              description: SMTP server address
-                            smtpPort:
-                              type: integer
-                              minimum: 1
-                              maximum: 65535
-                              description: SMTP server port
-                            userName:
-                              type: string
-                              maxLength: 127
-                              description: SMTP account username
-                            password:
-                              type: string
-                              maxLength: 31
-                              description: SMTP account password
-                            ssl:
-                              $ref: '#/components/schemas/EnableSwitch'
-                            addr1:
-                              type: string
-                              maxLength: 127
-                              description: First recipient email address
-                            addr2:
-                              type: string
-                              maxLength: 127
-                              description: Second recipient email address
-                            addr3:
-                              type: string
-                              maxLength: 127
-                              description: Third recipient email address
-                            nickName:
-                              type: string
-                              maxLength: 127
-                              description: Sender nickname
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - Email
+                        properties:
+                          Email:
+                            type: object
+                            required:
+                              - smtpServer
+                              - smtpPort
+                              - userName
+                            properties:
+                              smtpServer:
+                                type: string
+                                maxLength: 127
+                                description: SMTP server address
+                              smtpPort:
+                                type: integer
+                                minimum: 1
+                                maximum: 65535
+                                description: SMTP server port
+                              userName:
+                                type: string
+                                maxLength: 127
+                                description: SMTP account username
+                              password:
+                                type: string
+                                maxLength: 31
+                                description: SMTP account password
+                              ssl:
+                                $ref: '#/components/schemas/EnableSwitch'
+                              addr1:
+                                type: string
+                                maxLength: 127
+                                description: First recipient email address
+                              addr2:
+                                type: string
+                                maxLength: 127
+                                description: Second recipient email address
+                              addr3:
+                                type: string
+                                maxLength: 127
+                                description: Third recipient email address
+                              nickName:
+                                type: string
+                                maxLength: 127
+                                description: Sender nickname
       responses:
         '200':
           description: Test completed
@@ -1825,6 +1965,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -1849,15 +1991,19 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 1
-                      description: Get configuration with ranges
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 1
+                        description: Get configuration with ranges
       responses:
         '200':
           description: Successful operation
@@ -1865,6 +2011,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -1902,17 +2050,21 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - Ftp
-                      properties:
-                        Ftp:
-                          $ref: '#/components/schemas/FtpConfig'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - Ftp
+                        properties:
+                          Ftp:
+                            $ref: '#/components/schemas/FtpConfig'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -1933,88 +2085,92 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - Ftp
-                      properties:
-                        Ftp:
-                          type: object
-                          required:
-                            - server
-                            - port
-                            - anonymous
-                            - mode
-                            - remoteDir
-                          properties:
-                            server:
-                              type: string
-                              maxLength: 127
-                              description: FTP server address
-                            port:
-                              type: integer
-                              minimum: 1
-                              maximum: 65535
-                              description: FTP server port
-                            anonymous:
-                              type: integer
-                              enum:
-                                - 0
-                                - 1
-                              description: |
-                                Use anonymous login
-                                * 0 - Use credentials
-                                * 1 - Anonymous login
-                            userName:
-                              type: string
-                              maxLength: 127
-                              description: FTP account username (required if not anonymous)
-                            password:
-                              type: string
-                              maxLength: 127
-                              description: FTP account password (required if not anonymous)
-                            mode:
-                              type: integer
-                              enum:
-                                - 0
-                                - 1
-                                - 2
-                              description: |
-                                Transfer mode
-                                * 0 - Auto
-                                * 1 - Active
-                                * 2 - Passive
-                            remoteDir:
-                              type: string
-                              maxLength: 255
-                              description: Remote directory path
-                            onlyFtps:
-                              type: integer
-                              enum:
-                                - 0
-                                - 1
-                              description: |
-                                Use FTPS encryption
-                                * 0 - No encryption
-                                * 1 - Use FTPS
-                            bpicSingle:
-                              type: integer
-                              enum:
-                                - 0
-                                - 1
-                                - 2
-                              description: Image retention policy
-                            bvideoSingle:
-                              type: integer
-                              enum:
-                                - 0
-                                - 1
-                                - 2
-                              description: Video retention policy
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - Ftp
+                        properties:
+                          Ftp:
+                            type: object
+                            required:
+                              - server
+                              - port
+                              - anonymous
+                              - mode
+                              - remoteDir
+                            properties:
+                              server:
+                                type: string
+                                maxLength: 127
+                                description: FTP server address
+                              port:
+                                type: integer
+                                minimum: 1
+                                maximum: 65535
+                                description: FTP server port
+                              anonymous:
+                                type: integer
+                                enum:
+                                  - 0
+                                  - 1
+                                description: |
+                                  Use anonymous login
+                                  * 0 - Use credentials
+                                  * 1 - Anonymous login
+                              userName:
+                                type: string
+                                maxLength: 127
+                                description: FTP account username (required if not anonymous)
+                              password:
+                                type: string
+                                maxLength: 127
+                                description: FTP account password (required if not anonymous)
+                              mode:
+                                type: integer
+                                enum:
+                                  - 0
+                                  - 1
+                                  - 2
+                                description: |
+                                  Transfer mode
+                                  * 0 - Auto
+                                  * 1 - Active
+                                  * 2 - Passive
+                              remoteDir:
+                                type: string
+                                maxLength: 255
+                                description: Remote directory path
+                              onlyFtps:
+                                type: integer
+                                enum:
+                                  - 0
+                                  - 1
+                                description: |
+                                  Use FTPS encryption
+                                  * 0 - No encryption
+                                  * 1 - Use FTPS
+                              bpicSingle:
+                                type: integer
+                                enum:
+                                  - 0
+                                  - 1
+                                  - 2
+                                description: Image retention policy
+                              bvideoSingle:
+                                type: integer
+                                enum:
+                                  - 0
+                                  - 1
+                                  - 2
+                                description: Video retention policy
       responses:
         '200':
           description: Test completed
@@ -2022,6 +2178,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -2046,15 +2204,19 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 1
-                      description: Get configuration with ranges
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 1
+                        description: Get configuration with ranges
       responses:
         '200':
           description: Successful operation
@@ -2062,6 +2224,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -2099,17 +2263,21 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - Ntp
-                      properties:
-                        Ntp:
-                          $ref: '#/components/schemas/NtpConfig'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - Ntp
+                        properties:
+                          Ntp:
+                            $ref: '#/components/schemas/NtpConfig'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -2132,6 +2300,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -2161,17 +2331,21 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - NetPort
-                      properties:
-                        NetPort:
-                          $ref: '#/components/schemas/NetworkPortConfig'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - NetPort
+                        properties:
+                          NetPort:
+                            $ref: '#/components/schemas/NetworkPortConfig'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -2192,15 +2366,19 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 1
-                      description: Get configuration with ranges
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 1
+                        description: Get configuration with ranges
       responses:
         '200':
           description: Successful operation
@@ -2208,6 +2386,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -2237,17 +2417,21 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - Upnp
-                      properties:
-                        Upnp:
-                          $ref: '#/components/schemas/UpnpConfig'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - Upnp
+                        properties:
+                          Upnp:
+                            $ref: '#/components/schemas/UpnpConfig'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -2269,15 +2453,19 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 1
-                      description: Get configuration with ranges
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 1
+                        description: Get configuration with ranges
       responses:
         '200':
           description: Successful operation
@@ -2285,6 +2473,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -2315,17 +2505,21 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - Wifi
-                      properties:
-                        Wifi:
-                          $ref: '#/components/schemas/WifiConfig'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - Wifi
+                        properties:
+                          Wifi:
+                            $ref: '#/components/schemas/WifiConfig'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -2347,26 +2541,30 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - Wifi
-                      properties:
-                        Wifi:
-                          type: object
-                          required:
-                            - ssid
-                          properties:
-                            ssid:
-                              type: string
-                              description: Network SSID to test
-                            password:
-                              type: string
-                              description: Network password (if required)
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - Wifi
+                        properties:
+                          Wifi:
+                            type: object
+                            required:
+                              - ssid
+                            properties:
+                              ssid:
+                                type: string
+                                description: Network SSID to test
+                              password:
+                                type: string
+                                description: Network password (if required)
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -2390,6 +2588,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -2424,6 +2624,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -2456,15 +2658,19 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 1
-                      description: Get configuration with ranges
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 1
+                        description: Get configuration with ranges
       responses:
         '200':
           description: Successful operation
@@ -2472,6 +2678,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -2512,20 +2720,24 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - Push
-                      properties:
-                        Push:
-                          type: object
-                          properties:
-                            schedule:
-                              $ref: '#/components/schemas/PushSchedule'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - Push
+                        properties:
+                          Push:
+                            type: object
+                            properties:
+                              schedule:
+                                $ref: '#/components/schemas/PushSchedule'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -2546,19 +2758,23 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 1
-                    param:
-                      type: object
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 1
+                      param:
+                        type: object
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           description: Successful operation
@@ -2566,6 +2782,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -2603,17 +2821,21 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - Push
-                      properties:
-                        Push:
-                          $ref: '#/components/schemas/PushConfigV20'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - Push
+                        properties:
+                          Push:
+                            $ref: '#/components/schemas/PushConfigV20'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -2634,15 +2856,19 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 1
-                      description: Get configuration with ranges
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 1
+                        description: Get configuration with ranges
       responses:
         '200':
           description: Successful operation
@@ -2650,6 +2876,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -2679,22 +2907,26 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - P2p
-                      properties:
-                        P2p:
-                          type: object
-                          required:
-                            - enable
-                          properties:
-                            enable:
-                              $ref: '#/components/schemas/EnableSwitch'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - P2p
+                        properties:
+                          P2p:
+                            type: object
+                            required:
+                              - enable
+                            properties:
+                              enable:
+                                $ref: '#/components/schemas/EnableSwitch'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -2717,6 +2949,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -2761,17 +2995,21 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - channel
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - channel
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           description: Successful operation
@@ -2779,6 +3017,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -2808,21 +3048,25 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 1
-                    param:
-                      type: object
-                      required:
-                        - channel
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 1
+                      param:
+                        type: object
+                        required:
+                          - channel
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           description: Successful operation
@@ -2830,6 +3074,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -2867,17 +3113,21 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - Image
-                      properties:
-                        Image:
-                          $ref: '#/components/schemas/ImageSettings'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - Image
+                        properties:
+                          Image:
+                            $ref: '#/components/schemas/ImageSettings'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -2898,21 +3148,25 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 1
-                    param:
-                      type: object
-                      required:
-                        - channel
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 1
+                      param:
+                        type: object
+                        required:
+                          - channel
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           description: Successful operation
@@ -2920,6 +3174,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -2957,17 +3213,21 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - Osd
-                      properties:
-                        Osd:
-                          $ref: '#/components/schemas/OsdSettings'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - Osd
+                        properties:
+                          Osd:
+                            $ref: '#/components/schemas/OsdSettings'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -2988,21 +3248,25 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 1
-                    param:
-                      type: object
-                      required:
-                        - channel
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 1
+                      param:
+                        type: object
+                        required:
+                          - channel
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           description: Successful operation
@@ -3010,6 +3274,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -3078,43 +3344,47 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - Isp
-                      properties:
-                        Isp:
-                          allOf:
-                            - $ref: '#/components/schemas/IspSettings'
-                            - type: object
-                              required:
-                                - channel
-                              properties:
-                                channel:
-                                  $ref: '#/components/schemas/Channel'
-                                bd_day:
-                                  $ref: '#/components/schemas/BrightnessSettings'
-                                bd_night:
-                                  $ref: '#/components/schemas/BrightnessSettings'
-                                bd_led_color:
-                                  $ref: '#/components/schemas/BrightnessSettings'
-                                constantFrameRate:
-                                  type: integer
-                                  enum:
-                                    - 0
-                                    - 1
-                                dayNightThreshold:
-                                  type: integer
-                                  minimum: 0
-                                cdsType:
-                                  type: integer
-                                  enum:
-                                    - 0
-                                    - 1
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - Isp
+                        properties:
+                          Isp:
+                            allOf:
+                              - $ref: '#/components/schemas/IspSettings'
+                              - type: object
+                                required:
+                                  - channel
+                                properties:
+                                  channel:
+                                    $ref: '#/components/schemas/Channel'
+                                  bd_day:
+                                    $ref: '#/components/schemas/BrightnessSettings'
+                                  bd_night:
+                                    $ref: '#/components/schemas/BrightnessSettings'
+                                  bd_led_color:
+                                    $ref: '#/components/schemas/BrightnessSettings'
+                                  constantFrameRate:
+                                    type: integer
+                                    enum:
+                                      - 0
+                                      - 1
+                                  dayNightThreshold:
+                                    type: integer
+                                    minimum: 0
+                                  cdsType:
+                                    type: integer
+                                    enum:
+                                      - 0
+                                      - 1
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -3135,21 +3405,25 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 1
-                    param:
-                      type: object
-                      required:
-                        - channel
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 1
+                      param:
+                        type: object
+                        required:
+                          - channel
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           description: Successful operation
@@ -3157,6 +3431,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -3213,32 +3489,36 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - Mask
-                      properties:
-                        Mask:
-                          type: object
-                          required:
-                            - channel
-                            - enable
-                            - area
-                          properties:
-                            channel:
-                              $ref: '#/components/schemas/Channel'
-                            enable:
-                              $ref: '#/components/schemas/EnableSwitch'
-                            area:
-                              type: array
-                              items:
-                                $ref: '#/components/schemas/MaskArea'
-                              maxItems: 4
-                              description: Up to 4 privacy mask areas
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - Mask
+                        properties:
+                          Mask:
+                            type: object
+                            required:
+                              - channel
+                              - enable
+                              - area
+                            properties:
+                              channel:
+                                $ref: '#/components/schemas/Channel'
+                              enable:
+                                $ref: '#/components/schemas/EnableSwitch'
+                              area:
+                                type: array
+                                items:
+                                  $ref: '#/components/schemas/MaskArea'
+                                maxItems: 4
+                                description: Up to 4 privacy mask areas
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -3259,21 +3539,25 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 0
-                    param:
-                      type: object
-                      required:
-                        - channel
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 0
+                      param:
+                        type: object
+                        required:
+                          - channel
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           description: Successful operation
@@ -3281,6 +3565,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -3335,24 +3621,28 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - Crop
-                      properties:
-                        Crop:
-                          allOf:
-                            - $ref: '#/components/schemas/CropSettings'
-                            - type: object
-                              required:
-                                - channel
-                              properties:
-                                channel:
-                                  $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - Crop
+                        properties:
+                          Crop:
+                            allOf:
+                              - $ref: '#/components/schemas/CropSettings'
+                              - type: object
+                                required:
+                                  - channel
+                                properties:
+                                  channel:
+                                    $ref: '#/components/schemas/Channel'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -3374,14 +3664,18 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 1
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 1
       responses:
         '200':
           description: Successful operation
@@ -3389,6 +3683,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -3465,23 +3761,27 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - stitch
-                      properties:
-                        stitch:
-                          allOf:
-                            - $ref: '#/components/schemas/StitchSettings'
-                            - type: object
-                              required:
-                                - distance
-                                - stitchXMove
-                                - stitchYMove
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - stitch
+                        properties:
+                          stitch:
+                            allOf:
+                              - $ref: '#/components/schemas/StitchSettings'
+                              - type: object
+                                required:
+                                  - distance
+                                  - stitchXMove
+                                  - stitchYMove
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -3502,22 +3802,26 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 1
-                      description: Get configuration with ranges
-                    param:
-                      type: object
-                      required:
-                        - channel
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 1
+                        description: Get configuration with ranges
+                      param:
+                        type: object
+                        required:
+                          - channel
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           description: Successful operation
@@ -3525,6 +3829,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -3591,24 +3897,28 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - Enc
-                      properties:
-                        Enc:
-                          allOf:
-                            - $ref: '#/components/schemas/EncodingConfig'
-                            - type: object
-                              required:
-                                - channel
-                                - audio
-                                - mainStream
-                                - subStream
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - Enc
+                        properties:
+                          Enc:
+                            allOf:
+                              - $ref: '#/components/schemas/EncodingConfig'
+                              - type: object
+                                required:
+                                  - channel
+                                  - audio
+                                  - mainStream
+                                  - subStream
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -3629,22 +3939,26 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 1
-                      description: Get configuration with ranges
-                    param:
-                      type: object
-                      required:
-                        - channel
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 1
+                        description: Get configuration with ranges
+                      param:
+                        type: object
+                        required:
+                          - channel
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           description: Successful operation
@@ -3652,6 +3966,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -3689,17 +4005,21 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - Rec
-                      properties:
-                        Rec:
-                          $ref: '#/components/schemas/RecordingConfig'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - Rec
+                        properties:
+                          Rec:
+                            $ref: '#/components/schemas/RecordingConfig'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -3721,22 +4041,26 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 1
-                      description: Get configuration with ranges
-                    param:
-                      type: object
-                      required:
-                        - channel
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 1
+                        description: Get configuration with ranges
+                      param:
+                        type: object
+                        required:
+                          - channel
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           description: Successful operation
@@ -3744,6 +4068,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -3782,17 +4108,21 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - Rec
-                      properties:
-                        Rec:
-                          $ref: '#/components/schemas/RecordingConfigV20'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - Rec
+                        properties:
+                          Rec:
+                            $ref: '#/components/schemas/RecordingConfigV20'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -3815,45 +4145,49 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - Search
-                      properties:
-                        Search:
-                          type: object
-                          required:
-                            - channel
-                            - onlyStatus
-                            - streamType
-                            - StartTime
-                            - EndTime
-                          properties:
-                            channel:
-                              $ref: '#/components/schemas/Channel'
-                            onlyStatus:
-                              type: integer
-                              enum:
-                                - 0
-                                - 1
-                              description: |
-                                Search type
-                                * 0 - Get detailed file information
-                                * 1 - Get only dates with recordings
-                            streamType:
-                              type: string
-                              enum:
-                                - main
-                                - sub
-                              description: Stream type to search for
-                            StartTime:
-                              $ref: '#/components/schemas/TimeConfig'
-                            EndTime:
-                              $ref: '#/components/schemas/TimeConfig'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - Search
+                        properties:
+                          Search:
+                            type: object
+                            required:
+                              - channel
+                              - onlyStatus
+                              - streamType
+                              - StartTime
+                              - EndTime
+                            properties:
+                              channel:
+                                $ref: '#/components/schemas/Channel'
+                              onlyStatus:
+                                type: integer
+                                enum:
+                                  - 0
+                                  - 1
+                                description: |
+                                  Search type
+                                  * 0 - Get detailed file information
+                                  * 1 - Get only dates with recordings
+                              streamType:
+                                type: string
+                                enum:
+                                  - main
+                                  - sub
+                                description: Stream type to search for
+                              StartTime:
+                                $ref: '#/components/schemas/TimeConfig'
+                              EndTime:
+                                $ref: '#/components/schemas/TimeConfig'
       responses:
         '200':
           description: Successful operation
@@ -3861,6 +4195,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -3995,34 +4331,38 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - NvrDownload
-                      properties:
-                        NvrDownload:
-                          type: object
-                          required:
-                            - channel
-                            - StartTime
-                            - EndTime
-                          properties:
-                            channel:
-                              $ref: '#/components/schemas/Channel'
-                            streamType:
-                              type: string
-                              enum:
-                                - main
-                                - sub
-                              description: Stream type to download
-                            StartTime:
-                              $ref: '#/components/schemas/TimeConfig'
-                            EndTime:
-                              $ref: '#/components/schemas/TimeConfig'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - NvrDownload
+                        properties:
+                          NvrDownload:
+                            type: object
+                            required:
+                              - channel
+                              - StartTime
+                              - EndTime
+                            properties:
+                              channel:
+                                $ref: '#/components/schemas/Channel'
+                              streamType:
+                                type: string
+                                enum:
+                                  - main
+                                  - sub
+                                description: Stream type to download
+                              StartTime:
+                                $ref: '#/components/schemas/TimeConfig'
+                              EndTime:
+                                $ref: '#/components/schemas/TimeConfig'
       responses:
         '200':
           description: Successful operation
@@ -4030,6 +4370,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -4062,21 +4404,25 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 1
-                    param:
-                      type: object
-                      required:
-                        - channel
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 1
+                      param:
+                        type: object
+                        required:
+                          - channel
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           description: Successful operation
@@ -4084,6 +4430,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -4146,17 +4494,21 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - PtzPreset
-                      properties:
-                        PtzPreset:
-                          $ref: '#/components/schemas/PTZPreset'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - PtzPreset
+                        properties:
+                          PtzPreset:
+                            $ref: '#/components/schemas/PTZPreset'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -4177,21 +4529,25 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 1
-                    param:
-                      type: object
-                      required:
-                        - channel
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 1
+                      param:
+                        type: object
+                        required:
+                          - channel
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           description: Successful operation
@@ -4199,6 +4555,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -4264,46 +4622,50 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - PtzPatrol
-                      properties:
-                        PtzPatrol:
-                          allOf:
-                            - $ref: '#/components/schemas/PTZPatrol'
-                            - type: object
-                              properties:
-                                preset:
-                                  type: array
-                                  maxItems: 16
-                                  description: List of preset points in patrol route
-                                  items:
-                                    type: object
-                                    required:
-                                      - id
-                                      - speed
-                                      - dwellTime
-                                    properties:
-                                      id:
-                                        type: integer
-                                        minimum: 1
-                                        maximum: 64
-                                        description: Preset point ID to visit
-                                      speed:
-                                        type: integer
-                                        minimum: 1
-                                        maximum: 64
-                                        description: Movement speed to preset point
-                                      dwellTime:
-                                        type: integer
-                                        minimum: 1
-                                        maximum: 30
-                                        description: Time to stay at preset point (seconds)
+              type: array
+              minItems: 1
+              maxItems: 16
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - PtzPatrol
+                        properties:
+                          PtzPatrol:
+                            allOf:
+                              - $ref: '#/components/schemas/PTZPatrol'
+                              - type: object
+                                properties:
+                                  preset:
+                                    type: array
+                                    maxItems: 16
+                                    description: List of preset points in patrol route
+                                    items:
+                                      type: object
+                                      required:
+                                        - id
+                                        - speed
+                                        - dwellTime
+                                      properties:
+                                        id:
+                                          type: integer
+                                          minimum: 1
+                                          maximum: 64
+                                          description: Preset point ID to visit
+                                        speed:
+                                          type: integer
+                                          minimum: 1
+                                          maximum: 64
+                                          description: Movement speed to preset point
+                                        dwellTime:
+                                          type: integer
+                                          minimum: 1
+                                          maximum: 30
+                                          description: Time to stay at preset point (seconds)
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -4327,30 +4689,33 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - channel
-                        - op
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
-                        op:
-                          $ref: '#/components/schemas/PTZOperation'
-                        speed:
-                          type: integer
-                          minimum: 1
-                          maximum: 64
-                          description: Movement speed
-                        id:
-                          type: integer
-                          minimum: 1
-                          maximum: 64
-                          description: Preset position ID (for ToPos operation)
+              type: array
+              minItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - channel
+                          - op
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
+                          op:
+                            $ref: '#/components/schemas/PTZOperation'
+                          speed:
+                            type: integer
+                            minimum: 1
+                            maximum: 64
+                            description: Movement speed
+                          id:
+                            type: integer
+                            minimum: 1
+                            maximum: 64
+                            description: Preset position ID (for ToPos operation)
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -4371,17 +4736,21 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - channel
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - channel
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           description: Successful operation
@@ -4389,6 +4758,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -4490,20 +4861,24 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - PtzSerial
-                      properties:
-                        PtzSerial:
-                          type: object
-                          properties:
-                            PtzSerial:
-                              $ref: '#/components/schemas/SerialConfig'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - PtzSerial
+                        properties:
+                          PtzSerial:
+                            type: object
+                            properties:
+                              PtzSerial:
+                                $ref: '#/components/schemas/SerialConfig'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -4524,21 +4899,25 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 1
-                    param:
-                      type: object
-                      required:
-                        - channel
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 1
+                      param:
+                        type: object
+                        required:
+                          - channel
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           description: Successful operation
@@ -4546,6 +4925,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -4624,53 +5005,57 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - PtzTattern
-                      properties:
-                        PtzTattern:
-                          type: object
-                          required:
-                            - channel
-                            - track
-                          properties:
-                            channel:
-                              $ref: '#/components/schemas/Channel'
-                            track:
-                              type: array
-                              minItems: 1
-                              maxItems: 6
-                              description: Array of pattern tracks to configure
-                              items:
-                                type: object
-                                required:
-                                  - id
-                                properties:
-                                  id:
-                                    type: integer
-                                    minimum: 1
-                                    maximum: 6
-                                    description: Pattern track ID
-                                  enable:
-                                    $ref: '#/components/schemas/EnableSwitch'
-                                  running:
-                                    type: integer
-                                    enum:
-                                      - 0
-                                      - 1
-                                    description: |
-                                      Running status
-                                      * 0 - Stopped
-                                      * 1 - Running
-                                  name:
-                                    type: string
-                                    maxLength: 191
-                                    description: Name of the pattern track
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - PtzTattern
+                        properties:
+                          PtzTattern:
+                            type: object
+                            required:
+                              - channel
+                              - track
+                            properties:
+                              channel:
+                                $ref: '#/components/schemas/Channel'
+                              track:
+                                type: array
+                                minItems: 1
+                                maxItems: 6
+                                description: Array of pattern tracks to configure
+                                items:
+                                  type: object
+                                  required:
+                                    - id
+                                  properties:
+                                    id:
+                                      type: integer
+                                      minimum: 1
+                                      maximum: 6
+                                      description: Pattern track ID
+                                    enable:
+                                      $ref: '#/components/schemas/EnableSwitch'
+                                    running:
+                                      type: integer
+                                      enum:
+                                        - 0
+                                        - 1
+                                      description: |
+                                        Running status
+                                        * 0 - Stopped
+                                        * 1 - Running
+                                    name:
+                                      type: string
+                                      maxLength: 191
+                                      description: Name of the pattern track
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -4691,21 +5076,25 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 1
-                    param:
-                      type: object
-                      required:
-                        - channel
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 1
+                      param:
+                        type: object
+                        required:
+                          - channel
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           description: Successful operation
@@ -4713,6 +5102,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -4757,32 +5148,36 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - AutoFocus
-                      properties:
-                        AutoFocus:
-                          type: object
-                          required:
-                            - channel
-                            - disable
-                          properties:
-                            channel:
-                              $ref: '#/components/schemas/Channel'
-                            disable:
-                              type: integer
-                              enum:
-                                - 0
-                                - 1
-                              description: |
-                                Auto focus state
-                                * 0 - Enable auto focus
-                                * 1 - Disable auto focus
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - AutoFocus
+                        properties:
+                          AutoFocus:
+                            type: object
+                            required:
+                              - channel
+                              - disable
+                            properties:
+                              channel:
+                                $ref: '#/components/schemas/Channel'
+                              disable:
+                                type: integer
+                                enum:
+                                  - 0
+                                  - 1
+                                description: |
+                                  Auto focus state
+                                  * 0 - Enable auto focus
+                                  * 1 - Disable auto focus
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -4803,36 +5198,40 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - ZoomFocus
-                      properties:
-                        ZoomFocus:
-                          type: object
-                          required:
-                            - channel
-                            - op
-                            - pos
-                          properties:
-                            channel:
-                              $ref: '#/components/schemas/Channel'
-                            op:
-                              type: string
-                              enum:
-                                - ZoomPos
-                                - FocusPos
-                              description: |
-                                Operation type
-                                * ZoomPos - Set zoom position
-                                * FocusPos - Set focus position
-                            pos:
-                              type: integer
-                              description: Target position value
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - ZoomFocus
+                        properties:
+                          ZoomFocus:
+                            type: object
+                            required:
+                              - channel
+                              - op
+                              - pos
+                            properties:
+                              channel:
+                                $ref: '#/components/schemas/Channel'
+                              op:
+                                type: string
+                                enum:
+                                  - ZoomPos
+                                  - FocusPos
+                                description: |
+                                  Operation type
+                                  * ZoomPos - Set zoom position
+                                  * FocusPos - Set focus position
+                              pos:
+                                type: integer
+                                description: Target position value
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -4853,21 +5252,25 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 0
-                    param:
-                      type: object
-                      required:
-                        - channel
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 0
+                      param:
+                        type: object
+                        required:
+                          - channel
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           description: Successful operation
@@ -4875,6 +5278,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -4906,55 +5311,59 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - PtzGuard
-                      properties:
-                        PtzGuard:
-                          type: object
-                          required:
-                            - channel
-                            - cmdStr
-                          properties:
-                            channel:
-                              $ref: '#/components/schemas/Channel'
-                            cmdStr:
-                              type: string
-                              enum:
-                                - setPos
-                                - toPos
-                              description: |
-                                Command type
-                                * setPos - Set current position as guard position
-                                * toPos - Move to guard position
-                            benable:
-                              type: integer
-                              enum:
-                                - 0
-                                - 1
-                              description: |
-                                Enable automatic return to guard position
-                                * 0 - Disabled
-                                * 1 - Enabled
-                            timeout:
-                              type: integer
-                              enum:
-                                - 60
-                              description: Time in seconds before returning to guard position (fixed at 60)
-                            bSaveCurrentPos:
-                              type: integer
-                              enum:
-                                - 0
-                                - 1
-                              description: |
-                                Whether to save current position as guard position
-                                * 0 - No
-                                * 1 - Yes
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - PtzGuard
+                        properties:
+                          PtzGuard:
+                            type: object
+                            required:
+                              - channel
+                              - cmdStr
+                            properties:
+                              channel:
+                                $ref: '#/components/schemas/Channel'
+                              cmdStr:
+                                type: string
+                                enum:
+                                  - setPos
+                                  - toPos
+                                description: |
+                                  Command type
+                                  * setPos - Set current position as guard position
+                                  * toPos - Move to guard position
+                              benable:
+                                type: integer
+                                enum:
+                                  - 0
+                                  - 1
+                                description: |
+                                  Enable automatic return to guard position
+                                  * 0 - Disabled
+                                  * 1 - Enabled
+                              timeout:
+                                type: integer
+                                enum:
+                                  - 60
+                                description: Time in seconds before returning to guard position (fixed at 60)
+                              bSaveCurrentPos:
+                                type: integer
+                                enum:
+                                  - 0
+                                  - 1
+                                description: |
+                                  Whether to save current position as guard position
+                                  * 0 - No
+                                  * 1 - Yes
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -4976,21 +5385,25 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 0
-                    param:
-                      type: object
-                      required:
-                        - channel
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 0
+                      param:
+                        type: object
+                        required:
+                          - channel
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           description: Successful operation
@@ -4998,6 +5411,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -5028,21 +5443,25 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 1
-                    param:
-                      type: object
-                      required:
-                        - channel
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 1
+                      param:
+                        type: object
+                        required:
+                          - channel
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -5063,32 +5482,36 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    action:
-                      type: integer
-                      enum:
-                        - 1
-                    param:
-                      type: object
-                      required:
-                        - Alarm
-                      properties:
-                        Alarm:
-                          type: object
-                          required:
-                            - type
-                            - channel
-                          properties:
-                            type:
-                              type: string
-                              enum:
-                                - md
-                              description: Alarm type (currently only motion detection supported)
-                            channel:
-                              $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      action:
+                        type: integer
+                        enum:
+                          - 1
+                      param:
+                        type: object
+                        required:
+                          - Alarm
+                        properties:
+                          Alarm:
+                            type: object
+                            required:
+                              - type
+                              - channel
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - md
+                                description: Alarm type (currently only motion detection supported)
+                              channel:
+                                $ref: '#/components/schemas/Channel'
       responses:
         '200':
           description: Successful operation
@@ -5096,6 +5519,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -5144,33 +5569,37 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - Alarm
-                      properties:
-                        Alarm:
-                          type: object
-                          required:
-                            - channel
-                            - type
-                          properties:
-                            channel:
-                              $ref: '#/components/schemas/Channel'
-                            type:
-                              type: string
-                              enum:
-                                - md
-                            scope:
-                              $ref: '#/components/schemas/AlarmArea'
-                            sens:
-                              type: array
-                              items:
-                                $ref: '#/components/schemas/AlarmSensitivity'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - Alarm
+                        properties:
+                          Alarm:
+                            type: object
+                            required:
+                              - channel
+                              - type
+                            properties:
+                              channel:
+                                $ref: '#/components/schemas/Channel'
+                              type:
+                                type: string
+                                enum:
+                                  - md
+                              scope:
+                                $ref: '#/components/schemas/AlarmArea'
+                              sens:
+                                type: array
+                                items:
+                                  $ref: '#/components/schemas/AlarmSensitivity'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -5191,17 +5620,21 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - channel
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - channel
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           description: Successful operation
@@ -5209,6 +5642,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -5241,22 +5676,26 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - MdAlarm
-                      properties:
-                        MdAlarm:
-                          allOf:
-                            - $ref: '#/components/schemas/MdAlarmConfig'
-                            - type: object
-                              properties:
-                                scope:
-                                  $ref: '#/components/schemas/AlarmArea'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - MdAlarm
+                        properties:
+                          MdAlarm:
+                            allOf:
+                              - $ref: '#/components/schemas/MdAlarmConfig'
+                              - type: object
+                                properties:
+                                  scope:
+                                    $ref: '#/components/schemas/AlarmArea'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -5277,17 +5716,21 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - channel
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - channel
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           description: Successful operation
@@ -5295,6 +5738,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -5333,6 +5778,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -5370,25 +5817,29 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - Audio
-                      properties:
-                        Audio:
-                          type: object
-                          properties:
-                            schedule:
-                              type: object
-                              properties:
-                                enable:
-                                  $ref: '#/components/schemas/EnableSwitch'
-                                table:
-                                  $ref: '#/components/schemas/ScheduleTable'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - Audio
+                        properties:
+                          Audio:
+                            type: object
+                            properties:
+                              schedule:
+                                type: object
+                                properties:
+                                  enable:
+                                    $ref: '#/components/schemas/EnableSwitch'
+                                  table:
+                                    $ref: '#/components/schemas/ScheduleTable'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -5409,17 +5860,21 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - channel
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - channel
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           description: Successful operation
@@ -5427,6 +5882,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -5473,34 +5930,38 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - Audio
-                      properties:
-                        Audio:
-                          type: object
-                          properties:
-                            enable:
-                              $ref: '#/components/schemas/EnableSwitch'
-                            schedule:
-                              type: object
-                              properties:
-                                channel:
-                                  $ref: '#/components/schemas/Channel'
-                                table:
-                                  type: object
-                                  properties:
-                                    MD:
-                                      $ref: '#/components/schemas/ScheduleTable'
-                                    AI_PEOPLE:
-                                      $ref: '#/components/schemas/ScheduleTable'
-                                    AI_VEHICLE:
-                                      $ref: '#/components/schemas/ScheduleTable'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - Audio
+                        properties:
+                          Audio:
+                            type: object
+                            properties:
+                              enable:
+                                $ref: '#/components/schemas/EnableSwitch'
+                              schedule:
+                                type: object
+                                properties:
+                                  channel:
+                                    $ref: '#/components/schemas/Channel'
+                                  table:
+                                    type: object
+                                    properties:
+                                      MD:
+                                        $ref: '#/components/schemas/ScheduleTable'
+                                      AI_PEOPLE:
+                                        $ref: '#/components/schemas/ScheduleTable'
+                                      AI_VEHICLE:
+                                        $ref: '#/components/schemas/ScheduleTable'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -5522,17 +5983,21 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - channel
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - channel
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           description: Successful operation
@@ -5540,6 +6005,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -5597,44 +6064,48 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - Buzzer
-                      properties:
-                        Buzzer:
-                          type: object
-                          properties:
-                            enable:
-                              $ref: '#/components/schemas/EnableSwitch'
-                            diskErrorAlert:
-                              $ref: '#/components/schemas/EnableSwitch'
-                            diskFullAlert:
-                              $ref: '#/components/schemas/EnableSwitch'
-                            ipConflictAlert:
-                              $ref: '#/components/schemas/EnableSwitch'
-                            nvrDisconnectAlert:
-                              $ref: '#/components/schemas/EnableSwitch'
-                            schedule:
-                              type: object
-                              properties:
-                                channel:
-                                  $ref: '#/components/schemas/Channel'
-                                table:
-                                  type: object
-                                  properties:
-                                    MD:
-                                      $ref: '#/components/schemas/ScheduleTable'
-                                    AI_PEOPLE:
-                                      $ref: '#/components/schemas/ScheduleTable'
-                                    AI_VEHICLE:
-                                      $ref: '#/components/schemas/ScheduleTable'
-                                    VL:
-                                      $ref: '#/components/schemas/ScheduleTable'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - Buzzer
+                        properties:
+                          Buzzer:
+                            type: object
+                            properties:
+                              enable:
+                                $ref: '#/components/schemas/EnableSwitch'
+                              diskErrorAlert:
+                                $ref: '#/components/schemas/EnableSwitch'
+                              diskFullAlert:
+                                $ref: '#/components/schemas/EnableSwitch'
+                              ipConflictAlert:
+                                $ref: '#/components/schemas/EnableSwitch'
+                              nvrDisconnectAlert:
+                                $ref: '#/components/schemas/EnableSwitch'
+                              schedule:
+                                type: object
+                                properties:
+                                  channel:
+                                    $ref: '#/components/schemas/Channel'
+                                  table:
+                                    type: object
+                                    properties:
+                                      MD:
+                                        $ref: '#/components/schemas/ScheduleTable'
+                                      AI_PEOPLE:
+                                        $ref: '#/components/schemas/ScheduleTable'
+                                      AI_VEHICLE:
+                                        $ref: '#/components/schemas/ScheduleTable'
+                                      VL:
+                                        $ref: '#/components/schemas/ScheduleTable'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -5655,34 +6126,38 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      properties:
-                        alarm_mode:
-                          type: string
-                          enum:
-                            - times
-                            - manu
-                          description: |
-                            Alarm mode
-                            * times - Play specified number of times
-                            * manu - Manual control
-                        manual_switch:
-                          type: integer
-                          enum:
-                            - 0
-                            - 1
-                          description: Manual control switch
-                        times:
-                          type: integer
-                          minimum: 1
-                          description: Number of times to play alarm
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        properties:
+                          alarm_mode:
+                            type: string
+                            enum:
+                              - times
+                              - manu
+                            description: |
+                              Alarm mode
+                              * times - Play specified number of times
+                              * manu - Manual control
+                          manual_switch:
+                            type: integer
+                            enum:
+                              - 0
+                              - 1
+                            description: Manual control switch
+                          times:
+                            type: integer
+                            minimum: 1
+                            description: Number of times to play alarm
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -5705,6 +6180,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -5735,22 +6212,26 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - IrLights
-                      properties:
-                        IrLights:
-                          type: object
-                          required:
-                            - state
-                          properties:
-                            state:
-                              $ref: '#/components/schemas/LedState'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - IrLights
+                        properties:
+                          IrLights:
+                            type: object
+                            required:
+                              - state
+                            properties:
+                              state:
+                                $ref: '#/components/schemas/LedState'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -5771,6 +6252,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -5805,26 +6288,30 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - PowerLed
-                      properties:
-                        PowerLed:
-                          type: object
-                          required:
-                            - state
-                          properties:
-                            state:
-                              type: string
-                              enum:
-                                - 'On'
-                                - 'Off'
-                              description: Power LED state
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - PowerLed
+                        properties:
+                          PowerLed:
+                            type: object
+                            required:
+                              - state
+                            properties:
+                              state:
+                                type: string
+                                enum:
+                                  - 'On'
+                                  - 'Off'
+                                description: Power LED state
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -5845,6 +6332,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -5872,17 +6361,21 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - WhiteLed
-                      properties:
-                        WhiteLed:
-                          $ref: '#/components/schemas/WhiteLedConfig'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - WhiteLed
+                        properties:
+                          WhiteLed:
+                            $ref: '#/components/schemas/WhiteLedConfig'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -5902,25 +6395,29 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - channel
-                        - ai_type
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
-                        ai_type:
-                          type: string
-                          enum:
-                            - people
-                            - vehicle
-                            - dog_cat
-                          description: Type of AI detection
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - channel
+                          - ai_type
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
+                          ai_type:
+                            type: string
+                            enum:
+                              - people
+                              - vehicle
+                              - dog_cat
+                            description: Type of AI detection
       responses:
         '200':
           description: Successful operation
@@ -5928,6 +6425,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -5969,40 +6468,44 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - channel
-                        - AiAlarm
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
-                        AiAlarm:
-                          type: object
-                          properties:
-                            ai_type:
-                              type: string
-                              enum:
-                                - people
-                                - vehicle
-                                - dog_cat
-                            sensitivity:
-                              type: integer
-                              minimum: 1
-                              maximum: 100
-                            stay_time:
-                              type: integer
-                              minimum: 0
-                            scope:
-                              type: object
-                              properties:
-                                area:
-                                  type: string
-                                  description: Detection area configuration
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - channel
+                          - AiAlarm
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
+                          AiAlarm:
+                            type: object
+                            properties:
+                              ai_type:
+                                type: string
+                                enum:
+                                  - people
+                                  - vehicle
+                                  - dog_cat
+                              sensitivity:
+                                type: integer
+                                minimum: 1
+                                maximum: 100
+                              stay_time:
+                                type: integer
+                                minimum: 0
+                              scope:
+                                type: object
+                                properties:
+                                  area:
+                                    type: string
+                                    description: Detection area configuration
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -6022,37 +6525,41 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - channel
-                        - ai_type
-                        - width
-                        - height
-                        - area
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
-                        ai_type:
-                          type: string
-                          enum:
-                            - people
-                            - vehicle
-                            - dog_cat
-                          description: Type of AI detection
-                        width:
-                          type: integer
-                          description: Width of detection area grid
-                        height:
-                          type: integer
-                          description: Height of detection area grid
-                        area:
-                          type: string
-                          description: Binary string representing detection area grid
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - channel
+                          - ai_type
+                          - width
+                          - height
+                          - area
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
+                          ai_type:
+                            type: string
+                            enum:
+                              - people
+                              - vehicle
+                              - dog_cat
+                            description: Type of AI detection
+                          width:
+                            type: integer
+                            description: Width of detection area grid
+                          height:
+                            type: integer
+                            description: Height of detection area grid
+                          area:
+                            type: string
+                            description: Binary string representing detection area grid
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -6071,17 +6578,21 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - channel
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - channel
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           description: Successful operation
@@ -6089,6 +6600,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -6122,27 +6635,31 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - channel
-                      properties:
-                        aiTrack:
-                          type: integer
-                          enum:
-                            - 0
-                            - 1
-                          description: Enable/disable AI tracking
-                        trackType:
-                          $ref: '#/components/schemas/AiTrackTypes'
-                        AiDetectType:
-                          $ref: '#/components/schemas/AiDetectTypes'
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - channel
+                        properties:
+                          aiTrack:
+                            type: integer
+                            enum:
+                              - 0
+                              - 1
+                            description: Enable/disable AI tracking
+                          trackType:
+                            $ref: '#/components/schemas/AiTrackTypes'
+                          AiDetectType:
+                            $ref: '#/components/schemas/AiDetectTypes'
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -6163,17 +6680,21 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/BaseCommandRequest'
-                - type: object
-                  properties:
-                    param:
-                      type: object
-                      required:
-                        - channel
-                      properties:
-                        channel:
-                          $ref: '#/components/schemas/Channel'
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BaseCommandRequest'
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        required:
+                          - channel
+                        properties:
+                          channel:
+                            $ref: '#/components/schemas/Channel'
       responses:
         '200':
           description: Successful operation
@@ -6181,6 +6702,8 @@ paths:
             application/json:
               schema:
                 type: array
+                minItems: 1
+                maxItems: 1
                 items:
                   allOf:
                     - $ref: '#/components/schemas/BaseCommandResponse'
@@ -8436,6 +8959,7 @@ components:
         application/json:
           schema:
             type: array
+            minItems: 1
             items:
               allOf:
                 - $ref: '#/components/schemas/BaseCommandResponse'
@@ -8449,6 +8973,7 @@ components:
         application/json:
           schema:
             type: array
+            minItems: 1
             items:
               allOf:
                 - $ref: '#/components/schemas/BaseCommandResponse'
