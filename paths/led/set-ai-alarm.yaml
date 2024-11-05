@@ -6,7 +6,7 @@ post:
   summary: Set AI alarm LED settings
   description: Configure AI-based alarm LED operation
   x-deviceSupport: both
-  operationId: setAiAlarm
+  operationId: SetAiAlarm
   requestBody:
     required: true
     content:

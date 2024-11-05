@@ -6,7 +6,7 @@ post:
   summary: Get channel status
   description: Returns status information for all NVR channels
   x-deviceSupport: nvr
-  operationId: getChannelStatus
+  operationId: GetChannelStatus
   responses:
     '200':
       description: Successful operation

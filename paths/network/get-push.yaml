@@ -5,7 +5,7 @@ post:
   summary: Get push notification settings
   description: Returns the push notification configuration
   x-deviceSupport: both
-  operationId: getPush
+  operationId: GetPush
   requestBody:
     required: true
     content:

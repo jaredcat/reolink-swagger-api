@@ -6,7 +6,7 @@ post:
   summary: Get WiFi signal strength
   description: Returns current WiFi signal strength
   x-deviceSupport: ipc
-  operationId: getWifiSignal
+  operationId: GetWifiSignal
   responses:
     '200':
       description: Successful operation

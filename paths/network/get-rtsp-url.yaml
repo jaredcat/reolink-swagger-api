@@ -5,7 +5,7 @@ post:
   summary: Get RTSP URLs
   description: Returns RTSP stream URLs for the specified channel
   x-deviceSupport: both
-  operationId: getRtspUrl
+  operationId: GetRtspUrl
   requestBody:
     required: true
     content:

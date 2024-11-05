@@ -5,7 +5,7 @@ post:
   summary: Get device information
   description: Returns detailed information about the device including model, firmware version, and capabilities.
   x-deviceSupport: both
-  operationId: getDevInfo
+  operationId: GetDevInfo
   responses:
     '200':
       description: Successful operation

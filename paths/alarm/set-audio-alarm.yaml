@@ -5,7 +5,7 @@ post:
   summary: Set audio alarm settings
   description: Updates the audio alarm configuration
   x-deviceSupport: both
-  operationId: setAudioAlarm
+  operationId: SetAudioAlarm
   requestBody:
     required: true
     content:

@@ -7,7 +7,7 @@ post:
     Searches for recordings based on time range and stream type.
     For large number of files, search might timeout.
   x-deviceSupport: both
-  operationId: searchRecordings
+  operationId: SearchRecordings
   requestBody:
     required: true
     content:

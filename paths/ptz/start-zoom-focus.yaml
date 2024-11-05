@@ -5,7 +5,7 @@ post:
   summary: Control zoom and focus position
   description: Adjusts the zoom and focus to specific positions
   x-deviceSupport: both
-  operationId: startZoomFocus
+  operationId: StartZoomFocus
   requestBody:
     required: true
     content:

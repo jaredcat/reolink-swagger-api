@@ -5,7 +5,7 @@ post:
   summary: Test email settings
   description: Tests email configuration by sending a test message
   x-deviceSupport: both
-  operationId: testEmail
+  operationId: TestEmail
   requestBody:
     required: true
     content:

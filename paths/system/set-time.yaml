@@ -5,7 +5,7 @@ post:
   summary: Set system time settings
   description: Updates the system time configuration including timezone and DST settings
   x-deviceSupport: both
-  operationId: setTime
+  operationId: SetTime
   requestBody:
     required: true
     content:

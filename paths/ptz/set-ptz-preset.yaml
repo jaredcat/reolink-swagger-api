@@ -5,7 +5,7 @@ post:
   summary: Set PTZ preset position
   description: Creates or modifies a preset position for PTZ camera
   x-deviceSupport: both
-  operationId: setPtzPreset
+  operationId: SetPtzPreset
   requestBody:
     required: true
     content:

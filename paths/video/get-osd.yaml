@@ -5,7 +5,7 @@ post:
   summary: Get OSD settings
   description: Returns the current on-screen display settings including channel name and time display
   x-deviceSupport: both
-  operationId: getOsd
+  operationId: GetOsd
   requestBody:
     required: true
     content:

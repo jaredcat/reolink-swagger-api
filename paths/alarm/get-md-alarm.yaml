@@ -5,7 +5,7 @@ post:
   summary: Get advanced motion detection settings
   description: Returns the advanced motion detection alarm configuration including AI detection types
   x-deviceSupport: both
-  operationId: getMdAlarm
+  operationId: GetMdAlarm
   requestBody:
     required: true
     content:

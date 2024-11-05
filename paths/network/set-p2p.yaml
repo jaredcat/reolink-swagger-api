@@ -5,7 +5,7 @@ post:
   summary: Set P2P settings
   description: Updates P2P service configuration
   x-deviceSupport: both
-  operationId: setP2p
+  operationId: SetP2p
   requestBody:
     required: true
     content:

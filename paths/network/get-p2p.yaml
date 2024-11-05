@@ -5,7 +5,7 @@ post:
   summary: Get P2P settings
   description: Returns current P2P service configuration and device UID
   x-deviceSupport: both
-  operationId: getP2p
+  operationId: GetP2p
   requestBody:
     required: true
     content:

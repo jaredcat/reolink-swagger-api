@@ -6,7 +6,7 @@ post:
   summary: Set enhanced recording configuration
   description: Updates the enhanced recording configuration (V20) including AI event schedules
   x-deviceSupport: nvr
-  operationId: setRecV20
+  operationId: SetRecV20
   requestBody:
     required: true
     content:

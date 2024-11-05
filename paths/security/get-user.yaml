@@ -5,7 +5,7 @@ post:
   summary: Get user list
   description: Returns list of configured users and their permissions
   x-deviceSupport: both
-  operationId: getUser
+  operationId: GetUser
   requestBody:
     required: true
     content:

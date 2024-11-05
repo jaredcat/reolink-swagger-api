@@ -5,7 +5,7 @@ post:
   summary: Play audio alarm
   description: Triggers the audio alarm to play
   x-deviceSupport: both
-  operationId: audioAlarmPlay
+  operationId: AudioAlarmPlay
   requestBody:
     required: true
     content:

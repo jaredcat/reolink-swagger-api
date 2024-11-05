@@ -5,7 +5,7 @@ post:
   summary: Restore factory defaults
   description: Resets all configurations to factory default settings
   x-deviceSupport: both
-  operationId: restore
+  operationId: Restore
   responses:
     '200':
       $ref: '../../components/responses/common.yaml#/Success'

@@ -5,7 +5,7 @@ post:
   summary: Set email settings
   description: Updates email service configuration including SMTP settings and notification schedules
   x-deviceSupport: both
-  operationId: setEmail
+  operationId: SetEmail
   requestBody:
     required: true
     content:

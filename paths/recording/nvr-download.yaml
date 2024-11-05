@@ -6,7 +6,7 @@ post:
   summary: NVR download recording
   description: Downloads recording files from NVR with enhanced options
   x-deviceSupport: nvr
-  operationId: nvrDownload
+  operationId: NvrDownload
   requestBody:
     required: true
     content:

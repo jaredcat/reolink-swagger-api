@@ -5,7 +5,7 @@ post:
   summary: Get white LED settings
   description: Returns the current white LED configuration
   x-deviceSupport: both
-  operationId: getWhiteLed
+  operationId: GetWhiteLed
   responses:
     '200':
       description: Successful operation

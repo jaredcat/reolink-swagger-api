@@ -5,7 +5,7 @@ post:
   summary: Get motion detection state
   description: Returns the current motion detection status
   x-deviceSupport: both
-  operationId: getMdState
+  operationId: GetMdState
   requestBody:
     required: true
     content:

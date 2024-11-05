@@ -5,7 +5,7 @@ post:
   summary: Format storage device
   description: Format hard disks or SD card
   x-deviceSupport: both
-  operationId: format
+  operationId: Format
   requestBody:
     required: true
     content:

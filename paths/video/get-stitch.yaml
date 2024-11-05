@@ -6,7 +6,7 @@ post:
   summary: Get image stitch settings
   description: Returns the current image stitching configuration for binocular cameras
   x-deviceSupport: ipc
-  operationId: getStitch
+  operationId: GetStitch
   requestBody:
     required: true
     content:

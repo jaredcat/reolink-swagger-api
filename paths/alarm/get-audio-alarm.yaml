@@ -5,7 +5,7 @@ post:
   summary: Get audio alarm settings
   description: Returns the audio alarm configuration
   x-deviceSupport: both
-  operationId: getAudioAlarm
+  operationId: GetAudioAlarm
   responses:
     '200':
       description: Successful operation

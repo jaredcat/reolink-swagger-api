@@ -5,7 +5,7 @@ post:
   summary: Get PTZ patrol configuration
   description: Returns patrol (cruise) routes configuration for PTZ camera
   x-deviceSupport: both
-  operationId: getPtzPatrol
+  operationId: GetPtzPatrol
   requestBody:
     required: true
     content:

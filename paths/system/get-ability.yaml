@@ -5,7 +5,7 @@ post:
   summary: Get device information
   description: It is used to get system ability of appointed user
   x-deviceSupport: both
-  operationId: getAbility
+  operationId: GetAbility
   requestBody:
     required: true
     content:

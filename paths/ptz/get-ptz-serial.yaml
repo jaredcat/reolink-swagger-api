@@ -5,7 +5,7 @@ post:
   summary: Get PTZ serial port configuration
   description: Returns the serial port configuration used for PTZ control
   x-deviceSupport: ipc
-  operationId: getPtzSerial
+  operationId: GetPtzSerial
   requestBody:
     required: true
     content:

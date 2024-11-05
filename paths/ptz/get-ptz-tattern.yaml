@@ -5,7 +5,7 @@ post:
   summary: Get PTZ pattern configuration
   description: Returns the configured PTZ movement patterns
   x-deviceSupport: both
-  operationId: getPtzTattern
+  operationId: GetPtzTattern
   requestBody:
     required: true
     content:

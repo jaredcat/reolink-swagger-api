@@ -5,7 +5,7 @@ post:
   summary: Get recording configuration
   description: Returns the current recording configuration including schedules and settings
   x-deviceSupport: both
-  operationId: getRec
+  operationId: GetRec
   requestBody:
     required: true
     content:

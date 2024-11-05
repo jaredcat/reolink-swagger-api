@@ -5,7 +5,7 @@ post:
   summary: Get login security settings
   description: Returns login lock time and attempt settings
   x-deviceSupport: both
-  operationId: getSysCfg
+  operationId: GetSysCfg
   responses:
     '200':
       description: Successful operation

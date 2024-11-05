@@ -5,7 +5,7 @@ post:
   summary: Set email settings (v2.0)
   description: Updates the email notification configuration (version 2.0)
   x-deviceSupport: both
-  operationId: setEmailV20
+  operationId: SetEmailV20
   requestBody:
     required: true
     content:

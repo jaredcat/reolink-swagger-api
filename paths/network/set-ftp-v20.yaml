@@ -5,7 +5,7 @@ post:
   summary: Set FTP settings (V20)
   description: Updates FTP service configuration (V20 version with enhanced features)
   x-deviceSupport: both
-  operationId: setFtpV20
+  operationId: SetFtpV20
   requestBody:
     required: true
     content:

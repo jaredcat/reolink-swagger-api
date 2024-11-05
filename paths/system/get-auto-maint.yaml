@@ -5,7 +5,7 @@ post:
   summary: Get auto maintenance settings
   description: Returns the automatic maintenance configuration
   x-deviceSupport: both
-  operationId: getAutoMaint
+  operationId: GetAutoMaint
   requestBody:
     required: true
     content:

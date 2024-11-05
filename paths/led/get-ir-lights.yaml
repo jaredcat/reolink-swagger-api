@@ -5,7 +5,7 @@ post:
   summary: Get IR light settings
   description: Returns the current IR light configuration
   x-deviceSupport: both
-  operationId: getIrLights
+  operationId: GetIrLights
   responses:
     '200':
       description: Successful operation

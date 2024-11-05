@@ -5,7 +5,7 @@ post:
   summary: Get device name
   description: Returns the configured name of the device
   x-deviceSupport: both
-  operationId: getDevName
+  operationId: GetDevName
   requestBody:
     required: true
     content:

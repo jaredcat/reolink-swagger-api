@@ -5,7 +5,7 @@ post:
   summary: Get video crop settings
   description: Returns the current video cropping configuration
   x-deviceSupport: both
-  operationId: getCrop
+  operationId: GetCrop
   requestBody:
     required: true
     content:

@@ -6,7 +6,7 @@ post:
   summary: Get PTZ check state
   description: Returns the current state of PTZ self-check process
   x-deviceSupport: nvr
-  operationId: getPtzCheckState
+  operationId: GetPtzCheckState
   requestBody:
     required: true
     content:

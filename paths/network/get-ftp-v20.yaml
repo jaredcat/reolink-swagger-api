@@ -5,7 +5,7 @@ post:
   summary: Get FTP settings (V20)
   description: Returns current FTP service configuration (V20 version with enhanced features)
   x-deviceSupport: both
-  operationId: getFtpV20
+  operationId: GetFtpV20
   requestBody:
     required: true
     content:

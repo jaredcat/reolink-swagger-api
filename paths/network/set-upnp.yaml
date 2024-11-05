@@ -5,7 +5,7 @@ post:
   summary: Set UPnP settings
   description: Updates UPnP service configuration
   x-deviceSupport: both
-  operationId: setUpnp
+  operationId: SetUpnp
   requestBody:
     required: true
     content:

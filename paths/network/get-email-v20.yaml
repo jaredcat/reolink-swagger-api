@@ -5,7 +5,7 @@ post:
   summary: Get email settings (v2.0)
   description: Returns the email notification configuration (version 2.0)
   x-deviceSupport: both
-  operationId: getEmailV20
+  operationId: GetEmailV20
   requestBody:
     required: true
     content:

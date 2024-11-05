@@ -5,7 +5,7 @@ post:
   summary: Set network port settings
   description: Updates network service port configurations and their enable status
   x-deviceSupport: both
-  operationId: setNetPort
+  operationId: SetNetPort
   requestBody:
     required: true
     content:

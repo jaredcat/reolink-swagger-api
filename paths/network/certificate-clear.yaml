@@ -5,7 +5,7 @@ post:
   summary: Clear certificate
   description: Removes the custom SSL certificate and reverts to default
   x-deviceSupport: both
-  operationId: certificateClear
+  operationId: CertificateClear
   responses:
     '200':
       $ref: '../../components/responses/common.yaml#/Success'

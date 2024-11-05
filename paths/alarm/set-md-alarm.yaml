@@ -5,7 +5,7 @@ post:
   summary: Set advanced motion detection settings
   description: Updates the advanced motion detection alarm configuration
   x-deviceSupport: both
-  operationId: setMdAlarm
+  operationId: SetMdAlarm
   requestBody:
     required: true
     content:

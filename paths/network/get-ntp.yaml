@@ -5,7 +5,7 @@ post:
   summary: Get NTP settings
   description: Returns current NTP service configuration
   x-deviceSupport: both
-  operationId: getNtp
+  operationId: GetNtp
   requestBody:
     required: true
     content:

@@ -6,7 +6,7 @@ post:
   summary: Scan for WiFi networks
   description: Scans and returns list of available WiFi networks
   x-deviceSupport: ipc
-  operationId: scanWifi
+  operationId: ScanWifi
   responses:
     '200':
       description: Successful operation

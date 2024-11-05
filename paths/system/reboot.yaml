@@ -5,7 +5,7 @@ post:
   summary: Reboot device
   description: Reboots the device
   x-deviceSupport: both
-  operationId: reboot
+  operationId: Reboot
   responses:
     '200':
       $ref: '../../components/responses/common.yaml#/Success'

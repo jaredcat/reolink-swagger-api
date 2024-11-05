@@ -5,7 +5,7 @@ post:
   summary: Set image settings
   description: Updates the image settings like brightness, contrast, etc.
   x-deviceSupport: both
-  operationId: setImage
+  operationId: SetImage
   requestBody:
     required: true
     content:

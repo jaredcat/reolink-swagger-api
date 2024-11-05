@@ -6,7 +6,7 @@ post:
   summary: Test WiFi connection
   description: Tests connection to specified WiFi network
   x-deviceSupport: ipc
-  operationId: testWifi
+  operationId: TestWifi
   requestBody:
     required: true
     content:

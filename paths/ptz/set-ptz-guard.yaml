@@ -7,7 +7,7 @@ post:
     Configures the guard position and its settings.
     The guard position is a preset position the camera returns to after a period of inactivity.
   x-deviceSupport: both
-  operationId: setPtzGuard
+  operationId: SetPtzGuard
   requestBody:
     required: true
     content:

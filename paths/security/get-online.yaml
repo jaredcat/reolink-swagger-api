@@ -5,7 +5,7 @@ post:
   summary: Get online users
   description: Returns list of currently connected users
   x-deviceSupport: both
-  operationId: getOnline
+  operationId: GetOnline
   responses:
     '200':
       description: Successful operation

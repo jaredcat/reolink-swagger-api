@@ -6,7 +6,7 @@ post:
   summary: Set image stitch settings
   description: Updates the image stitching configuration for binocular cameras
   x-deviceSupport: ipc
-  operationId: setStitch
+  operationId: SetStitch
   requestBody:
     required: true
     content:

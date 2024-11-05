@@ -5,7 +5,7 @@ post:
   summary: Get network interface settings
   description: Returns current network interface configuration including IP settings and DNS
   x-deviceSupport: both
-  operationId: getLocalLink
+  operationId: GetLocalLink
   requestBody:
     required: true
     content:

@@ -5,7 +5,7 @@ post:
   summary: Modify user
   description: Modifies an existing user's password
   x-deviceSupport: both
-  operationId: modifyUser
+  operationId: ModifyUser
   requestBody:
     required: true
     content:

@@ -5,7 +5,7 @@ post:
   summary: Disconnect user
   description: Forces an online user to disconnect
   x-deviceSupport: both
-  operationId: disconnect
+  operationId: Disconnect
   requestBody:
     required: true
     content:

@@ -7,7 +7,7 @@ post:
     Configures patrol (cruise) routes for PTZ camera.
     Supports up to 16 preset points per patrol route.
   x-deviceSupport: both
-  operationId: setPtzPatrol
+  operationId: SetPtzPatrol
   requestBody:
     required: true
     content:

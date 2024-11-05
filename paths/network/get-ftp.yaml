@@ -5,7 +5,7 @@ post:
   summary: Get FTP settings
   description: Returns current FTP service configuration (Legacy version)
   x-deviceSupport: both
-  operationId: getFtp
+  operationId: GetFtp
   requestBody:
     required: true
     content:

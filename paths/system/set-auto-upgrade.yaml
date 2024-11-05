@@ -5,7 +5,7 @@ post:
   summary: Set auto upgrade settings
   description: Configures automatic upgrade settings
   x-deviceSupport: both
-  operationId: setAutoUpgrade
+  operationId: SetAutoUpgrade
   requestBody:
     required: true
     content:

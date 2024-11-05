@@ -7,7 +7,7 @@ post:
     Configures PTZ movement patterns.
     Each pattern is a recorded series of PTZ movements that can be played back.
   x-deviceSupport: both
-  operationId: setPtzTattern
+  operationId: SetPtzTattern
   requestBody:
     required: true
     content:

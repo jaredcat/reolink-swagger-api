@@ -5,7 +5,7 @@ post:
   summary: Get UPnP settings
   description: Returns current UPnP service configuration
   x-deviceSupport: both
-  operationId: getUpnp
+  operationId: GetUpnp
   requestBody:
     required: true
     content:

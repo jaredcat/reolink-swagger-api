@@ -5,7 +5,7 @@ post:
   summary: Set login security settings
   description: Configures login lock settings
   x-deviceSupport: both
-  operationId: setSysCfg
+  operationId: SetSysCfg
   requestBody:
     required: true
     content:

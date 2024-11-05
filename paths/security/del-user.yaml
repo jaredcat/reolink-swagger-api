@@ -5,7 +5,7 @@ post:
   summary: Delete user
   description: Removes an existing user account
   x-deviceSupport: both
-  operationId: delUser
+  operationId: DelUser
   requestBody:
     required: true
     content:

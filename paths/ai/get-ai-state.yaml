@@ -5,7 +5,7 @@ post:
   summary: Get AI detection states
   description: Returns the current state of AI detection types
   x-deviceSupport: both
-  operationId: getAiState
+  operationId: GetAiState
   requestBody:
     required: true
     content:

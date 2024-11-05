@@ -5,7 +5,7 @@ post:
   summary: Set privacy mask settings
   description: Configures privacy mask zones
   x-deviceSupport: both
-  operationId: setMask
+  operationId: SetMask
   requestBody:
     required: true
     content:

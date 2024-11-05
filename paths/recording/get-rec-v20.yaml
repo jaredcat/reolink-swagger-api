@@ -6,7 +6,7 @@ post:
   summary: Get enhanced recording configuration
   description: Returns the enhanced recording configuration (V20) including AI event schedules
   x-deviceSupport: nvr
-  operationId: getRecV20
+  operationId: GetRecV20
   requestBody:
     required: true
     content:

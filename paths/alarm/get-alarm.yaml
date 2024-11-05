@@ -5,7 +5,7 @@ post:
   summary: Get alarm settings
   description: Returns the current alarm configuration including motion detection areas and sensitivity
   x-deviceSupport: both
-  operationId: getAlarm
+  operationId: GetAlarm
   requestBody:
     required: true
     content:

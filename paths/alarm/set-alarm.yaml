@@ -5,7 +5,7 @@ post:
   summary: Set alarm configuration
   description: Updates the alarm configuration including motion detection areas and sensitivity
   x-deviceSupport: both
-  operationId: setAlarm
+  operationId: SetAlarm
   requestBody:
     required: true
     content:

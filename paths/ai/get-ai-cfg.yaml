@@ -5,7 +5,7 @@ post:
   summary: Get AI configuration
   description: Returns the current AI detection and tracking configuration
   x-deviceSupport: both
-  operationId: getAiCfg
+  operationId: GetAiCfg
   requestBody:
     required: true
     content:

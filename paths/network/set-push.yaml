@@ -5,7 +5,7 @@ post:
   summary: Set push notification settings
   description: Updates the push notification configuration
   x-deviceSupport: both
-  operationId: setPush
+  operationId: SetPush
   requestBody:
     required: true
     content:

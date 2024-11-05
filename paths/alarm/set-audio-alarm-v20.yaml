@@ -5,7 +5,7 @@ post:
   summary: Set enhanced audio alarm settings
   description: Updates the enhanced audio alarm configuration (v2.0)
   x-deviceSupport: both
-  operationId: setAudioAlarmV20
+  operationId: SetAudioAlarmV20
   requestBody:
     required: true
     content:

@@ -5,7 +5,7 @@ post:
   summary: Get PTZ preset positions
   description: Returns configured preset positions for PTZ camera
   x-deviceSupport: both
-  operationId: getPtzPreset
+  operationId: GetPtzPreset
   requestBody:
     required: true
     content:

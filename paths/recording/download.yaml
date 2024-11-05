@@ -5,7 +5,7 @@ post:
   summary: Download recording
   description: Downloads a recording file
   x-deviceSupport: both
-  operationId: downloadRecording
+  operationId: DownloadRecording
   parameters:
     - name: source
       in: query

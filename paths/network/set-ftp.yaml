@@ -5,7 +5,7 @@ post:
   summary: Set FTP settings
   description: Updates FTP service configuration (Legacy version)
   x-deviceSupport: both
-  operationId: setFtp
+  operationId: SetFtp
   requestBody:
     required: true
     content:

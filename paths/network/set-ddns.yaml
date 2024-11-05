@@ -5,7 +5,7 @@ post:
   summary: Set DDNS settings
   description: Updates DDNS service configuration
   x-deviceSupport: both
-  operationId: setDdns
+  operationId: SetDdns
   requestBody:
     required: true
     content:

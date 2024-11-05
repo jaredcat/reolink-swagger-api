@@ -7,7 +7,7 @@ post:
     Authenticates user and returns a token for subsequent requests.
     Token is valid for 3600 seconds by default.
   x-deviceSupport: both
-  operationId: login
+  operationId: Login
   security: [] # No auth needed for login
   requestBody:
     required: true

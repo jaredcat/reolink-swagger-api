@@ -6,7 +6,7 @@ post:
   summary: Set buzzer alarm settings
   description: Updates the buzzer alarm configuration (NVR only)
   x-deviceSupport: nvr
-  operationId: setBuzzerAlarmV20
+  operationId: SetBuzzerAlarmV20
   requestBody:
     required: true
     content:

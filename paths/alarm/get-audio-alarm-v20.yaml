@@ -5,7 +5,7 @@ post:
   summary: Get enhanced audio alarm settings
   description: Returns the enhanced audio alarm configuration (v2.0)
   x-deviceSupport: both
-  operationId: getAudioAlarmV20
+  operationId: GetAudioAlarmV20
   requestBody:
     required: true
     content:

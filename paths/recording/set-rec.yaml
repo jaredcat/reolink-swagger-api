@@ -5,7 +5,7 @@ post:
   summary: Set recording configuration
   description: Updates the recording configuration including schedules and settings
   x-deviceSupport: both
-  operationId: setRec
+  operationId: SetRec
   requestBody:
     required: true
     content:

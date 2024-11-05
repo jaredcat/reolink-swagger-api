@@ -5,7 +5,7 @@ post:
   summary: Set video crop settings
   description: Updates the video cropping configuration
   x-deviceSupport: both
-  operationId: setCrop
+  operationId: SetCrop
   requestBody:
     required: true
     content:

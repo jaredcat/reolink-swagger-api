@@ -5,7 +5,7 @@ post:
   summary: Set OSD settings
   description: Updates the on-screen display settings including channel name and time display
   x-deviceSupport: both
-  operationId: setOsd
+  operationId: SetOsd
   requestBody:
     required: true
     content:

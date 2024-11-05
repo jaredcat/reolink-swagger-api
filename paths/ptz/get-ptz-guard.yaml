@@ -5,7 +5,7 @@ post:
   summary: Get PTZ guard position settings
   description: Returns the guard position configuration
   x-deviceSupport: both
-  operationId: getPtzGuard
+  operationId: GetPtzGuard
   requestBody:
     required: true
     content:

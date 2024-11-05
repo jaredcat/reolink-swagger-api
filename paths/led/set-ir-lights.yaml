@@ -5,7 +5,7 @@ post:
   summary: Set IR light settings
   description: Configure IR light operation
   x-deviceSupport: both
-  operationId: setIrLights
+  operationId: SetIrLights
   requestBody:
     required: true
     content:

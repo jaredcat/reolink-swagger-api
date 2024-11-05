@@ -5,7 +5,7 @@ post:
   summary: Get auto focus configuration
   description: Returns the current auto focus settings
   x-deviceSupport: both
-  operationId: getAutoFocus
+  operationId: GetAutoFocus
   requestBody:
     required: true
     content:

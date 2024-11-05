@@ -7,7 +7,7 @@ post:
     Creates a new user account.
     Maximum of 20 users can be created.
   x-deviceSupport: both
-  operationId: addUser
+  operationId: AddUser
   requestBody:
     required: true
     content:

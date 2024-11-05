@@ -5,7 +5,7 @@ post:
   summary: Get certificate information
   description: Returns current SSL certificate configuration
   x-deviceSupport: both
-  operationId: getCertificateInfo
+  operationId: GetCertificateInfo
   responses:
     '200':
       description: Successful operation

@@ -5,7 +5,7 @@ post:
   summary: Get power LED status
   description: Returns the current power LED state
   x-deviceSupport: both
-  operationId: getPowerLed
+  operationId: GetPowerLed
   responses:
     '200':
       description: Successful operation

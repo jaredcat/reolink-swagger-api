@@ -6,7 +6,7 @@ post:
   summary: Start PTZ self-check
   description: Initiates the PTZ camera self-check procedure
   x-deviceSupport: nvr
-  operationId: ptzCheck
+  operationId: PtzCheck
   requestBody:
     required: true
     content:

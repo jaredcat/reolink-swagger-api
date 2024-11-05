@@ -6,7 +6,7 @@ post:
   summary: Get buzzer alarm settings
   description: Returns the buzzer alarm configuration (NVR only)
   x-deviceSupport: nvr
-  operationId: getBuzzerAlarmV20
+  operationId: GetBuzzerAlarmV20
   requestBody:
     required: true
     content:

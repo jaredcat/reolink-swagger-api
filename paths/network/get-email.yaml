@@ -5,7 +5,7 @@ post:
   summary: Get email settings
   description: Returns current email service configuration including SMTP settings and notification schedules
   x-deviceSupport: both
-  operationId: getEmail
+  operationId: GetEmail
   requestBody:
     required: true
     content:

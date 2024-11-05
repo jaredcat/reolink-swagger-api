@@ -5,7 +5,7 @@ post:
   summary: Get privacy mask settings
   description: Returns the current privacy mask zones configuration
   x-deviceSupport: both
-  operationId: getMask
+  operationId: GetMask
   requestBody:
     required: true
     content:

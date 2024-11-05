@@ -73,7 +73,7 @@ paths:
       summary: Get device information
       description: It is used to get system ability of appointed user
       x-deviceSupport: both
-      operationId: getAbility
+      operationId: GetAbility
       requestBody:
         required: true
         content:
@@ -195,7 +195,7 @@ paths:
       summary: Get device information
       description: Returns detailed information about the device including model, firmware version, and capabilities.
       x-deviceSupport: both
-      operationId: getDevInfo
+      operationId: GetDevInfo
       responses:
         '200':
           description: Successful operation
@@ -296,7 +296,7 @@ paths:
       summary: Get device name
       description: Returns the configured name of the device
       x-deviceSupport: both
-      operationId: getDevName
+      operationId: GetDevName
       requestBody:
         required: true
         content:
@@ -353,7 +353,7 @@ paths:
       summary: Set device name
       description: Sets a new name for the device
       x-deviceSupport: both
-      operationId: setDevName
+      operationId: SetDevName
       requestBody:
         required: true
         content:
@@ -395,7 +395,7 @@ paths:
       summary: Get system time settings
       description: Returns the current system time configuration including timezone and DST settings
       x-deviceSupport: both
-      operationId: getTime
+      operationId: GetTime
       requestBody:
         required: true
         content:
@@ -459,7 +459,7 @@ paths:
       summary: Set system time settings
       description: Updates the system time configuration including timezone and DST settings
       x-deviceSupport: both
-      operationId: setTime
+      operationId: SetTime
       requestBody:
         required: true
         content:
@@ -494,7 +494,7 @@ paths:
       summary: Get auto maintenance settings
       description: Returns the automatic maintenance configuration
       x-deviceSupport: both
-      operationId: getAutoMaint
+      operationId: GetAutoMaint
       requestBody:
         required: true
         content:
@@ -553,7 +553,7 @@ paths:
       summary: Set auto maintenance settings
       description: Configures automatic maintenance schedule
       x-deviceSupport: both
-      operationId: setAutoMaint
+      operationId: SetAutoMaint
       requestBody:
         required: true
         content:
@@ -588,7 +588,7 @@ paths:
       summary: Get storage device information
       description: Returns information about hard disks or SD cards
       x-deviceSupport: both
-      operationId: getHddInfo
+      operationId: GetHddInfo
       responses:
         '200':
           description: Successful operation
@@ -623,7 +623,7 @@ paths:
       summary: Format storage device
       description: Format hard disks or SD card
       x-deviceSupport: both
-      operationId: format
+      operationId: Format
       requestBody:
         required: true
         content:
@@ -669,7 +669,7 @@ paths:
         Must send UpgradePrepare command first.
         Supports uploading up to 40KB packets at a time.
       x-deviceSupport: both
-      operationId: upgrade
+      operationId: Upgrade
       parameters:
         - name: clearConfig
           in: query
@@ -710,7 +710,7 @@ paths:
       summary: Restore factory defaults
       description: Resets all configurations to factory default settings
       x-deviceSupport: both
-      operationId: restore
+      operationId: Restore
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -725,7 +725,7 @@ paths:
       summary: Reboot device
       description: Reboots the device
       x-deviceSupport: both
-      operationId: reboot
+      operationId: Reboot
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -740,7 +740,7 @@ paths:
       summary: Prepare for firmware upgrade
       description: Validates upgrade file and prepares for upgrade process
       x-deviceSupport: both
-      operationId: upgradePrepare
+      operationId: UpgradePrepare
       requestBody:
         required: true
         content:
@@ -785,7 +785,7 @@ paths:
       summary: Get auto upgrade settings
       description: Returns the automatic upgrade configuration
       x-deviceSupport: both
-      operationId: getAutoUpgrade
+      operationId: GetAutoUpgrade
       responses:
         '200':
           description: Successful operation
@@ -821,7 +821,7 @@ paths:
       summary: Set auto upgrade settings
       description: Configures automatic upgrade settings
       x-deviceSupport: both
-      operationId: setAutoUpgrade
+      operationId: SetAutoUpgrade
       requestBody:
         required: true
         content:
@@ -861,7 +861,7 @@ paths:
       summary: Check for firmware updates
       description: Checks if new firmware is available for upgrade
       x-deviceSupport: both
-      operationId: checkFirmware
+      operationId: CheckFirmware
       responses:
         '200':
           description: Successful operation
@@ -895,7 +895,7 @@ paths:
       summary: Start online upgrade
       description: Initiates online firmware upgrade when new version is available
       x-deviceSupport: both
-      operationId: upgradeOnline
+      operationId: UpgradeOnline
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -910,7 +910,7 @@ paths:
       summary: Get upgrade status
       description: Checks the progress of firmware upgrade
       x-deviceSupport: both
-      operationId: upgradeStatus
+      operationId: UpgradeStatus
       responses:
         '200':
           description: Successful operation
@@ -944,7 +944,7 @@ paths:
       summary: Get channel status
       description: Returns status information for all NVR channels
       x-deviceSupport: nvr
-      operationId: getChannelStatus
+      operationId: GetChannelStatus
       responses:
         '200':
           description: Successful operation
@@ -1001,7 +1001,7 @@ paths:
       summary: Shutdown device
       description: Safely shuts down the device
       x-deviceSupport: both
-      operationId: shutdown
+      operationId: Shutdown
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -1018,7 +1018,7 @@ paths:
         Authenticates user and returns a token for subsequent requests.
         Token is valid for 3600 seconds by default.
       x-deviceSupport: both
-      operationId: login
+      operationId: Login
       security: []
       requestBody:
         required: true
@@ -1094,7 +1094,7 @@ paths:
       summary: Logout from device
       description: Invalidates the current session token
       x-deviceSupport: both
-      operationId: logout
+      operationId: Logout
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -1109,7 +1109,7 @@ paths:
       summary: Get user list
       description: Returns list of configured users and their permissions
       x-deviceSupport: both
-      operationId: getUser
+      operationId: GetUser
       requestBody:
         required: true
         content:
@@ -1198,7 +1198,7 @@ paths:
         Creates a new user account.
         Maximum of 20 users can be created.
       x-deviceSupport: both
-      operationId: addUser
+      operationId: AddUser
       requestBody:
         required: true
         content:
@@ -1254,7 +1254,7 @@ paths:
       summary: Delete user
       description: Removes an existing user account
       x-deviceSupport: both
-      operationId: delUser
+      operationId: DelUser
       requestBody:
         required: true
         content:
@@ -1297,7 +1297,7 @@ paths:
       summary: Modify user
       description: Modifies an existing user's password
       x-deviceSupport: both
-      operationId: modifyUser
+      operationId: ModifyUser
       requestBody:
         required: true
         content:
@@ -1351,7 +1351,7 @@ paths:
       summary: Get online users
       description: Returns list of currently connected users
       x-deviceSupport: both
-      operationId: getOnline
+      operationId: GetOnline
       responses:
         '200':
           description: Successful operation
@@ -1384,7 +1384,7 @@ paths:
       summary: Disconnect user
       description: Forces an online user to disconnect
       x-deviceSupport: both
-      operationId: disconnect
+      operationId: Disconnect
       requestBody:
         required: true
         content:
@@ -1429,7 +1429,7 @@ paths:
       summary: Get login security settings
       description: Returns login lock time and attempt settings
       x-deviceSupport: both
-      operationId: getSysCfg
+      operationId: GetSysCfg
       responses:
         '200':
           description: Successful operation
@@ -1482,7 +1482,7 @@ paths:
       summary: Set login security settings
       description: Configures login lock settings
       x-deviceSupport: both
-      operationId: setSysCfg
+      operationId: SetSysCfg
       requestBody:
         required: true
         content:
@@ -1529,7 +1529,7 @@ paths:
       summary: Get network interface settings
       description: Returns current network interface configuration including IP settings and DNS
       x-deviceSupport: both
-      operationId: getLocalLink
+      operationId: GetLocalLink
       requestBody:
         required: true
         content:
@@ -1588,7 +1588,7 @@ paths:
       summary: Set network interface settings
       description: Updates network interface configuration
       x-deviceSupport: both
-      operationId: setLocalLink
+      operationId: SetLocalLink
       requestBody:
         required: true
         content:
@@ -1623,7 +1623,7 @@ paths:
       summary: Get DDNS settings
       description: Returns current DDNS service configuration
       x-deviceSupport: both
-      operationId: getDdns
+      operationId: GetDdns
       requestBody:
         required: true
         content:
@@ -1682,7 +1682,7 @@ paths:
       summary: Set DDNS settings
       description: Updates DDNS service configuration
       x-deviceSupport: both
-      operationId: setDdns
+      operationId: SetDdns
       requestBody:
         required: true
         content:
@@ -1717,7 +1717,7 @@ paths:
       summary: Get email settings
       description: Returns current email service configuration including SMTP settings and notification schedules
       x-deviceSupport: both
-      operationId: getEmail
+      operationId: GetEmail
       requestBody:
         required: true
         content:
@@ -1776,7 +1776,7 @@ paths:
       summary: Set email settings
       description: Updates email service configuration including SMTP settings and notification schedules
       x-deviceSupport: both
-      operationId: setEmail
+      operationId: SetEmail
       requestBody:
         required: true
         content:
@@ -1811,7 +1811,7 @@ paths:
       summary: Get email settings (v2.0)
       description: Returns the email notification configuration (version 2.0)
       x-deviceSupport: both
-      operationId: getEmailV20
+      operationId: GetEmailV20
       requestBody:
         required: true
         content:
@@ -1862,7 +1862,7 @@ paths:
       summary: Set email settings (v2.0)
       description: Updates the email notification configuration (version 2.0)
       x-deviceSupport: both
-      operationId: setEmailV20
+      operationId: SetEmailV20
       requestBody:
         required: true
         content:
@@ -1897,7 +1897,7 @@ paths:
       summary: Test email settings
       description: Tests email configuration by sending a test message
       x-deviceSupport: both
-      operationId: testEmail
+      operationId: TestEmail
       requestBody:
         required: true
         content:
@@ -1985,7 +1985,7 @@ paths:
       summary: Get FTP settings
       description: Returns current FTP service configuration (Legacy version)
       x-deviceSupport: both
-      operationId: getFtp
+      operationId: GetFtp
       requestBody:
         required: true
         content:
@@ -2044,7 +2044,7 @@ paths:
       summary: Set FTP settings
       description: Updates FTP service configuration (Legacy version)
       x-deviceSupport: both
-      operationId: setFtp
+      operationId: SetFtp
       requestBody:
         required: true
         content:
@@ -2079,7 +2079,7 @@ paths:
       summary: Test FTP settings
       description: Tests FTP configuration by attempting to connect and upload a test file
       x-deviceSupport: both
-      operationId: testFtp
+      operationId: TestFtp
       requestBody:
         required: true
         content:
@@ -2198,7 +2198,7 @@ paths:
       summary: Get NTP settings
       description: Returns current NTP service configuration
       x-deviceSupport: both
-      operationId: getNtp
+      operationId: GetNtp
       requestBody:
         required: true
         content:
@@ -2257,7 +2257,7 @@ paths:
       summary: Set NTP settings
       description: Updates NTP service configuration
       x-deviceSupport: both
-      operationId: setNtp
+      operationId: SetNtp
       requestBody:
         required: true
         content:
@@ -2292,7 +2292,7 @@ paths:
       summary: Get network port settings
       description: Returns current network service port configurations and their enable status
       x-deviceSupport: both
-      operationId: getNetPort
+      operationId: GetNetPort
       responses:
         '200':
           description: Successful operation
@@ -2325,7 +2325,7 @@ paths:
       summary: Set network port settings
       description: Updates network service port configurations and their enable status
       x-deviceSupport: both
-      operationId: setNetPort
+      operationId: SetNetPort
       requestBody:
         required: true
         content:
@@ -2360,7 +2360,7 @@ paths:
       summary: Get UPnP settings
       description: Returns current UPnP service configuration
       x-deviceSupport: both
-      operationId: getUpnp
+      operationId: GetUpnp
       requestBody:
         required: true
         content:
@@ -2411,7 +2411,7 @@ paths:
       summary: Set UPnP settings
       description: Updates UPnP service configuration
       x-deviceSupport: both
-      operationId: setUpnp
+      operationId: SetUpnp
       requestBody:
         required: true
         content:
@@ -2447,7 +2447,7 @@ paths:
       summary: Get WiFi settings
       description: Returns current WiFi configuration
       x-deviceSupport: ipc
-      operationId: getWifi
+      operationId: GetWifi
       requestBody:
         required: true
         content:
@@ -2499,7 +2499,7 @@ paths:
       summary: Set WiFi settings
       description: Updates WiFi configuration
       x-deviceSupport: ipc
-      operationId: setWifi
+      operationId: SetWifi
       requestBody:
         required: true
         content:
@@ -2535,7 +2535,7 @@ paths:
       summary: Test WiFi connection
       description: Tests connection to specified WiFi network
       x-deviceSupport: ipc
-      operationId: testWifi
+      operationId: TestWifi
       requestBody:
         required: true
         content:
@@ -2580,7 +2580,7 @@ paths:
       summary: Scan for WiFi networks
       description: Scans and returns list of available WiFi networks
       x-deviceSupport: ipc
-      operationId: scanWifi
+      operationId: ScanWifi
       responses:
         '200':
           description: Successful operation
@@ -2616,7 +2616,7 @@ paths:
       summary: Get WiFi signal strength
       description: Returns current WiFi signal strength
       x-deviceSupport: ipc
-      operationId: getWifiSignal
+      operationId: GetWifiSignal
       responses:
         '200':
           description: Successful operation
@@ -2652,7 +2652,7 @@ paths:
       summary: Get push notification settings
       description: Returns the push notification configuration
       x-deviceSupport: both
-      operationId: getPush
+      operationId: GetPush
       requestBody:
         required: true
         content:
@@ -2714,7 +2714,7 @@ paths:
       summary: Set push notification settings
       description: Updates the push notification configuration
       x-deviceSupport: both
-      operationId: setPush
+      operationId: SetPush
       requestBody:
         required: true
         content:
@@ -2752,7 +2752,7 @@ paths:
       summary: Get push notification settings (v2.0)
       description: Returns the push notification configuration (version 2.0)
       x-deviceSupport: both
-      operationId: getPushV20
+      operationId: GetPushV20
       requestBody:
         required: true
         content:
@@ -2815,7 +2815,7 @@ paths:
       summary: Set push notification settings (v2.0)
       description: Updates the push notification configuration (version 2.0)
       x-deviceSupport: both
-      operationId: setPushV20
+      operationId: SetPushV20
       requestBody:
         required: true
         content:
@@ -2850,7 +2850,7 @@ paths:
       summary: Get P2P settings
       description: Returns current P2P service configuration and device UID
       x-deviceSupport: both
-      operationId: getP2p
+      operationId: GetP2p
       requestBody:
         required: true
         content:
@@ -2901,7 +2901,7 @@ paths:
       summary: Set P2P settings
       description: Updates P2P service configuration
       x-deviceSupport: both
-      operationId: setP2p
+      operationId: SetP2p
       requestBody:
         required: true
         content:
@@ -2941,7 +2941,7 @@ paths:
       summary: Get certificate information
       description: Returns current SSL certificate configuration
       x-deviceSupport: both
-      operationId: getCertificateInfo
+      operationId: GetCertificateInfo
       responses:
         '200':
           description: Successful operation
@@ -2974,7 +2974,7 @@ paths:
       summary: Clear certificate
       description: Removes the custom SSL certificate and reverts to default
       x-deviceSupport: both
-      operationId: certificateClear
+      operationId: CertificateClear
       responses:
         '200':
           $ref: '#/components/responses/Success'
@@ -2989,7 +2989,7 @@ paths:
       summary: Get RTSP URLs
       description: Returns RTSP stream URLs for the specified channel
       x-deviceSupport: both
-      operationId: getRtspUrl
+      operationId: GetRtspUrl
       requestBody:
         required: true
         content:
@@ -3042,7 +3042,7 @@ paths:
       summary: Get image settings
       description: Returns the current image settings like brightness, contrast, etc.
       x-deviceSupport: both
-      operationId: getImage
+      operationId: GetImage
       requestBody:
         required: true
         content:
@@ -3107,7 +3107,7 @@ paths:
       summary: Set image settings
       description: Updates the image settings like brightness, contrast, etc.
       x-deviceSupport: both
-      operationId: setImage
+      operationId: SetImage
       requestBody:
         required: true
         content:
@@ -3142,7 +3142,7 @@ paths:
       summary: Get OSD settings
       description: Returns the current on-screen display settings including channel name and time display
       x-deviceSupport: both
-      operationId: getOsd
+      operationId: GetOsd
       requestBody:
         required: true
         content:
@@ -3207,7 +3207,7 @@ paths:
       summary: Set OSD settings
       description: Updates the on-screen display settings including channel name and time display
       x-deviceSupport: both
-      operationId: setOsd
+      operationId: SetOsd
       requestBody:
         required: true
         content:
@@ -3242,7 +3242,7 @@ paths:
       summary: Get ISP settings
       description: Returns the current Image Signal Processing settings
       x-deviceSupport: both
-      operationId: getIsp
+      operationId: GetIsp
       requestBody:
         required: true
         content:
@@ -3338,7 +3338,7 @@ paths:
       summary: Set ISP settings
       description: Updates the Image Signal Processing settings
       x-deviceSupport: both
-      operationId: setIsp
+      operationId: SetIsp
       requestBody:
         required: true
         content:
@@ -3399,7 +3399,7 @@ paths:
       summary: Get privacy mask settings
       description: Returns the current privacy mask zones configuration
       x-deviceSupport: both
-      operationId: getMask
+      operationId: GetMask
       requestBody:
         required: true
         content:
@@ -3483,7 +3483,7 @@ paths:
       summary: Set privacy mask settings
       description: Configures privacy mask zones
       x-deviceSupport: both
-      operationId: setMask
+      operationId: SetMask
       requestBody:
         required: true
         content:
@@ -3533,7 +3533,7 @@ paths:
       summary: Get video crop settings
       description: Returns the current video cropping configuration
       x-deviceSupport: both
-      operationId: getCrop
+      operationId: GetCrop
       requestBody:
         required: true
         content:
@@ -3615,7 +3615,7 @@ paths:
       summary: Set video crop settings
       description: Updates the video cropping configuration
       x-deviceSupport: both
-      operationId: setCrop
+      operationId: SetCrop
       requestBody:
         required: true
         content:
@@ -3658,7 +3658,7 @@ paths:
       summary: Get image stitch settings
       description: Returns the current image stitching configuration for binocular cameras
       x-deviceSupport: ipc
-      operationId: getStitch
+      operationId: GetStitch
       requestBody:
         required: true
         content:
@@ -3755,7 +3755,7 @@ paths:
       summary: Set image stitch settings
       description: Updates the image stitching configuration for binocular cameras
       x-deviceSupport: ipc
-      operationId: setStitch
+      operationId: SetStitch
       requestBody:
         required: true
         content:
@@ -3796,7 +3796,7 @@ paths:
       summary: Get encoding configuration
       description: Returns the current encoding configuration for main and sub streams
       x-deviceSupport: both
-      operationId: getEnc
+      operationId: GetEnc
       requestBody:
         required: true
         content:
@@ -3891,7 +3891,7 @@ paths:
       summary: Set encoding configuration
       description: Updates the encoding configuration for main and sub streams
       x-deviceSupport: both
-      operationId: setEnc
+      operationId: SetEnc
       requestBody:
         required: true
         content:
@@ -3933,7 +3933,7 @@ paths:
       summary: Get recording configuration
       description: Returns the current recording configuration including schedules and settings
       x-deviceSupport: both
-      operationId: getRec
+      operationId: GetRec
       requestBody:
         required: true
         content:
@@ -3999,7 +3999,7 @@ paths:
       summary: Set recording configuration
       description: Updates the recording configuration including schedules and settings
       x-deviceSupport: both
-      operationId: setRec
+      operationId: SetRec
       requestBody:
         required: true
         content:
@@ -4035,7 +4035,7 @@ paths:
       summary: Get enhanced recording configuration
       description: Returns the enhanced recording configuration (V20) including AI event schedules
       x-deviceSupport: nvr
-      operationId: getRecV20
+      operationId: GetRecV20
       requestBody:
         required: true
         content:
@@ -4102,7 +4102,7 @@ paths:
       summary: Set enhanced recording configuration
       description: Updates the enhanced recording configuration (V20) including AI event schedules
       x-deviceSupport: nvr
-      operationId: setRecV20
+      operationId: SetRecV20
       requestBody:
         required: true
         content:
@@ -4139,7 +4139,7 @@ paths:
         Searches for recordings based on time range and stream type.
         For large number of files, search might timeout.
       x-deviceSupport: both
-      operationId: searchRecordings
+      operationId: SearchRecordings
       requestBody:
         required: true
         content:
@@ -4241,7 +4241,7 @@ paths:
       summary: Download recording
       description: Downloads a recording file
       x-deviceSupport: both
-      operationId: downloadRecording
+      operationId: DownloadRecording
       parameters:
         - name: source
           in: query
@@ -4269,7 +4269,7 @@ paths:
       summary: Take snapshot
       description: Captures a snapshot image from the current video
       x-deviceSupport: both
-      operationId: takeSnapshot
+      operationId: TakeSnapshot
       parameters:
         - name: channel
           in: query
@@ -4296,7 +4296,7 @@ paths:
       summary: Playback recording
       description: Streams a recording file for playback
       x-deviceSupport: both
-      operationId: playbackRecording
+      operationId: PlaybackRecording
       parameters:
         - name: source
           in: query
@@ -4325,7 +4325,7 @@ paths:
       summary: NVR download recording
       description: Downloads recording files from NVR with enhanced options
       x-deviceSupport: nvr
-      operationId: nvrDownload
+      operationId: NvrDownload
       requestBody:
         required: true
         content:
@@ -4398,7 +4398,7 @@ paths:
       summary: Get PTZ preset positions
       description: Returns configured preset positions for PTZ camera
       x-deviceSupport: both
-      operationId: getPtzPreset
+      operationId: GetPtzPreset
       requestBody:
         required: true
         content:
@@ -4488,7 +4488,7 @@ paths:
       summary: Set PTZ preset position
       description: Creates or modifies a preset position for PTZ camera
       x-deviceSupport: both
-      operationId: setPtzPreset
+      operationId: SetPtzPreset
       requestBody:
         required: true
         content:
@@ -4523,7 +4523,7 @@ paths:
       summary: Get PTZ patrol configuration
       description: Returns patrol (cruise) routes configuration for PTZ camera
       x-deviceSupport: both
-      operationId: getPtzPatrol
+      operationId: GetPtzPatrol
       requestBody:
         required: true
         content:
@@ -4616,7 +4616,7 @@ paths:
         Configures patrol (cruise) routes for PTZ camera.
         Supports up to 16 preset points per patrol route.
       x-deviceSupport: both
-      operationId: setPtzPatrol
+      operationId: SetPtzPatrol
       requestBody:
         required: true
         content:
@@ -4683,7 +4683,7 @@ paths:
         Speed parameter range is 1-64.
         For ToPos operation, id parameter specifies the preset position to move to.
       x-deviceSupport: both
-      operationId: ptzCtrl
+      operationId: PtzCtrl
       requestBody:
         required: true
         content:
@@ -4730,7 +4730,7 @@ paths:
       summary: Get PTZ serial port configuration
       description: Returns the serial port configuration used for PTZ control
       x-deviceSupport: ipc
-      operationId: getPtzSerial
+      operationId: GetPtzSerial
       requestBody:
         required: true
         content:
@@ -4855,7 +4855,7 @@ paths:
       summary: Set PTZ serial configuration
       description: Configures the PTZ serial port settings
       x-deviceSupport: both
-      operationId: setPtzSerial
+      operationId: SetPtzSerial
       requestBody:
         required: true
         content:
@@ -4893,7 +4893,7 @@ paths:
       summary: Get PTZ pattern configuration
       description: Returns the configured PTZ movement patterns
       x-deviceSupport: both
-      operationId: getPtzTattern
+      operationId: GetPtzTattern
       requestBody:
         required: true
         content:
@@ -4999,7 +4999,7 @@ paths:
         Configures PTZ movement patterns.
         Each pattern is a recorded series of PTZ movements that can be played back.
       x-deviceSupport: both
-      operationId: setPtzTattern
+      operationId: SetPtzTattern
       requestBody:
         required: true
         content:
@@ -5070,7 +5070,7 @@ paths:
       summary: Get auto focus configuration
       description: Returns the current auto focus settings
       x-deviceSupport: both
-      operationId: getAutoFocus
+      operationId: GetAutoFocus
       requestBody:
         required: true
         content:
@@ -5142,7 +5142,7 @@ paths:
       summary: Set auto focus configuration
       description: Enables or disables the auto focus feature
       x-deviceSupport: both
-      operationId: setAutoFocus
+      operationId: SetAutoFocus
       requestBody:
         required: true
         content:
@@ -5192,7 +5192,7 @@ paths:
       summary: Control zoom and focus position
       description: Adjusts the zoom and focus to specific positions
       x-deviceSupport: both
-      operationId: startZoomFocus
+      operationId: StartZoomFocus
       requestBody:
         required: true
         content:
@@ -5246,7 +5246,7 @@ paths:
       summary: Get PTZ guard position settings
       description: Returns the guard position configuration
       x-deviceSupport: both
-      operationId: getPtzGuard
+      operationId: GetPtzGuard
       requestBody:
         required: true
         content:
@@ -5305,7 +5305,7 @@ paths:
         Configures the guard position and its settings.
         The guard position is a preset position the camera returns to after a period of inactivity.
       x-deviceSupport: both
-      operationId: setPtzGuard
+      operationId: SetPtzGuard
       requestBody:
         required: true
         content:
@@ -5379,7 +5379,7 @@ paths:
       summary: Get PTZ check state
       description: Returns the current state of PTZ self-check process
       x-deviceSupport: nvr
-      operationId: getPtzCheckState
+      operationId: GetPtzCheckState
       requestBody:
         required: true
         content:
@@ -5437,7 +5437,7 @@ paths:
       summary: Start PTZ self-check
       description: Initiates the PTZ camera self-check procedure
       x-deviceSupport: nvr
-      operationId: ptzCheck
+      operationId: PtzCheck
       requestBody:
         required: true
         content:
@@ -5476,7 +5476,7 @@ paths:
       summary: Get alarm settings
       description: Returns the current alarm configuration including motion detection areas and sensitivity
       x-deviceSupport: both
-      operationId: getAlarm
+      operationId: GetAlarm
       requestBody:
         required: true
         content:
@@ -5563,7 +5563,7 @@ paths:
       summary: Set alarm configuration
       description: Updates the alarm configuration including motion detection areas and sensitivity
       x-deviceSupport: both
-      operationId: setAlarm
+      operationId: SetAlarm
       requestBody:
         required: true
         content:
@@ -5614,7 +5614,7 @@ paths:
       summary: Get advanced motion detection settings
       description: Returns the advanced motion detection alarm configuration including AI detection types
       x-deviceSupport: both
-      operationId: getMdAlarm
+      operationId: GetMdAlarm
       requestBody:
         required: true
         content:
@@ -5670,7 +5670,7 @@ paths:
       summary: Set advanced motion detection settings
       description: Updates the advanced motion detection alarm configuration
       x-deviceSupport: both
-      operationId: setMdAlarm
+      operationId: SetMdAlarm
       requestBody:
         required: true
         content:
@@ -5710,7 +5710,7 @@ paths:
       summary: Get motion detection state
       description: Returns the current motion detection status
       x-deviceSupport: both
-      operationId: getMdState
+      operationId: GetMdState
       requestBody:
         required: true
         content:
@@ -5770,7 +5770,7 @@ paths:
       summary: Get audio alarm settings
       description: Returns the audio alarm configuration
       x-deviceSupport: both
-      operationId: getAudioAlarm
+      operationId: GetAudioAlarm
       responses:
         '200':
           description: Successful operation
@@ -5811,7 +5811,7 @@ paths:
       summary: Set audio alarm settings
       description: Updates the audio alarm configuration
       x-deviceSupport: both
-      operationId: setAudioAlarm
+      operationId: SetAudioAlarm
       requestBody:
         required: true
         content:
@@ -5854,7 +5854,7 @@ paths:
       summary: Get enhanced audio alarm settings
       description: Returns the enhanced audio alarm configuration (v2.0)
       x-deviceSupport: both
-      operationId: getAudioAlarmV20
+      operationId: GetAudioAlarmV20
       requestBody:
         required: true
         content:
@@ -5924,7 +5924,7 @@ paths:
       summary: Set enhanced audio alarm settings
       description: Updates the enhanced audio alarm configuration (v2.0)
       x-deviceSupport: both
-      operationId: setAudioAlarmV20
+      operationId: SetAudioAlarmV20
       requestBody:
         required: true
         content:
@@ -5977,7 +5977,7 @@ paths:
       summary: Get buzzer alarm settings
       description: Returns the buzzer alarm configuration (NVR only)
       x-deviceSupport: nvr
-      operationId: getBuzzerAlarmV20
+      operationId: GetBuzzerAlarmV20
       requestBody:
         required: true
         content:
@@ -6058,7 +6058,7 @@ paths:
       summary: Set buzzer alarm settings
       description: Updates the buzzer alarm configuration (NVR only)
       x-deviceSupport: nvr
-      operationId: setBuzzerAlarmV20
+      operationId: SetBuzzerAlarmV20
       requestBody:
         required: true
         content:
@@ -6120,7 +6120,7 @@ paths:
       summary: Play audio alarm
       description: Triggers the audio alarm to play
       x-deviceSupport: both
-      operationId: audioAlarmPlay
+      operationId: AudioAlarmPlay
       requestBody:
         required: true
         content:
@@ -6172,7 +6172,7 @@ paths:
       summary: Get IR light settings
       description: Returns the current IR light configuration
       x-deviceSupport: both
-      operationId: getIrLights
+      operationId: GetIrLights
       responses:
         '200':
           description: Successful operation
@@ -6206,7 +6206,7 @@ paths:
       summary: Set IR light settings
       description: Configure IR light operation
       x-deviceSupport: both
-      operationId: setIrLights
+      operationId: SetIrLights
       requestBody:
         required: true
         content:
@@ -6244,7 +6244,7 @@ paths:
       summary: Get power LED status
       description: Returns the current power LED state
       x-deviceSupport: both
-      operationId: getPowerLed
+      operationId: GetPowerLed
       responses:
         '200':
           description: Successful operation
@@ -6282,7 +6282,7 @@ paths:
       summary: Set power LED status
       description: Configure power LED operation
       x-deviceSupport: both
-      operationId: setPowerLed
+      operationId: SetPowerLed
       requestBody:
         required: true
         content:
@@ -6324,7 +6324,7 @@ paths:
       summary: Get white LED settings
       description: Returns the current white LED configuration
       x-deviceSupport: both
-      operationId: getWhiteLed
+      operationId: GetWhiteLed
       responses:
         '200':
           description: Successful operation
@@ -6355,7 +6355,7 @@ paths:
       summary: Set white LED settings
       description: Configure white LED operation
       x-deviceSupport: both
-      operationId: setWhiteLed
+      operationId: SetWhiteLed
       requestBody:
         required: true
         content:
@@ -6389,7 +6389,7 @@ paths:
       summary: Get AI alarm LED settings
       description: Returns the current AI-based alarm LED configuration
       x-deviceSupport: both
-      operationId: getAiAlarm
+      operationId: GetAiAlarm
       requestBody:
         required: true
         content:
@@ -6462,7 +6462,7 @@ paths:
       summary: Set AI alarm LED settings
       description: Configure AI-based alarm LED operation
       x-deviceSupport: both
-      operationId: setAiAlarm
+      operationId: SetAiAlarm
       requestBody:
         required: true
         content:
@@ -6519,7 +6519,7 @@ paths:
       summary: Set alarm detection area
       description: Configure the area for AI-based alarm detection
       x-deviceSupport: both
-      operationId: setAlarmArea
+      operationId: SetAlarmArea
       requestBody:
         required: true
         content:
@@ -6572,7 +6572,7 @@ paths:
       summary: Get AI configuration
       description: Returns the current AI detection and tracking configuration
       x-deviceSupport: both
-      operationId: getAiCfg
+      operationId: GetAiCfg
       requestBody:
         required: true
         content:
@@ -6629,7 +6629,7 @@ paths:
       summary: Set AI configuration
       description: Updates the AI detection and tracking configuration
       x-deviceSupport: both
-      operationId: setAiCfg
+      operationId: SetAiCfg
       requestBody:
         required: true
         content:
@@ -6674,7 +6674,7 @@ paths:
       summary: Get AI detection states
       description: Returns the current state of AI detection types
       x-deviceSupport: both
-      operationId: getAiState
+      operationId: GetAiState
       requestBody:
         required: true
         content:

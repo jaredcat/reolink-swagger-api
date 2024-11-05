@@ -6,7 +6,7 @@ post:
   summary: Get WiFi settings
   description: Returns current WiFi configuration
   x-deviceSupport: ipc
-  operationId: getWifi
+  operationId: GetWifi
   requestBody:
     required: true
     content:

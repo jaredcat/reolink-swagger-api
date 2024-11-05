@@ -5,7 +5,7 @@ post:
   summary: Set ISP settings
   description: Updates the Image Signal Processing settings
   x-deviceSupport: both
-  operationId: setIsp
+  operationId: SetIsp
   requestBody:
     required: true
     content:

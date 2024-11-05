@@ -5,7 +5,7 @@ post:
   summary: Set network interface settings
   description: Updates network interface configuration
   x-deviceSupport: both
-  operationId: setLocalLink
+  operationId: SetLocalLink
   requestBody:
     required: true
     content:

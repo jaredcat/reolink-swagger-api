@@ -5,7 +5,7 @@ post:
   summary: Set auto focus configuration
   description: Enables or disables the auto focus feature
   x-deviceSupport: both
-  operationId: setAutoFocus
+  operationId: SetAutoFocus
   requestBody:
     required: true
     content:

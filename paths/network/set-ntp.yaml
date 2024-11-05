@@ -5,7 +5,7 @@ post:
   summary: Set NTP settings
   description: Updates NTP service configuration
   x-deviceSupport: both
-  operationId: setNtp
+  operationId: SetNtp
   requestBody:
     required: true
     content:

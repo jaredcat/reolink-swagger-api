@@ -5,7 +5,7 @@ post:
   summary: Set auto maintenance settings
   description: Configures automatic maintenance schedule
   x-deviceSupport: both
-  operationId: setAutoMaint
+  operationId: SetAutoMaint
   requestBody:
     required: true
     content:

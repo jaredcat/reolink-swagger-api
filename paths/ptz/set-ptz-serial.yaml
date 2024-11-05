@@ -5,7 +5,7 @@ post:
   summary: Set PTZ serial configuration
   description: Configures the PTZ serial port settings
   x-deviceSupport: both
-  operationId: setPtzSerial
+  operationId: SetPtzSerial
   requestBody:
     required: true
     content:

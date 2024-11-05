@@ -5,7 +5,7 @@ post:
   summary: Check for firmware updates
   description: Checks if new firmware is available for upgrade
   x-deviceSupport: both
-  operationId: checkFirmware
+  operationId: CheckFirmware
   responses:
     '200':
       description: Successful operation

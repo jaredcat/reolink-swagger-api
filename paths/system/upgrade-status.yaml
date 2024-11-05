@@ -5,7 +5,7 @@ post:
   summary: Get upgrade status
   description: Checks the progress of firmware upgrade
   x-deviceSupport: both
-  operationId: upgradeStatus
+  operationId: UpgradeStatus
   responses:
     '200':
       description: Successful operation

@@ -6,7 +6,7 @@ post:
   summary: Set alarm detection area
   description: Configure the area for AI-based alarm detection
   x-deviceSupport: both
-  operationId: setAlarmArea
+  operationId: SetAlarmArea
   requestBody:
     required: true
     content:

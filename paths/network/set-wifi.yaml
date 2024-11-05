@@ -6,7 +6,7 @@ post:
   summary: Set WiFi settings
   description: Updates WiFi configuration
   x-deviceSupport: ipc
-  operationId: setWifi
+  operationId: SetWifi
   requestBody:
     required: true
     content:

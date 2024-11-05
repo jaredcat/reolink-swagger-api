@@ -5,7 +5,7 @@ post:
   summary: Get auto upgrade settings
   description: Returns the automatic upgrade configuration
   x-deviceSupport: both
-  operationId: getAutoUpgrade
+  operationId: GetAutoUpgrade
   responses:
     '200':
       description: Successful operation

@@ -5,7 +5,7 @@ post:
   summary: Get ISP settings
   description: Returns the current Image Signal Processing settings
   x-deviceSupport: both
-  operationId: getIsp
+  operationId: GetIsp
   requestBody:
     required: true
     content:

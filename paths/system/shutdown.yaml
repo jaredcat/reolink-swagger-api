@@ -5,7 +5,7 @@ post:
   summary: Shutdown device
   description: Safely shuts down the device
   x-deviceSupport: both
-  operationId: shutdown
+  operationId: Shutdown
   responses:
     '200':
       $ref: '../../components/responses/common.yaml#/Success'

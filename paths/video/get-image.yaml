@@ -5,7 +5,7 @@ post:
   summary: Get image settings
   description: Returns the current image settings like brightness, contrast, etc.
   x-deviceSupport: both
-  operationId: getImage
+  operationId: GetImage
   requestBody:
     required: true
     content:

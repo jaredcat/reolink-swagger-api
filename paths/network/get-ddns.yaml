@@ -5,7 +5,7 @@ post:
   summary: Get DDNS settings
   description: Returns current DDNS service configuration
   x-deviceSupport: both
-  operationId: getDdns
+  operationId: GetDdns
   requestBody:
     required: true
     content:

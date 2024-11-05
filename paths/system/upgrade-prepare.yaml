@@ -5,7 +5,7 @@ post:
   summary: Prepare for firmware upgrade
   description: Validates upgrade file and prepares for upgrade process
   x-deviceSupport: both
-  operationId: upgradePrepare
+  operationId: UpgradePrepare
   requestBody:
     required: true
     content:

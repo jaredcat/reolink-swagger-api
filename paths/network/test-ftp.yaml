@@ -5,7 +5,7 @@ post:
   summary: Test FTP settings
   description: Tests FTP configuration by attempting to connect and upload a test file
   x-deviceSupport: both
-  operationId: testFtp
+  operationId: TestFtp
   requestBody:
     required: true
     content:

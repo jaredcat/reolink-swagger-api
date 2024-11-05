@@ -5,7 +5,7 @@ post:
   summary: Get network port settings
   description: Returns current network service port configurations and their enable status
   x-deviceSupport: both
-  operationId: getNetPort
+  operationId: GetNetPort
   responses:
     '200':
       description: Successful operation

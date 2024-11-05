@@ -5,7 +5,7 @@ post:
   summary: Set power LED status
   description: Configure power LED operation
   x-deviceSupport: both
-  operationId: setPowerLed
+  operationId: SetPowerLed
   requestBody:
     required: true
     content:

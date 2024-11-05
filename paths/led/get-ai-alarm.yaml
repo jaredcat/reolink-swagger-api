@@ -6,7 +6,7 @@ post:
   summary: Get AI alarm LED settings
   description: Returns the current AI-based alarm LED configuration
   x-deviceSupport: both
-  operationId: getAiAlarm
+  operationId: GetAiAlarm
   requestBody:
     required: true
     content:

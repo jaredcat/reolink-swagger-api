@@ -5,7 +5,7 @@ post:
   summary: Set encoding configuration
   description: Updates the encoding configuration for main and sub streams
   x-deviceSupport: both
-  operationId: setEnc
+  operationId: SetEnc
   requestBody:
     required: true
     content:

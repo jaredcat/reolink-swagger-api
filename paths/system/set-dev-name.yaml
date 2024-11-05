@@ -5,7 +5,7 @@ post:
   summary: Set device name
   description: Sets a new name for the device
   x-deviceSupport: both
-  operationId: setDevName
+  operationId: SetDevName
   requestBody:
     required: true
     content:

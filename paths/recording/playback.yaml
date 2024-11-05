@@ -5,7 +5,7 @@ post:
   summary: Playback recording
   description: Streams a recording file for playback
   x-deviceSupport: both
-  operationId: playbackRecording
+  operationId: PlaybackRecording
   parameters:
     - name: source
       in: query

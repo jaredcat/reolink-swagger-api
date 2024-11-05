@@ -5,7 +5,7 @@ post:
   summary: Take snapshot
   description: Captures a snapshot image from the current video
   x-deviceSupport: both
-  operationId: takeSnapshot
+  operationId: TakeSnapshot
   parameters:
     - name: channel
       in: query

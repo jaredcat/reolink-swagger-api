@@ -5,7 +5,7 @@ post:
   summary: Get system time settings
   description: Returns the current system time configuration including timezone and DST settings
   x-deviceSupport: both
-  operationId: getTime
+  operationId: GetTime
   requestBody:
     required: true
     content:

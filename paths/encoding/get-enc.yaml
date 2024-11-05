@@ -5,7 +5,7 @@ post:
   summary: Get encoding configuration
   description: Returns the current encoding configuration for main and sub streams
   x-deviceSupport: both
-  operationId: getEnc
+  operationId: GetEnc
   requestBody:
     required: true
     content:

@@ -5,7 +5,7 @@ post:
   summary: Get storage device information
   description: Returns information about hard disks or SD cards
   x-deviceSupport: both
-  operationId: getHddInfo
+  operationId: GetHddInfo
   responses:
     '200':
       description: Successful operation

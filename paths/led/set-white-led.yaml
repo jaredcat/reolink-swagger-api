@@ -5,7 +5,7 @@ post:
   summary: Set white LED settings
   description: Configure white LED operation
   x-deviceSupport: both
-  operationId: setWhiteLed
+  operationId: SetWhiteLed
   requestBody:
     required: true
     content:
