@@ -7,6 +7,17 @@ post:
   description: Returns status information for all NVR channels
   x-deviceSupport: nvr
   operationId: GetChannelStatus
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: array
+          minItems: 1
+          maxItems: 1
+          items:
+            allOf:
+              - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
   responses:
     '200':
       description: Successful operation

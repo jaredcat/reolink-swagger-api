@@ -6,6 +6,17 @@ post:
   description: Returns information about hard disks or SD cards
   x-deviceSupport: both
   operationId: GetHddInfo
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: array
+          minItems: 1
+          maxItems: 1
+          items:
+            allOf:
+              - $ref: '../../components/schemas/index.yaml#/BaseCommandRequest'
   responses:
     '200':
       description: Successful operation

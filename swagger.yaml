@@ -235,6 +235,26 @@ paths:
         firmware version, and capabilities.
       x-deviceSupport: both
       operationId: GetDevInfo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - type: object
+                    required: *a1
+                    properties:
+                      cmd:
+                        type: string
+                        description: Command name
+                        enum:
+                          - GetDevInfo
+                      action: *a2
+                      param: *a3
       responses:
         "200":
           description: Successful operation
@@ -683,6 +703,26 @@ paths:
       description: Returns information about hard disks or SD cards
       x-deviceSupport: both
       operationId: GetHddInfo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - type: object
+                    required: *a1
+                    properties:
+                      cmd:
+                        type: string
+                        description: Command name
+                        enum:
+                          - GetHddInfo
+                      action: *a2
+                      param: *a3
       responses:
         "200":
           description: Successful operation
@@ -814,6 +854,26 @@ paths:
       description: Resets all configurations to factory default settings
       x-deviceSupport: both
       operationId: Restore
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - type: object
+                    required: *a1
+                    properties:
+                      cmd:
+                        type: string
+                        description: Command name
+                        enum:
+                          - Restore
+                      action: *a2
+                      param: *a3
       responses:
         "200":
           $ref: "#/components/responses/Success"
@@ -829,6 +889,26 @@ paths:
       description: Reboots the device
       x-deviceSupport: both
       operationId: Reboot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - type: object
+                    required: *a1
+                    properties:
+                      cmd:
+                        type: string
+                        description: Command name
+                        enum:
+                          - Reboot
+                      action: *a2
+                      param: *a3
       responses:
         "200":
           $ref: "#/components/responses/Success"
@@ -898,6 +978,26 @@ paths:
       description: Returns the automatic upgrade configuration
       x-deviceSupport: both
       operationId: GetAutoUpgrade
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - type: object
+                    required: *a1
+                    properties:
+                      cmd:
+                        type: string
+                        description: Command name
+                        enum:
+                          - GetAutoUpgrade
+                      action: *a2
+                      param: *a3
       responses:
         "200":
           description: Successful operation
@@ -983,6 +1083,26 @@ paths:
       description: Checks if new firmware is available for upgrade
       x-deviceSupport: both
       operationId: CheckFirmware
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - type: object
+                    required: *a1
+                    properties:
+                      cmd:
+                        type: string
+                        description: Command name
+                        enum:
+                          - CheckFirmware
+                      action: *a2
+                      param: *a3
       responses:
         "200":
           description: Successful operation
@@ -1017,6 +1137,26 @@ paths:
       description: Initiates online firmware upgrade when new version is available
       x-deviceSupport: both
       operationId: UpgradeOnline
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - type: object
+                    required: *a1
+                    properties:
+                      cmd:
+                        type: string
+                        description: Command name
+                        enum:
+                          - UpgradeOnline
+                      action: *a2
+                      param: *a3
       responses:
         "200":
           $ref: "#/components/responses/Success"
@@ -1032,6 +1172,26 @@ paths:
       description: Checks the progress of firmware upgrade
       x-deviceSupport: both
       operationId: UpgradeStatus
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - type: object
+                    required: *a1
+                    properties:
+                      cmd:
+                        type: string
+                        description: Command name
+                        enum:
+                          - UpgradeStatus
+                      action: *a2
+                      param: *a3
       responses:
         "200":
           description: Successful operation
@@ -1066,6 +1226,26 @@ paths:
       description: Returns status information for all NVR channels
       x-deviceSupport: nvr
       operationId: GetChannelStatus
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - type: object
+                    required: *a1
+                    properties:
+                      cmd:
+                        type: string
+                        description: Command name
+                        enum:
+                          - GetChannelStatus
+                      action: *a2
+                      param: *a3
       responses:
         "200":
           description: Successful operation
@@ -1123,6 +1303,26 @@ paths:
       description: Safely shuts down the device
       x-deviceSupport: both
       operationId: Shutdown
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - type: object
+                    required: *a1
+                    properties:
+                      cmd:
+                        type: string
+                        description: Command name
+                        enum:
+                          - Shutdown
+                      action: *a2
+                      param: *a3
       responses:
         "200":
           $ref: "#/components/responses/Success"
@@ -1228,6 +1428,26 @@ paths:
       description: Invalidates the current session token
       x-deviceSupport: both
       operationId: Logout
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - type: object
+                    required: *a1
+                    properties:
+                      cmd:
+                        type: string
+                        description: Command name
+                        enum:
+                          - Logout
+                      action: *a2
+                      param: *a3
       responses:
         "200":
           $ref: "#/components/responses/Success"
@@ -1521,6 +1741,26 @@ paths:
       description: Returns list of currently connected users
       x-deviceSupport: both
       operationId: GetOnline
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - type: object
+                    required: *a1
+                    properties:
+                      cmd:
+                        type: string
+                        description: Command name
+                        enum:
+                          - GetOnline
+                      action: *a2
+                      param: *a3
       responses:
         "200":
           description: Successful operation
@@ -1608,6 +1848,33 @@ paths:
       description: Returns login lock time and attempt settings
       x-deviceSupport: both
       operationId: GetSysCfg
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - type: object
+                    required: *a1
+                    properties:
+                      cmd:
+                        type: string
+                        description: Command name
+                        enum:
+                          - GetSysCfg
+                      action: *a2
+                      param: *a3
+                  - type: object
+                    properties:
+                      param:
+                        type: object
+                        properties:
+                          channel:
+                            type: integer
       responses:
         "200":
           description: Successful operation
@@ -2610,6 +2877,26 @@ paths:
         enable status
       x-deviceSupport: both
       operationId: GetNetPort
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - type: object
+                    required: *a1
+                    properties:
+                      cmd:
+                        type: string
+                        description: Command name
+                        enum:
+                          - GetNetPort
+                      action: *a2
+                      param: *a3
       responses:
         "200":
           description: Successful operation
@@ -2952,6 +3239,26 @@ paths:
       description: Scans and returns list of available WiFi networks
       x-deviceSupport: ipc
       operationId: ScanWifi
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - type: object
+                    required: *a1
+                    properties:
+                      cmd:
+                        type: string
+                        description: Command name
+                        enum:
+                          - ScanWifi
+                      action: *a2
+                      param: *a3
       responses:
         "200":
           description: Successful operation
@@ -2988,6 +3295,26 @@ paths:
       description: Returns current WiFi signal strength
       x-deviceSupport: ipc
       operationId: GetWifiSignal
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - type: object
+                    required: *a1
+                    properties:
+                      cmd:
+                        type: string
+                        description: Command name
+                        enum:
+                          - GetWifiSignal
+                      action: *a2
+                      param: *a3
       responses:
         "200":
           description: Successful operation
@@ -3367,6 +3694,26 @@ paths:
       description: Returns current SSL certificate configuration
       x-deviceSupport: both
       operationId: GetCertificateInfo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - type: object
+                    required: *a1
+                    properties:
+                      cmd:
+                        type: string
+                        description: Command name
+                        enum:
+                          - GetCertificateInfo
+                      action: *a2
+                      param: *a3
       responses:
         "200":
           description: Successful operation
@@ -3400,6 +3747,26 @@ paths:
       description: Removes the custom SSL certificate and reverts to default
       x-deviceSupport: both
       operationId: CertificateClear
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                allOf:
+                  - type: object
+                    required: *a1
+                    properties:
+                      cmd:
+                        type: string
+                        description: Command name
+                        enum:
+                          - CertificateClear
+                      action: *a2
+                      param: *a3
       responses:
         "200":
           $ref: "#/components/responses/Success"
