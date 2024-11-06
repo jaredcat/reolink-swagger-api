@@ -128,15 +128,15 @@ ErrorResponse:
         * -2 - Used up memory
         * -3 - Check error
         * -4 - Parameters error
-        * -5 - Reached the max session number.
+        * -5 - Reached the max session number
         * -6 - Login required
         * -7 - Login error
         * -8 - Operation timeout
         * -9 - Not supported
         * -10 - Protocol error
         * -11 - Failed to read operation
-        * -12 - Failed to get configuration.
-        * -13 - Failed to set configuration.
+        * -12 - Failed to get configuration
+        * -13 - Failed to set configuration
         * -14 - Failed to apply for memory
         * -15 - Failed to created socket
         * -16 - Failed to send data
@@ -153,7 +153,7 @@ ErrorResponse:
         * -27 - Invalid user
         * -28 - User already exist
         * -29 - Reached the maximum number of users
-        * -30 - The version is identical to the current one.
+        * -30 - The version is identical to the current one
         * -31 - Ensure only one user can upgrade
         * -32 - Modify IP conflicted with used IP
         * -34 - Cloud login need bind email first
@@ -161,15 +161,15 @@ ErrorResponse:
         * -36 - Cloud login get login information out of time
         * -37 - Cloud login password error
         * -38 - Cloud bind camera uid error
-        * -39 - Cloud login user doesn’t exist
+        * -39 - Cloud login user doesn't exist
         * -40 - Cloud unbind camera failed
-        * -41 - The device doesn’t support cloud
+        * -41 - The device doesn't support cloud
         * -42 - Cloud login server failed
         * -43 - Cloud bind camera failed
         * -44 - Cloud unknown error
         * -45 - Cloud bind camera need verify code
         * -46 - An error occurred while using the digest authentication process
-        * -47 - Nonce expires Abstract An expired nonce is used in the authentication process
+        * -47 - Abstract An expired nonce is used in the authentication process
         * -48 - Snap a picture failed
         * -49 - Channel is invalid
         * -99 - Device offline

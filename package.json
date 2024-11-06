@@ -4,10 +4,11 @@
   "description": "",
   "scripts": {
     "lint": "redocly lint --config redocly.yaml openapi.yaml",
-    "redocly": "npm run generate-schema-index && redocly bundle --config redocly.yaml openapi.yaml -o swagger.yaml",
+    "redocly": "npm run generate-schema-index && redocly bundle --config redocly.yaml openapi.yaml -o swagger.yaml && npm run replace-base-command-request",
     "bundle": "npm run redocly && openapi2postmanv2 -s swagger.yaml -o postman-collection.json -p -O folderStrategy=Tags",
     "prepare": "husky",
-    "generate-schema-index": "node scripts/generate-schema-index.js"
+    "generate-schema-index": "node scripts/generate-schema-index.js",
+    "replace-base-command-request": "node scripts/replace-base-command-request.js"
   },
   "repository": {
     "type": "git",
@@ -26,9 +27,7 @@
   "homepage": "https://github.com/jaredcat/reolink-swagger-api#readme",
   "dependencies": {
     "@redocly/cli": "1.25.11",
-    "openapi-to-postmanv2": "4.24.0"
-  },
-  "devDependencies": {
+    "openapi-to-postmanv2": "4.24.0",
     "husky": "9.1.6",
     "yaml": "2.6.0"
   }
