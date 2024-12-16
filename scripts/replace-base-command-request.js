@@ -1,7 +1,7 @@
 const fs = require('fs');
 const yaml = require('yaml');
 
-const swaggerFile = 'swagger.yaml';
+const swaggerFile = 'openapi.yaml';
 
 // The comment to add at the top of the file
 const FILE_HEADER = `# THIS FILE IS AUTO-GENERATED
@@ -11,7 +11,7 @@ const FILE_HEADER = `# THIS FILE IS AUTO-GENERATED
 `;
 
 try {
-  // Read the swagger.yaml file
+  // Read the openapi.yaml file
   const swaggerData = fs.readFileSync(swaggerFile, 'utf8');
   const swaggerDoc = yaml.parse(swaggerData);
 

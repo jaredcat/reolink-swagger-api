@@ -1,2 +1,2 @@
 npm run bundle
-git add swagger.yaml postman-collection.json
+git add openapi.yaml postman-collection.json
