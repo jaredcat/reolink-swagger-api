@@ -28,7 +28,7 @@
   "dependencies": {
     "@redocly/cli": "1.26.0",
     "husky": "9.1.7",
-    "openapi-to-postmanv2": "4.24.0",
+    "openapi-to-postmanv2": "6.0.0",
     "yaml": "2.6.1"
   },
   "devDependencies": {
